@@ -1,0 +1,157 @@
+# =============================================================
+# .gitignore — Price Intelligence Platform
+# Adapté à un projet Data Engineering Python + Docker
+# =============================================================
+
+# --------------------------
+# SECRETS & CONFIGURATIONS SENSIBLES
+# (Ne jamais committer des clés / mots de passe)
+# --------------------------
+.env
+*.env
+!.env.example          # L'exemple sans vraies valeurs, lui, est commité
+*.pem
+*.key
+*.p12
+*.json.secret
+gcp-credentials.json
+service-account*.json
+keyfile*.json
+
+# --------------------------
+# PYTHON
+# --------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+
+# Environnements virtuels
+.venv/
+venv/
+ENV/
+env/
+.env.bak
+
+# Jupyter Notebooks — checkpoints locaux
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+.cache/
+*.cover
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.coveragerc
+
+# mypy / linting
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+
+# --------------------------
+# DONNÉES LOCALES
+# (On ne committe jamais de données brutes)
+# --------------------------
+data/
+*.csv
+*.tsv
+*.parquet
+*.json.gz
+*.jsonl
+scraped_data/
+exports/
+downloads/
+
+# --------------------------
+# LOGS
+# --------------------------
+logs/
+*.log
+airflow/logs/
+nifi/logs/
+*.log.*
+
+# --------------------------
+# APACHE AIRFLOW
+# --------------------------
+airflow/airflow.db          # SQLite (si utilisé en local)
+airflow/airflow.cfg         # Généré automatiquement
+airflow/webserver_config.py # Idem
+airflow/unittests.cfg
+airflow/standalone_admin_password.txt
+airflow/logs/**
+!airflow/logs/.gitkeep      # Garder le dossier vide dans Git
+
+# --------------------------
+# APACHE NIFI
+# --------------------------
+nifi/conf/flow.json.gz      # État interne NiFi, généré au runtime
+nifi/conf/authorizations.xml
+nifi/conf/users.xml
+nifi/database_repository/
+nifi/flowfile_repository/
+nifi/content_repository/
+nifi/provenance_repository/
+nifi/state/
+nifi/run/
+nifi/work/
+nifi/logs/
+
+# --------------------------
+# DBT
+# --------------------------
+dbt/target/                 # Artefacts compilés (regénérés à chaque run)
+dbt/dbt_packages/           # Dépendances dbt (comme node_modules)
+dbt/logs/
+dbt/.user.yml               # Fichier utilisateur local dbt
+
+# --------------------------
+# DOCKER
+# --------------------------
+# Volumes Docker montés localement
+postgres_data/
+bigtable_data/
+
+# --------------------------
+# IDEs & Éditeurs
+# --------------------------
+.vscode/
+!.vscode/extensions.json    # On peut partager les extensions recommandées
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store                   # macOS
+Thumbs.db                   # Windows
+*.swp
+*.swo
+*~
+
+# --------------------------
+# TERRAFORM (pour plus tard, semaine 4)
+# --------------------------
+infra/terraform/.terraform/
+infra/terraform/*.tfstate
+infra/terraform/*.tfstate.backup
+infra/terraform/*.tfplan
+infra/terraform/override.tf

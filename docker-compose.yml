@@ -1,0 +1,266 @@
+# =============================================================
+# docker-compose.yml — Price Intelligence Platform
+# Environnement de développement LOCAL (0€, sans GCP réel)
+# =============================================================
+# Services lancés :
+#   - bigtable-emulator  → Remplace Bigtable GCP en local   :8086
+#   - postgres           → Base de données metadata Airflow  :5432
+#   - airflow-init       → Initialise la DB (tâche unique)
+#   - airflow-webserver  → Interface web Airflow             :8080
+#   - airflow-scheduler  → Cerveau d'Airflow (exécute les DAGs)
+#   - nifi               → Interface web NiFi (streaming)    :8443
+# =============================================================
+
+version: '3.8'
+
+# --------------------------
+# RÉSEAUX
+# Tous les services partagent ce réseau interne pour se "voir"
+# par leur nom de service (ex: postgres, bigtable-emulator)
+# --------------------------
+networks:
+  price-intel-network:
+    driver: bridge
+
+# --------------------------
+# VOLUMES PERSISTANTS
+# Les données survivent aux redémarrages des conteneurs
+# --------------------------
+volumes:
+  postgres_data:       # Données PostgreSQL (metadata Airflow)
+  nifi_conf:           # Configuration NiFi (flows, templates)
+  nifi_database_repo:  # Dépôt interne NiFi
+  nifi_flowfile_repo:  # FlowFiles en transit NiFi
+  nifi_content_repo:   # Contenu des FlowFiles NiFi
+  nifi_provenance_repo:# Traçabilité des événements NiFi
+
+# --------------------------
+# BLOC COMMUN AIRFLOW (YAML Anchor)
+# Évite de répéter la config pour webserver et scheduler
+# --------------------------
+x-airflow-common:
+  &airflow-common
+  image: apache/airflow:2.9.3
+  environment:
+    &airflow-common-env
+
+    # --- Moteur d'exécution ---
+    # LocalExecutor : simple, pas besoin de Redis/Celery
+    # Parfait pour un MVP avec une seule machine
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+
+    # --- Connexion à la base de données PostgreSQL ---
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER:-airflow}:${POSTGRES_PASSWORD:-airflow_secret}@postgres/${POSTGRES_DB:-airflow}
+
+    # --- Configuration générale ---
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'   # Sécurité : DAGs pausés par défaut
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'                  # Pas de DAGs d'exemple (moins de bruit)
+    AIRFLOW__CORE__FERNET_KEY: ''                          # OK pour le dev local
+    AIRFLOW__WEBSERVER__SECRET_KEY: 'local-dev-secret-key' # Juste pour le dev local
+
+    # --- API REST Airflow (utile pour déclencher depuis NiFi) ---
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
+
+    # --- Variables d'environnement pour Bigtable ---
+    # CRITIQUE : pointe vers l'émulateur local et non vers GCP !
+    BIGTABLE_EMULATOR_HOST: bigtable-emulator:8086
+    GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
+    BIGTABLE_INSTANCE_ID: ${BIGTABLE_INSTANCE_ID:-price-intel-instance}
+
+    # Disable GCP auth (pas nécessaire avec l'émulateur)
+    GOOGLE_APPLICATION_CREDENTIALS: ""
+
+  volumes:
+    # Tes DAGs (fichiers Python) sont lus en direct depuis le dossier local
+    - ./airflow/dags:/opt/airflow/dags
+    # Les logs restent sur ta machine pour déboguer facilement
+    - ./airflow/logs:/opt/airflow/logs
+    # Plugins custom Airflow (operators, hooks, etc.)
+    - ./airflow/plugins:/opt/airflow/plugins
+    # Pour que les DAGs puissent appeler dbt
+    - ./dbt:/opt/dbt
+
+  user: "${AIRFLOW_UID:-50000}:0"
+
+  depends_on:
+    postgres:
+      condition: service_healthy   # Airflow attend que Postgres soit prêt
+    bigtable-emulator:
+      condition: service_started   # Démarre après l'émulateur
+
+  networks:
+    - price-intel-network
+
+# =============================================================
+# DÉFINITION DES SERVICES
+# =============================================================
+services:
+
+  # -----------------------------------------------------------
+  # 1. ÉMULATEUR GOOGLE CLOUD BIGTABLE
+  # Simule parfaitement Bigtable en local — 0€, 0 latence réseau
+  # Tes collègues peuvent écrire/lire comme si c'était le vrai GCP
+  # -----------------------------------------------------------
+  bigtable-emulator:
+    image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
+    container_name: bigtable-emulator
+    # Installe le composant beta si absent, puis lance l'émulateur
+    # --host-port=0.0.0.0 : écoute sur toutes les interfaces (nécessaire en Docker)
+    command: >
+      bash -c "
+        gcloud components install beta --quiet 2>/dev/null || true &&
+        echo '✅ Bigtable Emulator démarré sur le port 8086...' &&
+        gcloud beta emulators bigtable start --host-port=0.0.0.0:8086
+      "
+    ports:
+      - "8086:8086"    # Port gRPC de l'émulateur Bigtable
+    networks:
+      - price-intel-network
+    restart: unless-stopped
+    healthcheck:
+      # Vérifie que le port gRPC répond
+      test: ["CMD", "bash", "-c", "echo '' > /dev/tcp/localhost/8086"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s   # L'installation du composant prend ~20s au premier démarrage
+
+  # -----------------------------------------------------------
+  # 2. POSTGRESQL — Base de données metadata d'Airflow
+  # Stocke l'état des DAGs, les logs d'exécution, les variables Airflow
+  # -----------------------------------------------------------
+  postgres:
+    image: postgres:15-alpine   # Alpine = image légère (~50MB)
+    container_name: airflow-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-airflow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-airflow_secret}
+      POSTGRES_DB: ${POSTGRES_DB:-airflow}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data   # Données persistantes
+    ports:
+      - "5432:5432"   # Utile pour se connecter avec DBeaver/pgAdmin en local
+    networks:
+      - price-intel-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER:-airflow}"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
+
+  # -----------------------------------------------------------
+  # 3. AIRFLOW INIT — Tâche d'initialisation (run une seule fois)
+  # Crée le schéma en base de données et l'utilisateur admin
+  # Ce conteneur s'arrête tout seul après avoir fini → c'est normal !
+  # -----------------------------------------------------------
+  airflow-init:
+    <<: *airflow-common   # Hérite de toute la config commune
+    container_name: airflow-init
+    command: >
+      bash -c "
+        echo '🚀 Initialisation de la base de données Airflow...' &&
+        airflow db migrate &&
+        echo '👤 Création de l utilisateur admin...' &&
+        airflow users create
+          --username ${_AIRFLOW_WWW_USER_USERNAME:-admin}
+          --firstname Admin
+          --lastname User
+          --role Admin
+          --email admin@price-intel.local
+          --password ${_AIRFLOW_WWW_USER_PASSWORD:-admin123} &&
+        echo '✅ Airflow initialisé avec succès !'
+      "
+    # Ce service s'arrête proprement après init — exit 0 = succès
+    restart: "no"
+
+  # -----------------------------------------------------------
+  # 4. AIRFLOW WEBSERVER — Interface graphique Airflow
+  # Accès : http://localhost:8080
+  # Login : admin / admin123 (défini dans .env)
+  # -----------------------------------------------------------
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow-webserver
+    command: webserver
+    ports:
+      - "8080:8080"   # Interface web Airflow
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully   # Attend la fin de l'init
+      postgres:
+        condition: service_healthy
+
+  # -----------------------------------------------------------
+  # 5. AIRFLOW SCHEDULER — Le "cœur" d'Airflow
+  # Surveille les DAGs, déclenche les tâches selon le planning
+  # Pas d'interface web, mais indispensable au fonctionnement
+  # -----------------------------------------------------------
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow-scheduler
+    command: scheduler
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+
+  # -----------------------------------------------------------
+  # 6. APACHE NIFI — Ingestion temps réel (streaming)
+  # Accès : https://localhost:8443/nifi
+  # ⚠️ Ton navigateur affichera un avertissement SSL (certificat auto-signé)
+  #    → Clique "Avancé" puis "Continuer" — c'est normal en local !
+  # Login : défini par NIFI_USERNAME / NIFI_PASSWORD dans .env
+  # -----------------------------------------------------------
+  nifi:
+    image: apache/nifi:1.23.2   # Version stable et bien documentée
+    container_name: nifi
+    environment:
+      # Mode authentification "single user" (simple et sécurisé en local)
+      AUTH: single-user
+      SINGLE_USER_CREDENTIALS_USERNAME: ${NIFI_USERNAME:-admin}
+      # Le mot de passe doit faire au moins 12 caractères (exigence NiFi)
+      SINGLE_USER_CREDENTIALS_PASSWORD: ${NIFI_PASSWORD:-adminpassword123}
+
+      # Variables Bigtable pour que les processors NiFi puissent écrire en local
+      BIGTABLE_EMULATOR_HOST: bigtable-emulator:8086
+      GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
+
+    volumes:
+      # Tes templates NiFi (.xml) versionés dans Git
+      - ./nifi/templates:/opt/nifi/nifi-current/conf/templates
+      # Config NiFi persistante (flows, authorizations...)
+      - nifi_conf:/opt/nifi/nifi-current/conf
+      - nifi_database_repo:/opt/nifi/nifi-current/database_repository
+      - nifi_flowfile_repo:/opt/nifi/nifi-current/flowfile_repository
+      - nifi_content_repo:/opt/nifi/nifi-current/content_repository
+      - nifi_provenance_repo:/opt/nifi/nifi-current/provenance_repository
+    ports:
+      - "8443:8443"   # Interface NiFi (HTTPS — certificat auto-signé)
+    networks:
+      - price-intel-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-k", "--fail", "https://localhost:8443/nifi-api/system-diagnostics"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 60s   # NiFi prend du temps à démarrer (~45-60s)
+    depends_on:
+      bigtable-emulator:
+        condition: service_started
