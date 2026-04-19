@@ -162,12 +162,12 @@ services:
         echo '🚀 Initialisation de la base de données Airflow...' &&
         airflow db migrate &&
         echo '👤 Création de l utilisateur admin...' &&
-        airflow users create
-          --username ${_AIRFLOW_WWW_USER_USERNAME:-admin}
-          --firstname Admin
-          --lastname User
-          --role Admin
-          --email admin@price-intel.local
+        airflow users create \
+          --username ${_AIRFLOW_WWW_USER_USERNAME:-admin} \
+          --firstname Admin \
+          --lastname User \
+          --role Admin \
+          --email admin@price-intel.local \
           --password ${_AIRFLOW_WWW_USER_PASSWORD:-admin123} &&
         echo '✅ Airflow initialisé avec succès !'
       "
