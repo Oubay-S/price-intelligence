@@ -38,7 +38,7 @@ Le `.env` contient des mots de passe locaux. Pas besoin de les changer pour le d
 ## 🐳 Étape 3 — Lancer l'infrastructure complète
 
 ```bash
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 **Première fois : ~10 minutes** (téléchargement des images Docker).
@@ -71,7 +71,7 @@ nifi                    running (healthy)
 
 | Service | URL | Login | Mot de passe |
 |---------|-----|-------|-------------|
-| **Apache Airflow** | http://localhost:8080 | `admin` | `admin123` |
+| **Apache Airflow** | http://localhost:8081 | `admin` | `admin123` |
 | **Apache NiFi** | https://localhost:8443/nifi | `admin` | `adminpassword123` |
 
 **⚠️ Avertissement SSL NiFi** : Clique sur "Avancé" → "Continuer" — c'est normal en local.
@@ -105,7 +105,7 @@ docker-compose down -v         # Arrête ET efface tout (repartir de zéro)
 
 ```bash
 git pull
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 ---
@@ -145,6 +145,10 @@ docker-compose logs -f bigtable-emulator
 
 # Redémarrer un service
 docker-compose restart nifi
+
+# Si une page affiche "Server is up and running" sur le port 8081:
+# Cela veut dire qu'un service local Windows (ex: Postgres/EnterpriseDB)
+# bloque le port de Docker. Pensez à couper vos serveurs locaux.
 
 # Entrer dans un conteneur pour déboguer
 docker-compose exec airflow-webserver bash

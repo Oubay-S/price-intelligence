@@ -32,7 +32,7 @@ volumes:
   nifi_database_repo:  # Dépôt interne NiFi
   nifi_flowfile_repo:  # FlowFiles en transit NiFi
   nifi_content_repo:   # Contenu des FlowFiles NiFi
-  nifi_provenance_repo:# Traçabilité des événements NiFi
+  nifi_provenance_repo: # Traçabilité des événements NiFi
 
 # --------------------------
 # BLOC COMMUN AIRFLOW (YAML Anchor)
@@ -184,7 +184,7 @@ services:
     container_name: airflow-webserver
     command: webserver
     ports:
-      - "8080:8080"   # Interface web Airflow
+      - "8081:8080"   # Interface web Airflow (8081 pour éviter le conflit avec EnterpriseDB)
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]

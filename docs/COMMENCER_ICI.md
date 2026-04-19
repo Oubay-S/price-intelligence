@@ -159,7 +159,7 @@ Envoie-leur ce message :
 > git clone https://github.com/USERNAME/price-intelligence.git
 > cd price-intelligence
 > cp .env.example .env
-> docker-compose up -d
+> docker-compose up -d --build
 > ```
 >
 > **Puis lisez :** `DEMARRAGE.md`
@@ -179,7 +179,7 @@ Envoie-leur ce message :
 
 ## 🎯 APRÈS ÇA (Semaine 1)
 
-1. **Demain** : Les 3 collègues clonent et lancent `docker-compose up -d`
+1. **Demain** : Les 3 collègues clonent et lancent `docker-compose up -d --build`
 2. **J+1** : Vérifiez tous que Airflow + NiFi + Bigtable tournent
 3. **J+2** : Initialisez Bigtable : `python infra/init_bigtable.py`
 4. **Semaine 1 fin** : Chacun crée un exemple simple dans sa branche

@@ -36,14 +36,14 @@ Scrapy (Web Scraping)
 ## 🚀 Démarrage rapide
 
 ```bash
-git clone https://github.com/VOTRE-ORG/price-intelligence.git
+git clone https://github.com/Oubay-S/price-intelligence.git
 cd price-intelligence
 cp .env.example .env
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 Accès :
-- **Airflow** → http://localhost:8080 (admin / admin123)
+- **Airflow** → http://localhost:8081 (admin / admin123)
 - **NiFi** → https://localhost:8443/nifi (admin / adminpassword123)
 
 📖 Voir [DEMARRAGE.md](./docs/DEMARRAGE.md) pour le guide complet.
