@@ -19,7 +19,7 @@
 ## 📦 Étape 1 — Cloner le projet
 
 ```bash
-git clone https://github.com/VOTRE-ORG/price-intelligence.git
+git clone https://github.com/Oubay-S/price-intelligence.git
 cd price-intelligence
 ```
 
