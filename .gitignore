@@ -155,3 +155,6 @@ infra/terraform/*.tfstate
 infra/terraform/*.tfstate.backup
 infra/terraform/*.tfplan
 infra/terraform/override.tf
+
+
+CLAUDE.md
