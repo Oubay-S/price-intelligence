@@ -158,3 +158,10 @@ infra/terraform/override.tf
 
 
 CLAUDE.md
+.github/
+GEMINI.md
+#--------------------------
+#Google cloud service account keys
+#----------------------------
+
+ecommerce-price-intelligence-ea55a20ddf78.json
