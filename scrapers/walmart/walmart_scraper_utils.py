@@ -27,40 +27,17 @@ def scrape_walmart_category(query, output_file, driver):
     print(f"Scraping Walmart for: {query}")
     
     url = f"https://www.walmart.com/search?q={query.replace(' ', '+')}"
+    
     try:
-        driver.get("https://www.walmart.com")
-        time.sleep(2)
-        
-        # Load cookies if they exist
-        cookie_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "walmart_cookies.json")
-        if os.path.exists(cookie_path):
-            print("🍪 Loading saved cookies...")
-            with open(cookie_path, 'r') as f:
-                cookies = json.load(f)
-                for cookie in cookies:
-                    try:
-                        driver.add_cookie(cookie)
-                    except:
-                        pass
-            driver.refresh()
-            time.sleep(2)
-
         driver.get(url)
         time.sleep(random.uniform(2, 4))
         
-        # Loop until CAPTCHA is solved (with a timeout for automation)
-        captcha_wait_start = time.time()
-        timeout_seconds = 120 # 2 minutes timeout for manual intervention
-        
+        # Loop until CAPTCHA is solved
         while "Robot or human" in driver.title or "Verify you are a human" in driver.page_source or "px-captcha" in driver.page_source:
-            if time.time() - captcha_wait_start > timeout_seconds:
-                print(f"❌ Timeout reached ({timeout_seconds}s) while waiting for CAPTCHA solution. Skipping category: {query}")
-                return 0
-            
-            print(f"⚠️ CAPTCHA detected! Please solve it in the browser. Waiting... (Time elapsed: {int(time.time() - captcha_wait_start)}s)")
+            print("CAPTCHA detected! Please solve it in the browser. Waiting 5 seconds...")
             time.sleep(5)
             
-        print("✅ Page loaded successfully! Scrolling to load images...")
+        print("Page loaded successfully! Scrolling to load images...")
         
         # Scroll down to trigger lazy loading of images
         for i in range(1, 4):

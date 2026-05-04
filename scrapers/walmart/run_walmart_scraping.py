@@ -4,6 +4,13 @@ import undetected_chromedriver as uc
 import time
 import sys
 
+# Add parent directory to sys.path to import load_all_to_bigtable
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+try:
+    from load_all_to_bigtable import get_bigtable_table, load_file_to_bigtable
+    BIGTABLE_AVAILABLE = True
+except ImportError:
+    BIGTABLE_AVAILABLE = False
 
 def run_all_walmart_scrapes():
     print("Launching Stealth Chrome Browser... Prepare to solve any CAPTCHAs!")
@@ -12,6 +19,13 @@ def run_all_walmart_scrapes():
     driver = uc.Chrome(version_main=147, options=options)
     driver.maximize_window()
     
+    # Initialize Bigtable if available
+    table = None
+    if BIGTABLE_AVAILABLE:
+        print("🔗 Connecting to Bigtable Emulator...")
+        table = get_bigtable_table()
+    else:
+        print("⚠️ Bigtable loading utility not found. Scraping only.")
 
     scrapes = [
         # Basketball
@@ -48,6 +62,12 @@ def run_all_walmart_scrapes():
     for query, output_file in scrapes:
         scrape_walmart_category(query, output_file, driver)
         
+        # Load to Bigtable if scraping was successful and table is available
+        if table and os.path.exists(output_file):
+            print(f"📥 Loading data from {output_file} to Bigtable...")
+            rows_added = load_file_to_bigtable(table, output_file, "walmart")
+            print(f"✅ Loaded {rows_added} records to Bigtable.")
+            
         time.sleep(5)
         
     print("All scraping finished! Closing browser...")
