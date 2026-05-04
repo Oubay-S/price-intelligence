@@ -27,35 +27,35 @@ networks:
 # Les données survivent aux redémarrages des conteneurs
 # --------------------------
 volumes:
-  postgres_data:       # Données PostgreSQL (metadata Airflow)
-  nifi_conf:           # Configuration NiFi (flows, templates)
-  nifi_database_repo:  # Dépôt interne NiFi
-  nifi_flowfile_repo:  # FlowFiles en transit NiFi
-  nifi_content_repo:   # Contenu des FlowFiles NiFi
-  nifi_provenance_repo: # Traçabilité des événements NiFi
+  postgres_data: # Données PostgreSQL (metadata Airflow)
+  nifi_conf: # Configuration NiFi (flows, templates)
+  nifi_database_repo: # Dépôt interne NiFi
+  nifi_flowfile_repo: # FlowFiles en transit NiFi
+  nifi_content_repo: # Contenu des FlowFiles NiFi
+  nifi_provenance_repo:
+    # Traçabilité des événements NiFi
 
-# --------------------------
-# BLOC COMMUN AIRFLOW (YAML Anchor)
-# Évite de répéter la config pour webserver et scheduler
-# --------------------------
-x-airflow-common:
-  &airflow-common
-  image: apache/airflow:2.9.3
+    # --------------------------
+    # BLOC COMMUN AIRFLOW (YAML Anchor)
+    # Évite de répéter la config pour webserver et scheduler
+    # --------------------------
+x-airflow-common: &airflow-common
+  build: .
   environment:
-    &airflow-common-env
 
     # --- Moteur d'exécution ---
     # LocalExecutor : simple, pas besoin de Redis/Celery
     # Parfait pour un MVP avec une seule machine
+    &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
 
     # --- Connexion à la base de données PostgreSQL ---
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER:-airflow}:${POSTGRES_PASSWORD:-airflow_secret}@postgres/${POSTGRES_DB:-airflow}
 
     # --- Configuration générale ---
-    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'   # Sécurité : DAGs pausés par défaut
-    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'                  # Pas de DAGs d'exemple (moins de bruit)
-    AIRFLOW__CORE__FERNET_KEY: ''                          # OK pour le dev local
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true' # Sécurité : DAGs pausés par défaut
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false' # Pas de DAGs d'exemple (moins de bruit)
+    AIRFLOW__CORE__FERNET_KEY: '' # OK pour le dev local
     AIRFLOW__WEBSERVER__SECRET_KEY: 'local-dev-secret-key' # Juste pour le dev local
 
     # --- API REST Airflow (utile pour déclencher depuis NiFi) ---
@@ -71,22 +71,17 @@ x-airflow-common:
     GOOGLE_APPLICATION_CREDENTIALS: ""
 
   volumes:
-    # Tes DAGs (fichiers Python) sont lus en direct depuis le dossier local
-    - ./airflow/dags:/opt/airflow/dags
-    # Les logs restent sur ta machine pour déboguer facilement
-    - ./airflow/logs:/opt/airflow/logs
-    # Plugins custom Airflow (operators, hooks, etc.)
-    - ./airflow/plugins:/opt/airflow/plugins
-    # Pour que les DAGs puissent appeler dbt
-    - ./dbt:/opt/dbt
+    - ./logs:/opt/airflow/logs:Z
+    - ./dags:/opt/airflow/dags:Z
+    - ./plugins:/opt/airflow/plugins:Z
 
   user: "${AIRFLOW_UID:-50000}:0"
 
   depends_on:
     postgres:
-      condition: service_healthy   # Airflow attend que Postgres soit prêt
+      condition: service_healthy # Airflow attend que Postgres soit prêt
     bigtable-emulator:
-      condition: service_started   # Démarre après l'émulateur
+      condition: service_started # Démarre après l'émulateur
 
   networks:
     - price-intel-network
@@ -113,38 +108,38 @@ services:
         gcloud beta emulators bigtable start --host-port=0.0.0.0:8086
       "
     ports:
-      - "8086:8086"    # Port gRPC de l'émulateur Bigtable
+      - "8086:8086" # Port gRPC de l'émulateur Bigtable
     networks:
       - price-intel-network
     restart: unless-stopped
     healthcheck:
       # Vérifie que le port gRPC répond
-      test: ["CMD", "bash", "-c", "echo '' > /dev/tcp/localhost/8086"]
+      test: [ "CMD", "bash", "-c", "echo '' > /dev/tcp/localhost/8086" ]
       interval: 10s
       timeout: 5s
       retries: 10
-      start_period: 30s   # L'installation du composant prend ~20s au premier démarrage
+      start_period: 30s # L'installation du composant prend ~20s au premier démarrage
 
   # -----------------------------------------------------------
   # 2. POSTGRESQL — Base de données metadata d'Airflow
   # Stocke l'état des DAGs, les logs d'exécution, les variables Airflow
   # -----------------------------------------------------------
   postgres:
-    image: postgres:15-alpine   # Alpine = image légère (~50MB)
+    image: postgres:15-alpine # Alpine = image légère (~50MB)
     container_name: airflow-postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-airflow}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-airflow_secret}
       POSTGRES_DB: ${POSTGRES_DB:-airflow}
     volumes:
-      - postgres_data:/var/lib/postgresql/data   # Données persistantes
+      - postgres_data:/var/lib/postgresql/data # Données persistantes
     ports:
-      - "5432:5432"   # Utile pour se connecter avec DBeaver/pgAdmin en local
+      - "5432:5432" # Utile pour se connecter avec DBeaver/pgAdmin en local
     networks:
       - price-intel-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER:-airflow}"]
+      test: [ "CMD", "pg_isready", "-U", "${POSTGRES_USER:-airflow}" ]
       interval: 5s
       retries: 5
       start_period: 10s
@@ -155,14 +150,14 @@ services:
   # Ce conteneur s'arrête tout seul après avoir fini → c'est normal !
   # -----------------------------------------------------------
   airflow-init:
-    <<: *airflow-common   # Hérite de toute la config commune
+    <<: *airflow-common # Hérite de toute la config commune
     container_name: airflow-init
     command: >
       bash -c "
         echo '🚀 Initialisation de la base de données Airflow...' &&
         airflow db migrate &&
         echo '👤 Création de l utilisateur admin...' &&
-        airflow users create --username ${_AIRFLOW_WWW_USER_USERNAME:-admin} --firstname Admin --lastname User --role Admin --email admin@price-intel.local --password ${_AIRFLOW_WWW_USER_PASSWORD:-admin123} &&
+        airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@price-intel.local --password admin123 &&
         echo '✅ Airflow initialisé avec succès !'
       "
     # Ce service s'arrête proprement après init — exit 0 = succès
@@ -178,17 +173,17 @@ services:
     container_name: airflow-webserver
     command: webserver
     ports:
-      - "8081:8080"   # Interface web Airflow (8081 pour éviter le conflit avec EnterpriseDB)
+      - "8080:8080" # Interface web Airflow
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      test: [ "CMD", "curl", "--fail", "http://localhost:8080/health" ]
       interval: 30s
       timeout: 10s
       retries: 5
       start_period: 30s
     depends_on:
       airflow-init:
-        condition: service_completed_successfully   # Attend la fin de l'init
+        condition: service_completed_successfully # Attend la fin de l'init
       postgres:
         condition: service_healthy
 
@@ -203,7 +198,7 @@ services:
     command: scheduler
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"']
+      test: [ "CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"' ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -222,7 +217,7 @@ services:
   # Login : défini par NIFI_USERNAME / NIFI_PASSWORD dans .env
   # -----------------------------------------------------------
   nifi:
-    image: apache/nifi:1.23.2   # Version stable et bien documentée
+    image: apache/nifi:1.23.2 # Version stable et bien documentée
     container_name: nifi
     environment:
       # Mode authentification "single user" (simple et sécurisé en local)
@@ -245,16 +240,16 @@ services:
       - nifi_content_repo:/opt/nifi/nifi-current/content_repository
       - nifi_provenance_repo:/opt/nifi/nifi-current/provenance_repository
     ports:
-      - "8443:8443"   # Interface NiFi (HTTPS — certificat auto-signé)
+      - "8443:8443" # Interface NiFi (HTTPS — certificat auto-signé)
     networks:
       - price-intel-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-k", "--fail", "https://localhost:8443/nifi-api/system-diagnostics"]
+      test: [ "CMD", "curl", "-k", "--fail", "https://localhost:8443/nifi-api/system-diagnostics" ]
       interval: 30s
       timeout: 10s
       retries: 10
-      start_period: 60s   # NiFi prend du temps à démarrer (~45-60s)
+      start_period: 60s # NiFi prend du temps à démarrer (~45-60s)
     depends_on:
       bigtable-emulator:
         condition: service_started
