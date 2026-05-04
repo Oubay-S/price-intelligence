@@ -1,7 +1,10 @@
 from ebay_scraper_utils import scrape_ebay_category
 import os
-import undetected_chromedriver as uc
 import time
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 import sys
 
 # Add parent directory to sys.path to import load_all_to_bigtable
@@ -14,9 +17,27 @@ except ImportError:
 
 def run_all_ebay_scrapes():
     print("Launching Stealth Chrome Browser for eBay... Prepare to solve any CAPTCHAs!")
-    options = uc.ChromeOptions()
-    # Launch visible browser so user can interact if needed
-    driver = uc.Chrome(version_main=147, options=options)
+    
+    # --- Configuration du navigateur (Mode Docker / Headless) ---
+    options = Options()
+    
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    
+    # Anti-detection flags
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option("useAutomationExtension", False)
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36")
+
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    
+    # Further hide Selenium
+    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+        "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+    })
     driver.maximize_window()
 
     # Initialize Bigtable if available

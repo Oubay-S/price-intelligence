@@ -8,7 +8,7 @@
 #   - airflow-init       → Initialise la DB (tâche unique)
 #   - airflow-webserver  → Interface web Airflow             :8080
 #   - airflow-scheduler  → Cerveau d'Airflow (exécute les DAGs)
-#   - nifi               → Interface web NiFi (streaming)    :8443
+#   - nifi               → Interface web NiFi (streaming)    :gi
 # =============================================================
 
 version: '3.8'
@@ -74,6 +74,7 @@ x-airflow-common: &airflow-common
     - ./logs:/opt/airflow/logs:Z
     - ./dags:/opt/airflow/dags:Z
     - ./plugins:/opt/airflow/plugins:Z
+    - ./scrapers:/app:Z
 
   user: "${AIRFLOW_UID:-50000}:0"
 
@@ -199,6 +200,7 @@ services:
   # -----------------------------------------------------------
   airflow-webserver:
     <<: *airflow-common
+    shm_size: 2gb
     container_name: airflow-webserver
     command: webserver
     ports:
@@ -223,6 +225,7 @@ services:
   # -----------------------------------------------------------
   airflow-scheduler:
     <<: *airflow-common
+    shm_size: 2gb
     container_name: airflow-scheduler
     command: scheduler
     restart: unless-stopped
@@ -260,6 +263,8 @@ services:
       GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
 
     volumes:
+      # Accès aux données scrapées par Airflow
+      - ./scrapers:/app:z
       # Tes templates NiFi (.xml) versionés dans Git
       - ./nifi/templates:/opt/nifi/nifi-current/conf/templates
       # Config NiFi persistante (flows, authorizations...)

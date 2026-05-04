@@ -1,0 +1,7 @@
+requests
+beautifulsoup4
+undetected-chromedriver
+selenium
+google-cloud-bigtable
+psycopg2-binary
+webdriver-manager
