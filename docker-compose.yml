@@ -4,7 +4,7 @@
 # =============================================================
 # Services lancés :
 #   - bigtable-emulator  → Remplace Bigtable GCP en local   :8086
-#   - postgres           → Base de données metadata Airflow  :5432
+#   - postgres           → Base de données metadata Airflow  :5433
 #   - airflow-init       → Initialise la DB (tâche unique)
 #   - airflow-webserver  → Interface web Airflow             :8080
 #   - airflow-scheduler  → Cerveau d'Airflow (exécute les DAGs)
@@ -121,6 +121,35 @@ services:
       start_period: 30s # L'installation du composant prend ~20s au premier démarrage
 
   # -----------------------------------------------------------
+  # 1.5 BIGTABLE INIT — Charge la data locale dans Bigtable
+  # Parcourt les fichiers JSON locaux et les injecte automatiquement
+  # -----------------------------------------------------------
+  bigtable-init:
+    image: python:3.10-slim
+    container_name: bigtable-init
+    volumes:
+      - ./scrapers:/app
+    working_dir: /app
+    environment:
+      BIGTABLE_EMULATOR_HOST: bigtable-emulator:8086
+      GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
+      BIGTABLE_INSTANCE_ID: ${BIGTABLE_INSTANCE_ID:-price-intel-instance}
+    command: >
+      bash -c "
+        echo '🚀 Installation des dependances...' &&
+        pip install google-cloud-bigtable --quiet &&
+        echo '🚀 Chargement des donnees dans Bigtable Emulator...' &&
+        python load_all_to_bigtable.py &&
+        echo '✅ Donnees chargees avec succes !'
+      "
+    networks:
+      - price-intel-network
+    restart: "no"
+    depends_on:
+      bigtable-emulator:
+        condition: service_healthy
+
+  # -----------------------------------------------------------
   # 2. POSTGRESQL — Base de données metadata d'Airflow
   # Stocke l'état des DAGs, les logs d'exécution, les variables Airflow
   # -----------------------------------------------------------
@@ -134,7 +163,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data # Données persistantes
     ports:
-      - "5432:5432" # Utile pour se connecter avec DBeaver/pgAdmin en local
+      - "5433:5432" # Changé de 5432 à 5433 pour éviter le conflit avec l'installation native d'EnterpriseDB Postgres
     networks:
       - price-intel-network
     restart: unless-stopped
@@ -245,7 +274,8 @@ services:
       - price-intel-network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "curl", "-k", "--fail", "https://localhost:8443/nifi-api/system-diagnostics" ]
+      # ATTENTION : Utiliser 'nifi' et non 'localhost' car le processus Java à l'intérieur du conteneur écoute sur son IP réseau et non sur 127.0.0.1
+      test: [ "CMD", "curl", "-k", "--fail", "https://nifi:8443/nifi-api/system-diagnostics" ]
       interval: 30s
       timeout: 10s
       retries: 10

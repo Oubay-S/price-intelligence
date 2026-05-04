@@ -56,8 +56,9 @@ Résultat attendu :
 ```
 NAME                    STATUS
 bigtable-emulator       running (healthy)
+bigtable-init           exited (0)       ← Normal ! Il a injecté les données puis s'est arrêté.
 airflow-postgres        running (healthy)
-airflow-init            exited (0)       ← Normal ! Il a fini son boulot.
+airflow-init            exited (0)       ← Normal ! Il a créé la DB puis s'est arrêté.
 airflow-webserver       running (healthy)
 airflow-scheduler       running (healthy)
 nifi                    running (healthy)
@@ -71,24 +72,19 @@ nifi                    running (healthy)
 
 | Service | URL | Login | Mot de passe |
 |---------|-----|-------|-------------|
-| **Apache Airflow** | http://localhost:8081 | `admin` | `admin123` |
+| **Apache Airflow** | http://localhost:8080 | `admin` | `admin123` |
 | **Apache NiFi** | https://localhost:8443/nifi | `admin` | `adminpassword123` |
+| **PostgreSQL** | `localhost:5433` | `airflow` | `airflow_secret` |
 
 **⚠️ Avertissement SSL NiFi** : Clique sur "Avancé" → "Continuer" — c'est normal en local.
 
 ---
 
-## 🔧 Étape 5 — Initialiser Bigtable (une seule fois)
+## 🔧 Étape 5 — Initialiser Bigtable (Automatisé !)
 
-```bash
-# Installer la librairie Python Bigtable
-pip install google-cloud-bigtable
-
-# Créer les tables dans l'émulateur
-export BIGTABLE_EMULATOR_HOST=localhost:8086
-export GOOGLE_CLOUD_PROJECT=price-intel-local
-python infra/init_bigtable.py
-```
+**Bonne nouvelle : tu n'as rien à faire !** 🎉
+Le conteneur `bigtable-init` se charge automatiquement d'installer les dépendances et d'injecter toutes les données scrapées localement (`scrapers/*.json`) dans l'émulateur au démarrage de Docker.
+Tu peux directement interroger tes données !
 
 ---
 
@@ -146,7 +142,7 @@ docker-compose logs -f bigtable-emulator
 # Redémarrer un service
 docker-compose restart nifi
 
-# Si une page affiche "Server is up and running" sur le port 8081:
+# Si une page affiche "Server is up and running" sur le port 8080 ou 5433:
 # Cela veut dire qu'un service local Windows (ex: Postgres/EnterpriseDB)
 # bloque le port de Docker. Pensez à couper vos serveurs locaux.
 

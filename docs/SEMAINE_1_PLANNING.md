@@ -82,10 +82,10 @@
 
 ### Matin (30 min)
 ```
-[ ] DataOps : lancer init_bigtable.py
-    pip install google-cloud-bigtable
-    export BIGTABLE_EMULATOR_HOST=localhost:8086
-    python infra/init_bigtable.py
+[x] DataOps : l'initialisation de Bigtable et l'ingestion des données scrapées ont été entièrement automatisées (conteneur `bigtable-init` !).
+  ```bash
+  # Plus besoin de commande, c'est automatique avec docker-compose up !
+  ```
 ```
 
 ### Midi (1h)
