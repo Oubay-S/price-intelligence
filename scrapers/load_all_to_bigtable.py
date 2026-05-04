@@ -6,9 +6,9 @@ from google.cloud import bigtable
 from google.cloud.bigtable import column_family
 
 # Set emulator environment variable
-os.environ["BIGTABLE_EMULATOR_HOST"] = os.environ.get("BIGTABLE_EMULATOR_HOST", "localhost:8086")
+os.environ["BIGTABLE_EMULATOR_HOST"] = "localhost:8087"
 
-def get_bigtable_table(project_id=os.environ.get('GOOGLE_CLOUD_PROJECT', 'price-intel-local'), instance_id=os.environ.get('BIGTABLE_INSTANCE_ID', 'price-intel-instance'), table_id='products'):
+def get_bigtable_table(project_id='test-project', instance_id='test-instance', table_id='products'):
     """Connects to Bigtable and returns the table object, creating it if necessary."""
     try:
         client = bigtable.Client(project=project_id, admin=True)
@@ -76,7 +76,7 @@ def load_file_to_bigtable(table, file_path, store_name):
         return 0
 
 def load_all():
-    print(f"🚀 Connecting to Bigtable Emulator ({os.environ.get('BIGTABLE_EMULATOR_HOST')})...")
+    print("🚀 Connecting to Bigtable Emulator (localhost:8087)...")
     table = get_bigtable_table()
     if not table:
         return
