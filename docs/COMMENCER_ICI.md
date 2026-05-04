@@ -181,7 +181,7 @@ Envoie-leur ce message :
 
 1. **Demain** : Les 3 collègues clonent et lancent `docker-compose up -d --build`
 2. **J+1** : Vérifiez tous que Airflow + NiFi + Bigtable tournent
-3. **J+2** : Initialisez Bigtable : `python infra/init_bigtable.py`
+3. **J+2** : Observez Bigtable : Les données scrapées sont injectées automatiquement par le conteneur `bigtable-init`.
 4. **Semaine 1 fin** : Chacun crée un exemple simple dans sa branche
    - Data Engineer : 1er spider qui scrape une page
    - Data Analyst : 1er modèle dbt qui compile

@@ -1,0 +1,71 @@
+[
+  {
+    "name": "Pakka COQUILLE PROTECTION  KARATE BOXE KICKBOXING",
+    "current_price": "41.00",
+    "price_before_discount": "99.00",
+    "discount": "59%",
+    "sizes": [
+      "L",
+      "M",
+      "S",
+      "XL"
+    ],
+    "features": [
+      "lavage     facile",
+      "bonne qualité",
+      "souple",
+      "Anti-allergique",
+      "Couleur: Blanc"
+    ],
+    "product_url": "https://www.jumia.ma/coquille-protection-karate-boxe-kickboxing-pakka-mpg919391.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/68/818974/1.jpg?5646",
+    "stars": "3.5",
+    "availability": "-",
+    "scraped_at": "2026-05-01T17:43:55.266140"
+  },
+  {
+    "name": "Pakka COQUILLE  PAKKA DE BOXE ROUGE M",
+    "current_price": "49.00  - 49.99",
+    "price_before_discount": "49.00  - 499.00",
+    "discount": "90%",
+    "sizes": [
+      "M",
+      "S"
+    ],
+    "features": [
+      "Facile à utiliser",
+      "De haute qualité et peu coûteux",
+      "Exécution exquise",
+      "Durable en utilisation",
+      "SKU: PA059SE0DD815NAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/coquille-pakka-de-boxe-rouge-m-pakka-mpg1384503.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/22/451945/1.jpg?5884",
+    "stars": "3",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-01T17:43:56.041258"
+  },
+  {
+    "name": "Pakka COQUILLE POUR ART MARTIAUX",
+    "current_price": "49.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [
+      "L",
+      "M",
+      "S"
+    ],
+    "features": [
+      "lavage     facile",
+      "bonne qualité",
+      "souple",
+      "Anti-allergique",
+      "Couleur: Blanc"
+    ],
+    "product_url": "https://www.jumia.ma/coquille-pour-art-martiaux-pakka-mpg926421.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/09/598835/1.jpg?8158",
+    "stars": "3.6",
+    "availability": "-",
+    "scraped_at": "2026-05-01T17:43:56.990603"
+  }
+]
