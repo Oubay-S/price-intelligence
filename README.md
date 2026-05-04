@@ -42,9 +42,12 @@ cp .env.example .env
 docker-compose up -d --build
 ```
 
+> **Nouveauté DataOps :** L'ingestion des données scrapées localement vers l'émulateur Bigtable se fait désormais automatiquement via le conteneur `bigtable-init` au démarrage !
+
 Accès :
-- **Airflow** → http://localhost:8081 (admin / admin123)
+- **Airflow** → http://localhost:8080 (admin / admin123)
 - **NiFi** → https://localhost:8443/nifi (admin / adminpassword123)
+- **PostgreSQL (Metadata)** → `localhost:5433` (Modifié depuis le port 5432 pour éviter tout conflit avec une base EnterpriseDB locale)
 
 📖 Voir [DEMARRAGE.md](./docs/DEMARRAGE.md) pour le guide complet.
 
