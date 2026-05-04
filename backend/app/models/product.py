@@ -581,16 +581,16 @@ class PaginatedProducts(BaseModel):
     Includes metadata needed by the Angular CDK virtual scroll viewport.
     """
     items:       list[ProductResponse]
-    total:       int         = Field(..., description="Total matching products (for pagination UI)")
+    total_count: int         = Field(..., description="Total matching products (for pagination UI)")
     page:        int         = Field(..., ge=1)
     limit:       int         = Field(..., ge=1, le=200)
-    total_pages: int
-    has_next:    bool
-    has_prev:    bool
+    total_pages: int         = 1
+    has_next:    bool        = False
+    has_prev:    bool        = False
 
     @model_validator(mode="after")
     def compute_pagination(self) -> "PaginatedProducts":
-        self.total_pages = max(1, -(-self.total // self.limit))   # ceiling division
+        self.total_pages = max(1, -(-self.total_count // self.limit))   # ceiling division
         self.has_next    = self.page < self.total_pages
         self.has_prev    = self.page > 1
         return self
