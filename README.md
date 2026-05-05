@@ -494,5 +494,5 @@ netstat -ano | findstr :5432
 
 <p align="center">
   <b>🚀 Price Intelligence Platform</b><br>
-  Fait avec ❤️ par l'équipe Data Engineering — ISCAE 2025-2026
+  Fait avec ❤️ par l'équipe Data Engineering — LSI_1 2025-2026
 </p>
