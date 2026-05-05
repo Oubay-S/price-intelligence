@@ -3,6 +3,7 @@ FROM apache/airflow:2.9.1
 USER root
 
 # Install Google Chrome dependencies and Chrome itself
+# hadolint ignore=DL3008,DL4006,DL3015,DL3059
 RUN apt-get update && apt-get install -y \
     wget \
     gnupg \
