@@ -69,10 +69,11 @@ x-airflow-common: &airflow-common
 
     # Disable GCP auth (pas nécessaire avec l'émulateur)
     GOOGLE_APPLICATION_CREDENTIALS: ""
+    _PIP_ADDITIONAL_REQUIREMENTS: "webdriver-manager undetected-chromedriver selenium beautifulsoup4 requests"
 
   volumes:
     - ./logs:/opt/airflow/logs:Z
-    - ./dags:/opt/airflow/dags:Z
+    - ./airflow/dags:/opt/airflow/dags:Z
     - ./plugins:/opt/airflow/plugins:Z
     - ./scrapers:/app:Z
 
@@ -129,7 +130,7 @@ services:
     image: python:3.10-slim
     container_name: bigtable-init
     volumes:
-      - ./scrapers:/app
+      - ./scrapers:/app:z
     working_dir: /app
     environment:
       BIGTABLE_EMULATOR_HOST: bigtable-emulator:8086
@@ -288,3 +289,17 @@ services:
     depends_on:
       bigtable-emulator:
         condition: service_started
+  # -----------------------------------------------------------
+  # 7. DBT — Transformation Layer
+  # -----------------------------------------------------------
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-bigquery:1.8.2 # Using a stable version
+    container_name: dbt
+    volumes:
+      - .:/usr/app/dbt:z
+      - ./dbt/profiles.yml:/root/.dbt/profiles.yml:z
+      - ./gcp-credentials.json:/opt/airflow/gcp-credentials.json:ro,z
+    working_dir: /usr/app/dbt/dbt
+    environment:
+      GCP_PROJECT_ID: price-intelligence-495411
+    profiles: ["cli"] # Only runs when called explicitly

@@ -78,6 +78,9 @@ data/
 *.parquet
 *.json.gz
 *.jsonl
+*.json
+upload_to_bq.json
+scrapers/**/*.json
 scraped_data/
 exports/
 downloads/

@@ -82,12 +82,13 @@ with DAG(
     task_load_bigtable = PythonOperator(
         task_id='final_load_to_bigtable',
         python_callable=run_scraper,
+        trigger_rule='all_done',
         op_kwargs={
             'script_name': 'load_all_to_bigtable.py',
             'cwd': '/app'
         }
     )
  
-    # Define the dependency: All scrapers must finish before the final load
-    # Sequential execution to save RAM and prevent Chrome crashes
-    task_jumia >> task_ebay >> task_walmart >> task_load_bigtable
+    # Parallel execution of scrapers
+    # The final load will run as long as all scrapers have attempted to finish (even if one fails)
+    [task_jumia, task_ebay, task_walmart] >> task_load_bigtable

@@ -7,12 +7,15 @@ from google.cloud.bigtable import column_family
 
 # Set emulator environment variable
 # If in Docker, use the container name; otherwise use localhost
-if os.environ.get("AIRFLOW_HOME"):
-    os.environ["BIGTABLE_EMULATOR_HOST"] = "bigtable-emulator:8086"
-else:
+# Use existing host if set (by Docker), otherwise default to localhost
+if not os.environ.get("BIGTABLE_EMULATOR_HOST"):
     os.environ["BIGTABLE_EMULATOR_HOST"] = "localhost:8086"
 
-def get_bigtable_table(project_id='test-project', instance_id='test-instance', table_id='products'):
+def get_bigtable_table(
+    project_id=os.environ.get("GOOGLE_CLOUD_PROJECT", "price-intel-local"),
+    instance_id=os.environ.get("BIGTABLE_INSTANCE_ID", "price-intel-instance"),
+    table_id='products'
+):
     """Connects to Bigtable and returns the table object, creating it if necessary."""
     try:
         client = bigtable.Client(project=project_id, admin=True)
