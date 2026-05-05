@@ -2,50 +2,53 @@
 # docker-compose.yml — Price Intelligence Platform
 # Environnement de développement LOCAL (0€, sans GCP réel)
 # =============================================================
-# Services lancés :
-#   - bigtable-emulator  → Remplace Bigtable GCP en local   :8086
-#   - postgres           → Base de données metadata Airflow  :5433
-#   - airflow-init       → Initialise la DB (tâche unique)
-#   - airflow-webserver  → Interface web Airflow             :8080
-#   - airflow-scheduler  → Cerveau d'Airflow (exécute les DAGs)
-#   - nifi               → Interface web NiFi (streaming)    :8443
+# ┌──────────────────────────────────────────────────────────┐
+# │  COUCHE APPLICATIVE (app-network)                        │
+# │  nginx:80 → frontend:80 (Angular)                       │
+# │           → backend:8000 (FastAPI) → postgres-app:5432   │
+# │                                    → redis:6379          │
+# ├──────────────────────────────────────────────────────────┤
+# │  COUCHE DATA (price-intel-network)                       │
+# │  airflow-webserver:8080  → postgres (Airflow):5433       │
+# │  airflow-scheduler       → bigtable-emulator:8086        │
+# │  nifi:8443               → bigtable-emulator:8086        │
+# │  backend ←──── aussi connecté ici pour Bigtable ────→    │
+# └──────────────────────────────────────────────────────────┘
 # =============================================================
 
-version: '3.8'
 
 # --------------------------
 # RÉSEAUX
-# Tous les services partagent ce réseau interne pour se "voir"
-# par leur nom de service (ex: postgres, bigtable-emulator)
 # --------------------------
 networks:
+  # Réseau pour la couche data (Airflow, NiFi, Bigtable, Postgres Airflow)
   price-intel-network:
+    driver: bridge
+  # Réseau pour la couche applicative (Backend, Frontend, Nginx, Redis, Postgres App)
+  app-network:
     driver: bridge
 
 # --------------------------
 # VOLUMES PERSISTANTS
-# Les données survivent aux redémarrages des conteneurs
 # --------------------------
 volumes:
-  postgres_data: # Données PostgreSQL (metadata Airflow)
-  nifi_conf: # Configuration NiFi (flows, templates)
-  nifi_database_repo: # Dépôt interne NiFi
-  nifi_flowfile_repo: # FlowFiles en transit NiFi
-  nifi_content_repo: # Contenu des FlowFiles NiFi
-  nifi_provenance_repo:
-    # Traçabilité des événements NiFi
+  postgres_data:          # Données PostgreSQL Airflow
+  postgres_app_data:      # Données PostgreSQL App (users, watchlist, alerts)
+  redis_data:             # Données Redis (sessions, cache)
+  nifi_conf:              # Configuration NiFi
+  nifi_database_repo:     # Dépôt interne NiFi
+  nifi_flowfile_repo:     # FlowFiles en transit NiFi
+  nifi_content_repo:      # Contenu des FlowFiles NiFi
+  nifi_provenance_repo:   # Traçabilité NiFi
 
-    # --------------------------
-    # BLOC COMMUN AIRFLOW (YAML Anchor)
-    # Évite de répéter la config pour webserver et scheduler
-    # --------------------------
+# --------------------------
+# BLOC COMMUN AIRFLOW (YAML Anchor)
+# --------------------------
 x-airflow-common: &airflow-common
   build: .
   environment:
 
     # --- Moteur d'exécution ---
-    # LocalExecutor : simple, pas besoin de Redis/Celery
-    # Parfait pour un MVP avec une seule machine
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
 
@@ -53,35 +56,36 @@ x-airflow-common: &airflow-common
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER:-airflow}:${POSTGRES_PASSWORD:-airflow_secret}@postgres/${POSTGRES_DB:-airflow}
 
     # --- Configuration générale ---
-    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true' # Sécurité : DAGs pausés par défaut
-    AIRFLOW__CORE__LOAD_EXAMPLES: 'false' # Pas de DAGs d'exemple (moins de bruit)
-    AIRFLOW__CORE__FERNET_KEY: '' # OK pour le dev local
-    AIRFLOW__WEBSERVER__SECRET_KEY: 'local-dev-secret-key' # Juste pour le dev local
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__WEBSERVER__SECRET_KEY: 'local-dev-secret-key'
 
-    # --- API REST Airflow (utile pour déclencher depuis NiFi) ---
+    # --- API REST Airflow ---
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
 
     # --- Variables d'environnement pour Bigtable ---
-    # CRITIQUE : pointe vers l'émulateur local et non vers GCP !
     BIGTABLE_EMULATOR_HOST: bigtable-emulator:8086
     GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
     BIGTABLE_INSTANCE_ID: ${BIGTABLE_INSTANCE_ID:-price-intel-instance}
 
     # Disable GCP auth (pas nécessaire avec l'émulateur)
     GOOGLE_APPLICATION_CREDENTIALS: ""
+    _PIP_ADDITIONAL_REQUIREMENTS: "webdriver-manager undetected-chromedriver selenium beautifulsoup4 requests"
 
   volumes:
     - ./logs:/opt/airflow/logs:Z
-    - ./dags:/opt/airflow/dags:Z
+    - ./airflow/dags:/opt/airflow/dags:Z
     - ./plugins:/opt/airflow/plugins:Z
+    - ./scrapers:/app:Z
 
   user: "${AIRFLOW_UID:-50000}:0"
 
   depends_on:
     postgres:
-      condition: service_healthy # Airflow attend que Postgres soit prêt
+      condition: service_healthy
     bigtable-emulator:
-      condition: service_started # Démarre après l'émulateur
+      condition: service_started
 
   networks:
     - price-intel-network
@@ -91,16 +95,16 @@ x-airflow-common: &airflow-common
 # =============================================================
 services:
 
+  # ═══════════════════════════════════════════════════════════
+  #                    COUCHE DATA
+  # ═══════════════════════════════════════════════════════════
+
   # -----------------------------------------------------------
   # 1. ÉMULATEUR GOOGLE CLOUD BIGTABLE
-  # Simule parfaitement Bigtable en local — 0€, 0 latence réseau
-  # Tes collègues peuvent écrire/lire comme si c'était le vrai GCP
   # -----------------------------------------------------------
   bigtable-emulator:
     image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
     container_name: bigtable-emulator
-    # Installe le composant beta si absent, puis lance l'émulateur
-    # --host-port=0.0.0.0 : écoute sur toutes les interfaces (nécessaire en Docker)
     command: >
       bash -c "
         gcloud components install beta --quiet 2>/dev/null || true &&
@@ -108,27 +112,25 @@ services:
         gcloud beta emulators bigtable start --host-port=0.0.0.0:8086
       "
     ports:
-      - "8086:8086" # Port gRPC de l'émulateur Bigtable
+      - "8086:8086"
     networks:
       - price-intel-network
     restart: unless-stopped
     healthcheck:
-      # Vérifie que le port gRPC répond
       test: [ "CMD", "bash", "-c", "echo '' > /dev/tcp/localhost/8086" ]
       interval: 10s
       timeout: 5s
       retries: 10
-      start_period: 30s # L'installation du composant prend ~20s au premier démarrage
+      start_period: 30s
 
   # -----------------------------------------------------------
   # 1.5 BIGTABLE INIT — Charge la data locale dans Bigtable
-  # Parcourt les fichiers JSON locaux et les injecte automatiquement
   # -----------------------------------------------------------
   bigtable-init:
     image: python:3.10-slim
     container_name: bigtable-init
     volumes:
-      - ./scrapers:/app
+      - ./scrapers:/app:z
     working_dir: /app
     environment:
       BIGTABLE_EMULATOR_HOST: bigtable-emulator:8086
@@ -150,20 +152,20 @@ services:
         condition: service_healthy
 
   # -----------------------------------------------------------
-  # 2. POSTGRESQL — Base de données metadata d'Airflow
-  # Stocke l'état des DAGs, les logs d'exécution, les variables Airflow
+  # 2. POSTGRESQL AIRFLOW — Base de données metadata d'Airflow
+  # Port hôte : 5433 (évite le conflit avec EnterpriseDB local)
   # -----------------------------------------------------------
   postgres:
-    image: postgres:15-alpine # Alpine = image légère (~50MB)
+    image: postgres:15-alpine
     container_name: airflow-postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-airflow}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-airflow_secret}
       POSTGRES_DB: ${POSTGRES_DB:-airflow}
     volumes:
-      - postgres_data:/var/lib/postgresql/data # Données persistantes
+      - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5433:5432" # Changé de 5432 à 5433 pour éviter le conflit avec l'installation native d'EnterpriseDB Postgres
+      - "5433:5432"
     networks:
       - price-intel-network
     restart: unless-stopped
@@ -175,11 +177,9 @@ services:
 
   # -----------------------------------------------------------
   # 3. AIRFLOW INIT — Tâche d'initialisation (run une seule fois)
-  # Crée le schéma en base de données et l'utilisateur admin
-  # Ce conteneur s'arrête tout seul après avoir fini → c'est normal !
   # -----------------------------------------------------------
   airflow-init:
-    <<: *airflow-common # Hérite de toute la config commune
+    <<: *airflow-common
     container_name: airflow-init
     command: >
       bash -c "
@@ -189,20 +189,19 @@ services:
         airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@price-intel.local --password admin123 &&
         echo '✅ Airflow initialisé avec succès !'
       "
-    # Ce service s'arrête proprement après init — exit 0 = succès
     restart: "no"
 
   # -----------------------------------------------------------
   # 4. AIRFLOW WEBSERVER — Interface graphique Airflow
-  # Accès : http://localhost:8080
-  # Login : admin / admin123 (défini dans .env)
+  # Accès : http://localhost:8080 (admin / admin123)
   # -----------------------------------------------------------
   airflow-webserver:
     <<: *airflow-common
+    shm_size: 2gb
     container_name: airflow-webserver
     command: webserver
     ports:
-      - "8080:8080" # Interface web Airflow
+      - "8080:8080"
     restart: unless-stopped
     healthcheck:
       test: [ "CMD", "curl", "--fail", "http://localhost:8080/health" ]
@@ -212,17 +211,16 @@ services:
       start_period: 30s
     depends_on:
       airflow-init:
-        condition: service_completed_successfully # Attend la fin de l'init
+        condition: service_completed_successfully
       postgres:
         condition: service_healthy
 
   # -----------------------------------------------------------
   # 5. AIRFLOW SCHEDULER — Le "cœur" d'Airflow
-  # Surveille les DAGs, déclenche les tâches selon le planning
-  # Pas d'interface web, mais indispensable au fonctionnement
   # -----------------------------------------------------------
   airflow-scheduler:
     <<: *airflow-common
+    shm_size: 2gb
     container_name: airflow-scheduler
     command: scheduler
     restart: unless-stopped
@@ -240,46 +238,196 @@ services:
 
   # -----------------------------------------------------------
   # 6. APACHE NIFI — Ingestion temps réel (streaming)
-  # Accès : https://localhost:8443/nifi
-  # ⚠️ Ton navigateur affichera un avertissement SSL (certificat auto-signé)
-  #    → Clique "Avancé" puis "Continuer" — c'est normal en local !
-  # Login : défini par NIFI_USERNAME / NIFI_PASSWORD dans .env
+  # Accès : https://localhost:8443/nifi (admin / adminpassword123)
   # -----------------------------------------------------------
   nifi:
-    image: apache/nifi:1.23.2 # Version stable et bien documentée
+    image: apache/nifi:1.23.2
     container_name: nifi
     environment:
-      # Mode authentification "single user" (simple et sécurisé en local)
       AUTH: single-user
       SINGLE_USER_CREDENTIALS_USERNAME: ${NIFI_USERNAME:-admin}
-      # Le mot de passe doit faire au moins 12 caractères (exigence NiFi)
       SINGLE_USER_CREDENTIALS_PASSWORD: ${NIFI_PASSWORD:-adminpassword123}
-
-      # Variables Bigtable pour que les processors NiFi puissent écrire en local
       BIGTABLE_EMULATOR_HOST: bigtable-emulator:8086
       GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
-
     volumes:
-      # Tes templates NiFi (.xml) versionés dans Git
+      - ./scrapers:/app:z
       - ./nifi/templates:/opt/nifi/nifi-current/conf/templates
-      # Config NiFi persistante (flows, authorizations...)
       - nifi_conf:/opt/nifi/nifi-current/conf
       - nifi_database_repo:/opt/nifi/nifi-current/database_repository
       - nifi_flowfile_repo:/opt/nifi/nifi-current/flowfile_repository
       - nifi_content_repo:/opt/nifi/nifi-current/content_repository
       - nifi_provenance_repo:/opt/nifi/nifi-current/provenance_repository
     ports:
-      - "8443:8443" # Interface NiFi (HTTPS — certificat auto-signé)
+      - "8443:8443"
     networks:
       - price-intel-network
     restart: unless-stopped
     healthcheck:
-      # ATTENTION : Utiliser 'nifi' et non 'localhost' car le processus Java à l'intérieur du conteneur écoute sur son IP réseau et non sur 127.0.0.1
       test: [ "CMD", "curl", "-k", "--fail", "https://nifi:8443/nifi-api/system-diagnostics" ]
       interval: 30s
       timeout: 10s
       retries: 10
-      start_period: 60s # NiFi prend du temps à démarrer (~45-60s)
+      start_period: 60s
     depends_on:
       bigtable-emulator:
         condition: service_started
+
+  # -----------------------------------------------------------
+  # 7. DBT — Transformation Layer (lancé manuellement)
+  # -----------------------------------------------------------
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-bigquery:1.8.2
+    container_name: dbt
+    volumes:
+      - .:/usr/app/dbt:z
+      - ./dbt/profiles.yml:/root/.dbt/profiles.yml:z
+      - ./gcp-credentials.json:/opt/airflow/gcp-credentials.json:ro,z
+    working_dir: /usr/app/dbt/dbt
+    environment:
+      GCP_PROJECT_ID: price-intelligence-495411
+    profiles: ["cli"]
+
+  # ═══════════════════════════════════════════════════════════
+  #                 COUCHE APPLICATIVE
+  # ═══════════════════════════════════════════════════════════
+
+  # -----------------------------------------------------------
+  # 8. POSTGRESQL APP — Base de données de l'application
+  # Stocke : users, watchlist, sessions, alerts
+  # Port hôte : 5432 (port standard)
+  # -----------------------------------------------------------
+  postgres-app:
+    image: postgres:15-alpine
+    container_name: postgres-app
+    environment:
+      POSTGRES_USER: ${APP_DB_USER:-app_user}
+      POSTGRES_PASSWORD: ${APP_DB_PASSWORD:-app_secret}
+      POSTGRES_DB: ${APP_DB_NAME:-price_intelligence}
+    volumes:
+      - postgres_app_data:/var/lib/postgresql/data
+      # Tout fichier .sql dans ce dossier est exécuté au 1er démarrage
+      - ./backend/sql:/docker-entrypoint-initdb.d:z
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${APP_DB_USER:-app_user}" ]
+      interval: 5s
+      retries: 5
+      start_period: 10s
+
+  # -----------------------------------------------------------
+  # 9. REDIS — Cache, sessions, WebSocket pub/sub
+  # Port hôte : 6379
+  # -----------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      retries: 5
+      start_period: 5s
+
+  # -----------------------------------------------------------
+  # 10. BACKEND — API FastAPI
+  # Accès direct : http://localhost:8000 (dev uniquement)
+  # En prod : accessible via nginx sur /api/*
+  # -----------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    environment:
+      # --- Base de données applicative ---
+      DATABASE_URL: postgresql+psycopg2://${APP_DB_USER:-app_user}:${APP_DB_PASSWORD:-app_secret}@postgres-app:5432/${APP_DB_NAME:-price_intelligence}
+
+      # --- Redis ---
+      REDIS_URL: redis://redis:6379/0
+
+      # --- Auth JWT ---
+      JWT_SECRET: ${JWT_SECRET:-dev-jwt-secret-change-in-production}
+      JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
+
+      # --- Bigtable (pour lire les données depuis le backend) ---
+      BIGTABLE_EMULATOR_HOST: bigtable-emulator:8086
+      GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
+      BIGTABLE_INSTANCE_ID: ${BIGTABLE_INSTANCE_ID:-price-intel-instance}
+
+      # --- GCP credentials (lecture seule) ---
+      GOOGLE_APPLICATION_CREDENTIALS: /opt/gcp/gcp-credentials.json
+    volumes:
+      - ./backend:/app:z
+      - ./gcp-credentials.json:/opt/gcp/gcp-credentials.json:ro,z
+    ports:
+      - "8000:8000"
+    networks:
+      # Sur les DEUX réseaux : accès app + accès data (Bigtable)
+      - app-network
+      - price-intel-network
+    restart: unless-stopped
+    depends_on:
+      postgres-app:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # -----------------------------------------------------------
+  # 11. FRONTEND — Angular SPA (via nginx interne)
+  # Accès direct : http://localhost:4200 (dev uniquement)
+  # En prod : accessible via nginx reverse proxy sur /
+  # -----------------------------------------------------------
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "4200:80"
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -sf http://localhost:80/ || exit 1" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # -----------------------------------------------------------
+  # 12. NGINX — Reverse Proxy (Point d'entrée unique)
+  # Accès : http://localhost (port 80)
+  #   /api/*  → backend:8000
+  #   /ws/*   → backend:8000 (WebSocket)
+  #   /*      → frontend:80  (Angular SPA)
+  # -----------------------------------------------------------
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -sf http://localhost:80/ || exit 1" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      - backend
+      - frontend

@@ -1,9 +1,9 @@
 [
   {
     "name": "SIBOTE  Knee Compression Sleeve – Genouillere de compression - couleur aleatoire",
-    "current_price": "149.00",
-    "price_before_discount": "",
-    "discount": null,
+    "current_price": "131.12",
+    "price_before_discount": "149.00",
+    "discount": "12%",
     "sizes": [],
     "features": [
       "SKU: SI301SE119DY8NAFAMZ",
@@ -13,13 +13,13 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/62/583776/1.jpg?8528",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:01:00.300605"
+    "scraped_at": "2026-05-05T13:27:41.751845"
   },
   {
     "name": "Knee Brace Support Compression Sleeve Guard Running Football Blue M",
-    "current_price": "88.00",
+    "current_price": "79.20",
     "price_before_discount": "233.00",
-    "discount": "62%",
+    "discount": "66%",
     "sizes": [
       "ONE SIZE FITS ALL"
     ],
@@ -34,6 +34,6 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/32/171285/1.jpg?1385",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:01:01.391406"
+    "scraped_at": "2026-05-05T13:27:41.899604"
   }
 ]

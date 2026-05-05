@@ -1,7 +1,11 @@
-from walmart.walmart_scraper_utils import scrape_walmart_category
+from walmart_scraper_utils import scrape_walmart_category
 import os
-import undetected_chromedriver as uc
 import time
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+import json
 import sys
 
 # Add parent directory to sys.path to import load_all_to_bigtable
@@ -14,10 +18,67 @@ except ImportError:
 
 def run_all_walmart_scrapes():
     print("Launching Stealth Chrome Browser... Prepare to solve any CAPTCHAs!")
-    options = uc.ChromeOptions()
-    # We will launch the browser so the user can interact if a CAPTCHA appears
-    driver = uc.Chrome(version_main=147, options=options)
+    options = Options()
+    
+    # --- Docker/Headless Configuration ---
+    # Detect if we are running in Docker (Airflow sets AIRFLOW_HOME)
+    if os.environ.get("AIRFLOW_HOME"):
+        print("🐳 Docker environment detected. Running in HEADLESS mode.")
+        options.add_argument("--headless=new")
+    
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    
+    # Anti-detection flags
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option("useAutomationExtension", False)
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36")
+
+    # Try to use the system's chromedriver or let selenium find it
+    try:
+        driver = webdriver.Chrome(options=options)
+    except Exception:
+        # Fallback to webdriver_manager if system driver is not found
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    
+    # Further hide Selenium
+    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+        "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+    })
     driver.maximize_window()
+    
+    # --- Cookie Loading Logic ---
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    cookie_path = os.path.join(script_dir, "walmart_cookies.json")
+    
+    if os.path.exists(cookie_path):
+        print("🍪 Loading saved cookies...")
+        try:
+            # We must visit the domain once before adding cookies
+            driver.get("https://www.walmart.com")
+            time.sleep(2)
+            
+            with open(cookie_path, "r") as f:
+                cookies = json.load(f)
+                for cookie in cookies:
+                    # Filter out problematic keys for Selenium
+                    if 'expiry' in cookie:
+                        del cookie['expiry']
+                    try:
+                        driver.add_cookie(cookie)
+                    except Exception as e:
+                        print(f"  Warning: Could not add a cookie: {e}")
+            
+            print("✅ Cookies injected. Refreshing page...")
+            driver.refresh()
+            time.sleep(2)
+        except Exception as e:
+            print(f"❌ Error loading cookies: {e}")
+    else:
+        print("⚠️ No walmart_cookies.json found. Proceeding without saved session.")
+    # ----------------------------
     
     # Initialize Bigtable if available
     table = None

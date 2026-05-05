@@ -1,0 +1,6 @@
+[allowlist]
+description = "Ignorer les fausses clés dans la CI et les exemples"
+paths = [
+    '''\.github/workflows/ci\.yml''',
+    '''gcp-credentials\.json\.example'''
+]

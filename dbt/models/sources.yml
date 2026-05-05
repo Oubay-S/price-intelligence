@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw
+    database: price-intelligence-495411
+    schema: price_intelligence
+    tables:
+      - name: products
