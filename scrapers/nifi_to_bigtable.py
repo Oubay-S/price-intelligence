@@ -32,7 +32,7 @@ def main():
         
         # Create a UNIQUE Row Key using the URL hash
         # This prevents collisions!
-        url_hash = hashlib.md5(url.encode()).hexdigest()[:10]
+        url_hash = hashlib.md5(url.encode(), usedforsecurity=False).hexdigest()[:10]
         row_key = f"{source}#{url_hash}".encode()
         
         row = table.direct_row(row_key)
