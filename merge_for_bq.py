@@ -1,5 +1,10 @@
 import os
 import json
+import sys
+
+# Forcer l'encodage UTF-8 pour la console Windows afin d'éviter les erreurs avec les emojis
+if sys.platform.startswith('win'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 def merge_json_files(base_path, output_file):
     all_data = []

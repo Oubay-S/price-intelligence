@@ -83,7 +83,7 @@ def load_file_to_bigtable(table, file_path, store_name):
         return 0
 
 def load_all():
-    print("🚀 Connecting to Bigtable Emulator (localhost:8087)...")
+    print("🚀 Connecting to Bigtable Emulator (localhost:8086)...")
     table = get_bigtable_table()
     if not table:
         return

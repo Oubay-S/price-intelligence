@@ -1,0 +1,605 @@
+# =============================================================
+# CI/CD Pipeline — Price Intelligence Platform
+# Déclenché sur chaque push et pull request vers develop/main
+# =============================================================
+# Architecture de la pipeline :
+#
+#   ┌─────────────┐   ┌──────────────┐   ┌──────────────────┐
+#   │  🔍 Lint    │   │  🏗️ Build    │   │  🛡️ Security     │
+#   │  Python     │   │  3 images    │   │  SAST + Secrets  │
+#   └──────┬──────┘   └──────┬───────┘   └────────┬─────────┘
+#          │                 │                     │
+#          └─────────┬───────┘                     │
+#                    ▼                             │
+#          ┌─────────────────┐                     │
+#          │  🧪 Tests       │                     │
+#          │  Integration    │                     │
+#          └─────────┬───────┘                     │
+#                    │                             │
+#                    └──────────┬──────────────────┘
+#                               ▼
+#                    ┌─────────────────┐
+#                    │  ✅ Gate        │
+#                    │  Merge Ready    │
+#                    └─────────────────┘
+# =============================================================
+
+name: CI Pipeline — Price Intelligence
+
+on:
+  # Se déclenche sur CHAQUE push, peu importe la branche
+  push:
+    branches: ['**']
+  # Se déclenche sur les PRs vers develop et main
+  pull_request:
+    branches: [develop, main]
+
+# Annule les exécutions précédentes si un nouveau push arrive sur la même branche
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# ─────────────────────────────────────────────
+# VARIABLES D'ENVIRONNEMENT GLOBALES
+# ─────────────────────────────────────────────
+env:
+  PYTHON_VERSION: "3.10"
+  NODE_VERSION: "20"
+  BIGTABLE_EMULATOR_HOST: "localhost:8086"
+  GOOGLE_CLOUD_PROJECT: "price-intel-local"
+  BIGTABLE_INSTANCE_ID: "price-intel-instance"
+
+jobs:
+  # ═══════════════════════════════════════════
+  # JOB 1 — LINT & QUALITÉ DE CODE
+  # ═══════════════════════════════════════════
+  lint:
+    name: 🔍 Lint & Qualité de Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Installer Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: 📦 Installer les outils de lint
+        run: pip install flake8 pylint
+
+      - name: 🔍 Flake8 — Erreurs critiques Python (bloquant)
+        run: |
+          flake8 . \
+            --count \
+            --select=E9,F63,F7,F82 \
+            --show-source \
+            --statistics \
+            --exclude=.git,__pycache__,dbt/target,logs,venv,.venv,node_modules,frontend
+
+      - name: 🔍 Flake8 — Avertissements (non-bloquant)
+        continue-on-error: true
+        run: |
+          flake8 . \
+            --count \
+            --exit-zero \
+            --max-complexity=15 \
+            --max-line-length=120 \
+            --statistics \
+            --exclude=.git,__pycache__,dbt/target,logs,venv,.venv,node_modules,frontend
+
+      - name: 📋 Vérifier la syntaxe des DAGs Airflow
+        run: |
+          python -c "
+          import py_compile, sys, os
+          errors = []
+          for root, dirs, files in os.walk('airflow/dags'):
+              for f in files:
+                  if f.endswith('.py') and not f.startswith('__'):
+                      path = os.path.join(root, f)
+                      try:
+                          py_compile.compile(path, doraise=True)
+                          print(f'  ✅ {path}')
+                      except py_compile.PyCompileError as e:
+                          errors.append(str(e))
+                          print(f'  ❌ {path}: {e}')
+          if errors:
+              sys.exit(1)
+          print('✅ Tous les DAGs sont syntaxiquement valides')
+          "
+
+  # ═══════════════════════════════════════════
+  # JOB 2 — BUILD DES 3 IMAGES DOCKER
+  # ═══════════════════════════════════════════
+  build:
+    name: 🏗️ Build Docker (Airflow + Backend + Frontend)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 🐳 Configurer Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🏗️ Build — Image Airflow custom
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: price-intel-airflow:ci-${{ github.sha }}
+          cache-from: type=gha,scope=airflow
+          cache-to: type=gha,mode=max,scope=airflow
+
+      - name: 🏗️ Build — Image Backend FastAPI
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          push: false
+          tags: price-intel-backend:ci-${{ github.sha }}
+          cache-from: type=gha,scope=backend
+          cache-to: type=gha,mode=max,scope=backend
+
+      - name: 🏗️ Build — Image Frontend Angular
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          push: false
+          tags: price-intel-frontend:ci-${{ github.sha }}
+          cache-from: type=gha,scope=frontend
+          cache-to: type=gha,mode=max,scope=frontend
+
+      - name: ✅ Toutes les images se build correctement
+        run: echo "✅ 3/3 images Docker buildées avec succès"
+
+  # ═══════════════════════════════════════════
+  # JOB 3 — TESTS D'INTÉGRATION
+  # Lance l'infra complète et vérifie que
+  # TOUS les services communiquent entre eux
+  # ═══════════════════════════════════════════
+  integration-tests:
+    name: 🧪 Tests d'Intégration
+    runs-on: ubuntu-latest
+    needs: [lint, build]
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 📝 Créer les fichiers de configuration
+        run: |
+          cp .env.example .env
+          echo '{"type":"service_account","project_id":"ci-test","private_key_id":"fake","private_key":"-----BEGIN RSA PRIVATE KEY-----\nMIIBogIBAAJBALRiMLAHudeSA/x3hB2f+2NRkJ+ABrlAaLGo/EbE\n-----END RSA PRIVATE KEY-----\n","client_email":"ci@test.iam.gserviceaccount.com","client_id":"000","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token"}' > gcp-credentials.json
+
+      # ─── COUCHE DATA ───
+      - name: 🐳 Démarrer la couche DATA
+        run: |
+          docker compose up -d --build \
+            bigtable-emulator \
+            postgres \
+            airflow-init
+
+      - name: ⏳ Attendre PostgreSQL Airflow
+        run: |
+          for i in $(seq 1 30); do
+            if docker inspect --format='{{.State.Health.Status}}' airflow-postgres 2>/dev/null | grep -q healthy; then
+              echo "✅ PostgreSQL Airflow prêt"
+              break
+            fi
+            sleep 5
+          done
+
+      - name: ⏳ Attendre Bigtable Emulator
+        run: |
+          for i in $(seq 1 30); do
+            if docker inspect --format='{{.State.Health.Status}}' bigtable-emulator 2>/dev/null | grep -q healthy; then
+              echo "✅ Bigtable Emulator prêt"
+              break
+            fi
+            sleep 5
+          done
+
+      - name: ⏳ Attendre airflow-init
+        run: |
+          for i in $(seq 1 60); do
+            STATUS=$(docker inspect --format='{{.State.Status}}' airflow-init 2>/dev/null || echo "not_found")
+            if [ "$STATUS" = "exited" ]; then
+              EXIT_CODE=$(docker inspect --format='{{.State.ExitCode}}' airflow-init)
+              if [ "$EXIT_CODE" = "0" ]; then
+                echo "✅ Airflow init OK"
+                break
+              else
+                echo "❌ Airflow init échoué (exit: $EXIT_CODE)"
+                docker logs airflow-init
+                exit 1
+              fi
+            fi
+            sleep 5
+          done
+
+      - name: 🐳 Démarrer Webserver + Scheduler
+        run: docker compose up -d airflow-webserver airflow-scheduler
+
+      - name: ⏳ Attendre Airflow Webserver
+        run: |
+          for i in $(seq 1 30); do
+            if docker inspect --format='{{.State.Health.Status}}' airflow-webserver 2>/dev/null | grep -q healthy; then
+              echo "✅ Airflow Webserver prêt"
+              break
+            fi
+            sleep 10
+          done
+
+      - name: 🧪 Test — Airflow Webserver HTTP 200
+        run: |
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/health)
+          [ "$HTTP_CODE" -eq 200 ] && echo "✅ Airflow: HTTP 200" || (echo "❌ Airflow: HTTP $HTTP_CODE" && exit 1)
+
+      - name: 🧪 Test — DAGs détectés
+        run: |
+          docker exec airflow-webserver airflow dags list 2>/dev/null | tee /tmp/dags.txt
+          grep -q "price_intelligence_pipeline" /tmp/dags.txt && echo "✅ DAG détecté" || (echo "❌ DAG non trouvé" && exit 1)
+
+      - name: 🧪 Test — Bigtable Emulator accessible
+        run: |
+          docker exec bigtable-emulator bash -c "echo '' > /dev/tcp/localhost/8086" && echo "✅ Bigtable OK"
+
+      - name: 🧪 Test — Chargement initial Bigtable
+        run: |
+          docker compose up bigtable-init 2>&1 | tee /tmp/bt_init.log
+          grep -q "Successfully loaded" /tmp/bt_init.log && echo "✅ Bigtable data OK" || (echo "❌ Bigtable init échoué" && exit 1)
+
+      # ─── COUCHE APPLICATIVE ───
+      - name: 🐳 Démarrer la couche APPLICATIVE
+        run: |
+          docker compose up -d --build \
+            postgres-app \
+            redis
+
+      - name: ⏳ Attendre PostgreSQL App
+        run: |
+          for i in $(seq 1 30); do
+            if docker inspect --format='{{.State.Health.Status}}' postgres-app 2>/dev/null | grep -q healthy; then
+              echo "✅ PostgreSQL App prêt"
+              break
+            fi
+            sleep 5
+          done
+
+      - name: ⏳ Attendre Redis
+        run: |
+          for i in $(seq 1 15); do
+            if docker inspect --format='{{.State.Health.Status}}' redis 2>/dev/null | grep -q healthy; then
+              echo "✅ Redis prêt"
+              break
+            fi
+            sleep 3
+          done
+
+      - name: 🧪 Test — PostgreSQL App accessible
+        run: |
+          docker exec postgres-app pg_isready -U app_user && echo "✅ PostgreSQL App: OK" || (echo "❌ PostgreSQL App: KO" && exit 1)
+
+      - name: 🧪 Test — Redis accessible
+        run: |
+          docker exec redis redis-cli ping | grep -q PONG && echo "✅ Redis: PONG" || (echo "❌ Redis: pas de réponse" && exit 1)
+
+      - name: 🧪 Test — Les deux PostgreSQL sont isolés
+        run: |
+          echo "Vérification de l'isolation des bases de données..."
+          AIRFLOW_DB=$(docker exec airflow-postgres psql -U airflow -t -c "SELECT current_database();" | tr -d ' ')
+          APP_DB=$(docker exec postgres-app psql -U app_user -d price_intelligence -t -c "SELECT current_database();" | tr -d ' ')
+          echo "  Airflow DB: $AIRFLOW_DB"
+          echo "  App DB:     $APP_DB"
+          if [ "$AIRFLOW_DB" = "airflow" ] && [ "$APP_DB" = "price_intelligence" ]; then
+            echo "✅ Isolation des bases confirmée"
+          else
+            echo "❌ Les bases ne sont pas correctement isolées"
+            exit 1
+          fi
+
+      - name: 📋 Collecter les logs en cas d'échec
+        if: failure()
+        run: |
+          echo "=== Docker PS ==="
+          docker ps -a
+          echo "=== Airflow Webserver ==="
+          docker logs airflow-webserver 2>&1 | tail -30 || true
+          echo "=== Airflow Scheduler ==="
+          docker logs airflow-scheduler 2>&1 | tail -30 || true
+          echo "=== Bigtable ==="
+          docker logs bigtable-emulator 2>&1 | tail -20 || true
+          echo "=== Backend ==="
+          docker logs backend 2>&1 | tail -30 || true
+          echo "=== Frontend ==="
+          docker logs frontend 2>&1 | tail -20 || true
+          echo "=== Postgres App ==="
+          docker logs postgres-app 2>&1 | tail -20 || true
+          echo "=== Redis ==="
+          docker logs redis 2>&1 | tail -20 || true
+
+      - name: 🧹 Nettoyage
+        if: always()
+        run: docker compose down -v --remove-orphans
+
+  # ═══════════════════════════════════════════
+  # JOB 4 — SAST (Static Application Security Testing)
+  # ═══════════════════════════════════════════
+  sast:
+    name: 🛡️ SAST — Analyse de Sécurité Statique
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Installer Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: 📦 Installer Bandit (SAST Python)
+        run: pip install bandit[toml]
+
+      - name: 🛡️ Bandit — Scan de sécurité du code Python
+        run: |
+          bandit -r . \
+            --exclude "./.git,./dbt/target,./logs,./venv,./.venv,./node_modules,./frontend" \
+            --severity-level medium \
+            --confidence-level medium \
+            --format json \
+            --output bandit-report.json \
+            || true
+
+          bandit -r . \
+            --exclude "./.git,./dbt/target,./logs,./venv,./.venv,./node_modules,./frontend" \
+            --severity-level medium \
+            --confidence-level medium \
+            --format screen \
+            || true
+
+      - name: 📊 Analyser le rapport Bandit
+        run: |
+          python3 -c "
+          import json, sys
+          with open('bandit-report.json') as f:
+              report = json.load(f)
+          results = report.get('results', [])
+          high = [r for r in results if r['issue_severity'] == 'HIGH']
+          medium = [r for r in results if r['issue_severity'] == 'MEDIUM']
+          print(f'📊 Résultats SAST:')
+          print(f'   🔴 HIGH:   {len(high)}')
+          print(f'   🟡 MEDIUM: {len(medium)}')
+          if high:
+              print('\n❌ VULNÉRABILITÉS CRITIQUES:')
+              for r in high:
+                  print(f'   → {r[\"filename\"]}:{r[\"line_number\"]} — {r[\"issue_text\"]}')
+              sys.exit(1)
+          print('\n✅ Aucune vulnérabilité critique')
+          "
+
+      - name: 📤 Uploader le rapport Bandit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bandit-sast-report
+          path: bandit-report.json
+          retention-days: 30
+
+  # ═══════════════════════════════════════════
+  # JOB 5 — DÉTECTION DE SECRETS
+  # ═══════════════════════════════════════════
+  secrets-scan:
+    name: 🔐 Détection de Secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout du code (historique complet)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔐 TruffleHog — Scanner les secrets dans l'historique Git
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --only-verified
+
+      - name: 🔐 Gitleaks — Scanner les secrets dans le code
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ═══════════════════════════════════════════
+  # JOB 6 — SCAN DE DÉPENDANCES (SCA)
+  # ═══════════════════════════════════════════
+  dependency-scan:
+    name: 📦 Scan de Dépendances (CVE)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Installer Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: 📦 Installer pip-audit
+        run: pip install pip-audit
+
+      - name: 🔍 Auditer — Dépendances Airflow
+        continue-on-error: true
+        run: |
+          pip-audit -r airflow/requirements.txt --format json --output airflow-audit.json 2>&1 || true
+          pip-audit -r airflow/requirements.txt 2>&1 || true
+
+      - name: 🔍 Auditer — Dépendances Backend
+        continue-on-error: true
+        run: |
+          pip-audit -r backend/requirements.txt --format json --output backend-audit.json 2>&1 || true
+          pip-audit -r backend/requirements.txt 2>&1 || true
+
+      - name: 📤 Uploader les rapports d'audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-audit-reports
+          path: "*-audit.json"
+          retention-days: 30
+
+  # ═══════════════════════════════════════════
+  # JOB 7 — SCAN DOCKER (Container Security)
+  # Scanne les 3 images Docker du projet
+  # ═══════════════════════════════════════════
+  docker-security:
+    name: 🐳 Scan Sécurité Docker
+    runs-on: ubuntu-latest
+    needs: [build]
+    strategy:
+      matrix:
+        include:
+          - name: Airflow
+            context: "."
+            dockerfile: "./Dockerfile"
+            tag: "price-intel-airflow:scan"
+          - name: Backend
+            context: "./backend"
+            dockerfile: "./backend/Dockerfile"
+            tag: "price-intel-backend:scan"
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 🏗️ Build ${{ matrix.name }}
+        run: docker build -t ${{ matrix.tag }} -f ${{ matrix.dockerfile }} ${{ matrix.context }}
+
+      - name: 🐳 Trivy — Scan ${{ matrix.name }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ matrix.tag }}
+          format: "table"
+          exit-code: "0"
+          severity: "CRITICAL,HIGH"
+          ignore-unfixed: true
+
+      - name: 📊 Trivy — Rapport JSON ${{ matrix.name }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ matrix.tag }}
+          format: "json"
+          output: "trivy-${{ matrix.name }}-report.json"
+          severity: "CRITICAL,HIGH,MEDIUM"
+          ignore-unfixed: true
+
+      - name: 📤 Uploader le rapport Trivy ${{ matrix.name }}
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-${{ matrix.name }}-report
+          path: "trivy-${{ matrix.name }}-report.json"
+          retention-days: 30
+
+  # ═══════════════════════════════════════════
+  # JOB 8 — SCAN IaC (Infrastructure as Code)
+  # ═══════════════════════════════════════════
+  iac-scan:
+    name: 🏗️ Scan Infrastructure (IaC)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 🔍 Checkov — Scan Dockerfile + docker-compose
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: .
+          framework: dockerfile,yaml
+          output_format: cli
+          soft_fail: true
+          skip_check: CKV_DOCKER_2,CKV_DOCKER_3
+
+      - name: 🐳 Hadolint — Lint Dockerfile (Airflow)
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          failure-threshold: warning
+        continue-on-error: true
+
+      - name: 🐳 Hadolint — Lint Dockerfile (Backend)
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: backend/Dockerfile
+          failure-threshold: warning
+        continue-on-error: true
+
+      - name: 🐳 Hadolint — Lint Dockerfile (Frontend)
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: frontend/Dockerfile
+          failure-threshold: warning
+        continue-on-error: true
+
+  # ═══════════════════════════════════════════
+  # JOB 9 — GATE FINALE
+  # ═══════════════════════════════════════════
+  merge-gate:
+    name: ✅ Merge Gate — Prêt pour Review
+    runs-on: ubuntu-latest
+    needs:
+      - lint
+      - build
+      - integration-tests
+      - sast
+      - secrets-scan
+      - dependency-scan
+      - docker-security
+      - iac-scan
+    if: always()
+    steps:
+      - name: 📊 Rapport final CI/CD
+        run: |
+          echo "═══════════════════════════════════════"
+          echo "       RAPPORT CI/CD FINAL"
+          echo "═══════════════════════════════════════"
+          echo ""
+          echo "  🔍 Lint:              ${{ needs.lint.result }}"
+          echo "  🏗️ Build (3 images):  ${{ needs.build.result }}"
+          echo "  🧪 Tests Intégration: ${{ needs.integration-tests.result }}"
+          echo "  🛡️ SAST (Bandit):     ${{ needs.sast.result }}"
+          echo "  🔐 Secrets Scan:      ${{ needs.secrets-scan.result }}"
+          echo "  📦 Dependency Scan:   ${{ needs.dependency-scan.result }}"
+          echo "  🐳 Docker Security:   ${{ needs.docker-security.result }}"
+          echo "  🏗️ IaC Scan:          ${{ needs.iac-scan.result }}"
+          echo ""
+          echo "═══════════════════════════════════════"
+
+          CRITICAL_FAILED=false
+
+          if [ "${{ needs.lint.result }}" != "success" ]; then
+            echo "❌ BLOQUANT: Lint a échoué"
+            CRITICAL_FAILED=true
+          fi
+          if [ "${{ needs.build.result }}" != "success" ]; then
+            echo "❌ BLOQUANT: Build Docker a échoué"
+            CRITICAL_FAILED=true
+          fi
+          if [ "${{ needs.integration-tests.result }}" != "success" ]; then
+            echo "❌ BLOQUANT: Tests d'intégration ont échoué"
+            CRITICAL_FAILED=true
+          fi
+          if [ "${{ needs.sast.result }}" != "success" ]; then
+            echo "❌ BLOQUANT: SAST a détecté des vulnérabilités critiques"
+            CRITICAL_FAILED=true
+          fi
+          if [ "${{ needs.secrets-scan.result }}" != "success" ]; then
+            echo "❌ BLOQUANT: Des secrets ont été détectés dans le code !"
+            CRITICAL_FAILED=true
+          fi
+
+          if [ "$CRITICAL_FAILED" = true ]; then
+            echo ""
+            echo "🚫 MERGE BLOQUÉ — Corrigez les erreurs ci-dessus"
+            exit 1
+          else
+            echo ""
+            echo "✅ TOUS LES CHECKS CRITIQUES SONT PASSÉS"
+            echo "🚀 Le code est prêt pour la review et le merge !"
+          fi

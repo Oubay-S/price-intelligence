@@ -3,9 +3,11 @@ import json
 import hashlib
 from google.cloud import bigtable
 
-# Config
-project_id = "price-intel-local"
-instance_id = "price-instance"
+import os
+
+# Config from environment variables (set by Docker)
+project_id = os.environ.get("GOOGLE_CLOUD_PROJECT", "price-intel-local")
+instance_id = os.environ.get("BIGTABLE_INSTANCE_ID", "price-intel-instance")
 table_id = "products"
 
 def main():
