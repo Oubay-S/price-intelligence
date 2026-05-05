@@ -167,7 +167,9 @@ jobs:
       - name: 📝 Créer les fichiers de configuration
         run: |
           cp .env.example .env
-          echo '{"type":"service_account","project_id":"ci-test","private_key_id":"fake","private_key":"-----BEGIN RSA PRIVATE KEY-----\nMIIBogIBAAJBALRiMLAHudeSA/x3hB2f+2NRkJ+ABrlAaLGo/EbE\n-----END RSA PRIVATE KEY-----\n","client_email":"ci@test.iam.gserviceaccount.com","client_id":"000","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token"}' > gcp-credentials.json
+          echo '{"type":"service_account","project_id":"ci-test","private_key_id":"fake","private_key":"FAKE_PRIVATE_KEY_VALUE","client_email":"ci@test.iam.gserviceaccount.com","client_id":"000","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token"}' > gcp-credentials.json
+          mkdir -p logs airflow/dags plugins scrapers
+          chmod -R 777 logs airflow/dags plugins scrapers
 
       # ─── COUCHE DATA ───
       - name: 🐳 Démarrer la couche DATA
@@ -327,6 +329,7 @@ jobs:
     name: 🛡️ SAST — Analyse de Sécurité Statique
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       security-events: write
     steps:
       - name: 📥 Checkout du code
@@ -391,6 +394,8 @@ jobs:
   secrets-scan:
     name: 🔐 Détection de Secrets
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: 📥 Checkout du code (historique complet)
         uses: actions/checkout@v4
