@@ -20,6 +20,14 @@ class Settings(BaseSettings):
     BIGQUERY_TABLE: str
     GOOGLE_APPLICATION_CREDENTIALS: str
 
+    # Analyst-curated mart tables (dbt). Defaulted so deployments work
+    # without overriding when the analyst follows the agreed naming.
+    BIGQUERY_MART_PRODUCT_STATS: str  = "mart_product_stats"
+    BIGQUERY_MART_BRAND_RANKINGS: str = "mart_brand_rankings"
+    BIGQUERY_MART_PRICE_DROPS: str    = "mart_price_drops"
+    BIGQUERY_MART_TRENDING: str       = "mart_trending"
+    BIGQUERY_MART_SITE_PRICES: str    = "mart_site_prices"
+
     SECRET_KEY: str
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440

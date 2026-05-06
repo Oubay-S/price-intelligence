@@ -3,7 +3,13 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException, Query, status
 from google.api_core.exceptions import GoogleAPICallError
 
-from app.models.product import PaginatedProducts, ProductResponse, SupplementCategory
+from app.models.product import (
+    PaginatedProducts,
+    ProductResponse,
+    SupplementCategory,
+    TrendingResponse,
+)
+from app.services.analytics import get_trending_products
 from app.services.bigquery import (
     get_all_products,
     get_product_by_id,
@@ -68,6 +74,18 @@ def search(
         page=page,
         limit=limit,
     )
+
+
+@router.get("/trending", response_model=TrendingResponse)
+def trending(
+    period: str = Query("24h", pattern=r"^(24h|7d|30d)$"),
+    category: Optional[SupplementCategory] = Query(None),
+    limit: int = Query(20, ge=1, le=100),
+) -> TrendingResponse:
+    try:
+        return get_trending_products(period=period, category=category, limit=limit)
+    except GoogleAPICallError as exc:
+        _raise_bigquery_http_500(exc)
 
 
 @router.get("/{product_id}", response_model=ProductResponse)
