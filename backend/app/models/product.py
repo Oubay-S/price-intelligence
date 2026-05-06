@@ -358,7 +358,7 @@ class ProductComparison(BaseModel):
     category:             SupplementCategory
     nutrition:            Optional[NutritionInfo] = None
     equipment:            Optional[EquipmentInfo] = None
-    sites:                list[SitePriceSnapshot]
+    sites_prices:         list[SitePriceSnapshot]
     best_site:            str           = Field(..., description="Site with lowest current price")
     worst_site:           str           = Field(..., description="Site with highest current price")
     price_gap_pct:        float         = Field(
@@ -659,26 +659,6 @@ class PriceHistoryParams(BaseModel):
         ):
             raise ValueError("end_date must be after start_date")
         return self
-
-
-class CompareParams(BaseModel):
-    """
-    Query parameters for GET /api/prices/compare.
-    Enforces the 4-product maximum at model level.
-    """
-    product_ids: list[str] = Field(
-        ..., min_length=2, max_length=4,
-        description="2–4 canonical_product_id values"
-    )
-
-    @field_validator("product_ids")
-    @classmethod
-    def deduplicate_ids(cls, v: list[str]) -> list[str]:
-        seen: list[str] = []
-        for pid in v:
-            if pid not in seen:
-                seen.append(pid)
-        return seen
 
 
 class PriceDropParams(BaseModel):

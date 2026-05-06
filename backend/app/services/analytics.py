@@ -1,20 +1,26 @@
 """
 services/analytics.py
 =====================
-Read-only queries against the analyst-curated dbt mart tables. Each function
-performs a single SELECT, projects directly onto a Pydantic response model,
-and does no business logic. If a mart schema drifts, fix dbt — never push
-the math down here.
+Read-only analytics queries.
 
-Mart tables expected (names configurable via settings):
-    - mart_product_stats       — descriptive + predictive stats per product
-    - mart_brand_rankings      — best-value brands per category
-    - mart_price_drops         — recent significant drops (alert feed)
-    - mart_trending            — products ranked by drop_pct / view velocity
-    - mart_site_prices         — latest per-(product, site) snapshot
+Two flavours:
+
+1. Mart-backed (assumes analyst's dbt pipeline produced the table):
+       - mart_product_stats       — descriptive + predictive stats per product
+       - mart_brand_rankings      — best-value brands per category
+       - mart_site_prices         — latest per-(product, site) snapshot
+   These functions only SELECT/filter — no math in Python.
+
+2. On-the-fly (no mart dependency, runs window functions on the raw
+   `products` table so the endpoints work before the mart exists):
+       - get_price_drops          — LAG-based drop detection
+       - get_trending_products    — most-dropped in last 24h
+   When the analyst ships the equivalent marts, swap these back to a single
+   SELECT against the mart and delete the window-function SQL.
 """
 from __future__ import annotations
 
+from datetime import datetime
 from threading import RLock
 from typing import Any, Optional
 
@@ -28,7 +34,6 @@ from app.models.product import (
     BrandRanking,
     BrandRankingsResponse,
     BrandTier,
-    CompareResponse,
     PriceDropAlert,
     PriceTrend,
     ProductComparison,
@@ -38,7 +43,16 @@ from app.models.product import (
     TrendingProduct,
     TrendingResponse,
 )
-from app.services.bigquery import _parse_dt, _site_token, get_client
+from app.services.bigquery import (
+    _CATEGORY_TO_RAW,
+    _STORE_CURRENCY,
+    _map_category,
+    _parse_dt,
+    _site_token,
+    _strip_title,
+    _table_ref,
+    get_client,
+)
 
 
 def _mart_ref(table: str) -> str:
@@ -216,28 +230,21 @@ def get_brand_rankings(
 
 
 # ---------------------------------------------------------------------------
-# get_price_drops — recent significant price drops (alert feed)
+# get_price_drops — on-the-fly LAG window over the raw products table
 # ---------------------------------------------------------------------------
-#
-# Expected mart: `mart_price_drops`
-#   canonical_product_id STRING,
-#   product_name STRING,
-#   image_url STRING,
-#   site STRING,
-#   listing_url STRING,
-#   category STRING,
-#   price_before FLOAT64,
-#   price_after FLOAT64,
-#   currency STRING,
-#   drop_pct FLOAT64,
-#   alert_type STRING,                 -- 'price_drop' | 'back_in_stock' | ...
-#   scraped_at TIMESTAMP,
-#   detected_at TIMESTAMP,
-#   price_per_serving_after FLOAT64,
-#   price_per_kg_after FLOAT64
+# For each product_url, LAG() over scraped_at gives the previous scrape's
+# price. Definition of a drop:
+#       drop_pct = (price_before - price_after) / price_before * 100
+# Filter: drop_pct >= @threshold AND price_after < price_before AND
+#         price_before > 0 (defensive — divide-by-zero guard).
+# Results de-duped to one row per (product_url, scraped_at) pair, ordered
+# newest-first.
+# Expensive scan; cached 5 minutes.
 # ---------------------------------------------------------------------------
 
-_price_drops_cache: TTLCache = TTLCache(maxsize=128, ttl=60)
+_TS_PARSE = "SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', scraped_at)"
+
+_price_drops_cache: TTLCache = TTLCache(maxsize=128, ttl=300)
 _price_drops_cache_lock = RLock()
 
 
@@ -248,79 +255,96 @@ def get_price_drops(
     site: Optional[str] = None,
     limit: int = 20,
 ) -> AlertsResponse:
-    where: list[str] = ["drop_pct >= @threshold"]
+    extra_where: list[str] = []
     params: list[Any] = [
         bigquery.ScalarQueryParameter("threshold", "FLOAT64", threshold),
         bigquery.ScalarQueryParameter("limit", "INT64", limit),
     ]
 
     if category is not None:
-        where.append("category = @category")
+        raw_values = _CATEGORY_TO_RAW.get(category, [])
+        if not raw_values:
+            return AlertsResponse(alerts=[], count=0, threshold_pct=threshold)
+        extra_where.append("raw_category IN UNNEST(@categories)")
         params.append(
-            bigquery.ScalarQueryParameter(
-                "category", "STRING", _category_to_string(category)
-            )
+            bigquery.ArrayQueryParameter("categories", "STRING", raw_values)
         )
 
     if site:
-        where.append("LOWER(site) = @site")
+        extra_where.append("site = @site")
         params.append(
             bigquery.ScalarQueryParameter("site", "STRING", _site_token(site))
         )
 
+    extra_sql = (" AND " + " AND ".join(extra_where)) if extra_where else ""
+
     sql = f"""
+        WITH series AS (
+            SELECT
+                TO_HEX(SHA256(product_url)) AS canonical_product_id,
+                name,
+                image_url,
+                LOWER(store) AS site,
+                product_url AS listing_url,
+                category AS raw_category,
+                SAFE_CAST(current_price AS FLOAT64) AS price_after,
+                {_TS_PARSE} AS scraped_ts,
+                LAG(SAFE_CAST(current_price AS FLOAT64))
+                    OVER (PARTITION BY product_url ORDER BY scraped_at ASC)
+                    AS price_before
+            FROM {_table_ref()}
+            WHERE SAFE_CAST(current_price AS FLOAT64) IS NOT NULL
+        )
         SELECT
             canonical_product_id,
-            product_name,
+            name,
             image_url,
             site,
             listing_url,
-            category,
+            raw_category,
             price_before,
             price_after,
-            currency,
-            drop_pct,
-            alert_type,
-            scraped_at,
-            detected_at,
-            price_per_serving_after,
-            price_per_kg_after
-        FROM {_mart_ref(settings.BIGQUERY_MART_PRICE_DROPS)}
-        WHERE {' AND '.join(where)}
-        ORDER BY detected_at DESC
+            scraped_ts,
+            ROUND(
+                SAFE_DIVIDE(price_before - price_after, price_before) * 100,
+                2
+            ) AS drop_pct
+        FROM series
+        WHERE price_before IS NOT NULL
+          AND price_before > 0
+          AND price_after < price_before
+          AND SAFE_DIVIDE(price_before - price_after, price_before) * 100
+              >= @threshold
+          {extra_sql}
+        ORDER BY scraped_ts DESC
         LIMIT @limit
     """
     job_config = bigquery.QueryJobConfig(query_parameters=params)
     rows = get_client().query(sql, job_config=job_config).result()
 
-    alerts = [
-        PriceDropAlert(
-            canonical_product_id=row["canonical_product_id"],
-            product_name=row["product_name"],
-            image_url=row.get("image_url"),
-            site=row["site"],
-            listing_url=row["listing_url"],
-            category=SupplementCategory(row["category"]),
-            price_before=float(row["price_before"]),
-            price_after=float(row["price_after"]),
-            currency=row["currency"] or "USD",
-            drop_pct=float(row["drop_pct"]),
-            alert_type=AlertType(row["alert_type"]),
-            scraped_at=_parse_dt(row["scraped_at"]),
-            detected_at=_parse_dt(row["detected_at"]),
-            price_per_serving_after=(
-                float(row["price_per_serving_after"])
-                if row["price_per_serving_after"] is not None
-                else None
-            ),
-            price_per_kg_after=(
-                float(row["price_per_kg_after"])
-                if row["price_per_kg_after"] is not None
-                else None
-            ),
+    detected = datetime.utcnow()
+    alerts: list[PriceDropAlert] = []
+    for row in rows:
+        site_name = row["site"] or "unknown"
+        alerts.append(
+            PriceDropAlert(
+                canonical_product_id=row["canonical_product_id"],
+                product_name=_strip_title(row["name"]) or "(unknown)",
+                image_url=row.get("image_url") or None,
+                site=site_name,
+                listing_url=row["listing_url"] or "",
+                category=_map_category(row["raw_category"]),
+                price_before=float(row["price_before"]),
+                price_after=float(row["price_after"]),
+                currency=_STORE_CURRENCY.get(site_name, "USD"),
+                drop_pct=float(row["drop_pct"]),
+                alert_type=AlertType.PRICE_DROP,
+                scraped_at=row["scraped_ts"] or detected,
+                detected_at=detected,
+                price_per_serving_after=None,
+                price_per_kg_after=None,
+            )
         )
-        for row in rows
-    ]
     return AlertsResponse(
         alerts=alerts,
         count=len(alerts),
@@ -329,28 +353,20 @@ def get_price_drops(
 
 
 # ---------------------------------------------------------------------------
-# get_trending_products — ranked by drop_pct or view velocity
+# get_trending_products — most-dropped products in the last 24 hours
 # ---------------------------------------------------------------------------
-#
-# Expected mart: `mart_trending`
-#   canonical_product_id STRING,
-#   product_name STRING,
-#   image_url STRING,
-#   category STRING,
-#   brand_raw STRING,
-#   brand_tier STRING,
-#   current_price FLOAT64,
-#   drop_pct FLOAT64,
-#   price_trend STRING,
-#   best_site STRING,
-#   listing_url STRING,
-#   rating_score FLOAT64,
-#   tags ARRAY<STRING>,
-#   rank INT64,
-#   period STRING                       -- '24h' | '7d' | '30d'
+# Reuses the LAG window from get_price_drops, but:
+#   - filters drop events whose `scraped_ts` falls in the last @lookback hours
+#     (default 24h — the only period currently exposed by the router),
+#   - keeps the single biggest drop per canonical_product_id (one row per
+#     product, not per scrape),
+#   - ranks descending by drop_pct.
+# Expensive scan; cached 5 minutes.
 # ---------------------------------------------------------------------------
 
-_trending_cache: TTLCache = TTLCache(maxsize=64, ttl=120)
+_PERIOD_HOURS: dict[str, int] = {"24h": 24, "7d": 24 * 7, "30d": 24 * 30}
+
+_trending_cache: TTLCache = TTLCache(maxsize=64, ttl=300)
 _trending_cache_lock = RLock()
 
 
@@ -360,71 +376,112 @@ def get_trending_products(
     category: Optional[SupplementCategory] = None,
     limit: int = 20,
 ) -> TrendingResponse:
-    where: list[str] = ["period = @period"]
+    lookback_hours = _PERIOD_HOURS.get(period, 24)
+    extra_where: list[str] = []
     params: list[Any] = [
-        bigquery.ScalarQueryParameter("period", "STRING", period),
+        bigquery.ScalarQueryParameter("lookback", "INT64", lookback_hours),
         bigquery.ScalarQueryParameter("limit", "INT64", limit),
     ]
 
     if category is not None:
-        where.append("category = @category")
+        raw_values = _CATEGORY_TO_RAW.get(category, [])
+        if not raw_values:
+            return TrendingResponse(products=[], period=period)
+        extra_where.append("raw_category IN UNNEST(@categories)")
         params.append(
-            bigquery.ScalarQueryParameter(
-                "category", "STRING", _category_to_string(category)
-            )
+            bigquery.ArrayQueryParameter("categories", "STRING", raw_values)
         )
 
+    extra_sql = (" AND " + " AND ".join(extra_where)) if extra_where else ""
+
     sql = f"""
+        WITH series AS (
+            SELECT
+                TO_HEX(SHA256(product_url)) AS canonical_product_id,
+                name,
+                image_url,
+                LOWER(store) AS site,
+                product_url AS listing_url,
+                category AS raw_category,
+                SAFE_CAST(current_price AS FLOAT64) AS price_after,
+                {_TS_PARSE} AS scraped_ts,
+                LAG(SAFE_CAST(current_price AS FLOAT64))
+                    OVER (PARTITION BY product_url ORDER BY scraped_at ASC)
+                    AS price_before
+            FROM {_table_ref()}
+            WHERE SAFE_CAST(current_price AS FLOAT64) IS NOT NULL
+        ),
+        events AS (
+            SELECT
+                canonical_product_id,
+                name,
+                image_url,
+                site,
+                listing_url,
+                raw_category,
+                price_after,
+                scraped_ts,
+                ROUND(
+                    SAFE_DIVIDE(price_before - price_after, price_before) * 100,
+                    2
+                ) AS drop_pct
+            FROM series
+            WHERE price_before IS NOT NULL
+              AND price_before > 0
+              AND price_after < price_before
+              AND scraped_ts >= TIMESTAMP_SUB(
+                    CURRENT_TIMESTAMP(), INTERVAL @lookback HOUR
+                  )
+              {extra_sql}
+        ),
+        ranked AS (
+            SELECT
+                *,
+                ROW_NUMBER() OVER (
+                    PARTITION BY canonical_product_id
+                    ORDER BY drop_pct DESC, scraped_ts DESC
+                ) AS pn
+            FROM events
+        )
         SELECT
             canonical_product_id,
-            product_name,
+            name,
             image_url,
-            category,
-            brand_raw,
-            brand_tier,
-            current_price,
-            drop_pct,
-            price_trend,
-            best_site,
+            site,
             listing_url,
-            rating_score,
-            tags,
-            rank
-        FROM {_mart_ref(settings.BIGQUERY_MART_TRENDING)}
-        WHERE {' AND '.join(where)}
-        ORDER BY rank ASC
+            raw_category,
+            price_after,
+            drop_pct
+        FROM ranked
+        WHERE pn = 1
+        ORDER BY drop_pct DESC
         LIMIT @limit
     """
     job_config = bigquery.QueryJobConfig(query_parameters=params)
-    rows = get_client().query(sql, job_config=job_config).result()
+    rows = list(get_client().query(sql, job_config=job_config).result())
 
-    products = [
-        TrendingProduct(
-            canonical_product_id=row["canonical_product_id"],
-            product_name=row["product_name"],
-            image_url=row.get("image_url"),
-            category=SupplementCategory(row["category"]),
-            brand_raw=row["brand_raw"],
-            brand_tier=BrandTier(row["brand_tier"]),
-            current_price=float(row["current_price"]),
-            drop_pct=(
-                float(row["drop_pct"])
-                if row["drop_pct"] is not None
-                else None
-            ),
-            price_trend=PriceTrend(row["price_trend"]),
-            best_site=row["best_site"],
-            listing_url=row["listing_url"],
-            rating_score=(
-                float(row["rating_score"])
-                if row["rating_score"] is not None
-                else None
-            ),
-            tags=list(row["tags"] or []),
-            rank=int(row["rank"]),
+    products: list[TrendingProduct] = []
+    for index, row in enumerate(rows, start=1):
+        name = _strip_title(row["name"]) or "(unknown)"
+        brand = name.split()[0] if name and name != "(unknown)" else "unknown"
+        products.append(
+            TrendingProduct(
+                canonical_product_id=row["canonical_product_id"],
+                product_name=name,
+                image_url=row.get("image_url") or None,
+                category=_map_category(row["raw_category"]),
+                brand_raw=brand,
+                brand_tier=BrandTier.MID,
+                current_price=float(row["price_after"]),
+                drop_pct=float(row["drop_pct"]),
+                price_trend=PriceTrend.FALLING,
+                best_site=row["site"] or "unknown",
+                listing_url=row["listing_url"] or "",
+                rating_score=None,
+                tags=[],
+                rank=index,
+            )
         )
-        for row in rows
-    ]
     return TrendingResponse(products=products, period=period)
 
 
@@ -448,21 +505,20 @@ def get_trending_products(
 #   landed_cost FLOAT64
 # ---------------------------------------------------------------------------
 
-_compare_cache: TTLCache = TTLCache(maxsize=256, ttl=60)
+_compare_cache: TTLCache = TTLCache(maxsize=512, ttl=60)
 _compare_cache_lock = RLock()
 
 
-def _comparison_cache_key(product_ids: tuple[str, ...]) -> tuple[str, ...]:
-    return tuple(sorted(product_ids))
+@cached(cache=_compare_cache, lock=_compare_cache_lock)
+def get_comparison_for_product(product_id: str) -> Optional[ProductComparison]:
+    """
+    Fetch one product's latest per-site snapshot from `mart_site_prices` and
+    build a ProductComparison. Returns None if the product has no rows.
 
-
-@cached(cache=_compare_cache, lock=_compare_cache_lock, key=_comparison_cache_key)
-def get_product_comparison(
-    product_ids: tuple[str, ...],
-) -> CompareResponse:
-    if not product_ids:
-        return CompareResponse(products=[])
-
+    The compare endpoint calls this once per product_id under
+    asyncio.to_thread + asyncio.gather so each BigQuery job runs in parallel.
+    Keep this function synchronous — bigquery.Client.query is blocking.
+    """
     sql = f"""
         SELECT
             canonical_product_id,
@@ -479,86 +535,68 @@ def get_product_comparison(
             shipping_cost,
             landed_cost
         FROM {_mart_ref(settings.BIGQUERY_MART_SITE_PRICES)}
-        WHERE canonical_product_id IN UNNEST(@product_ids)
-        ORDER BY canonical_product_id, price_usd ASC
+        WHERE canonical_product_id = @product_id
+        ORDER BY price_usd ASC
     """
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
-            bigquery.ArrayQueryParameter(
-                "product_ids", "STRING", list(product_ids)
-            ),
+            bigquery.ScalarQueryParameter("product_id", "STRING", product_id),
         ]
     )
     rows = list(get_client().query(sql, job_config=job_config).result())
+    if not rows:
+        return None
 
-    grouped: dict[str, dict[str, Any]] = {}
-    for row in rows:
-        pid = row["canonical_product_id"]
-        bucket = grouped.setdefault(
-            pid,
-            {
-                "product_name": row["product_name"],
-                "image_url": row.get("image_url"),
-                "category": SupplementCategory(row["category"]),
-                "sites": [],
-            },
+    first = rows[0]
+    sites_prices: list[SitePriceSnapshot] = [
+        SitePriceSnapshot(
+            site=row["site"],
+            price_usd=float(row["price_usd"]),
+            original_price=(
+                float(row["original_price"])
+                if row["original_price"] is not None
+                else None
+            ),
+            discount_pct=(
+                float(row["discount_pct"])
+                if row["discount_pct"] is not None
+                else None
+            ),
+            listing_url=row["listing_url"],
+            in_stock=bool(row["in_stock"]),
+            last_seen=_parse_dt(row["last_seen"]),
+            shipping_cost=(
+                float(row["shipping_cost"])
+                if row["shipping_cost"] is not None
+                else None
+            ),
+            landed_cost=(
+                float(row["landed_cost"])
+                if row["landed_cost"] is not None
+                else None
+            ),
         )
-        bucket["sites"].append(
-            SitePriceSnapshot(
-                site=row["site"],
-                price_usd=float(row["price_usd"]),
-                original_price=(
-                    float(row["original_price"])
-                    if row["original_price"] is not None
-                    else None
-                ),
-                discount_pct=(
-                    float(row["discount_pct"])
-                    if row["discount_pct"] is not None
-                    else None
-                ),
-                listing_url=row["listing_url"],
-                in_stock=bool(row["in_stock"]),
-                last_seen=_parse_dt(row["last_seen"]),
-                shipping_cost=(
-                    float(row["shipping_cost"])
-                    if row["shipping_cost"] is not None
-                    else None
-                ),
-                landed_cost=(
-                    float(row["landed_cost"])
-                    if row["landed_cost"] is not None
-                    else None
-                ),
-            )
-        )
+        for row in rows
+    ]
 
-    products: list[ProductComparison] = []
-    for pid, bucket in grouped.items():
-        sites: list[SitePriceSnapshot] = bucket["sites"]
-        if not sites:
-            continue
-        prices = [s.price_usd for s in sites]
-        min_price = min(prices)
-        max_price = max(prices)
-        best_site = next(s.site for s in sites if s.price_usd == min_price)
-        worst_site = next(s.site for s in sites if s.price_usd == max_price)
-        gap_pct = (
-            round((max_price - min_price) / min_price * 100, 2)
-            if min_price > 0
-            else 0.0
-        )
-        products.append(
-            ProductComparison(
-                canonical_product_id=pid,
-                product_name=bucket["product_name"],
-                image_url=bucket["image_url"],
-                category=bucket["category"],
-                sites=sites,
-                best_site=best_site,
-                worst_site=worst_site,
-                price_gap_pct=gap_pct,
-            )
-        )
+    prices = [s.price_usd for s in sites_prices]
+    min_price = min(prices)
+    max_price = max(prices)
+    best_site = next(s.site for s in sites_prices if s.price_usd == min_price)
+    worst_site = next(s.site for s in sites_prices if s.price_usd == max_price)
+    gap_pct = (
+        round((max_price - min_price) / min_price * 100, 2)
+        if min_price > 0
+        else 0.0
+    )
 
-    return CompareResponse(products=products)
+    return ProductComparison(
+        canonical_product_id=first["canonical_product_id"],
+        product_name=first["product_name"],
+        image_url=first.get("image_url"),
+        category=SupplementCategory(first["category"]),
+        sites_prices=sites_prices,
+        best_site=best_site,
+        worst_site=worst_site,
+        price_gap_pct=gap_pct,
+    )

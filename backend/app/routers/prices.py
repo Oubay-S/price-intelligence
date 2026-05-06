@@ -1,3 +1,4 @@
+import asyncio
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
@@ -5,13 +6,13 @@ from google.api_core.exceptions import GoogleAPICallError
 
 from app.models.product import (
     AlertsResponse,
-    CompareParams,
     CompareResponse,
     PriceHistory,
     PriceHistoryParams,
+    ProductComparison,
     SupplementCategory,
 )
-from app.services.analytics import get_price_drops, get_product_comparison
+from app.services.analytics import get_comparison_for_product, get_price_drops
 from app.services.bigquery import get_price_history
 
 router = APIRouter()
@@ -43,11 +44,42 @@ def price_drops(
 
 
 @router.get("/compare", response_model=CompareResponse)
-def compare(params: CompareParams = Depends()) -> CompareResponse:
+async def compare(
+    product_ids: list[str] = Query(
+        ...,
+        alias="product_ids",
+        description="Repeat this param up to 4 times: ?product_ids=A&product_ids=B",
+    ),
+) -> CompareResponse:
+    # Dedupe while preserving caller's order, then enforce 1..4 cap.
+    unique_ids: list[str] = []
+    for pid in product_ids:
+        pid = pid.strip()
+        if pid and pid not in unique_ids:
+            unique_ids.append(pid)
+
+    if not unique_ids:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="At least one product_id is required",
+        )
+    if len(unique_ids) > 4:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=(
+                f"Compare accepts at most 4 product_ids, got {len(unique_ids)}"
+            ),
+        )
+
     try:
-        return get_product_comparison(product_ids=tuple(params.product_ids))
+        results: list[Optional[ProductComparison]] = await asyncio.gather(
+            *(asyncio.to_thread(get_comparison_for_product, pid) for pid in unique_ids)
+        )
     except GoogleAPICallError as exc:
         _raise_bigquery_http_500(exc)
+
+    products = [item for item in results if item is not None]
+    return CompareResponse(products=products)
 
 
 @router.get("/{product_id}/history", response_model=PriceHistory)
