@@ -5,6 +5,7 @@ import random
 import re
 import datetime
 from bs4 import BeautifulSoup
+from notification_utils import send_notification
 
 # Conversion Rate: 1 USD = 9.25 MAD (Approx)
 USD_TO_MAD = 9.25
@@ -33,8 +34,16 @@ def scrape_walmart_category(query, output_file, driver):
         time.sleep(random.uniform(2, 4))
         
         # Loop until CAPTCHA is solved
+        attempts = 0
         while "Robot or human" in driver.title or "Verify you are a human" in driver.page_source or "px-captcha" in driver.page_source:
-            print("CAPTCHA detected! Please solve it in the browser. Waiting 5 seconds...")
+            attempts += 1
+            if attempts > 3: # If stuck for ~15 seconds
+                msg = "Walmart CAPTCHA detected and could not be bypassed. Cookies might be expired. Please run 'generate_walmart_cookies.py' manually."
+                print(f"❌ {msg}")
+                send_notification(msg, status="error")
+                return 0 # Fail fast
+                
+            print(f"CAPTCHA detected (Attempt {attempts}/3)! Waiting 5 seconds...")
             time.sleep(5)
             
         print("Page loaded successfully! Scrolling to load images...")

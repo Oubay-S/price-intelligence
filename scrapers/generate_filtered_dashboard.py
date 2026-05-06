@@ -3,22 +3,18 @@ import json
 import datetime
 from google.cloud import bigtable
 
-# Set emulator environment variable (if not already set)
-if "BIGTABLE_EMULATOR_HOST" not in os.environ:
-    os.environ["BIGTABLE_EMULATOR_HOST"] = "localhost:8086"
+# Set emulator environment variable
+os.environ["BIGTABLE_EMULATOR_HOST"] = "localhost:8087"
 
 def main():
-    print("Connecting to Bigtable Emulator...")
+    print("🚀 Connecting to Bigtable Emulator...")
     
     all_products = []
     all_keys = set()
     
     try:
-        project_id = os.environ.get("GOOGLE_CLOUD_PROJECT", "price-intel-local")
-        instance_id = os.environ.get("BIGTABLE_INSTANCE_ID", "price-intel-instance")
-        
-        client = bigtable.Client(project=project_id, admin=True)
-        instance = client.instance(instance_id)
+        client = bigtable.Client(project='test-project', admin=True)
+        instance = client.instance('test-instance')
         table = instance.table('products')
         
         rows = table.read_rows()
@@ -49,13 +45,13 @@ def main():
             all_products.append(latest_data)
 
         if not all_products:
-            print("No data found in Bigtable. Run load_all_to_bigtable.py first!")
+            print("⚠️ No data found in Bigtable. Run load_all_to_bigtable.py first!")
             return
 
-        print(f"Successfully loaded {len(all_products)} products from Bigtable.")
+        print(f"✨ Successfully loaded {len(all_products)} products from Bigtable.")
         
     except Exception as e:
-        print(f"Bigtable Error: {e}")
+        print(f"❌ Bigtable Error: {e}")
         return
 
     # Organize Columns
@@ -143,11 +139,9 @@ def main():
 
     html_content += "</tbody></table></div></div></body></html>"
     
-    # Save the file in the same directory as this script (scrapers/)
-    output_path = os.path.join(os.path.dirname(__file__), "bigtable_dashboard.html")
-    with open(output_path, "w", encoding='utf-8') as f:
+    with open("bigtable_dashboard.html", "w", encoding='utf-8') as f:
         f.write(html_content)
-    print("Dashboard successfully updated with 'Link' buttons.")
+    print("✨ Dashboard successfully updated with 'Link' buttons.")
 
 if __name__ == "__main__":
     main()

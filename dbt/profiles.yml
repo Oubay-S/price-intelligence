@@ -1,0 +1,13 @@
+price_intel_bq:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: price-intelligence-495411
+      dataset: price_intelligence
+      threads: 4
+      keyfile: /opt/airflow/gcp-credentials.json
+      location: US
+      priority: interactive
+      retries: 1

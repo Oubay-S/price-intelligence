@@ -1,5 +1,50 @@
 [
   {
+    "name": "Pakka 2PCS Protège tibia De thai boxing et kick boxing De Protection rouge",
+    "current_price": "65.00",
+    "price_before_discount": "199.00",
+    "discount": "67%",
+    "sizes": [
+      "L",
+      "M",
+      "S",
+      "XL"
+    ],
+    "features": [
+      "Marque : Pakka",
+      "Paire de protège",
+      "Bonne qualité",
+      "SKU: PA059SE0ELNG0NAFAMZ",
+      "Modèle: 2020"
+    ],
+    "product_url": "https://www.jumia.ma/2pcs-protege-tibia-de-thai-boxing-et-kick-boxing-de-protection-rouge-pakka-mpg1329513.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/24/524784/1.jpg?7485",
+    "stars": "3",
+    "availability": "-",
+    "scraped_at": "2026-05-05T13:29:31.127249"
+  },
+  {
+    "name": "2PCS Prot&egrave;ge tibia De thai boxing et kick boxing pakka",
+    "current_price": "250.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [
+      "S"
+    ],
+    "features": [
+      "Marque : Pakka",
+      "bleu",
+      "Paire de protège",
+      "SKU: GE232SE0FPV0UNAFAMZ",
+      "Modèle: PROTEGE TIBIAS"
+    ],
+    "product_url": "https://www.jumia.ma/generic-2pcs-protegravege-tibia-de-thai-boxing-et-kick-boxing-pakka-64800462.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/26/400846/1.jpg?2043",
+    "stars": "5",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:31.204483"
+  },
+  {
     "name": "Pakka Protège Tibia MMA taekwondo Muay Thai Kick Boxing Protège pieds jambes tibias Coussinets Arts Martiaux Coussinets",
     "current_price": "79.00",
     "price_before_discount": "129.00",
@@ -21,7 +66,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/89/709566/1.jpg?5131",
     "stars": "4.7",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:19.671260"
+    "scraped_at": "2026-05-05T13:29:30.882244"
   },
   {
     "name": "Pakka Protège Tibia MMA, taekwondo Muay Thai Kickboxing, Protège pieds et jambes, Coussinets de Protection Arts Martiaux Sport de Combat PRO",
@@ -45,28 +90,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/809566/1.jpg?6616",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:20.650461"
-  },
-  {
-    "name": "2PCS Prot&egrave;ge tibia De thai boxing et kick boxing pakka",
-    "current_price": "250.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "S"
-    ],
-    "features": [
-      "Marque : Pakka",
-      "bleu",
-      "Paire de protège",
-      "SKU: GE232SE0FPV0UNAFAMZ",
-      "Modèle: PROTEGE TIBIAS"
-    ],
-    "product_url": "https://www.jumia.ma/generic-2pcs-protegravege-tibia-de-thai-boxing-et-kick-boxing-pakka-64800462.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/26/400846/1.jpg?2043",
-    "stars": "5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:21.654537"
+    "scraped_at": "2026-05-05T13:29:30.629220"
   },
   {
     "name": "FAFA SPORT Protège-Tibias pour Muay Thai, MMA et Kickboxing - Double Protection, Réglable et Confortable",
@@ -89,7 +113,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/73/720576/1.jpg?8854",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:22.604847"
+    "scraped_at": "2026-05-05T13:29:30.831740"
   },
   {
     "name": "Pakka Protège Tibia MMA taekwondo Muay Thai Kick Boxing Protège pieds jambes tibias Coussinets Arts Martiaux Coussinets Protection Sport",
@@ -112,7 +136,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/20/809566/1.jpg?6843",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:23.474192"
+    "scraped_at": "2026-05-05T13:29:31.260857"
   },
   {
     "name": "Pakka 1 Pair Protège tibia de Protection pour Kick-Boxing et Muay-Thai - NOIR",
@@ -136,7 +160,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/83/159624/1.jpg?2267",
     "stars": "3.6",
     "availability": "-",
-    "scraped_at": "2026-05-01T17:45:24.723156"
+    "scraped_at": "2026-05-05T13:29:31.535414"
   },
   {
     "name": "FAFA SPORT Protège-Tibias pour Muay Thai, MMA et Kickboxing - Double Protection, Réglable et Confortable",
@@ -157,7 +181,53 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/95/207276/1.jpg?9440",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:25.419931"
+    "scraped_at": "2026-05-05T13:29:31.383062"
+  },
+  {
+    "name": "1 Pair Protège tibia de Protection - BLEU",
+    "current_price": "59.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [
+      "L",
+      "M",
+      "S",
+      "XL"
+    ],
+    "features": [
+      "Marque : Pakka",
+      "Paire de protège",
+      "Bonne qualité",
+      "SKU: GE232SE0UH4PKNAFAMZ",
+      "Modèle: PROTEGE TIBIA"
+    ],
+    "product_url": "https://www.jumia.ma/generic-1-pair-protege-tibia-de-protection-bleu-63778115.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/51/187736/1.jpg?1958",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-05T13:29:31.929160"
+  },
+  {
+    "name": "Protège tibia De thai boxing et kick boxing muay thaï de haute qualité",
+    "current_price": "199.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [
+      "L",
+      "XL"
+    ],
+    "features": [
+      "Marque : Pakka",
+      "Haute qualité",
+      "Paire de protège",
+      "SKU: GE232SE0DT8YWNAFAMZ",
+      "Poids (kg): 1"
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-tibia-de-thai-boxing-et-kick-boxing-muay-thai-de-haute-qualite-65699132.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/23/199656/1.jpg?4502",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-05T13:29:31.836319"
   },
   {
     "name": "Pakka 1 Pair Protège tibia de Protection pour Kick-Boxing et Muay-Thai - Bleu",
@@ -182,98 +252,24 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/96/115944/1.jpg?6755",
     "stars": "3.9",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:26.577437"
+    "scraped_at": "2026-05-05T13:29:32.317666"
   },
   {
-    "name": "1 Pair Protège tibia de Protection - BLEU",
-    "current_price": "59.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "L",
-      "M",
-      "S",
-      "XL"
-    ],
-    "features": [
-      "Marque : Pakka",
-      "Paire de protège",
-      "Bonne qualité",
-      "SKU: GE232SE0UH4PKNAFAMZ",
-      "Modèle: PROTEGE TIBIA"
-    ],
-    "product_url": "https://www.jumia.ma/generic-1-pair-protege-tibia-de-protection-bleu-63778115.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/51/187736/1.jpg?1958",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-01T17:45:27.663001"
-  },
-  {
-    "name": "Protège-tibias BODYPROX – Protection ultime pour vos jambes !",
-    "current_price": "169.00",
-    "price_before_discount": "209.00",
-    "discount": "19%",
+    "name": "Protège-tibias de protection pour sports à impact",
+    "current_price": "334.28",
+    "price_before_discount": "467.99",
+    "discount": "29%",
     "sizes": [],
     "features": [
-      "Protection renforcée – Plaques solides absorbant les chocs pour sécuriser vos tibias.",
-      "Silicone antidérapant – Maintien optimal pendant les mouvements rapides.",
-      "Confort et flexibilité – Design ergonomique et léger pour un mouvement naturel.",
-      "Résistant à l’eau et à la sueur – Idéal pour les sports intenses et prolongés.",
-      "Couleur aléatoire"
+      "SKU: GE232SE09ZJF8NAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: Multicolour"
     ],
-    "product_url": "https://www.jumia.ma/generic-protege-tibias-bodyprox-protection-ultime-pour-vos-jambes-67712739.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/93/721776/1.jpg?7166",
+    "product_url": "https://www.jumia.ma/generic-protege-tibias-de-protection-pour-sports-a-impact-67647761.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/774676/1.jpg?9974",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:28.992955"
-  },
-  {
-    "name": "Protège tibia De thai boxing et kick boxing muay thaï de haute qualité",
-    "current_price": "249.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "L",
-      "M",
-      "S",
-      "XL"
-    ],
-    "features": [
-      "Marque : Pakka",
-      "Haute qualité",
-      "Paire de protège",
-      "SKU: GE232SE0PPX2GNAFAMZ",
-      "Poids (kg): 1"
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-tibia-de-thai-boxing-et-kick-boxing-muay-thai-de-haute-qualite-65699134.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/43/199656/1.jpg?4564",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-01T17:45:30.094049"
-  },
-  {
-    "name": "Pakka 2PCS Protège tibia De thai boxing et kick boxing De Protection rouge",
-    "current_price": "65.00",
-    "price_before_discount": "199.00",
-    "discount": "67%",
-    "sizes": [
-      "L",
-      "M",
-      "S",
-      "XL"
-    ],
-    "features": [
-      "Marque : Pakka",
-      "Paire de protège",
-      "Bonne qualité",
-      "SKU: PA059SE0ELNG0NAFAMZ",
-      "Modèle: 2020"
-    ],
-    "product_url": "https://www.jumia.ma/2pcs-protege-tibia-de-thai-boxing-et-kick-boxing-de-protection-rouge-pakka-mpg1329513.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/24/524784/1.jpg?7485",
-    "stars": "3",
-    "availability": "-",
-    "scraped_at": "2026-05-01T17:45:31.194779"
+    "scraped_at": "2026-05-05T13:29:32.231412"
   },
   {
     "name": "1 Pair Protège tibia de Protection - Rouge",
@@ -297,7 +293,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/31/187736/1.jpg?1242",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-01T17:45:32.385116"
+    "scraped_at": "2026-05-05T13:29:32.340995"
+  },
+  {
+    "name": "Protège-Tibias de Football \"Sports Performance\" – Pack de 2 Pièces (Multicolore)",
+    "current_price": "35.00",
+    "price_before_discount": "69.00",
+    "discount": "49%",
+    "sizes": [],
+    "features": [
+      "Type : Protège-tibias de football",
+      "Marque : Sports Performance",
+      "Quantité : Pack de 2 pièces",
+      "Utilisation : Football (entraînement & match)",
+      "Matériau : Coque résistante + intérieur confortable"
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-tibias-de-football-sports-performance-pack-de-2-pieces-multicolore-67851838.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/83/815876/1.jpg?8340",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-05T13:29:32.465284"
   },
   {
     "name": "1 Pair Protège tibia de Protection - NOIR",
@@ -321,110 +336,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/41/187736/1.jpg?1955",
     "stars": "4.8",
     "availability": "-",
-    "scraped_at": "2026-05-01T17:45:33.404637"
-  },
-  {
-    "name": "topgym Les Protège-Tibias Adulte IMPERIAL - Équipement De Protection Pro",
-    "current_price": "599.00",
-    "price_before_discount": "999.00",
-    "discount": "40%",
-    "sizes": [
-      "PROTÈGE TIBIAS ORANGE-NOIRE"
-    ],
-    "features": [
-      "rembourrage ferme",
-      "matériau élastique",
-      "modèle de chaussette pour un bon ajustement",
-      "rembourrage profilé",
-      "SKU: BR627SE1EWAP4NAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/topgym-les-protege-tibias-adulte-imperial-equipement-de-protection-pro-65678458.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/487656/1.jpg?7825",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-01T17:45:34.223828"
-  },
-  {
-    "name": "Pakka Protège Tibia MMA taekwondo Muay Thai Kick Boxing Protège-pieds jambes tibias Coussinets Arts Martiaux Coussinets",
-    "current_price": "79.00",
-    "price_before_discount": "149.00",
-    "discount": "47%",
-    "sizes": [
-      "M",
-      "S",
-      "XL"
-    ],
-    "features": [
-      "Type: Protège Tibias",
-      "Paire",
-      "Utilisation: Universel Multi-Sport",
-      "SKU: PA059SE0ZJA2ANAFAMZ",
-      "Poids (kg): 0.2"
-    ],
-    "product_url": "https://www.jumia.ma/pakka-protege-tibia-mma-taekwondo-muay-thai-kick-boxing-protege-pieds-jambes-tibias-coussinets-arts-martiaux-coussinets-66068695.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/59/686066/1.jpg?4985",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:34.969741"
-  },
-  {
-    "name": "Protège-tibias de protection pour sports à impact",
-    "current_price": "334.28",
-    "price_before_discount": "467.99",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE09ZJF8NAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-tibias-de-protection-pour-sports-a-impact-67647761.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/774676/1.jpg?9974",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:35.717661"
-  },
-  {
-    "name": "Non Ensemble football homme 5 pieces antiderapant respirant durable avec manchons protege tibias bande et sac rangement sport entrainement",
-    "current_price": "259.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "Taille Unique"
-    ],
-    "features": [
-      "SKU: NO588MW0M4Z3WNAFAMZ",
-      "Pays de production: China",
-      "Taille (Longueur x Largeur x Hauteur cm): 29*15*12cm",
-      "Poids (kg): 0.26",
-      "Matière principale: polyester"
-    ],
-    "product_url": "https://www.jumia.ma/non-ensemble-football-homme-5-pieces-antiderapant-respirant-durable-avec-manchons-protege-tibias-bande-et-sac-rangement-sport-entrainement-67638173.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/37/183676/1.jpg?4190",
-    "stars": "5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:36.689759"
-  },
-  {
-    "name": "Pakka Protège-bras et Protège-tibias Taekwondo – Sécurité & Performance",
-    "current_price": "269.00",
-    "price_before_discount": "399.00",
-    "discount": "33%",
-    "sizes": [
-      "L"
-    ],
-    "features": [
-      "Taekwondo (entraînement et combat)",
-      "Débutants et confirmés",
-      "Clubs, écoles et compétitions",
-      "Caractéristiques :",
-      "Protection renforcée contre les impacts"
-    ],
-    "product_url": "https://www.jumia.ma/pakka-protege-bras-et-protege-tibias-taekwondo-securite-performance-67502392.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/29/320576/1.jpg?6998",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:38.068722"
+    "scraped_at": "2026-05-05T13:29:32.618647"
   },
   {
     "name": "2PCS Prot&egrave;ge tibia De thai boxing et kick boxing pakka",
@@ -448,29 +360,161 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/06/400846/1.jpg?2043",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-01T17:45:39.191863"
+    "scraped_at": "2026-05-05T13:29:33.042168"
+  },
+  {
+    "name": "Non Ensemble football homme 5 pieces antiderapant respirant durable avec manchons protege tibias bande et sac rangement sport entrainement",
+    "current_price": "259.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [
+      "Taille Unique"
+    ],
+    "features": [
+      "SKU: NO588MW0M4Z3WNAFAMZ",
+      "Pays de production: China",
+      "Taille (Longueur x Largeur x Hauteur cm): 29*15*12cm",
+      "Poids (kg): 0.26",
+      "Matière principale: polyester"
+    ],
+    "product_url": "https://www.jumia.ma/non-ensemble-football-homme-5-pieces-antiderapant-respirant-durable-avec-manchons-protege-tibias-bande-et-sac-rangement-sport-entrainement-67638173.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/37/183676/1.jpg?4190",
+    "stars": "5",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:33.220104"
+  },
+  {
+    "name": "topgym Les Protège-Tibias Adulte IMPERIAL - Équipement De Protection Pro",
+    "current_price": "599.00",
+    "price_before_discount": "999.00",
+    "discount": "40%",
+    "sizes": [
+      "PROTÈGE TIBIAS ORANGE-NOIRE"
+    ],
+    "features": [
+      "rembourrage ferme",
+      "matériau élastique",
+      "modèle de chaussette pour un bon ajustement",
+      "rembourrage profilé",
+      "SKU: BR627SE1EWAP4NAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/topgym-les-protege-tibias-adulte-imperial-equipement-de-protection-pro-65678458.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/487656/1.jpg?7825",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-05T13:29:33.213271"
+  },
+  {
+    "name": "Pakka Protège Tibia MMA taekwondo Muay Thai Kick Boxing Protège-pieds jambes tibias Coussinets Arts Martiaux Coussinets",
+    "current_price": "79.00",
+    "price_before_discount": "149.00",
+    "discount": "47%",
+    "sizes": [
+      "M",
+      "S",
+      "XL"
+    ],
+    "features": [
+      "Type: Protège Tibias",
+      "Paire",
+      "Utilisation: Universel Multi-Sport",
+      "SKU: PA059SE0ZJA2ANAFAMZ",
+      "Poids (kg): 0.2"
+    ],
+    "product_url": "https://www.jumia.ma/pakka-protege-tibia-mma-taekwondo-muay-thai-kick-boxing-protege-pieds-jambes-tibias-coussinets-arts-martiaux-coussinets-66068695.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/59/686066/1.jpg?4985",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:33.252836"
+  },
+  {
+    "name": "Mini Protège-Tibias de Football Ultra-Léger et Invisible",
+    "current_price": "48.00",
+    "price_before_discount": "99.00",
+    "discount": "52%",
+    "sizes": [
+      "Blanc",
+      "rouge"
+    ],
+    "features": [
+      "SKU: GE232SE1BUA7WNAFAMZ",
+      "Gamme de produits: Équipement de football",
+      "Modèle: HTB36",
+      "Pays de production: China",
+      "Taille (Longueur x Largeur x Hauteur cm): 10*6*0.5"
+    ],
+    "product_url": "https://www.jumia.ma/generic-mini-protege-tibias-de-football-ultra-leger-et-invisible-67845308.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/80/354876/1.jpg?9878",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-05T13:29:33.372331"
+  },
+  {
+    "name": "Pakka Protège-bras et Protège-tibias Taekwondo – Sécurité & Performance",
+    "current_price": "269.00",
+    "price_before_discount": "399.00",
+    "discount": "33%",
+    "sizes": [
+      "L"
+    ],
+    "features": [
+      "Taekwondo (entraînement et combat)",
+      "Débutants et confirmés",
+      "Clubs, écoles et compétitions",
+      "Caractéristiques :",
+      "Protection renforcée contre les impacts"
+    ],
+    "product_url": "https://www.jumia.ma/pakka-protege-bras-et-protege-tibias-taekwondo-securite-performance-67502392.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/29/320576/1.jpg?6998",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:33.899446"
   },
   {
     "name": "Protège tibia De thai boxing et kick boxing muay thaï de haute qualité",
-    "current_price": "199.00",
+    "current_price": "249.00",
     "price_before_discount": "",
     "discount": null,
     "sizes": [
       "L",
+      "M",
+      "S",
       "XL"
     ],
     "features": [
       "Marque : Pakka",
       "Haute qualité",
       "Paire de protège",
-      "SKU: GE232SE0DT8YWNAFAMZ",
+      "SKU: GE232SE0PPX2GNAFAMZ",
       "Poids (kg): 1"
     ],
-    "product_url": "https://www.jumia.ma/generic-protege-tibia-de-thai-boxing-et-kick-boxing-muay-thai-de-haute-qualite-65699132.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/23/199656/1.jpg?4502",
+    "product_url": "https://www.jumia.ma/generic-protege-tibia-de-thai-boxing-et-kick-boxing-muay-thai-de-haute-qualite-65699134.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/43/199656/1.jpg?4564",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-01T17:45:40.420623"
+    "scraped_at": "2026-05-05T13:29:34.200183"
+  },
+  {
+    "name": "FAFA SPORT Protège-Tibias pour Muay Thai, MMA et Kickboxing - Double Protection, Réglable et Confortable",
+    "current_price": "199.00",
+    "price_before_discount": "299.00",
+    "discount": "33%",
+    "sizes": [
+      "US M",
+      "US XL"
+    ],
+    "features": [
+      "Double couche de protection : Absorption des chocs pour minimiser les impacts violents.",
+      "Matériaux robustes : Résistance garantie même en cas d'utilisation intensive.",
+      "Système de fermeture ajustable : Maintien stable et confortable.",
+      "Design ergonomique : Convient à toutes les morphologies, permettant une mobilité optimale.",
+      "Disponible chez Gym Sleek : La boutique qui vous propose des équipements de qualité pour vos entraînements."
+    ],
+    "product_url": "https://www.jumia.ma/fafa-sport-protege-tibias-pour-muay-thai-mma-et-kickboxing-double-protection-reglable-et-confortable-67394176.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/67/149376/1.jpg?9884",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:34.050045"
   },
   {
     "name": "topgym Les Protège-Tibias Adulte IMPERIAL - Équipement De Protection Pro",
@@ -491,24 +535,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/487656/1.jpg?6265",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-01T17:45:41.172818"
-  },
-  {
-    "name": "Protège-tibias sports impacts",
-    "current_price": "287.05",
-    "price_before_discount": "401.87",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE0D25OCNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-tibias-sports-impacts-67653912.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/21/935676/1.jpg?8298",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:42.167758"
+    "scraped_at": "2026-05-05T13:29:34.160801"
   },
   {
     "name": "Pakka Protège-tibias De Football Shin De Protection",
@@ -529,7 +556,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/96/479183/1.jpg?3353",
     "stars": "3.5",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:43.033423"
+    "scraped_at": "2026-05-05T13:29:34.233297"
   },
   {
     "name": "FAFA SPORT Protège-Tibias pour Muay Thai, MMA et Kickboxing - Double Protection, Réglable et Confortable",
@@ -551,47 +578,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/77/149376/1.jpg?0004",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:44.134040"
-  },
-  {
-    "name": "Protège-Tibias de Football \"Sports Performance\" – Pack de 2 Pièces (Multicolore)",
-    "current_price": "35.00",
-    "price_before_discount": "69.00",
-    "discount": "49%",
-    "sizes": [],
-    "features": [
-      "Type : Protège-tibias de football",
-      "Marque : Sports Performance",
-      "Quantité : Pack de 2 pièces",
-      "Utilisation : Football (entraînement & match)",
-      "Matériau : Coque résistante + intérieur confortable"
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-tibias-de-football-sports-performance-pack-de-2-pieces-multicolore-67851838.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/83/815876/1.jpg?8340",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-01T17:45:45.199639"
-  },
-  {
-    "name": "topgym Les Protège-Tibias Adulte IMPERIAL - Équipement De Protection Pro",
-    "current_price": "599.00",
-    "price_before_discount": "999.00",
-    "discount": "40%",
-    "sizes": [
-      "PROTÈGE TIBIAS JAUNE"
-    ],
-    "features": [
-      "rembourrage ferme",
-      "matériau élastique",
-      "modèle de chaussette pour un bon ajustement",
-      "rembourrage profilé",
-      "SKU: BR627SE18CJ1KNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/topgym-les-protege-tibias-adulte-imperial-equipement-de-protection-pro-65678447.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/74/487656/1.jpg?6445",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-01T17:45:46.142286"
+    "scraped_at": "2026-05-05T13:29:34.464325"
   },
   {
     "name": "Protège-tibias de football pour adultes et enfants haute qaulité panneau PE",
@@ -612,26 +599,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/17/224676/1.jpg?5468",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:47.079556"
-  },
-  {
-    "name": "Pakka Protège-jambe Protège-tibias De Football Shin protecteurs de tibia de football",
-    "current_price": "69.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Matériel: PP + EVA",
-      "Couleur: orange",
-      "Taille: S",
-      "Le poids du colis: 90g / 3.1oz",
-      "SKU: PA059SE1CF4ULNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/pakka-protege-jambe-protege-tibias-de-football-shin-protecteurs-de-tibia-de-football-39672318.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/81/327693/1.jpg?5848",
-    "stars": "4",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:47.672142"
+    "scraped_at": "2026-05-05T13:29:34.590266"
   },
   {
     "name": "Pakka Protège Tibia MMA taekwondo Muay Thai Kick Boxing Protège-pieds jambes tibias Coussinets Arts Martiaux Coussinets",
@@ -655,61 +623,64 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/07/686066/1.jpg?2764",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:48.738027"
+    "scraped_at": "2026-05-05T13:29:35.032348"
   },
   {
-    "name": "Protège-tibias sports impacts",
-    "current_price": "203.00",
-    "price_before_discount": "422.00",
-    "discount": "52%",
+    "name": "Pakka Protège-jambe Protège-tibias De Football Shin protecteurs de tibia de football",
+    "current_price": "69.00",
+    "price_before_discount": "",
+    "discount": null,
     "sizes": [],
     "features": [
-      "Protection ciblée contre les chocs et impactsDesign ergonomique pour un ajustement confortableMaintien stable pendant l’activité sportiveConvient à plusieurs disciplines sportives",
-      "SKU: GE232SE1CF37SNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolore"
+      "Matériel: PP + EVA",
+      "Couleur: orange",
+      "Taille: S",
+      "Le poids du colis: 90g / 3.1oz",
+      "SKU: PA059SE1CF4ULNAFAMZ"
     ],
-    "product_url": "https://www.jumia.ma/generic-protege-tibias-sports-impacts-67552318.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/81/325576/1.jpg?9173",
+    "product_url": "https://www.jumia.ma/pakka-protege-jambe-protege-tibias-de-football-shin-protecteurs-de-tibia-de-football-39672318.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/81/327693/1.jpg?5848",
+    "stars": "4",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:35.012589"
+  },
+  {
+    "name": "Absorption des chocs et anti-dérapant pour football, vélo et sports de contact.",
+    "current_price": "147.03",
+    "price_before_discount": "209.00",
+    "discount": "30%",
+    "sizes": [],
+    "features": [
+      "Protection renforcée – Plaques solides absorbant les chocs pour sécuriser vos tibias.",
+      "Silicone antidérapant – Maintien optimal pendant les mouvements rapides.",
+      "Confort et flexibilité – Design ergonomique et léger pour un mouvement naturel.",
+      "Résistant à l’eau et à la sueur – Idéal pour les sports intenses et prolongés.",
+      "Couleur aléatoire"
+    ],
+    "product_url": "https://www.jumia.ma/generic-absorption-des-chocs-et-anti-derapant-pour-football-velo-et-sports-de-contact.-67712744.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/721776/1.jpg?7208",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:49.765351"
+    "scraped_at": "2026-05-05T13:29:34.947076"
   },
   {
-    "name": "Protège-tibias sports impacts",
-    "current_price": "571.81",
-    "price_before_discount": "800.53",
-    "discount": "29%",
+    "name": "Maintien parfait grâce à la compression et au silicone anti-glisse.",
+    "current_price": "147.03",
+    "price_before_discount": "209.00",
+    "discount": "30%",
     "sizes": [],
     "features": [
-      "SKU: GE232SE0SMR2WNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
+      "Protection renforcée – Plaques solides absorbant les chocs pour sécuriser vos tibias.",
+      "Silicone antidérapant – Maintien optimal pendant les mouvements rapides.",
+      "Confort et flexibilité – Design ergonomique et léger pour un mouvement naturel.",
+      "Résistant à l’eau et à la sueur – Idéal pour les sports intenses et prolongés.",
+      "Couleur aléatoire"
     ],
-    "product_url": "https://www.jumia.ma/generic-protege-tibias-sports-impacts-67709084.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/090776/1.jpg?7840",
+    "product_url": "https://www.jumia.ma/generic-maintien-parfait-grace-a-la-compression-et-au-silicone-anti-glisse.-67712742.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/24/721776/1.jpg?7197",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:50.755724"
-  },
-  {
-    "name": "Protège-tibias ajustables - Adaptés à tous les âges pour le football",
-    "current_price": "39.00",
-    "price_before_discount": "69.00",
-    "discount": "43%",
-    "sizes": [],
-    "features": [
-      "Protection renforcée – Coque en PP haute densité absorbant les chocs pour protéger les os et les muscles.",
-      "Confort optimal – Doublure en EVA douce réduisant les frottements et offrant un excellent amorti.",
-      "Ajustement parfait – Conception arquée épousant le tibia pour un maintien sûr et confortable.",
-      "SKU: GE232SE0DLV5QNAFAMZ",
-      "Poids (kg): 0.1"
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-tibias-ajustables-adaptes-a-tous-les-ages-pour-le-football-66155822.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/22/855166/1.jpg?7985",
-    "stars": "5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:51.486165"
+    "scraped_at": "2026-05-05T13:29:35.259229"
   },
   {
     "name": "Pakka 1 Pair Protège tibia de Protection pour Kick-Boxing et Muay-Thai",
@@ -734,32 +705,118 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/23/592726/1.jpg?7417",
     "stars": "3",
     "availability": "-",
-    "scraped_at": "2026-05-01T17:45:52.305219"
+    "scraped_at": "2026-05-05T13:29:35.345978"
   },
   {
-    "name": "Pakka 1 Pair Protège tibia de Protection pour Kick-Boxing et Muay-Thai",
-    "current_price": "59.00",
-    "price_before_discount": "",
-    "discount": null,
+    "name": "topgym Les Protège-Tibias Adulte IMPERIAL - Équipement De Protection Pro",
+    "current_price": "599.00",
+    "price_before_discount": "999.00",
+    "discount": "40%",
     "sizes": [
-      "L",
-      "M",
-      "S",
-      "XL",
-      "XS"
+      "PROTÈGE TIBIAS JAUNE"
     ],
     "features": [
-      "Marque : Pakka",
-      "Paire de protège",
-      "Bonne qualité",
-      "SKU: PA059SE083C7QNAFAMZ",
-      "Modèle: PROTEGE TIBIA"
+      "rembourrage ferme",
+      "matériau élastique",
+      "modèle de chaussette pour un bon ajustement",
+      "rembourrage profilé",
+      "SKU: BR627SE18CJ1KNAFAMZ"
     ],
-    "product_url": "https://www.jumia.ma/pakka-1-pair-protege-tibia-de-protection-pour-kick-boxing-et-muay-thai-62729531.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/13/592726/1.jpg?7417",
-    "stars": "1",
+    "product_url": "https://www.jumia.ma/topgym-les-protege-tibias-adulte-imperial-equipement-de-protection-pro-65678447.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/74/487656/1.jpg?6445",
+    "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-01T17:45:53.210267"
+    "scraped_at": "2026-05-05T13:29:35.821911"
+  },
+  {
+    "name": "Protège-tibias ajustables - Adaptés à tous les âges pour le football",
+    "current_price": "39.00",
+    "price_before_discount": "69.00",
+    "discount": "43%",
+    "sizes": [],
+    "features": [
+      "Protection renforcée – Coque en PP haute densité absorbant les chocs pour protéger les os et les muscles.",
+      "Confort optimal – Doublure en EVA douce réduisant les frottements et offrant un excellent amorti.",
+      "Ajustement parfait – Conception arquée épousant le tibia pour un maintien sûr et confortable.",
+      "SKU: GE232SE0DLV5QNAFAMZ",
+      "Poids (kg): 0.1"
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-tibias-ajustables-adaptes-a-tous-les-ages-pour-le-football-66155822.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/22/855166/1.jpg?7985",
+    "stars": "5",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:35.645163"
+  },
+  {
+    "name": "Protège-tibias BODYPROX – Protection ultime pour vos jambes !",
+    "current_price": "147.03",
+    "price_before_discount": "209.00",
+    "discount": "30%",
+    "sizes": [],
+    "features": [
+      "Protection renforcée – Plaques solides absorbant les chocs pour sécuriser vos tibias.",
+      "Silicone antidérapant – Maintien optimal pendant les mouvements rapides.",
+      "Confort et flexibilité – Design ergonomique et léger pour un mouvement naturel.",
+      "Résistant à l’eau et à la sueur – Idéal pour les sports intenses et prolongés.",
+      "Couleur aléatoire"
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-tibias-bodyprox-protection-ultime-pour-vos-jambes-67712739.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/93/721776/1.jpg?7166",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:35.907200"
+  },
+  {
+    "name": "Protège-tibias sports impacts",
+    "current_price": "497.47",
+    "price_before_discount": "800.53",
+    "discount": "38%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232SE0SMR2WNAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: Multicolour"
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-tibias-sports-impacts-67709084.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/090776/1.jpg?7840",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:36.086523"
+  },
+  {
+    "name": "Protège-tibias sports impacts",
+    "current_price": "176.61",
+    "price_before_discount": "422.00",
+    "discount": "58%",
+    "sizes": [],
+    "features": [
+      "Protection ciblée contre les chocs et impactsDesign ergonomique pour un ajustement confortableMaintien stable pendant l’activité sportiveConvient à plusieurs disciplines sportives",
+      "SKU: GE232SE1CF37SNAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: Multicolore"
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-tibias-sports-impacts-67552318.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/81/325576/1.jpg?9173",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:36.145287"
+  },
+  {
+    "name": "Protège-tibias sports impacts",
+    "current_price": "249.73",
+    "price_before_discount": "401.87",
+    "discount": "38%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232SE0D25OCNAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: Multicolour"
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-tibias-sports-impacts-67653912.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/21/935676/1.jpg?8298",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:29:36.394329"
   },
   {
     "name": "Protège-Tibias de Football – Coussinets de Protection",
@@ -778,7 +835,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/69/485366/1.jpg?6535",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:54.260549"
+    "scraped_at": "2026-05-05T13:29:36.503683"
   },
   {
     "name": "Pakka 1 Pair Protège tibia de Protection pour Kick-Boxing et Muay-Thai - Bleu",
@@ -797,25 +854,6 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/21/306036/1.jpg?1923",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-01T17:45:55.044497"
-  },
-  {
-    "name": "Protège-tibias de football enfant – Protection et confort pour jeunes sportifs",
-    "current_price": "37.00",
-    "price_before_discount": "49.00",
-    "discount": "24%",
-    "sizes": [],
-    "features": [
-      "Protection renforcée des tibias contre les chocs et les blessures.",
-      "Coque dure et légère pour une sécurité sans gêner les mouvements.",
-      "Sangles élastiques ajustables pour un maintien parfait.",
-      "Idéal pour les enfants et adapté à la morphologie des jeunes sportifs.",
-      "Matériaux faciles à nettoyer pour une hygiène impeccable après chaque utilisation."
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-tibias-de-football-enfant-protection-et-confort-pour-jeunes-sportifs-67377619.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/91/677376/1.jpg?4487",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-01T17:45:55.863690"
+    "scraped_at": "2026-05-05T13:29:36.584658"
   }
 ]

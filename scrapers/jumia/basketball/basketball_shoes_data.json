@@ -18,7 +18,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/20/936956/1.jpg?0169",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-02T17:00:17.159768"
+    "scraped_at": "2026-05-05T13:27:30.461295"
   },
   {
     "name": "Espadrilles pour femmes couleur gris",
@@ -43,7 +43,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/450376/1.jpg?4639",
     "stars": "5",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:17.874173"
+    "scraped_at": "2026-05-05T13:27:30.781863"
   },
   {
     "name": "lacet Chaussures_Sport, basket-ball en toile",
@@ -62,7 +62,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/655836/1.jpg?8045",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:18.884789"
+    "scraped_at": "2026-05-05T13:27:30.929293"
   },
   {
     "name": "Tommy Hilfiger Baskets basses en cuir bleu marine",
@@ -81,7 +81,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/88/258676/1.jpg?6495",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:19.998571"
+    "scraped_at": "2026-05-05T13:27:31.022803"
   },
   {
     "name": "Derbies femme",
@@ -100,7 +100,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/320576/1.jpg?2438",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:20.883840"
+    "scraped_at": "2026-05-05T13:27:30.936886"
   },
   {
     "name": "lacet Chaussures_Sport, basket-ball en toile",
@@ -119,32 +119,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/695936/1.jpg?4944",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:22.030803"
-  },
-  {
-    "name": "Espadrilles pour femmes couleur rose",
-    "current_price": "249.00",
-    "price_before_discount": "399.00",
-    "discount": "38%",
-    "sizes": [
-      "EU 37",
-      "EU 38",
-      "EU 39",
-      "EU 40",
-      "EU 41"
-    ],
-    "features": [
-      "Espadrilles femmes",
-      "Chic  et confort",
-      "Très bonne qualité",
-      "Facile a porter",
-      "Baskets sport"
-    ],
-    "product_url": "https://www.jumia.ma/generic-espadrilles-pour-femmes-couleur-rose-67305444.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/450376/1.jpg?6783",
-    "stars": "5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:24.182602"
+    "scraped_at": "2026-05-05T13:27:31.143476"
   },
   {
     "name": "lacet Chaussures_Sport, basket-ball en toile",
@@ -163,32 +138,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/71/405636/1.jpg?0026",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:25.558703"
-  },
-  {
-    "name": "Espadrilles pour femmes couleur beige",
-    "current_price": "249.00",
-    "price_before_discount": "399.00",
-    "discount": "38%",
-    "sizes": [
-      "EU 37",
-      "EU 38",
-      "EU 39",
-      "EU 40",
-      "EU 41"
-    ],
-    "features": [
-      "Espadrilles femmes",
-      "Chic  et confort",
-      "Très bonne qualité",
-      "Facile a porter",
-      "Baskets sport"
-    ],
-    "product_url": "https://www.jumia.ma/generic-espadrilles-pour-femmes-couleur-beige-67313236.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/63/231376/1.jpg?2400",
-    "stars": "3",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:27.641661"
+    "scraped_at": "2026-05-05T13:27:32.028187"
   },
   {
     "name": "Espadrilles pour femmes couleur blanc",
@@ -213,7 +163,32 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/62/450376/1.jpg?5543",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:30.259120"
+    "scraped_at": "2026-05-05T13:27:32.123882"
+  },
+  {
+    "name": "Espadrilles pour femmes couleur beige",
+    "current_price": "249.00",
+    "price_before_discount": "399.00",
+    "discount": "38%",
+    "sizes": [
+      "EU 37",
+      "EU 38",
+      "EU 39",
+      "EU 40",
+      "EU 41"
+    ],
+    "features": [
+      "Espadrilles femmes",
+      "Chic  et confort",
+      "Très bonne qualité",
+      "Facile a porter",
+      "Baskets sport"
+    ],
+    "product_url": "https://www.jumia.ma/generic-espadrilles-pour-femmes-couleur-beige-67313236.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/63/231376/1.jpg?2400",
+    "stars": "3",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:27:31.872659"
   },
   {
     "name": "BASKET",
@@ -234,7 +209,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/55/320576/1.jpg?6066",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:31.274763"
+    "scraped_at": "2026-05-05T13:27:32.151149"
   },
   {
     "name": "King Sport King Basketball Shoot Playset - Réglable jusqu'à 150 cm",
@@ -253,7 +228,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/05/828384/1.jpg?1529",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:32.391307"
+    "scraped_at": "2026-05-05T13:27:32.240253"
   },
   {
     "name": "Sandale unisexe Noir basketball polyvalente pour plage, gym et maison",
@@ -277,7 +252,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/020456/1.jpg?7589",
     "stars": "4.5",
     "availability": "-",
-    "scraped_at": "2026-05-02T17:00:34.046721"
+    "scraped_at": "2026-05-05T13:27:33.627970"
   },
   {
     "name": "King Sport King Basketball Shoot Playset -  Adjustable upto 112cm",
@@ -296,7 +271,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/94/828384/1.jpg?1529",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:35.184222"
+    "scraped_at": "2026-05-05T13:27:33.533898"
   },
   {
     "name": "King Basketball Shoot Panier de Basket Enfant Réglable 60 à 112 cm Panneau 42 cm Support Stable Jeu Intérieur Extérieur Entraînement Amusant",
@@ -315,7 +290,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/94/086576/1.jpg?0854",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:35.959395"
+    "scraped_at": "2026-05-05T13:27:33.126070"
+  },
+  {
+    "name": "Grand autocollant mural en vinyle de basket-Ball Dunk Shoot Ball",
+    "current_price": "149.00",
+    "price_before_discount": "299.00",
+    "discount": "50%",
+    "sizes": [],
+    "features": [
+      "Réaliste, effet de brique naturelle, style simple et moderne.",
+      "Conception auto-adhésive facile, installation, collage occasionnel",
+      "Il peut être parfaitement collé sur la plupart des murs lisses et solides.",
+      "Dimension: 87cmx56cm",
+      "Matière principale: autocollant"
+    ],
+    "product_url": "https://www.jumia.ma/generic-grand-autocollant-mural-en-vinyle-de-basket-ball-dunk-shoot-ball-54143933.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/33/934145/1.jpg?1436",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:27:33.580985"
   },
   {
     "name": "Sandale unisexe Noir Basketball orange polyvalente pour plage, gym et maison",
@@ -340,26 +334,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/120456/1.jpg?6846",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-02T17:00:37.104425"
-  },
-  {
-    "name": "Grand autocollant mural en vinyle de basket-Ball Dunk Shoot Ball",
-    "current_price": "149.00",
-    "price_before_discount": "299.00",
-    "discount": "50%",
-    "sizes": [],
-    "features": [
-      "Réaliste, effet de brique naturelle, style simple et moderne.",
-      "Conception auto-adhésive facile, installation, collage occasionnel",
-      "Il peut être parfaitement collé sur la plupart des murs lisses et solides.",
-      "Dimension: 87cmx56cm",
-      "Matière principale: autocollant"
-    ],
-    "product_url": "https://www.jumia.ma/generic-grand-autocollant-mural-en-vinyle-de-basket-ball-dunk-shoot-ball-54143933.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/33/934145/1.jpg?1436",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:37.876880"
+    "scraped_at": "2026-05-05T13:27:33.719012"
   },
   {
     "name": "Defacto Ensemble T-shirt imprimé BasketBall et Short pour bébé garçon",
@@ -386,45 +361,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/30/137376/1.jpg?2131",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:38.998420"
-  },
-  {
-    "name": "Jeu Ejection Set Shoot Basketball 2 in 1",
-    "current_price": "200.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Ejection Set",
-      "2 in 1  Basket",
-      "Montage Facile",
-      "Bonne qualité",
-      "SKU: GE232TG0ZDAXUNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/generic-jeu-ejection-set-shoot-basketball-2-in-1-66270495.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/59/407266/1.jpg?5564",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:41.107587"
-  },
-  {
-    "name": "Sac fourre-tout en toile de polyester noir pour femmes avec un motif de basket-ball coloré, sac de shopping réutilisable pour l'école, les voyages, la plage, l'usage quotidien, cadeau idéal pour les fêtes",
-    "current_price": "74.00",
-    "price_before_discount": "159.00",
-    "discount": "53%",
-    "sizes": [],
-    "features": [
-      "Un sac réutilisable et léger à emporter partout, pratique pour transporter votre barda ou vos courses.",
-      "Dimensions du sac : 38,5 x 40 cm",
-      "Sac en tissu  léger",
-      "Le design de votre choix imprimé sur un côté à la demande.",
-      "Le tote bag doublé fera votre bonheur."
-    ],
-    "product_url": "https://www.jumia.ma/generic-sac-fourre-tout-en-toile-de-polyester-noir-pour-femmes-avec-un-motif-de-basket-ball-colore-sac-de-shopping-reutilisable-pour-lecole-les-voyages-la-plage-lusage-quotidien-cadeau-ideal-pour-les-fetes-67323053.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/032376/1.jpg?4389",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-02T17:00:42.157292"
+    "scraped_at": "2026-05-05T13:27:33.863908"
   },
   {
     "name": "Ejeton Jeu Ejection Seat Connect 4 & Shoot Basketball 2 in 1",
@@ -445,13 +382,51 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/56/617956/1.jpg?4165",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:43.620939"
+    "scraped_at": "2026-05-05T13:27:35.004612"
+  },
+  {
+    "name": "Jeu Ejection Set Shoot Basketball 2 in 1",
+    "current_price": "200.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Ejection Set",
+      "2 in 1  Basket",
+      "Montage Facile",
+      "Bonne qualité",
+      "SKU: GE232TG0ZDAXUNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/generic-jeu-ejection-set-shoot-basketball-2-in-1-66270495.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/59/407266/1.jpg?5564",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-05T13:27:34.677067"
+  },
+  {
+    "name": "Sac fourre-tout en toile de polyester noir pour femmes avec un motif de basket-ball coloré, sac de shopping réutilisable pour l'école, les voyages, la plage, l'usage quotidien, cadeau idéal pour les fêtes",
+    "current_price": "74.00",
+    "price_before_discount": "159.00",
+    "discount": "53%",
+    "sizes": [],
+    "features": [
+      "Un sac réutilisable et léger à emporter partout, pratique pour transporter votre barda ou vos courses.",
+      "Dimensions du sac : 38,5 x 40 cm",
+      "Sac en tissu  léger",
+      "Le design de votre choix imprimé sur un côté à la demande.",
+      "Le tote bag doublé fera votre bonheur."
+    ],
+    "product_url": "https://www.jumia.ma/generic-sac-fourre-tout-en-toile-de-polyester-noir-pour-femmes-avec-un-motif-de-basket-ball-colore-sac-de-shopping-reutilisable-pour-lecole-les-voyages-la-plage-lusage-quotidien-cadeau-ideal-pour-les-fetes-67323053.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/032376/1.jpg?4389",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-05T13:27:34.637048"
   },
   {
     "name": "Jeu Ejection Set Connect4 & Shoot Basketball 2 in 1",
-    "current_price": "170.00",
-    "price_before_discount": "",
-    "discount": null,
+    "current_price": "99.00",
+    "price_before_discount": "170.00",
+    "discount": "42%",
     "sizes": [],
     "features": [
       "Ejection Set",
@@ -464,7 +439,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/89/590956/1.jpg?7298",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:45.548566"
+    "scraped_at": "2026-05-05T13:27:34.739362"
   },
   {
     "name": "Jumping Basketball Player Wall Decal Large BaskePlayer Dunk Shoot Ball",
@@ -483,7 +458,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/064795/1.jpg?4187",
     "stars": "5",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:46.671062"
+    "scraped_at": "2026-05-05T13:27:35.049778"
   },
   {
     "name": "Take the Shot Basketball Quote  Spiral Notebook Bloc note",
@@ -502,7 +477,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/62/852785/1.jpg?7534",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-02T17:00:47.424725"
+    "scraped_at": "2026-05-05T13:27:36.186114"
   },
   {
     "name": "Take the Shot Motivational Basketball Spiral Notebook Bloc note",
@@ -521,7 +496,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/76/953685/1.jpg?1105",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-02T17:00:48.235667"
+    "scraped_at": "2026-05-05T13:27:36.164193"
   },
   {
     "name": "Sac fourre-tout de basketball March Madness, parfait pour les cadeaux, avec une grande capacité et un style tendance et facile, idéal pour les pique-niques en plein air, les fêtes, les voyages et le shopping.",
@@ -542,7 +517,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/195876/1.jpg?3645",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-02T17:00:48.809801"
+    "scraped_at": "2026-05-05T13:27:35.755730"
   },
   {
     "name": "Ouri shop Marché noir : un voyage initiatique dans le monde à enjeux élevés du basket-ball universitaire",
@@ -560,7 +535,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/603476/1.jpg?6902",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:50.181312"
+    "scraped_at": "2026-05-05T13:27:36.206800"
   },
   {
     "name": "Ouri shop Beyond Basketball: Coach K's Keywords for Success",
@@ -578,7 +553,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/770576/1.jpg?0914",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:52.007093"
+    "scraped_at": "2026-05-05T13:27:36.141061"
   },
   {
     "name": "Ouri shop Black Market: An Insider's Journey into the High-Stakes World of College Basketball",
@@ -596,7 +571,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/38/950576/1.jpg?0183",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:53.004027"
+    "scraped_at": "2026-05-05T13:27:36.435459"
   },
   {
     "name": "Ouri shop Leading with the Heart: Coach K's Successful Strategies for Basketball, Business, and Life",
@@ -614,6 +589,6 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/67/660576/1.jpg?0355",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-02T17:00:53.985752"
+    "scraped_at": "2026-05-05T13:27:36.827739"
   }
 ]
