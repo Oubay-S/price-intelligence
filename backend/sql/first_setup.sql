@@ -175,6 +175,8 @@ CREATE TABLE watchlist_items (
     alert_threshold_pct     NUMERIC(5,2)                -- NULL = use global_alert_threshold
                             CHECK (alert_threshold_pct IS NULL
                                 OR (alert_threshold_pct > 0 AND alert_threshold_pct <= 100)),
+    target_price            NUMERIC(12,4)               -- absolute-price floor; NULL = unset
+                            CHECK (target_price IS NULL OR target_price > 0),
     alert_enabled           BOOLEAN         NOT NULL DEFAULT TRUE,
     preferred_site          VARCHAR(100),               -- NULL = alert on any site
 
@@ -535,6 +537,7 @@ SELECT
     w.subcategory,
     w.alert_enabled,
     w.preferred_site,
+    w.target_price,
     COALESCE(w.alert_threshold_pct, p.global_alert_threshold) AS effective_threshold,
     w.added_at,
     w.last_alerted_at,
@@ -543,6 +546,36 @@ FROM watchlist_items w
 JOIN user_preferences p ON p.user_id = w.user_id
 LEFT JOIN price_alerts a ON a.watchlist_item_id = w.id
 GROUP BY w.id, p.global_alert_threshold;
+
+
+-- Watchlist rows with per-item unread alert count.
+-- Single query backs the watchlist page AND the navbar badge
+-- (SUM(unread_alert_count) per user).
+CREATE VIEW v_watchlist_with_unread AS
+SELECT
+    w.id,
+    w.user_id,
+    w.canonical_product_id,
+    w.product_title,
+    w.product_image_url,
+    w.category,
+    w.subcategory,
+    w.alert_threshold_pct,
+    w.target_price,
+    w.alert_enabled,
+    w.preferred_site,
+    w.added_at,
+    w.last_alerted_at,
+    COALESCE(w.alert_threshold_pct, p.global_alert_threshold) AS effective_threshold,
+    COUNT(a.id) FILTER (WHERE a.is_read = FALSE) AS unread_alert_count,
+    COUNT(a.id)                                   AS total_alerts_fired
+FROM watchlist_items w
+JOIN user_preferences p ON p.user_id = w.user_id
+LEFT JOIN price_alerts a ON a.watchlist_item_id = w.id
+GROUP BY w.id, p.global_alert_threshold;
+
+COMMENT ON VIEW v_watchlist_with_unread IS
+    'Watchlist rows with per-item unread alert count. Drives the watchlist page and the navbar badge (SUM(unread_alert_count) per user).';
 
 
 

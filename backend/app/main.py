@@ -5,8 +5,11 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import ValidationError
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 
 from app.database import close_pool, init_pool
+from app.middleware.core import limiter
 from app.routers import auth, prices, products, stats, watchlist
 
 
@@ -23,6 +26,10 @@ app = FastAPI(
     version="0.1.0",
     lifespan=lifespan,
 )
+
+# slowapi: attach limiter to app state and register the 429 handler.
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
     CORSMiddleware,

@@ -31,6 +31,12 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 30
+
+    # Rate limits (slowapi syntax: "<count>/<period>"; e.g. "5/minute").
+    # Overrides via .env let ops loosen them in dev or tighten in prod.
+    RATE_LIMIT_LOGIN: str = "10/minute"
+    RATE_LIMIT_REGISTER: str = "5/minute"
 
     DATABASE_URL: str
     REDIS_URL: str
