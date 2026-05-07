@@ -19,53 +19,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/47/383376/1.jpg?4367",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:32.748224"
-  },
-  {
-    "name": "Pakka Gants de Boxe Pour hommes et Femmes - Noir",
-    "current_price": "159.99  - 179.99",
-    "price_before_discount": "299.00",
-    "discount": "46%",
-    "sizes": [
-      "8-oz",
-      "10-oz",
-      "12-oz",
-      "14-oz"
-    ],
-    "features": [
-      "Couleur: Noir mat",
-      "Matériau: cuir PU de haute qualité",
-      "Tailles: 8oz,10oz,12oz, 14oz",
-      "Sexe: homme/femme/enfant",
-      "Personnes applicables: enfants adultes hommes femmes"
-    ],
-    "product_url": "https://www.jumia.ma/gants-de-boxe-pour-hommes-et-femmes-noir-pakka-mpg1010119.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/42/108874/1.jpg?2481",
-    "stars": "4.6",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:33.943766"
-  },
-  {
-    "name": "FAFA SPORT Gants de Boxe Muay Thai entrainement Sparring Kickboxing MMA Boxing Gloves",
-    "current_price": "149.00",
-    "price_before_discount": "249.00",
-    "discount": "40%",
-    "sizes": [
-      "8oz",
-      "12oz"
-    ],
-    "features": [
-      "Type: Gants de Boxe",
-      "Sports: Muay Thai Kickboxing MMA Boxing...",
-      "Genre: Homme Femme Adulte",
-      "SKU: FA889SE055Q3CNAFAMZ",
-      "Modèle: Pakka"
-    ],
-    "product_url": "https://www.jumia.ma/fafa-sport-gants-de-boxe-muay-thai-entrainement-sparring-kickboxing-mma-boxing-gloves-67156680.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/665176/1.jpg?5883",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:33.706878"
+    "scraped_at": "2026-05-07T13:01:34.333725"
   },
   {
     "name": "Venum gant de boxe, Elite Boxing Gloves",
@@ -89,7 +43,53 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/99/198556/1.jpg?8648",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:33.281114"
+    "scraped_at": "2026-05-07T13:01:34.148275"
+  },
+  {
+    "name": "FAFA SPORT Gants de Boxe Muay Thai entrainement Sparring Kickboxing MMA Boxing Gloves",
+    "current_price": "149.00",
+    "price_before_discount": "249.00",
+    "discount": "40%",
+    "sizes": [
+      "8oz",
+      "12oz"
+    ],
+    "features": [
+      "Type: Gants de Boxe",
+      "Sports: Muay Thai Kickboxing MMA Boxing...",
+      "Genre: Homme Femme Adulte",
+      "SKU: FA889SE055Q3CNAFAMZ",
+      "Modèle: Pakka"
+    ],
+    "product_url": "https://www.jumia.ma/fafa-sport-gants-de-boxe-muay-thai-entrainement-sparring-kickboxing-mma-boxing-gloves-67156680.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/665176/1.jpg?5883",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:01:34.454043"
+  },
+  {
+    "name": "Pakka Gants de Boxe Pour hommes et Femmes - Noir",
+    "current_price": "159.99  - 179.99",
+    "price_before_discount": "299.00",
+    "discount": "46%",
+    "sizes": [
+      "8-oz",
+      "10-oz",
+      "12-oz",
+      "14-oz"
+    ],
+    "features": [
+      "Couleur: Noir mat",
+      "Matériau: cuir PU de haute qualité",
+      "Tailles: 8oz,10oz,12oz, 14oz",
+      "Sexe: homme/femme/enfant",
+      "Personnes applicables: enfants adultes hommes femmes"
+    ],
+    "product_url": "https://www.jumia.ma/gants-de-boxe-pour-hommes-et-femmes-noir-pakka-mpg1010119.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/42/108874/1.jpg?2481",
+    "stars": "4.6",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:01:34.550521"
   },
   {
     "name": "Venum gant de boxe, Elite Boxing Gloves",
@@ -113,7 +113,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/86/598556/1.jpg?0388",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:33.183479"
+    "scraped_at": "2026-05-07T13:01:34.657895"
   },
   {
     "name": "Set de Boxe Enfant Réglable 72–108 cm – Punching Ball avec Gants + Base Stable – Kit d’Entraînement Sportif pour Enfants, Jeu de Boxe pour Coordination et Fitness",
@@ -132,26 +132,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/80/157676/1.jpg?2235",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:33.948738"
-  },
-  {
-    "name": "Ensemble d’entrainement de boxe, SUR PIED AVEC GANTS,Punching Ball pour enfants",
-    "current_price": "182.00",
-    "price_before_discount": "341.00",
-    "discount": "47%",
-    "sizes": [],
-    "features": [
-      "Développer la motricité globale et les habilités motrices des enfants",
-      "Travailler le sens de l’équilibre et de balance de l’enfant",
-      "Stimuler l’activité physique et l’endurance",
-      "Age 3 ans et plus",
-      "hauteur du jeu monté : 67 – 102 cm"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ensemble-dentrainement-de-boxe-sur-pied-avec-gantspunching-ball-pour-enfants-67720049.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/94/002776/1.jpg?5423",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:34.272609"
+    "scraped_at": "2026-05-07T13:01:34.714456"
   },
   {
     "name": "Bandes Bandage MMA Pour Gant Boxe Boxing (NOIR)+ Protège-dents",
@@ -170,7 +151,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/29/255424/1.jpg?8529",
     "stars": "3.8",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:34.507090"
+    "scraped_at": "2026-05-07T13:01:34.971789"
   },
   {
     "name": "Pakka Gants de boxe en cuir mat Mitaines incurvées Crochet et cible",
@@ -193,7 +174,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/70/521774/1.jpg?4310",
     "stars": "4.3",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:35.906348"
+    "scraped_at": "2026-05-07T13:01:35.469845"
   },
   {
     "name": "Pakka Bandes Bandage MMA Pour Gant Boxe Boxing 3.5m + Protège-dents (ROUGE)",
@@ -212,7 +193,28 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/521774/1.jpg?4308",
     "stars": "4.1",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:35.956653"
+    "scraped_at": "2026-05-07T13:01:35.237069"
+  },
+  {
+    "name": "Pakka Gants de Boxe Muay Thai entrainement Sparring Kickboxing MMA Boxing Gloves",
+    "current_price": "87.00",
+    "price_before_discount": "229.00",
+    "discount": "62%",
+    "sizes": [
+      "08 oz"
+    ],
+    "features": [
+      "Type: Gants de Boxe",
+      "Sports: Muay Thai Kickboxing MMA Boxing...",
+      "Genre: Homme Femme Adulte",
+      "SKU: PA059SE1MMJLQNAFAMZ",
+      "Modèle: Pakka"
+    ],
+    "product_url": "https://www.jumia.ma/pakka-gants-de-boxe-muay-thai-entrainement-sparring-kickboxing-mma-boxing-gloves-66596489.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/98/469566/1.jpg?2850",
+    "stars": "5",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:01:35.143024"
   },
   {
     "name": "FAFA SPORT Gants de Boxe Muay Thai, Entrainement Sparring Kickboxing MMA",
@@ -235,28 +237,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/11/405176/1.jpg?8690",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:35.829933"
-  },
-  {
-    "name": "Pakka Gants de Boxe Muay Thai entrainement Sparring Kickboxing MMA Boxing Gloves",
-    "current_price": "87.00",
-    "price_before_discount": "229.00",
-    "discount": "62%",
-    "sizes": [
-      "08 oz"
-    ],
-    "features": [
-      "Type: Gants de Boxe",
-      "Sports: Muay Thai Kickboxing MMA Boxing...",
-      "Genre: Homme Femme Adulte",
-      "SKU: PA059SE1MMJLQNAFAMZ",
-      "Modèle: Pakka"
-    ],
-    "product_url": "https://www.jumia.ma/pakka-gants-de-boxe-muay-thai-entrainement-sparring-kickboxing-mma-boxing-gloves-66596489.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/98/469566/1.jpg?2850",
-    "stars": "5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:35.967721"
+    "scraped_at": "2026-05-07T13:01:35.332184"
   },
   {
     "name": "FAFA SPORT Gants de Boxe Muay Thai Entrainement Sparring Kickboxing MMA Gants de boxe",
@@ -277,7 +258,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/39/385176/1.jpg?0323",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:35.970644"
+    "scraped_at": "2026-05-07T13:01:35.559860"
   },
   {
     "name": "Gants de boxe en cuir VERT",
@@ -301,7 +282,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/69/813256/1.jpg?0990",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:36.339638"
+    "scraped_at": "2026-05-07T13:01:35.885455"
+  },
+  {
+    "name": "Pakka Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
+    "current_price": "49.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Tissu de haute qualité,",
+      "doux et respirant,",
+      "plus confortable à porter.",
+      "100% respirant,",
+      "matériel de coton"
+    ],
+    "product_url": "https://www.jumia.ma/pakka-bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-noir-53889584.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/598835/1.jpg?3730",
+    "stars": "5",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:01:35.945881"
   },
   {
     "name": "Venum gant de boxe, Elite Boxing Gloves",
@@ -325,96 +325,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/00/298556/1.jpg?8645",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:36.786655"
-  },
-  {
-    "name": "FAFA SPORT Gants de Boxe Muay Thai entrainement Sparring Kickboxing MMA Boxing Gloves",
-    "current_price": "179.00",
-    "price_before_discount": "249.00",
-    "discount": "28%",
-    "sizes": [
-      "8 oz",
-      "10 oz",
-      "12 oz"
-    ],
-    "features": [
-      "Type: Gants de Boxe",
-      "Sports: Muay Thai Kickboxing MMA Boxing...",
-      "Genre: Homme Femme Adulte",
-      "SKU: FA889SE17H6L4NAFAMZ",
-      "Modèle: Pakka"
-    ],
-    "product_url": "https://www.jumia.ma/fafa-sport-gants-de-boxe-muay-thai-entrainement-sparring-kickboxing-mma-boxing-gloves-67152037.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/73/025176/1.jpg?3564",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:16:36.645402"
-  },
-  {
-    "name": "Venum gant de boxe, Elite Boxing Gloves",
-    "current_price": "229.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "14oz"
-    ],
-    "features": [
-      "3 couches de mousse naturelle",
-      "Pouce attaché : meilleure protection contre les blessures",
-      "Protection métacarpienne optimisée",
-      "Coutures renforcées : durabilité",
-      "Large fermeture Velcro : maintien et ajustement précis"
-    ],
-    "product_url": "https://www.jumia.ma/generic-venum-gant-de-boxe-elite-boxing-gloves-65589197.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/79/198556/1.jpg?8644",
-    "stars": "3",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:36.738630"
-  },
-  {
-    "name": "Gants de boxe, kick-boxing - Pro",
-    "current_price": "579.00",
-    "price_before_discount": "999.00",
-    "discount": "42%",
-    "sizes": [
-      "12oz",
-      "14oz"
-    ],
-    "features": [
-      "Forme de mousse \"courte\" pour permettre les saisies.",
-      "Mousse ergonomique pour un confort optimal",
-      "Bande de serrage du gant pour éviter de le perdre pendant le travail de clinch.",
-      "Matériaux : Mousse, Polyester",
-      "SKU: GE232SE1CWSS0NAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/generic-gants-de-boxe-kick-boxing-pro-65815128.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/82/151856/1.jpg?7043",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:16:36.517262"
-  },
-  {
-    "name": "FAFA SPORT Gants de Boxe Muay Thai entrainement Sparring Kickboxing MMA Boxing Gloves",
-    "current_price": "179.00",
-    "price_before_discount": "249.00",
-    "discount": "28%",
-    "sizes": [
-      "8 oz",
-      "10 oz",
-      "12 oz"
-    ],
-    "features": [
-      "Type: Gants de Boxe",
-      "Sports: Muay Thai Kickboxing MMA Boxing...",
-      "Genre: Homme Femme Adulte",
-      "SKU: FA889SE08CLW8NAFAMZ",
-      "Modèle: Pakka"
-    ],
-    "product_url": "https://www.jumia.ma/fafa-sport-gants-de-boxe-muay-thai-entrainement-sparring-kickboxing-mma-boxing-gloves-67152041.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/14/025176/1.jpg?3683",
-    "stars": "2",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:16:36.909977"
+    "scraped_at": "2026-05-07T13:01:36.258804"
   },
   {
     "name": "Imperial Gants de Boxe pour Adultes Kickboxing, Arts Martiaux, Sparring, Sac de Frappe",
@@ -437,26 +348,73 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/91/578656/1.jpg?1405",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:37.104535"
+    "scraped_at": "2026-05-07T13:01:36.260250"
   },
   {
-    "name": "Ensemble d’entrainement de boxe, PUNCHING BALL SUR PIED AVEC GANTS, superbe jouet Jeu de boxe Punching Ball pour enfants",
-    "current_price": "209.00",
+    "name": "Venum gant de boxe, Elite Boxing Gloves",
+    "current_price": "229.00",
     "price_before_discount": "",
     "discount": null,
-    "sizes": [],
-    "features": [
-      "Développer la motricité globale et les habilités motrices des enfants",
-      "Travailler le sens de l’équilibre et de balance de l’enfant",
-      "Stimuler l’activité physique et l’endurance",
-      "Age 3 ans et plus",
-      "hauteur du jeu monté : 67 – 102 cm"
+    "sizes": [
+      "14oz"
     ],
-    "product_url": "https://www.jumia.ma/generic-ensemble-dentrainement-de-boxe-punching-ball-sur-pied-avec-gants-superbe-jouet-jeu-de-boxe-punching-ball-pour-enfants-66400143.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/34/100466/1.jpg?7439",
-    "stars": "5",
+    "features": [
+      "3 couches de mousse naturelle",
+      "Pouce attaché : meilleure protection contre les blessures",
+      "Protection métacarpienne optimisée",
+      "Coutures renforcées : durabilité",
+      "Large fermeture Velcro : maintien et ajustement précis"
+    ],
+    "product_url": "https://www.jumia.ma/generic-venum-gant-de-boxe-elite-boxing-gloves-65589197.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/79/198556/1.jpg?8644",
+    "stars": "3",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:37.541250"
+    "scraped_at": "2026-05-07T13:01:36.340336"
+  },
+  {
+    "name": "Gants de boxe, kick-boxing - Pro",
+    "current_price": "579.00",
+    "price_before_discount": "999.00",
+    "discount": "42%",
+    "sizes": [
+      "12oz",
+      "14oz"
+    ],
+    "features": [
+      "Forme de mousse \"courte\" pour permettre les saisies.",
+      "Mousse ergonomique pour un confort optimal",
+      "Bande de serrage du gant pour éviter de le perdre pendant le travail de clinch.",
+      "Matériaux : Mousse, Polyester",
+      "SKU: GE232SE1CWSS0NAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/generic-gants-de-boxe-kick-boxing-pro-65815128.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/82/151856/1.jpg?7043",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:01:36.465455"
+  },
+  {
+    "name": "FAFA SPORT Gants de Boxe Muay Thai entrainement Sparring Kickboxing MMA Boxing Gloves",
+    "current_price": "179.00",
+    "price_before_discount": "249.00",
+    "discount": "28%",
+    "sizes": [
+      "8 oz",
+      "10 oz",
+      "12 oz"
+    ],
+    "features": [
+      "Type: Gants de Boxe",
+      "Sports: Muay Thai Kickboxing MMA Boxing...",
+      "Genre: Homme Femme Adulte",
+      "SKU: FA889SE17H6L4NAFAMZ",
+      "Modèle: Pakka"
+    ],
+    "product_url": "https://www.jumia.ma/fafa-sport-gants-de-boxe-muay-thai-entrainement-sparring-kickboxing-mma-boxing-gloves-67152037.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/73/025176/1.jpg?3564",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:01:36.641014"
   },
   {
     "name": "Venum gant de boxe, Elite Boxing Gloves",
@@ -479,7 +437,49 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/59/198556/1.jpg?8648",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:37.433101"
+    "scraped_at": "2026-05-07T13:01:37.247971"
+  },
+  {
+    "name": "FAFA SPORT Gants de Boxe Muay Thai entrainement Sparring Kickboxing MMA Boxing Gloves",
+    "current_price": "179.00",
+    "price_before_discount": "249.00",
+    "discount": "28%",
+    "sizes": [
+      "8 oz",
+      "10 oz",
+      "12 oz"
+    ],
+    "features": [
+      "Type: Gants de Boxe",
+      "Sports: Muay Thai Kickboxing MMA Boxing...",
+      "Genre: Homme Femme Adulte",
+      "SKU: FA889SE08CLW8NAFAMZ",
+      "Modèle: Pakka"
+    ],
+    "product_url": "https://www.jumia.ma/fafa-sport-gants-de-boxe-muay-thai-entrainement-sparring-kickboxing-mma-boxing-gloves-67152041.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/14/025176/1.jpg?3683",
+    "stars": "2",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:01:36.785720"
+  },
+  {
+    "name": "Ensemble d’entrainement de boxe, PUNCHING BALL SUR PIED AVEC GANTS, superbe jouet Jeu de boxe Punching Ball pour enfants",
+    "current_price": "209.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Développer la motricité globale et les habilités motrices des enfants",
+      "Travailler le sens de l’équilibre et de balance de l’enfant",
+      "Stimuler l’activité physique et l’endurance",
+      "Age 3 ans et plus",
+      "hauteur du jeu monté : 67 – 102 cm"
+    ],
+    "product_url": "https://www.jumia.ma/generic-ensemble-dentrainement-de-boxe-punching-ball-sur-pied-avec-gants-superbe-jouet-jeu-de-boxe-punching-ball-pour-enfants-66400143.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/34/100466/1.jpg?7439",
+    "stars": "5",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:01:37.189261"
   },
   {
     "name": "Gants de boxe en cuir NOIR",
@@ -503,7 +503,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/23/224256/1.jpg?4459",
     "stars": "4.6",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:37.290154"
+    "scraped_at": "2026-05-07T13:01:37.603772"
   },
   {
     "name": "Pakka Gants de Boxe Muay Thai entrainement Sparring Kickboxing MMA Boxing Gloves",
@@ -524,7 +524,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/19/469566/1.jpg?3610",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:37.605559"
+    "scraped_at": "2026-05-07T13:01:37.651858"
   },
   {
     "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
@@ -540,26 +540,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/15/521774/1.jpg?4308",
     "stars": "3.4",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:37.720558"
-  },
-  {
-    "name": "Pakka Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
-    "current_price": "49.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Tissu de haute qualité,",
-      "doux et respirant,",
-      "plus confortable à porter.",
-      "100% respirant,",
-      "matériel de coton"
-    ],
-    "product_url": "https://www.jumia.ma/pakka-bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-noir-53889584.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/598835/1.jpg?3730",
-    "stars": "5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:37.789605"
+    "scraped_at": "2026-05-07T13:01:37.723117"
   },
   {
     "name": "FAFA SPORT Gants de Boxe Professionnels – Résistants, Confortables & Soutien Poignet – Idéal Muay Thai, MMA, Kickboxing",
@@ -580,7 +561,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/19/385176/1.jpg?0204",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:38.215628"
+    "scraped_at": "2026-05-07T13:01:37.956628"
   },
   {
     "name": "Pakka GANTS DE BOXE HOMME ET FEMME pakka noir",
@@ -603,7 +584,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/28/419885/1.jpg?6305",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:38.193033"
+    "scraped_at": "2026-05-07T13:01:38.032560"
   },
   {
     "name": "Gant de frappe pour karaté, entraînement à la boxe, Arts martiaux",
@@ -622,7 +603,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/65/175446/1.jpg?4763",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:38.397721"
+    "scraped_at": "2026-05-07T13:01:38.183541"
   },
   {
     "name": "Bandage MMA Pour Gant Boxe Boxing Boxeur Sac de Frappe Poignees  (noir)",
@@ -638,7 +619,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/763184/1.jpg?4614",
     "stars": "3.8",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:38.373846"
+    "scraped_at": "2026-05-07T13:01:38.290913"
   },
   {
     "name": "Outshock GANTS DE BOXE 100 ROUGES",
@@ -662,7 +643,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/011733/1.jpg?9082",
     "stars": "3.9",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:38.495321"
+    "scraped_at": "2026-05-07T13:01:38.482796"
   },
   {
     "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (BLEU)",
@@ -678,7 +659,29 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/140093/1.jpg?2190",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:38.699164"
+    "scraped_at": "2026-05-07T13:01:38.635923"
+  },
+  {
+    "name": "Pakka Bandes Bandage MMA Pour Gant Boxe Boxing Boxeur Sac de Frappe Poignees - Rouge",
+    "current_price": "39.99  - 47.99",
+    "price_before_discount": "89.00",
+    "discount": "55%",
+    "sizes": [
+      "3,5m",
+      "4,5m"
+    ],
+    "features": [
+      "Tissu de haute qualité",
+      "Doux et respirant",
+      "Plus confortable à porter.100% respirant",
+      "Matériel de coton.",
+      "SKU: PA059SE1M2HA2NAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/bandes-bandage-mma-pour-gant-boxe-boxing-boxeur-sac-de-frappe-poignees-rouge-pakka-mpg1143905.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/97/533434/1.jpg?0753",
+    "stars": "3",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:01:38.731301"
   },
   {
     "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
@@ -699,7 +702,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/20/581416/1.jpg?6584",
     "stars": "4.6",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:38.782716"
+    "scraped_at": "2026-05-07T13:01:38.828970"
   },
   {
     "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (BLEU)",
@@ -718,7 +721,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/13/889785/1.jpg?0439",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:39.259500"
+    "scraped_at": "2026-05-07T13:01:38.993143"
   },
   {
     "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (BLEU)",
@@ -737,7 +740,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/55/524784/1.jpg?5937",
     "stars": "3.8",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:38.865868"
+    "scraped_at": "2026-05-07T13:01:39.163676"
   },
   {
     "name": "Pakka GANTS DE BOXE HOMME ET FEMME",
@@ -760,7 +763,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/21/592726/1.jpg?7420",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:38.950590"
+    "scraped_at": "2026-05-07T13:01:39.279113"
   },
   {
     "name": "Pakka Gants de boxe en cuir mat Mitaines incurvées Crochet et cible",
@@ -783,7 +786,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/43/889785/1.jpg?3447",
     "stars": "4.6",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:39.347612"
+    "scraped_at": "2026-05-07T13:01:39.434722"
   },
   {
     "name": "Pakka Gants de Boxe Muay Thai entrainement Sparring Kickboxing MMA Boxing Gloves",
@@ -804,30 +807,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/78/396966/1.jpg?3994",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:39.254816"
-  },
-  {
-    "name": "Gants de boxe en cuir BLEU",
-    "current_price": "153.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "8 OZ",
-      "10OZ",
-      "12OZ"
-    ],
-    "features": [
-      "AMORTI = Mousse moulée pour un amorti optimal. Rembourrage poignet double face.",
-      "MAINTIEN ARTICULAIRE = La fermeture scratch en polyuréthane garantit un bon maintien de votre poignet.",
-      "ÉVACUATION DE LA TRANSPIRATION = Tissu mesh aéré sur la paume et l’intérieur de poignet.",
-      "RÉSISTANCE AU FROTTEMENT = Revêtement extérieur synthétique ( PU ) 0,7 mm, résistant.",
-      "SKU: GE232SE0D9E5KNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/generic-gants-de-boxe-en-cuir-bleu-65237222.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/22/273256/1.jpg?6699",
-    "stars": "5",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:16:39.452274"
+    "scraped_at": "2026-05-07T13:01:39.502073"
   },
   {
     "name": "Gants de boxe en cuir ORANGE",
@@ -851,6 +831,29 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/19/813256/1.jpg?0497",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:39.528126"
+    "scraped_at": "2026-05-07T13:01:39.623927"
+  },
+  {
+    "name": "Gants de boxe en cuir BLEU",
+    "current_price": "153.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [
+      "8 OZ",
+      "10OZ",
+      "12OZ"
+    ],
+    "features": [
+      "AMORTI = Mousse moulée pour un amorti optimal. Rembourrage poignet double face.",
+      "MAINTIEN ARTICULAIRE = La fermeture scratch en polyuréthane garantit un bon maintien de votre poignet.",
+      "ÉVACUATION DE LA TRANSPIRATION = Tissu mesh aéré sur la paume et l’intérieur de poignet.",
+      "RÉSISTANCE AU FROTTEMENT = Revêtement extérieur synthétique ( PU ) 0,7 mm, résistant.",
+      "SKU: GE232SE0D9E5KNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/generic-gants-de-boxe-en-cuir-bleu-65237222.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/22/273256/1.jpg?6699",
+    "stars": "5",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:01:39.881903"
   }
 ]

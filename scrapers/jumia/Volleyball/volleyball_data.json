@@ -16,7 +16,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/80/351576/1.jpg?4138",
     "stars": "4.5",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:26.335244"
+    "scraped_at": "2026-05-07T13:02:32.478296"
   },
   {
     "name": "Standard KIT de Volleyball Classique Créatif 2025, 3 Pièces - Comprend (Volleyball + Sac Filet Sacoche + Pompe Portable et Aiguille)",
@@ -33,7 +33,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/672076/1.jpg?6143",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:26.459193"
+    "scraped_at": "2026-05-07T13:02:32.459435"
   },
   {
     "name": "Standard Kit Filet  Portable  pour volleyball et tennis avec ballon gratuit",
@@ -50,7 +50,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/62/320966/1.jpg?1661",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:26.505806"
+    "scraped_at": "2026-05-07T13:02:32.298501"
   },
   {
     "name": "Standard Kit Filet  Portable  pour volleyball avec ballon gratuit",
@@ -67,7 +67,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/03/320966/1.jpg?1745",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:26.595126"
+    "scraped_at": "2026-05-07T13:02:32.472988"
   },
   {
     "name": "Ballon de Volleyball Milayo MG MV2000 Super Gold – Qualité Compétition, Résistant et Performant",
@@ -84,7 +84,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/117876/1.jpg?0689",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:26.666215"
+    "scraped_at": "2026-05-07T13:02:32.483348"
   },
   {
     "name": "Molten Volleyball- V5M2700",
@@ -103,7 +103,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/31/840356/1.jpg?4666",
     "stars": "3",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:26.793752"
+    "scraped_at": "2026-05-07T13:02:33.423533"
   },
   {
     "name": "Molten Ballon Volleyball V5M4000 pour les équipes et écoles",
@@ -122,26 +122,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/21/888356/1.jpg?9845",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:27.054296"
-  },
-  {
-    "name": "Molten Ballon Volleyball V5M4000 pour les équipes et écoles",
-    "current_price": "299.99",
-    "price_before_discount": "499.99",
-    "discount": "40%",
-    "sizes": [],
-    "features": [
-      "Fabriqué en cuir synthétique souple",
-      "Bonnes caractéristiques de jeu",
-      "Marque de certification DVV",
-      "Taille officielle F.I.V.B 5 et poids",
-      "SKU: MO338SE0IVGK5NAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/molten-ballon-volleyball-v5m4000-pour-les-equipes-et-ecoles-58800713.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/31/700885/1.jpg?4640",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:27.132864"
+    "scraped_at": "2026-05-07T13:02:33.694066"
   },
   {
     "name": "Bande Coude Coudière Elastique Protection Réglable - Pour Gym fitness Sport (Footing, Match Foot-ball, volley-ball, basket-ball)",
@@ -160,7 +141,45 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/47/483524/1.jpg?8707",
     "stars": "4.6",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:27.272155"
+    "scraped_at": "2026-05-07T13:02:33.822332"
+  },
+  {
+    "name": "Molten Ballon Volleyball V5M4000 pour les équipes et écoles",
+    "current_price": "299.99",
+    "price_before_discount": "499.00",
+    "discount": "40%",
+    "sizes": [],
+    "features": [
+      "Fabriqué en cuir synthétique souple",
+      "Bonnes caractéristiques de jeu",
+      "Marque de certification DVV",
+      "Taille officielle F.I.V.B 5 et poids",
+      "SKU: MO338SE0VZX2SNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/ballon-volleyball-v5m4000-pour-les-equipes-et-ecoles-molten-mpg1267730.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/53/743924/1.jpg?5788",
+    "stars": "4.3",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:33.642298"
+  },
+  {
+    "name": "Molten Ballon Volleyball V5M4000 pour les équipes et écoles",
+    "current_price": "299.99",
+    "price_before_discount": "499.99",
+    "discount": "40%",
+    "sizes": [],
+    "features": [
+      "Fabriqué en cuir synthétique souple",
+      "Bonnes caractéristiques de jeu",
+      "Marque de certification DVV",
+      "Taille officielle F.I.V.B 5 et poids",
+      "SKU: MO338SE0IVGK5NAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/molten-ballon-volleyball-v5m4000-pour-les-equipes-et-ecoles-58800713.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/31/700885/1.jpg?4640",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:33.840970"
   },
   {
     "name": "FAFA SPORT Genouillères Sport Renforcées avec Mousse Épaisse – Protection Genoux Volleyball, Danse & Fitness",
@@ -183,26 +202,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/06/095576/1.jpg?7631",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:27.409016"
-  },
-  {
-    "name": "Ballon de volley-ball officiel Taille 5",
-    "current_price": "489.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Nombre de panneaux: 18",
-      "Matériau de la couverture: cuir PU",
-      "Vessie: butyle pays de",
-      "Taille: 5",
-      "Construction: laminée"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-volley-ball-officiel-taille-5-65304815.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/51/840356/1.jpg?4785",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:27.438712"
+    "scraped_at": "2026-05-07T13:02:34.176547"
   },
   {
     "name": "2 genouillères bande de protection pour Sports de plein air, basket-ball, volley-ball",
@@ -221,7 +221,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/355456/1.jpg?6623",
     "stars": "3.8",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:27.513102"
+    "scraped_at": "2026-05-07T13:02:34.403887"
+  },
+  {
+    "name": "Ballon de volley-ball officiel Taille 5",
+    "current_price": "489.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Nombre de panneaux: 18",
+      "Matériau de la couverture: cuir PU",
+      "Vessie: butyle pays de",
+      "Taille: 5",
+      "Construction: laminée"
+    ],
+    "product_url": "https://www.jumia.ma/generic-ballon-de-volley-ball-officiel-taille-5-65304815.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/51/840356/1.jpg?4785",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:34.650728"
   },
   {
     "name": "Molten Volleyball- V5M2700",
@@ -240,7 +259,24 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/776384/1.jpg?3784",
     "stars": "4.3",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:27.608049"
+    "scraped_at": "2026-05-07T13:02:34.827025"
+  },
+  {
+    "name": "Ballon de Volleyball Milayo MG MV2000 Super Gold – Qualité Compétition, Résistant et Performant",
+    "current_price": "232.84",
+    "price_before_discount": "325.98",
+    "discount": "29%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232SE1AZOD8NAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: Multicolour"
+    ],
+    "product_url": "https://www.jumia.ma/generic-ballon-de-volleyball-milayo-mg-mv2000-super-gold-qualite-competition-resistant-et-performant-67862987.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/78/926876/1.jpg?7531",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:34.808578"
   },
   {
     "name": "Coudière Bande Main Protège Bras Coude Elastique - Pour Gym fitness Sport (Footing, Match Foot-ball, volley-ball, basket-ball)",
@@ -259,24 +295,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/307266/1.jpg?3937",
     "stars": "3",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:27.812555"
-  },
-  {
-    "name": "Ballon de Volleyball Milayo MG MV2000 Super Gold – Qualité Compétition, Résistant et Performant",
-    "current_price": "232.84",
-    "price_before_discount": "325.98",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE1AZOD8NAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-volleyball-milayo-mg-mv2000-super-gold-qualite-competition-resistant-et-performant-67862987.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/78/926876/1.jpg?7531",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:28.086666"
+    "scraped_at": "2026-05-07T13:02:35.037588"
   },
   {
     "name": "Ballon de Volleyball Milayo MG MV2000 Super Gold – Qualité Compétition, Résistant et Performant",
@@ -293,7 +312,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/447876/1.jpg?6285",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:27.941773"
+    "scraped_at": "2026-05-07T13:02:35.101072"
   },
   {
     "name": "Chevillere Bande Cheville Bandage Protection et soutien - ankle support - Pour Sport Footing, Match Foot-ball, volley-ball, basket-ball",
@@ -312,7 +331,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/75/483524/1.jpg?1402",
     "stars": "3.2",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:28.018430"
+    "scraped_at": "2026-05-07T13:02:35.344629"
   },
   {
     "name": "2 genouillères bande de protection pour Sports de plein air, basket-ball, volley-ball",
@@ -331,7 +350,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/947176/1.jpg?4537",
     "stars": "5",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:28.172975"
+    "scraped_at": "2026-05-07T13:02:35.553418"
   },
   {
     "name": "2 pièces genouillères , bande de protection et de sécurité pour Sports de plein air, bandages de sécurité, pour volley-ball, basket-ball, tendance 2021",
@@ -349,7 +368,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/49/778684/1.jpg?3481",
     "stars": "4.3",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:28.420914"
+    "scraped_at": "2026-05-07T13:02:35.590039"
   },
   {
     "name": "Molten Volleyball- V5M2700",
@@ -368,26 +387,29 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/58/798556/1.jpg?1585",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:28.507471"
+    "scraped_at": "2026-05-07T13:02:35.771301"
   },
   {
-    "name": "Molten Volleyball- V5M2700",
-    "current_price": "228.99",
-    "price_before_discount": "329.00",
-    "discount": "30%",
-    "sizes": [],
-    "features": [
-      "Nombre de panneaux: 18",
-      "Matériau de la couverture: cuir PU",
-      "Vessie: butyle pays de",
-      "Taille: 5",
-      "Construction: laminée"
+    "name": "FAFA SPORT Coudières Sport Renforcées avec Mousse Épaisse – Protection Coudes Volleyball, Fitness & Sports Intensifs",
+    "current_price": "99.00",
+    "price_before_discount": "149.00",
+    "discount": "34%",
+    "sizes": [
+      "L",
+      "M"
     ],
-    "product_url": "https://www.jumia.ma/molten-volleyball-v5m2700-58800719.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/91/700885/1.jpg?4639",
-    "stars": "4",
+    "features": [
+      "Matière : Fibre de polyester résistante + mousse épaisse de protection",
+      "Design ergonomique adapté à l’articulation du coude",
+      "Tissu respirant et absorbant la transpiration",
+      "Bonne élasticité pour un ajustement confortable",
+      "Protection contre les chocs et frottements"
+    ],
+    "product_url": "https://www.jumia.ma/fafa-sport-coudieres-sport-renforcees-avec-mousse-epaisse-protection-coudes-volleyball-fitness-sports-intensifs-67561962.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/26/916576/1.jpg?0641",
+    "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:28.639069"
+    "scraped_at": "2026-05-07T13:02:35.810090"
   },
   {
     "name": "Molten Ballon de  Volleyball- V5M2700",
@@ -406,45 +428,43 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/94/756436/1.jpg?2143",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:28.699528"
+    "scraped_at": "2026-05-07T13:02:35.896516"
   },
   {
-    "name": "2 Genouillères de Compression élastique,Compression Genou, Jambe, Mollet, Soutien au tibia, Attelle",
-    "current_price": "159.00",
-    "price_before_discount": "180.00",
-    "discount": "12%",
+    "name": "Molten Volleyball- V5M2700",
+    "current_price": "228.99",
+    "price_before_discount": "329.00",
+    "discount": "30%",
     "sizes": [],
     "features": [
-      "L'élasticité totale procure un soutien plus ajusté et plus confortable contre le genou, maintient le genou au chaud et soulage les douleurs chroniques causées par l'arthrite.",
-      "L'élasticité élevée fournit un soutien plus approprié et plus confortable pour le genou.",
-      "Il garde le genou au chaud et soulage la douleur chronique liée à l'arthrite.",
-      "Convient à une variété de fitness et de sports.",
-      "SKU: GE232SE0QAM1MNAFAMZ"
+      "Nombre de panneaux: 18",
+      "Matériau de la couverture: cuir PU",
+      "Vessie: butyle pays de",
+      "Taille: 5",
+      "Construction: laminée"
     ],
-    "product_url": "https://www.jumia.ma/generic-2-genouilleres-de-compression-elastiquecompression-genou-jambe-mollet-soutien-au-tibia-attelle-64156144.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/165146/1.jpg?9323",
-    "stars": "0",
+    "product_url": "https://www.jumia.ma/molten-volleyball-v5m2700-58800719.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/91/700885/1.jpg?4639",
+    "stars": "4",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:28.825383"
+    "scraped_at": "2026-05-07T13:02:36.089469"
   },
   {
-    "name": "Chevillere Bande Cheville Bandage Protection et soutien - ankle support - Pour Sport Footing, Match Foot-ball, volley-ball, basket-ball",
-    "current_price": "37.00",
-    "price_before_discount": "99.00",
-    "discount": "63%",
+    "name": "Genouillères de sport élastiques pressurisées pour hommes et femmes, équipement de Fitness, basket-ball, volley-ball, Bandage de protection",
+    "current_price": "105.00",
+    "price_before_discount": "234.00",
+    "discount": "55%",
     "sizes": [],
     "features": [
-      "Chevillere Bande Cheville Bandage Protection et soutien - support ankle - Pour Sport Footing, Match Foot-ball, volley-ball, basket-ball",
-      "",
-      "Protecteur et soutien de cheville pour faire un effort ou jouer un match . Chevillère pour un soutien léger de la cheville , Fournir un soutien et une compression aux chevilles faibles ou blessés.Fournir une forte capacité d'absorption, tissu doux à haute élasticité vous permettent de porter à l'aise .Que vous ayez une longue journée de travail, une course à pied ou tout simplement envie de garder le sang qui coule pendant que vous dormez, notre manche de compression est suffisamment confortable pour être portée n'importe où . Vous ayez une longue journée de travail, une course à pied ou tout simplement envie de garder le sang qui coule pendant que vous dormez, notre manche de compression est suffisamment confortable pour être portée n'importe où.",
-      "Principales caractéristiques :",
-      "Mettez votre espadrille sans dérangement ."
+      "SKU: GE232SE054JSUNAFAMZ",
+      "Poids (kg): 0,3",
+      "Couleur: multicolor"
     ],
-    "product_url": "https://www.jumia.ma/generic-chevillere-bande-cheville-bandage-protection-et-soutien-ankle-support-pour-sport-footing-match-foot-ball-volley-ball-basket-ball-67586213.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/31/268576/1.jpg?5660",
+    "product_url": "https://www.jumia.ma/generic-genouilleres-de-sport-elastiques-pressurisees-pour-hommes-et-femmes-equipement-de-fitness-basket-ball-volley-ball-bandage-de-protection-66301680.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/610366/1.jpg?6974",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:28.994388"
+    "scraped_at": "2026-05-07T13:02:36.170291"
   },
   {
     "name": "Genouillères monoblocs, genouillères compactes et flexibles pour la course, le basket-ball et le volley-ball",
@@ -463,7 +483,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/42/437146/1.jpg?6642",
     "stars": "1",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:29.144166"
+    "scraped_at": "2026-05-07T13:02:36.668815"
+  },
+  {
+    "name": "2 Genouillères de Compression élastique,Compression Genou, Jambe, Mollet, Soutien au tibia, Attelle",
+    "current_price": "159.00",
+    "price_before_discount": "180.00",
+    "discount": "12%",
+    "sizes": [],
+    "features": [
+      "L'élasticité totale procure un soutien plus ajusté et plus confortable contre le genou, maintient le genou au chaud et soulage les douleurs chroniques causées par l'arthrite.",
+      "L'élasticité élevée fournit un soutien plus approprié et plus confortable pour le genou.",
+      "Il garde le genou au chaud et soulage la douleur chronique liée à l'arthrite.",
+      "Convient à une variété de fitness et de sports.",
+      "SKU: GE232SE0QAM1MNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/generic-2-genouilleres-de-compression-elastiquecompression-genou-jambe-mollet-soutien-au-tibia-attelle-64156144.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/165146/1.jpg?9323",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:36.607437"
   },
   {
     "name": "Molten Volleyball- V5M2700",
@@ -482,26 +521,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/55/651634/1.jpg?4683",
     "stars": "4",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:29.856092"
+    "scraped_at": "2026-05-07T13:02:36.699576"
   },
   {
-    "name": "Bracelet En Cuir volley-ball football game,fifa world cup",
-    "current_price": "69.00",
-    "price_before_discount": "99.00",
-    "discount": "30%",
+    "name": "Molten Volleyball- V5M2700",
+    "current_price": "349.00",
+    "price_before_discount": "",
+    "discount": null,
     "sizes": [],
     "features": [
-      "Bracelet netflix movie jeu jouet gaming TV football animé manga cosplay tendance otaku",
-      "chic",
-      "décoratif",
-      "pour sortie",
-      "soirée"
+      "Nombre de panneaux: 18",
+      "Matériau de la couverture: cuir PU",
+      "Vessie: butyle pays de",
+      "Taille: 5",
+      "Construction: laminée"
     ],
-    "product_url": "https://www.jumia.ma/generic-bracelet-en-cuir-volley-ball-football-gamefifa-world-cup-60697273.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/37/279606/1.jpg?1396",
-    "stars": "0",
+    "product_url": "https://www.jumia.ma/molten-volleyball-v5m2700-41786634.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/43/668714/1.jpg?8531",
+    "stars": "3.7",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:29.284806"
+    "scraped_at": "2026-05-07T13:02:36.822394"
   },
   {
     "name": "Volleyball V5M4000 pour les équipes et écoles",
@@ -520,7 +559,45 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/41/840356/1.jpg?4666",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:29.361912"
+    "scraped_at": "2026-05-07T13:02:36.887365"
+  },
+  {
+    "name": "Chevillere Bande Cheville Bandage Protection et soutien - ankle support - Pour Sport Footing, Match Foot-ball, volley-ball, basket-ball",
+    "current_price": "37.00",
+    "price_before_discount": "99.00",
+    "discount": "63%",
+    "sizes": [],
+    "features": [
+      "Chevillere Bande Cheville Bandage Protection et soutien - support ankle - Pour Sport Footing, Match Foot-ball, volley-ball, basket-ball",
+      "",
+      "Protecteur et soutien de cheville pour faire un effort ou jouer un match . Chevillère pour un soutien léger de la cheville , Fournir un soutien et une compression aux chevilles faibles ou blessés.Fournir une forte capacité d'absorption, tissu doux à haute élasticité vous permettent de porter à l'aise .Que vous ayez une longue journée de travail, une course à pied ou tout simplement envie de garder le sang qui coule pendant que vous dormez, notre manche de compression est suffisamment confortable pour être portée n'importe où . Vous ayez une longue journée de travail, une course à pied ou tout simplement envie de garder le sang qui coule pendant que vous dormez, notre manche de compression est suffisamment confortable pour être portée n'importe où.",
+      "Principales caractéristiques :",
+      "Mettez votre espadrille sans dérangement ."
+    ],
+    "product_url": "https://www.jumia.ma/generic-chevillere-bande-cheville-bandage-protection-et-soutien-ankle-support-pour-sport-footing-match-foot-ball-volley-ball-basket-ball-67586213.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/31/268576/1.jpg?5660",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:37.486334"
+  },
+  {
+    "name": "Bracelet En Cuir volley-ball football game,fifa world cup",
+    "current_price": "69.00",
+    "price_before_discount": "99.00",
+    "discount": "30%",
+    "sizes": [],
+    "features": [
+      "Bracelet netflix movie jeu jouet gaming TV football animé manga cosplay tendance otaku",
+      "chic",
+      "décoratif",
+      "pour sortie",
+      "soirée"
+    ],
+    "product_url": "https://www.jumia.ma/generic-bracelet-en-cuir-volley-ball-football-gamefifa-world-cup-60697273.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/37/279606/1.jpg?1396",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:37.414967"
   },
   {
     "name": "Bracelet En Cuir volleyball haikyuu style 2 anime,manga,cosplay",
@@ -539,87 +616,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/279606/1.jpg?1396",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:29.699133"
+    "scraped_at": "2026-05-07T13:02:37.260088"
   },
   {
-    "name": "Genouillères de sport élastiques pressurisées pour hommes et femmes, équipement de Fitness, basket-ball, volley-ball, Bandage de protection",
-    "current_price": "105.00",
-    "price_before_discount": "234.00",
-    "discount": "55%",
+    "name": "Molten Volleyball- V5M5000",
+    "current_price": "699.00",
+    "price_before_discount": "",
+    "discount": null,
     "sizes": [],
     "features": [
-      "SKU: GE232SE054JSUNAFAMZ",
-      "Poids (kg): 0,3",
-      "Couleur: multicolor"
+      "Nombre de panneaux: 18",
+      "Matériau de la couverture: cuir PU",
+      "Vessie: butyle pays de",
+      "Taille: 5",
+      "Construction: laminée"
     ],
-    "product_url": "https://www.jumia.ma/generic-genouilleres-de-sport-elastiques-pressurisees-pour-hommes-et-femmes-equipement-de-fitness-basket-ball-volley-ball-bandage-de-protection-66301680.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/610366/1.jpg?6974",
+    "product_url": "https://www.jumia.ma/generic-molten-volleyball-v5m5000-65589784.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/798556/1.jpg?1585",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:29.608054"
-  },
-  {
-    "name": "Neoprene knee support Bande de kinésiologie, genouillères et coudières, attelle de cheville pour le volley-ball , basketball",
-    "current_price": "65.00",
-    "price_before_discount": "99.00",
-    "discount": "34%",
-    "sizes": [
-      "genouillère"
-    ],
-    "features": [
-      "Bandage Sport Elastique",
-      "Matière tissu de qualite",
-      "Taille : elastique ajustable au genoux",
-      "Support Genoux : stabilité et soutien",
-      "SKU: NE110SE0QRGFCNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/knee-support-bande-de-kinesiologie-genouilleres-et-coudieres-attelle-de-cheville-pour-le-volley-ball-basketball-neoprene-mpg1513515.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/951016/1.jpg?5450",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:29.924234"
-  },
-  {
-    "name": "T-shirt Noir Homme Volley-ball Coton Imprimé Vintage Silhouette Joueur Design Rétro Sportif Streetwear Décontracté Haut Graphique pour Sportifs et Fans",
-    "current_price": "45.00",
-    "price_before_discount": "155.00",
-    "discount": "71%",
-    "sizes": [
-      "M"
-    ],
-    "features": [
-      "Confort Premium : Tissu en coton doux et respirant pour un bien-être total.",
-      "Designs Originaux : Graphismes uniques et tendances pour affirmer votre style.",
-      "Impression Haute Qualité : Motifs durables qui ne craquèlent pas au lavage.",
-      "Coupe Moderne : Style unisexe s'adaptant parfaitement à toutes les silhouettes.",
-      "Entretien Facile : Tissu résistant qui conserve sa forme et ses couleurs dans le temps."
-    ],
-    "product_url": "https://www.jumia.ma/generic-t-shirt-noir-homme-volley-ball-coton-imprime-vintage-silhouette-joueur-design-retro-sportif-streetwear-decontracte-haut-graphique-pour-sportifs-et-fans-67765295.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/59/256776/1.jpg?2486",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:30.004745"
-  },
-  {
-    "name": "Support de genou médical, genouillères, bandages de sécurité, pour volley-ball, basket-ball, tendance 2021",
-    "current_price": "80.00",
-    "price_before_discount": "90.00",
-    "discount": "11%",
-    "sizes": [
-      "...."
-    ],
-    "features": [
-      "Fournit un soutien adéquat au genou pendant l'activité physiqueType Slip-on pour la facilité d'utilisationSoulage efficacement la douleur au genou post-opératoire, les tensions et l'arthrite.",
-      "Le néoprène respirant retient la chaleur et accélère la période de récupération.",
-      "Parfait pour les activités sportives comme le hockey, le vélo, le cross-fit et procure un soulagement des douleurs articulaires",
-      "Contenu de la boîte: 1 Pack",
-      "Knee SupportCouleur : noir"
-    ],
-    "product_url": "https://www.jumia.ma/generic-support-de-genou-medical-genouilleres-bandages-de-securite-pour-volley-ball-basket-ball-tendance-2021-67164753.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/746176/1.jpg?5168",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:30.135719"
+    "scraped_at": "2026-05-07T13:02:37.674705"
   },
   {
     "name": "2 x Support de genou médical, genouillères, bandages de sécurité, pour volley-ball, basket-ball, tendance 2021",
@@ -638,7 +654,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/67/054676/1.jpg?5104",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:30.393753"
+    "scraped_at": "2026-05-07T13:02:37.710227"
   },
   {
     "name": "Anka 1PC Genouillère Tissage 3D Attelle à Genoux Respirant",
@@ -659,66 +675,28 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/65/773285/1.jpg?0485",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:30.918999"
+    "scraped_at": "2026-05-07T13:02:37.820160"
   },
   {
-    "name": "Neoprene knee support Bande de kinésiologie, genouillères et coudières, attelle de cheville pour le volley-ball , basketball",
-    "current_price": "75.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Bandage Sport Elastique",
-      "Matière tissu de qualite",
-      "Taille : elastique ajustable au genoux",
-      "Support Genoux : stabilité et soutien",
-      "SKU: NE110SE16ZA5XNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/knee-support-bande-de-kinesiologie-genouilleres-et-coudieres-attelle-de-cheville-pour-le-volley-ball-basketball-neoprene-mpg1576892.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/72/190005/1.jpg?5126",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:30.938091"
-  },
-  {
-    "name": "Molten Volleyball- V5M5000",
-    "current_price": "699.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Nombre de panneaux: 18",
-      "Matériau de la couverture: cuir PU",
-      "Vessie: butyle pays de",
-      "Taille: 5",
-      "Construction: laminée"
-    ],
-    "product_url": "https://www.jumia.ma/generic-molten-volleyball-v5m5000-65589784.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/798556/1.jpg?1585",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:30.798062"
-  },
-  {
-    "name": "topgym ENSEMBLE DE JEUX DE JARDIN 3 EN 1 (BADMINTON, TENNIS ET VOLLEYBALL) - ORANGE",
-    "current_price": "990.00",
-    "price_before_discount": "1499.00",
-    "discount": "34%",
+    "name": "Support de genou médical, genouillères, bandages de sécurité, pour volley-ball, basket-ball, tendance 2021",
+    "current_price": "80.00",
+    "price_before_discount": "90.00",
+    "discount": "11%",
     "sizes": [
-      "ENSEMBLE DE JEUX DE JARDIN"
+      "...."
     ],
     "features": [
-      "L'ensemble 3 en 1 – avec tennis, badminton et volley-ball. L'ensemble de jardin parfait pour s'amuser en famille et entre amis.",
-      "Conçu pour être totalement portable et vous permettre de jouer à une partie de tennis, de badminton ou de volley-ball dans le jardin, à la plage, au parc ou partout où vous allez.",
-      "Tout est contenu dans une boîte unique de taille moyenne qui peut facilement se glisser dans n'importe quel coffre de voiture pour faire du sport en déplacement.",
-      "Avec une conception à ajustement rapide, le filet peut être installé en quelques minutes et prêt à jouer. Avec un filet réglable à différentes hauteurs pour chacun des trois sports.",
-      "L'ensemble comprend le filet , 2 raquettes de tennis, 1 balle de tennis, 2 raquettes de badminton, 2 volants, 1 volley-ball et 1 pompe, le tout rangé dans une seule boîte."
+      "Fournit un soutien adéquat au genou pendant l'activité physiqueType Slip-on pour la facilité d'utilisationSoulage efficacement la douleur au genou post-opératoire, les tensions et l'arthrite.",
+      "Le néoprène respirant retient la chaleur et accélère la période de récupération.",
+      "Parfait pour les activités sportives comme le hockey, le vélo, le cross-fit et procure un soulagement des douleurs articulaires",
+      "Contenu de la boîte: 1 Pack",
+      "Knee SupportCouleur : noir"
     ],
-    "product_url": "https://www.jumia.ma/topgym-ensemble-de-jeux-de-jardin-3-en-1-badminton-tennis-et-volleyball-orange-65767858.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/876756/1.jpg?7667",
+    "product_url": "https://www.jumia.ma/generic-support-de-genou-medical-genouilleres-bandages-de-securite-pour-volley-ball-basket-ball-tendance-2021-67164753.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/746176/1.jpg?5168",
     "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:30.902334"
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:38.071142"
   },
   {
     "name": "2 x Support de genou médical, genouillères, bandages de sécurité, pour volley-ball, basket-ball, tendance 2021",
@@ -739,22 +717,45 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/95/746176/1.jpg?5718",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:31.035484"
+    "scraped_at": "2026-05-07T13:02:38.008931"
   },
   {
-    "name": "Molten BALLON VOLLEYBALL V5M2700 TAILLE 5",
-    "current_price": "349.00",
-    "price_before_discount": "",
-    "discount": null,
+    "name": "topgym ENSEMBLE DE JEUX DE JARDIN 3 EN 1 (BADMINTON, TENNIS ET VOLLEYBALL) - ORANGE",
+    "current_price": "990.00",
+    "price_before_discount": "1499.00",
+    "discount": "34%",
+    "sizes": [
+      "ENSEMBLE DE JEUX DE JARDIN"
+    ],
+    "features": [
+      "L'ensemble 3 en 1 – avec tennis, badminton et volley-ball. L'ensemble de jardin parfait pour s'amuser en famille et entre amis.",
+      "Conçu pour être totalement portable et vous permettre de jouer à une partie de tennis, de badminton ou de volley-ball dans le jardin, à la plage, au parc ou partout où vous allez.",
+      "Tout est contenu dans une boîte unique de taille moyenne qui peut facilement se glisser dans n'importe quel coffre de voiture pour faire du sport en déplacement.",
+      "Avec une conception à ajustement rapide, le filet peut être installé en quelques minutes et prêt à jouer. Avec un filet réglable à différentes hauteurs pour chacun des trois sports.",
+      "L'ensemble comprend le filet , 2 raquettes de tennis, 1 balle de tennis, 2 raquettes de badminton, 2 volants, 1 volley-ball et 1 pompe, le tout rangé dans une seule boîte."
+    ],
+    "product_url": "https://www.jumia.ma/topgym-ensemble-de-jeux-de-jardin-3-en-1-badminton-tennis-et-volleyball-orange-65767858.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/876756/1.jpg?7667",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:38.223262"
+  },
+  {
+    "name": "genouillères bande de protection pour Sports de plein air, genouillères, bandages de sécurité, pour volley-ball, basket-ball, tendance 2021",
+    "current_price": "48.70",
+    "price_before_discount": "99.00",
+    "discount": "51%",
     "sizes": [],
     "features": [
-      "SKU: MO338TG04BGCSNAFAMZ",
-      "Poids (kg): 1"
+      "SKU: GE232SE0HZSS7NAFAMZ",
+      "Modèle: 2021",
+      "Poids (kg): 0.15",
+      "Matière principale: tissu élastique"
     ],
-    "product_url": "https://www.jumia.ma/molten-ballon-volleyball-v5m2700-taille-5-67825270.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/07/252876/1.jpg?5941",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:31.381534"
+    "product_url": "https://www.jumia.ma/genouilleres-bande-de-protection-pour-sports-de-plein-air-genouilleres-bandages-de-securite-pour-volley-ball-basket-ball-tendance-2021-generic-mpg1065409.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/30/223735/1.jpg?4806",
+    "stars": "3.7",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:38.408125"
   }
 ]

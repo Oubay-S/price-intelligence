@@ -18,7 +18,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/53/001346/1.jpg?9610",
     "stars": "4.1",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:56.859284"
+    "scraped_at": "2026-05-07T13:01:59.394740"
   },
   {
     "name": "Bellota Scie de jardinage, Scie d'Elagage à Dents Japonaises - Lame Incurvée et Manche en bois avec Protège-main",
@@ -37,7 +37,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/84/786966/1.jpg?2743",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:57.433166"
+    "scraped_at": "2026-05-07T13:01:59.610775"
   },
   {
     "name": "Ensemble De Protège Dents Flexibles Blancs Confortables Adaptées aux Hommes et Aux Femmes",
@@ -56,7 +56,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/76/059176/1.jpg?3111",
     "stars": "1",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:57.061217"
+    "scraped_at": "2026-05-07T13:01:59.766698"
   },
   {
     "name": "Appareil Dentaire Transparent – Aligneur 3 Phases pour Redresser et Protéger les Dents, Anti-Bruxisme",
@@ -75,7 +75,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/09/588276/1.jpg?0037",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:57.518117"
+    "scraped_at": "2026-05-07T13:01:59.803482"
   },
   {
     "name": "PROTEGE DENT POUR ART MARTIAUX",
@@ -94,7 +94,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/38/898556/1.jpg?3025",
     "stars": "4",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:57.345618"
+    "scraped_at": "2026-05-07T13:01:59.538230"
   },
   {
     "name": "Bandes Bandage MMA Pour Gant Boxe Boxing (NOIR)+ Protège-dents",
@@ -113,7 +113,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/29/255424/1.jpg?8529",
     "stars": "3.8",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:57.579780"
+    "scraped_at": "2026-05-07T13:01:59.940736"
   },
   {
     "name": "Pakka Bandes Bandage MMA Pour Gant Boxe Boxing 3.5m + Protège-dents (ROUGE)",
@@ -132,7 +132,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/521774/1.jpg?4308",
     "stars": "4.1",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:57.711052"
+    "scraped_at": "2026-05-07T13:02:00.095168"
   },
   {
     "name": "Venum Protège-dents",
@@ -152,7 +152,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/990776/1.jpg?2434",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:57.978241"
+    "scraped_at": "2026-05-07T13:02:00.268989"
   },
   {
     "name": "Protège Dents Sportifs Confortable De Arts Martiaux Pour Adulte",
@@ -171,7 +171,45 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/80/212266/1.jpg?4244",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:58.477629"
+    "scraped_at": "2026-05-07T13:02:00.352811"
+  },
+  {
+    "name": "Protège-dents simple Shock Doctor",
+    "current_price": "22.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Cadre de Choc Exoskeletal pour une forte absorption des chocs.",
+      "Gel-Fit Liner pour plus de confort.",
+      "Structure Multi-Couches.",
+      "Produit ni repris, ni échangé si emballage ouvert.",
+      "SKU: GE232SP1BVV8WNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-dents-simple-shock-doctor-48782408.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/80/428784/1.jpg?7151",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:00.411258"
+  },
+  {
+    "name": "Pakka Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
+    "current_price": "49.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Tissu de haute qualité,",
+      "doux et respirant,",
+      "plus confortable à porter.",
+      "100% respirant,",
+      "matériel de coton"
+    ],
+    "product_url": "https://www.jumia.ma/pakka-bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-noir-53889584.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/598835/1.jpg?3730",
+    "stars": "5",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:00.502672"
   },
   {
     "name": "Pakka Protège-dents simple - blanc",
@@ -190,26 +228,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/00/666673/1.jpg?0653",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:58.710365"
-  },
-  {
-    "name": "FAFA SPORT Protège-Dents de Sport Haute Qualité – Protection Maximale pour Tous Vos Entraînements",
-    "current_price": "29.00",
-    "price_before_discount": "79.00",
-    "discount": "63%",
-    "sizes": [],
-    "features": [
-      "Fabriqué en matériau souple, non toxique, difficile à déformer.",
-      "Technologie à double densité pour une meilleure absorption des chocs.",
-      "Protège dents, lèvres, mâchoire et gencives pendant les sports de contact.",
-      "Facile à mouler à chaud pour un ajustement personnalisé.",
-      "Livré avec une boîte de rangement hygiénique."
-    ],
-    "product_url": "https://www.jumia.ma/fafa-sport-protege-dents-de-sport-haute-qualite-protection-maximale-pour-tous-vos-entrainements-67069861.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/896076/1.jpg?0019",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:59.220132"
+    "scraped_at": "2026-05-07T13:02:00.753805"
   },
   {
     "name": "Pakka PROTEGE DENT POUR ART MARTIAUX POUR ADULTES",
@@ -230,7 +249,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/651634/1.jpg?4682",
     "stars": "3.6",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:59.683509"
+    "scraped_at": "2026-05-07T13:02:01.073156"
   },
   {
     "name": "FAFA SPORT Protège-Dents de Sport Haute Qualité – Protection Maximale pour Tous Vos Entraînements",
@@ -245,32 +264,11 @@
       "Facile à mouler à chaud pour un ajustement personnalisé.",
       "Livré avec une boîte de rangement hygiénique."
     ],
-    "product_url": "https://www.jumia.ma/fafa-sport-protege-dents-de-sport-haute-qualite-protection-maximale-pour-tous-vos-entrainements-67069857.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/75/896076/1.jpg?2424",
+    "product_url": "https://www.jumia.ma/fafa-sport-protege-dents-de-sport-haute-qualite-protection-maximale-pour-tous-vos-entrainements-67069861.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/896076/1.jpg?0019",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:59.664936"
-  },
-  {
-    "name": "FAFA SPORT Protège-dents boxe MMA taekwondo football muay thai kick boxing basketball",
-    "current_price": "35.00",
-    "price_before_discount": "58.00",
-    "discount": "40%",
-    "sizes": [
-      "(...)"
-    ],
-    "features": [
-      "Type: protège dents",
-      "Genre: Unisex",
-      "Sport: multi Sport",
-      "SKU: FA889SE0Q9ZD8NAFAMZ",
-      "Modèle: FAFA"
-    ],
-    "product_url": "https://www.jumia.ma/fafa-sport-protege-dents-boxe-mma-taekwondo-football-muay-thai-kick-boxing-basketball-65753144.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/135756/1.jpg?7365",
-    "stars": "4.5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:59.799241"
+    "scraped_at": "2026-05-07T13:02:00.903320"
   },
   {
     "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (BLEU)",
@@ -289,7 +287,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/70/187736/1.jpg?8345",
     "stars": "2.5",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:16:59.812222"
+    "scraped_at": "2026-05-07T13:02:01.158443"
   },
   {
     "name": "Venum Predator Protège-dents ( rouge / noir ) Boxe MMA  kickboxing sport de combat",
@@ -310,26 +308,28 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/028246/1.jpg?6606",
     "stars": "2",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:16:59.929490"
+    "scraped_at": "2026-05-07T13:02:01.200865"
   },
   {
-    "name": "Parodontax Bain de Bouche Quotidien protège les dents et gencives et réduit la plaque dentaire 24H - 500ML",
-    "current_price": "78.00",
-    "price_before_discount": "125.00",
-    "discount": "38%",
-    "sizes": [],
-    "features": [
-      "Renforce & Protège : une formule enrichie en acide hyaluronique qui aide à renforcer les gencives et la stabilité des dents pour une protection longue durée ;",
-      "Protection Active Gencives : un bain de bouche recommandé au quotidien pour les personnes dont la muqueuse buccale est fragile et sensible, protège les gencives pendant 24 heures ;",
-      "Complete Protection : celui qui vous apporte pas moins de 8 bénéfices pour des gencives saines et des dents fortes, qui offre une protection toute-en-un contre les principaux éléments responsables des problèmes bucco-dentaires.",
-      "500 ml",
-      "Protection Active Gencive"
+    "name": "FAFA SPORT Protège-dents boxe MMA taekwondo football muay thai kick boxing basketball",
+    "current_price": "35.00",
+    "price_before_discount": "58.00",
+    "discount": "40%",
+    "sizes": [
+      "(...)"
     ],
-    "product_url": "https://www.jumia.ma/parodontax-bain-de-bouche-quotidien-protege-les-dents-et-gencives-et-reduit-la-plaque-dentaire-24h-500ml-67293492.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/29/439276/1.jpg?9299",
-    "stars": "0",
+    "features": [
+      "Type: protège dents",
+      "Genre: Unisex",
+      "Sport: multi Sport",
+      "SKU: FA889SE0Q9ZD8NAFAMZ",
+      "Modèle: FAFA"
+    ],
+    "product_url": "https://www.jumia.ma/fafa-sport-protege-dents-boxe-mma-taekwondo-football-muay-thai-kick-boxing-basketball-65753144.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/135756/1.jpg?7365",
+    "stars": "4.5",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:00.427157"
+    "scraped_at": "2026-05-07T13:02:01.313960"
   },
   {
     "name": "Pakka PROTEGE DENT POUR ART MARTIAUX POUR ADULTES",
@@ -350,7 +350,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/75/240435/1.jpg?8566",
     "stars": "4",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:00.378920"
+    "scraped_at": "2026-05-07T13:02:01.461990"
+  },
+  {
+    "name": "Parodontax Bain de Bouche Quotidien protège les dents et gencives et réduit la plaque dentaire 24H - 500ML",
+    "current_price": "78.00",
+    "price_before_discount": "125.00",
+    "discount": "38%",
+    "sizes": [],
+    "features": [
+      "Renforce & Protège : une formule enrichie en acide hyaluronique qui aide à renforcer les gencives et la stabilité des dents pour une protection longue durée ;",
+      "Protection Active Gencives : un bain de bouche recommandé au quotidien pour les personnes dont la muqueuse buccale est fragile et sensible, protège les gencives pendant 24 heures ;",
+      "Complete Protection : celui qui vous apporte pas moins de 8 bénéfices pour des gencives saines et des dents fortes, qui offre une protection toute-en-un contre les principaux éléments responsables des problèmes bucco-dentaires.",
+      "500 ml",
+      "Protection Active Gencive"
+    ],
+    "product_url": "https://www.jumia.ma/parodontax-bain-de-bouche-quotidien-protege-les-dents-et-gencives-et-reduit-la-plaque-dentaire-24h-500ml-67293492.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/29/439276/1.jpg?9299",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:01.900149"
   },
   {
     "name": "Venum Predator Protège-dents ( bleu / noir ) Boxe MMA  kickboxing sport de combat",
@@ -371,7 +390,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/37/028246/1.jpg?6606",
     "stars": "4",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:00.217936"
+    "scraped_at": "2026-05-07T13:02:02.205947"
+  },
+  {
+    "name": "FAFA SPORT Protège-Dents de Sport Haute Qualité – Protection Maximale pour Tous Vos Entraînements",
+    "current_price": "29.00",
+    "price_before_discount": "79.00",
+    "discount": "63%",
+    "sizes": [],
+    "features": [
+      "Fabriqué en matériau souple, non toxique, difficile à déformer.",
+      "Technologie à double densité pour une meilleure absorption des chocs.",
+      "Protège dents, lèvres, mâchoire et gencives pendant les sports de contact.",
+      "Facile à mouler à chaud pour un ajustement personnalisé.",
+      "Livré avec une boîte de rangement hygiénique."
+    ],
+    "product_url": "https://www.jumia.ma/fafa-sport-protege-dents-de-sport-haute-qualite-protection-maximale-pour-tous-vos-entrainements-67069857.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/75/896076/1.jpg?2424",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:02.335298"
   },
   {
     "name": "Bad Boy Protège-dents PRO boxe MMA taekwondo football muay thai kick boxing basketball",
@@ -390,252 +428,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/63/372076/1.jpg?0143",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:00.563355"
-  },
-  {
-    "name": "PROTÈGE DENTS",
-    "current_price": "25.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Cadre de Choc Exoskeletal pour une forte absorption des chocs.",
-      "Gel-Fit Liner pour plus de confort.",
-      "Structure Multi-Couches.",
-      "Produit ni repris, ni échangé si emballage ouvert.",
-      "SKU: GE232SE1HA512NAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-dents-62729498.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/89/492726/1.jpg?3547",
-    "stars": "5",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:00.668344"
-  },
-  {
-    "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
-    "current_price": "31.00",
-    "price_before_discount": "99.00",
-    "discount": "69%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SP098OOENAFAMZ",
-      "Poids (kg): 0.2"
-    ],
-    "product_url": "https://www.jumia.ma/bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-noir-generic-mpg1501557.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/15/521774/1.jpg?4308",
-    "stars": "3.4",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:00.919382"
-  },
-  {
-    "name": "Pakka Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
-    "current_price": "49.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Tissu de haute qualité,",
-      "doux et respirant,",
-      "plus confortable à porter.",
-      "100% respirant,",
-      "matériel de coton"
-    ],
-    "product_url": "https://www.jumia.ma/pakka-bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-noir-53889584.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/598835/1.jpg?3730",
-    "stars": "5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:00.852186"
-  },
-  {
-    "name": "Pakka Protège-dents simple - Pistache",
-    "current_price": "29.99",
-    "price_before_discount": "35.00",
-    "discount": "14%",
-    "sizes": [],
-    "features": [
-      "Cadre de Choc Exoskeletal pour une forte absorption des chocs.",
-      "Gel-Fit Liner pour plus de confort.",
-      "Structure Multi-Couches.",
-      "Produit ni repris, ni échangé si emballage ouvert.",
-      "SKU: PA059SP0CAYI9NAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/pakka-protege-dents-simple-pistache-37666602.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/20/666673/1.jpg?0653",
-    "stars": "5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:01.044725"
-  },
-  {
-    "name": "Pakka Protège-dents de boxe",
-    "current_price": "49.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Matériau durable et confortable",
-      "Ajustement personnalisé (thermoformable)",
-      "Bonne ventilation pour respirer facilement",
-      "Boîte de rangement incluse",
-      "SKU: PA059SE130C5KNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/pakka-protege-dents-de-boxe-67702556.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/65/520776/1.jpg?3686",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:01.145372"
-  },
-  {
-    "name": "Pakka Protège-dents simple - Pistache",
-    "current_price": "21.00",
-    "price_before_discount": "99.00",
-    "discount": "79%",
-    "sizes": [],
-    "features": [
-      "Cadre de Choc Exoskeletal pour une forte absorption des chocs.",
-      "Gel-Fit Liner pour plus de confort.",
-      "Structure Multi-Couches.",
-      "Produit ni repris, ni échangé si emballage ouvert.",
-      "SKU: PA059SP0KQSBONAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/protege-dents-simple-pistache-pakka-mpg1476217.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/34/842084/1.jpg?2326",
-    "stars": "4.5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:01.294268"
-  },
-  {
-    "name": "PROTÈGE DENTS BADBREED",
-    "current_price": "59.00",
-    "price_before_discount": "199.00",
-    "discount": "70%",
-    "sizes": [
-      "adulte"
-    ],
-    "features": [
-      "gel polymère transparent avec extensions verticales",
-      "doublure en gel souple",
-      "Canaux respiratoires intégrés",
-      "Livré avec un étui de protection",
-      "SKU: GE232SP1MLSGPNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-dents-badbreed-39343489.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/98/434393/1.jpg?5968",
-    "stars": "3.3",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:01.576958"
-  },
-  {
-    "name": "PROTEGE DENT POUR ART MARTIAUX",
-    "current_price": "69.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Technologie de Protection Avancée:* Le protège-dents",
-      "Protège intègre une technologie de pointe pour offrir une protection optimale pendant les activités sportives, minimisant les risques de blessures dentaires.",
-      "﻿﻿Conception Ergonomique:* Son design ergonomique assure un ajustement confortable et sécurisé, permettant une liberté de mouvement tout en maintenant une protection maximale pour les dents.",
-      "﻿﻿Matériaux de Qualité:* Fabriqué à partir de matériaux de haute qualité, le protège-dents garantit durabilité et résistance, assurant une longue durée de vie du produit même dans des conditions d'utilisation intensives.",
-      "﻿﻿Respiration Facilitée:* Grâce à sa conception intelligente, le protège-dents permet une respiration aisée pendant l'effort, évitant ainsi toute gêne respiratoire et assurant une performance optimale."
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-dent-pour-art-martiaux-65589881.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/898556/1.jpg?3025",
-    "stars": "1",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:01.758004"
-  },
-  {
-    "name": "Peigne métallique de haute qualité anti-poux – Outil indispensable pour protéger les cheveux contre poux et lentes, avec des dents solides et fines adaptées aussi bien au cuir chevelu qu’au pelage animal.",
-    "current_price": "38.00",
-    "price_before_discount": "58.00",
-    "discount": "34%",
-    "sizes": [],
-    "features": [
-      "Fabrication en acier inoxydable : durable, solide et résistant à l’usure.",
-      "Dents fines et serrées : capturent efficacement poux, lentes, puces et parasites.",
-      "Solution 100% naturelle : sans produits chimiques, adaptée aux enfants et aux peaux sensibles.",
-      "Multi-usage : convient aussi bien aux humains (adultes et enfants) qu’aux animaux (chiens, chats).",
-      "Pratique et réutilisable : facile à nettoyer et utilisable plusieurs fois."
-    ],
-    "product_url": "https://www.jumia.ma/generic-peigne-metallique-de-haute-qualite-anti-poux-outil-indispensable-pour-proteger-les-cheveux-contre-poux-et-lentes-avec-des-dents-solides-et-fines-adaptees-aussi-bien-au-cuir-chevelu-quau-pelage-animal.-67200653.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/600276/1.jpg?9942",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:01.979472"
-  },
-  {
-    "name": "Protège-dents simple Shock Doctor",
-    "current_price": "22.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Cadre de Choc Exoskeletal pour une forte absorption des chocs.",
-      "Gel-Fit Liner pour plus de confort.",
-      "Structure Multi-Couches.",
-      "Produit ni repris, ni échangé si emballage ouvert.",
-      "SKU: GE232SP1BVV8WNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-dents-simple-shock-doctor-48782408.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/80/428784/1.jpg?7151",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:02.000713"
-  },
-  {
-    "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
-    "current_price": "45.00",
-    "price_before_discount": "61.00",
-    "discount": "26%",
-    "sizes": [
-      "...NOIR"
-    ],
-    "features": [
-      "Tissu de haute qualité,",
-      "doux et respirant,",
-      "plus confortable à porter.",
-      "100% respirant, et matériel de coton",
-      "SKU: GE232SE0C94Q0NAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/generic-bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-noir-61418502.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/20/581416/1.jpg?6584",
-    "stars": "4.6",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:02.074172"
-  },
-  {
-    "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (BLEU)",
-    "current_price": "43.00",
-    "price_before_discount": "99.00",
-    "discount": "57%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SP0KX69PNAFAMZ",
-      "Poids (kg): 0.2"
-    ],
-    "product_url": "https://www.jumia.ma/generic-bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-bleu-39004153.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/140093/1.jpg?2190",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:02.193806"
-  },
-  {
-    "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (BLEU)",
-    "current_price": "41.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Tissu de haute qualité,",
-      "doux et respirant,",
-      "plus confortable à porter.100% respirant,",
-      "matériel de coton",
-      "SKU: GE232SE089PFDNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-bleu-generic-mpg1512164.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/13/889785/1.jpg?0439",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:03.007108"
+    "scraped_at": "2026-05-07T13:02:02.502822"
   },
   {
     "name": "Protège-dents simple Shock Doctor",
@@ -654,101 +447,61 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/81/312514/1.jpg?3268",
     "stars": "3",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:02.867083"
+    "scraped_at": "2026-05-07T13:02:02.509919"
   },
   {
-    "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (BLEU)",
-    "current_price": "29.00",
+    "name": "PROTÈGE DENTS",
+    "current_price": "25.00",
     "price_before_discount": "",
     "discount": null,
     "sizes": [],
     "features": [
-      "Tissu de haute qualité,",
-      "doux et respirant,",
-      "plus confortable à porter.100% respirant,",
-      "matériel de coton",
-      "SKU: GE232SE0X2374NAFAMZ"
+      "Cadre de Choc Exoskeletal pour une forte absorption des chocs.",
+      "Gel-Fit Liner pour plus de confort.",
+      "Structure Multi-Couches.",
+      "Produit ni repris, ni échangé si emballage ouvert.",
+      "SKU: GE232SE1HA512NAFAMZ"
     ],
-    "product_url": "https://www.jumia.ma/bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-bleu-generic-mpg1546060.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/55/524784/1.jpg?5937",
-    "stars": "3.8",
+    "product_url": "https://www.jumia.ma/generic-protege-dents-62729498.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/89/492726/1.jpg?3547",
+    "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:03.140718"
-  },
-  {
-    "name": "2 Protège-Dents Flexibles Blancs – Ajustement Confortable avec Attaches Haut et Bas, Solution Dentaire Discrète et Facile à Porter Unisexe",
-    "current_price": "119.00",
-    "price_before_discount": "199.00",
-    "discount": "40%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232ST1FNA8ONAFAMZ",
-      "Poids (kg): 0.1",
-      "Couleur: blanc",
-      "Matière principale: divers"
-    ],
-    "product_url": "https://www.jumia.ma/generic-2-protege-dents-flexibles-blancs-ajustement-confortable-avec-attaches-haut-et-bas-solution-dentaire-discrete-et-facile-a-porter-unisexe-67764768.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/86/746776/1.jpg?2261",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:03.061465"
+    "scraped_at": "2026-05-07T13:02:02.611237"
   },
   {
     "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
-    "current_price": "39.00",
+    "current_price": "31.00",
+    "price_before_discount": "99.00",
+    "discount": "69%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232SP098OOENAFAMZ",
+      "Poids (kg): 0.2"
+    ],
+    "product_url": "https://www.jumia.ma/bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-noir-generic-mpg1501557.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/15/521774/1.jpg?4308",
+    "stars": "3.4",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:03.199744"
+  },
+  {
+    "name": "Pakka Protège-dents de boxe",
+    "current_price": "49.00",
     "price_before_discount": "",
     "discount": null,
     "sizes": [],
     "features": [
-      "lavage facile",
-      "bonne qualité",
-      "2 pièces",
-      "Anti-allergique",
-      "Couleur: NOIRE"
+      "Matériau durable et confortable",
+      "Ajustement personnalisé (thermoformable)",
+      "Bonne ventilation pour respirer facilement",
+      "Boîte de rangement incluse",
+      "SKU: PA059SE130C5KNAFAMZ"
     ],
-    "product_url": "https://www.jumia.ma/generic-bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-noir-63778106.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/60/187736/1.jpg?8346",
-    "stars": "3.4",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:03.258304"
-  },
-  {
-    "name": "Protege Dent Pour Art Martiaux",
-    "current_price": "69.00",
-    "price_before_discount": "89.00",
-    "discount": "22%",
-    "sizes": [],
-    "features": [
-      "Technologie de Protection Avancée:* Le protège-dents",
-      "Protège intègre une technologie de pointe pour offrir une protection optimale pendant les activités sportives, minimisant les risques de blessures dentaires.",
-      "﻿﻿Conception Ergonomique:* Son design ergonomique assure un ajustement confortable et sécurisé, permettant une liberté de mouvement tout en maintenant une protection maximale pour les dents.",
-      "﻿﻿Matériaux de Qualité:* Fabriqué à partir de matériaux de haute qualité, le protège-dents garantit durabilité et résistance, assurant une longue durée de vie du produit même dans des conditions d'utilisation intensives.",
-      "﻿﻿Respiration Facilitée:* Grâce à sa conception intelligente, le protège-dents permet une respiration aisée pendant l'effort, évitant ainsi toute gêne respiratoire et assurant une performance optimale."
-    ],
-    "product_url": "https://www.jumia.ma/generic-protege-dent-pour-art-martiaux-65143421.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/12/434156/1.jpg?9108",
-    "stars": "4",
-    "availability": "-",
-    "scraped_at": "2026-05-06T13:17:03.461387"
-  },
-  {
-    "name": "FAFA SPORT Protège-dents boxe MMA taekwondo football muay thai kick boxing basketball",
-    "current_price": "35.00",
-    "price_before_discount": "89.00",
-    "discount": "61%",
-    "sizes": [],
-    "features": [
-      "Type: protège dents",
-      "Genre: Unisex",
-      "Sport: multi Sport",
-      "SKU: FA889SE0OJH7ONAFAMZ",
-      "Modèle: FAFA"
-    ],
-    "product_url": "https://www.jumia.ma/fafa-sport-protege-dents-boxe-mma-taekwondo-football-muay-thai-kick-boxing-basketball-65591214.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/41/219556/1.jpg?7023",
+    "product_url": "https://www.jumia.ma/pakka-protege-dents-de-boxe-67702556.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/65/520776/1.jpg?3686",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-06T13:17:03.562546"
+    "scraped_at": "2026-05-07T13:02:02.948016"
   },
   {
     "name": "FAFA SPORT Protège-dents boxe MMA taekwondo football muay thai kick boxing basketball",
@@ -769,6 +522,255 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/94/135756/1.jpg?8685",
     "stars": "0",
     "availability": "In Stock",
-    "scraped_at": "2026-05-06T13:17:03.687982"
+    "scraped_at": "2026-05-07T13:02:03.259703"
+  },
+  {
+    "name": "PROTEGE DENT POUR ART MARTIAUX",
+    "current_price": "69.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Technologie de Protection Avancée:* Le protège-dents",
+      "Protège intègre une technologie de pointe pour offrir une protection optimale pendant les activités sportives, minimisant les risques de blessures dentaires.",
+      "﻿﻿Conception Ergonomique:* Son design ergonomique assure un ajustement confortable et sécurisé, permettant une liberté de mouvement tout en maintenant une protection maximale pour les dents.",
+      "﻿﻿Matériaux de Qualité:* Fabriqué à partir de matériaux de haute qualité, le protège-dents garantit durabilité et résistance, assurant une longue durée de vie du produit même dans des conditions d'utilisation intensives.",
+      "﻿﻿Respiration Facilitée:* Grâce à sa conception intelligente, le protège-dents permet une respiration aisée pendant l'effort, évitant ainsi toute gêne respiratoire et assurant une performance optimale."
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-dent-pour-art-martiaux-65589881.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/898556/1.jpg?3025",
+    "stars": "1",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:03.378731"
+  },
+  {
+    "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
+    "current_price": "45.00",
+    "price_before_discount": "61.00",
+    "discount": "26%",
+    "sizes": [
+      "...NOIR"
+    ],
+    "features": [
+      "Tissu de haute qualité,",
+      "doux et respirant,",
+      "plus confortable à porter.",
+      "100% respirant, et matériel de coton",
+      "SKU: GE232SE0C94Q0NAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/generic-bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-noir-61418502.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/20/581416/1.jpg?6584",
+    "stars": "4.6",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:03.229062"
+  },
+  {
+    "name": "Peigne métallique de haute qualité anti-poux – Outil indispensable pour protéger les cheveux contre poux et lentes, avec des dents solides et fines adaptées aussi bien au cuir chevelu qu’au pelage animal.",
+    "current_price": "38.00",
+    "price_before_discount": "58.00",
+    "discount": "34%",
+    "sizes": [],
+    "features": [
+      "Fabrication en acier inoxydable : durable, solide et résistant à l’usure.",
+      "Dents fines et serrées : capturent efficacement poux, lentes, puces et parasites.",
+      "Solution 100% naturelle : sans produits chimiques, adaptée aux enfants et aux peaux sensibles.",
+      "Multi-usage : convient aussi bien aux humains (adultes et enfants) qu’aux animaux (chiens, chats).",
+      "Pratique et réutilisable : facile à nettoyer et utilisable plusieurs fois."
+    ],
+    "product_url": "https://www.jumia.ma/generic-peigne-metallique-de-haute-qualite-anti-poux-outil-indispensable-pour-proteger-les-cheveux-contre-poux-et-lentes-avec-des-dents-solides-et-fines-adaptees-aussi-bien-au-cuir-chevelu-quau-pelage-animal.-67200653.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/600276/1.jpg?9942",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:03.531983"
+  },
+  {
+    "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (BLEU)",
+    "current_price": "43.00",
+    "price_before_discount": "99.00",
+    "discount": "57%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232SP0KX69PNAFAMZ",
+      "Poids (kg): 0.2"
+    ],
+    "product_url": "https://www.jumia.ma/generic-bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-bleu-39004153.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/140093/1.jpg?2190",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:03.740577"
+  },
+  {
+    "name": "PROTÈGE DENTS BADBREED",
+    "current_price": "59.00",
+    "price_before_discount": "199.00",
+    "discount": "70%",
+    "sizes": [
+      "adulte"
+    ],
+    "features": [
+      "gel polymère transparent avec extensions verticales",
+      "doublure en gel souple",
+      "Canaux respiratoires intégrés",
+      "Livré avec un étui de protection",
+      "SKU: GE232SP1MLSGPNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-dents-badbreed-39343489.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/98/434393/1.jpg?5968",
+    "stars": "3.3",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:03.828250"
+  },
+  {
+    "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (BLEU)",
+    "current_price": "41.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Tissu de haute qualité,",
+      "doux et respirant,",
+      "plus confortable à porter.100% respirant,",
+      "matériel de coton",
+      "SKU: GE232SE089PFDNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-bleu-generic-mpg1512164.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/13/889785/1.jpg?0439",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:04.001367"
+  },
+  {
+    "name": "2 Protège-Dents Flexibles Blancs – Ajustement Confortable avec Attaches Haut et Bas, Solution Dentaire Discrète et Facile à Porter Unisexe",
+    "current_price": "119.00",
+    "price_before_discount": "199.00",
+    "discount": "40%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232ST1FNA8ONAFAMZ",
+      "Poids (kg): 0.1",
+      "Couleur: blanc",
+      "Matière principale: divers"
+    ],
+    "product_url": "https://www.jumia.ma/generic-2-protege-dents-flexibles-blancs-ajustement-confortable-avec-attaches-haut-et-bas-solution-dentaire-discrete-et-facile-a-porter-unisexe-67764768.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/86/746776/1.jpg?2261",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:04.029612"
+  },
+  {
+    "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (BLEU)",
+    "current_price": "29.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Tissu de haute qualité,",
+      "doux et respirant,",
+      "plus confortable à porter.100% respirant,",
+      "matériel de coton",
+      "SKU: GE232SE0X2374NAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-bleu-generic-mpg1546060.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/55/524784/1.jpg?5937",
+    "stars": "3.8",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:04.102334"
+  },
+  {
+    "name": "Protege Dent Pour Art Martiaux",
+    "current_price": "69.00",
+    "price_before_discount": "89.00",
+    "discount": "22%",
+    "sizes": [],
+    "features": [
+      "Technologie de Protection Avancée:* Le protège-dents",
+      "Protège intègre une technologie de pointe pour offrir une protection optimale pendant les activités sportives, minimisant les risques de blessures dentaires.",
+      "﻿﻿Conception Ergonomique:* Son design ergonomique assure un ajustement confortable et sécurisé, permettant une liberté de mouvement tout en maintenant une protection maximale pour les dents.",
+      "﻿﻿Matériaux de Qualité:* Fabriqué à partir de matériaux de haute qualité, le protège-dents garantit durabilité et résistance, assurant une longue durée de vie du produit même dans des conditions d'utilisation intensives.",
+      "﻿﻿Respiration Facilitée:* Grâce à sa conception intelligente, le protège-dents permet une respiration aisée pendant l'effort, évitant ainsi toute gêne respiratoire et assurant une performance optimale."
+    ],
+    "product_url": "https://www.jumia.ma/generic-protege-dent-pour-art-martiaux-65143421.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/12/434156/1.jpg?9108",
+    "stars": "4",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:04.474090"
+  },
+  {
+    "name": "FAFA SPORT Protège-dents boxe MMA taekwondo football muay thai kick boxing basketball",
+    "current_price": "35.00",
+    "price_before_discount": "89.00",
+    "discount": "61%",
+    "sizes": [],
+    "features": [
+      "Type: protège dents",
+      "Genre: Unisex",
+      "Sport: multi Sport",
+      "SKU: FA889SE0OJH7ONAFAMZ",
+      "Modèle: FAFA"
+    ],
+    "product_url": "https://www.jumia.ma/fafa-sport-protege-dents-boxe-mma-taekwondo-football-muay-thai-kick-boxing-basketball-65591214.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/41/219556/1.jpg?7023",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:04.341088"
+  },
+  {
+    "name": "Pakka PROTEGE DENT POUR ART MARTIAUX POUR ADULTES",
+    "current_price": "9.00",
+    "price_before_discount": "79.00",
+    "discount": "89%",
+    "sizes": [
+      "STD"
+    ],
+    "features": [
+      "lavage\n     facile",
+      "bonne qualité",
+      "souple",
+      "Anti-allergique",
+      "Couleur: Transparent"
+    ],
+    "product_url": "https://www.jumia.ma/pakka-protege-dent-pour-art-martiaux-pour-adultes-48367773.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/37/776384/1.jpg?3924",
+    "stars": "2",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:04.690882"
+  },
+  {
+    "name": "FAFA SPORT Protège-dents boxe MMA taekwondo football muay thai kick boxing basketball",
+    "current_price": "35.00",
+    "price_before_discount": "79.00",
+    "discount": "56%",
+    "sizes": [],
+    "features": [
+      "Type: protège dents",
+      "Genre: Unisex",
+      "Sport: multi Sport",
+      "SKU: FA889SE1IB5GKNAFAMZ",
+      "Modèle: FAFA"
+    ],
+    "product_url": "https://www.jumia.ma/fafa-sport-protege-dents-boxe-mma-taekwondo-football-muay-thai-kick-boxing-basketball-65591219.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/91/219556/1.jpg?7023",
+    "stars": "0",
+    "availability": "In Stock",
+    "scraped_at": "2026-05-07T13:02:04.614490"
+  },
+  {
+    "name": "Bandes Bandage MMA Pour Gant Boxe Boxing + Protège-dents (NOIR)",
+    "current_price": "39.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "lavage facile",
+      "bonne qualité",
+      "2 pièces",
+      "Anti-allergique",
+      "Couleur: NOIRE"
+    ],
+    "product_url": "https://www.jumia.ma/generic-bandes-bandage-mma-pour-gant-boxe-boxing-protege-dents-noir-63778106.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/60/187736/1.jpg?8346",
+    "stars": "3.4",
+    "availability": "-",
+    "scraped_at": "2026-05-07T13:02:04.799925"
   }
 ]

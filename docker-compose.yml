@@ -16,7 +16,6 @@
 # └──────────────────────────────────────────────────────────┘
 # =============================================================
 
-
 # --------------------------
 # RÉSEAUX
 # --------------------------
@@ -32,18 +31,19 @@ networks:
 # VOLUMES PERSISTANTS
 # --------------------------
 volumes:
-  postgres_data:          # Données PostgreSQL Airflow
-  postgres_app_data:      # Données PostgreSQL App (users, watchlist, alerts)
-  redis_data:             # Données Redis (sessions, cache)
-  nifi_conf:              # Configuration NiFi
-  nifi_database_repo:     # Dépôt interne NiFi
-  nifi_flowfile_repo:     # FlowFiles en transit NiFi
-  nifi_content_repo:      # Contenu des FlowFiles NiFi
-  nifi_provenance_repo:   # Traçabilité NiFi
+  postgres_data: # Données PostgreSQL Airflow
+  postgres_app_data: # Données PostgreSQL App (users, watchlist, alerts)
+  redis_data: # Données Redis (sessions, cache)
+  nifi_conf: # Configuration NiFi
+  nifi_database_repo: # Dépôt interne NiFi
+  nifi_flowfile_repo: # FlowFiles en transit NiFi
+  nifi_content_repo: # Contenu des FlowFiles NiFi
+  nifi_provenance_repo:
+    # Traçabilité NiFi
 
-# --------------------------
-# BLOC COMMUN AIRFLOW (YAML Anchor)
-# --------------------------
+    # --------------------------
+    # BLOC COMMUN AIRFLOW (YAML Anchor)
+    # --------------------------
 x-airflow-common: &airflow-common
   build: .
   environment:
@@ -285,7 +285,7 @@ services:
     working_dir: /usr/app/dbt/dbt
     environment:
       GCP_PROJECT_ID: price-intelligence-495411
-    profiles: ["cli"]
+    profiles: [ "cli" ]
 
   # ═══════════════════════════════════════════════════════════
   #                 COUCHE APPLICATIVE
