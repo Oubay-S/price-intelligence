@@ -69,9 +69,13 @@ def scrape_ebay_category(query, output_file, driver):
                 soup.select('.su-card-container')
 
         if not items:
-            with open("ebay_debug.html", "w", encoding='utf-8') as f:
-                f.write(driver.page_source)
-            print("No items found. Saved HTML to ebay_debug.html")
+            source = driver.page_source
+            if source and len(source) > 100:
+                with open("ebay_debug.html", "w", encoding='utf-8') as f:
+                    f.write(source)
+                print(f"No items found. Saved {len(source)} bytes of HTML to ebay_debug.html")
+            else:
+                print("No items found, and page source was empty or too small. Likely a connection block.")
 
         products = []
         for item in items:

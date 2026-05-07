@@ -27,57 +27,109 @@ def convert_to_mad(price_str):
 def scrape_walmart_category(query, output_file, driver):
     print(f"Scraping Walmart for: {query}")
     
-    url = f"https://www.walmart.com/search?q={query.replace(' ', '+')}"
-    
     try:
-        driver.get(url)
-        time.sleep(random.uniform(2, 4))
+        # Step 1: Go to homepage first
+        if "walmart.com" not in driver.current_url:
+            driver.get("https://www.walmart.com")
+            time.sleep(random.uniform(3, 5))
+
+        # Step 2: Use the search bar like a human
+        try:
+            search_input = driver.find_element("css selector", 'input[type="search"]')
+            search_input.clear()
+            for char in query:
+                search_input.send_keys(char)
+                time.sleep(random.uniform(0.1, 0.3)) # Type slowly
+            
+            search_input.send_keys("\n") # Press Enter
+            time.sleep(random.uniform(4, 7))
+        except:
+            # Fallback to direct URL if search bar is missing
+            url = f"https://www.walmart.com/search?q={query.replace(' ', '+')}"
+            driver.get(url)
+            time.sleep(random.uniform(4, 7))
         
         # Loop until CAPTCHA is solved
         attempts = 0
-        while "Robot or human" in driver.title or "Verify you are a human" in driver.page_source or "px-captcha" in driver.page_source:
+        while "Robot or human" in driver.title or "Verify you are a human" in driver.page_source or "px-captcha" in driver.page_source or "Access Denied" in driver.page_source:
             attempts += 1
+            if "Access Denied" in driver.page_source:
+                msg = f"❌ Access Denied by Walmart for query: {query}. You might be temporarily blocked or need new cookies."
+                print(msg)
+                # Save debug HTML for access denied
+                debug_path = f"walmart_access_denied_{query.replace(' ', '_')}.html"
+                with open(debug_path, "w", encoding='utf-8') as f:
+                    f.write(driver.page_source)
+                print(f"📄 Saved Access Denied page to {debug_path}")
+                return 0
+
             if attempts > 3: # If stuck for ~15 seconds
                 msg = "Walmart CAPTCHA detected and could not be bypassed. Cookies might be expired. Please run 'generate_walmart_cookies.py' manually."
                 print(f"❌ {msg}")
                 send_notification(msg, status="error")
                 return 0 # Fail fast
                 
-            print(f"CAPTCHA detected (Attempt {attempts}/3)! Waiting 5 seconds...")
-            time.sleep(5)
+            print(f"CAPTCHA detected (Attempt {attempts}/3)! Waiting 10 seconds...")
+            time.sleep(10)
             
         print("Page loaded successfully! Scrolling to load images...")
         
         # Scroll down to trigger lazy loading of images
-        for i in range(1, 4):
-            driver.execute_script(f"window.scrollTo(0, {i * 1000});")
-            time.sleep(1)
+        # Human-like scrolling: small steps with random pauses
+        for i in range(1, 6):
+            scroll_dist = i * 800 + random.randint(-100, 100)
+            driver.execute_script(f"window.scrollTo(0, {scroll_dist});")
+            time.sleep(random.uniform(0.5, 1.5))
             
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         
-        # Selectors for item containers
-        items = soup.select('[data-testid="item-stack"] > div')
-        if not items:
-            items = soup.select('.mb0.ph0-xl.pv2-xl') or soup.select('[data-testid="list-view"] > div')
+        # Selectors for item containers (Grid, List, or Stack layouts)
+        items = soup.select('[data-testid="item-stack"] > div') or \
+                soup.select('div[data-testid="list-view"] > div') or \
+                soup.select('.mb0.ph0-xl.pv2-xl') or \
+                soup.select('[data-testid="grid-view"] > div')
             
         if not items:
-            with open("walmart_debug.html", "w", encoding='utf-8') as f:
+            debug_path = f"walmart_no_items_{query.replace(' ', '_')}.html"
+            with open(debug_path, "w", encoding='utf-8') as f:
                 f.write(driver.page_source)
-            print("No items found. Saved HTML to walmart_debug.html")
+            print(f"No items found for '{query}'. Saved HTML to {debug_path}")
             
         products = []
         for item in items:
             try:
-                name_el = item.select_one('[data-automation-id="product-title"]')
+                # Robust title selection
+                name_el = item.select_one('[data-automation-id="product-title"]') or \
+                          item.select_one('[data-testid="product-title"]') or \
+                          item.select_one('h3') or \
+                          item.select_one('span.lh-title')
+                
+                if not name_el:
+                    # Fallback: check all spans for something that looks like a title
+                    name_el = item.select_one('.w_Vp') or item.select_one('.ld_Ec')
+                
                 if not name_el: continue
                 name = name_el.text.strip()
                 
-                url_el = item.select_one('a[data-testid="product-title-link"]') or item.select_one('a')
-                url_prod = "https://www.walmart.com" + url_el['href'] if url_el and url_el['href'].startswith('/') else (url_el['href'] if url_el else "N/A")
+                # Clean name: sometimes the price is appended at the end of the title text in some layouts
+                if '$' in name:
+                    name = name.split('$')[0].strip()
                 
+                # Robust URL selection
+                url_el = item.select_one('a[data-testid="product-title-link"]') or \
+                         item.select_one('a[data-automation-id="product-anchor"]') or \
+                         item.select_one('a[link-identifier]') or \
+                         item.select_one('a')
+                
+                url_prod = "https://www.walmart.com" + url_el['href'] if url_el and url_el.has_attr('href') and url_el['href'].startswith('/') else \
+                          (url_el['href'] if url_el and url_el.has_attr('href') else "N/A")
+                
+                # Robust price selection
                 price_container = item.select_one('[data-automation-id="product-price"]') or \
+                                  item.select_one('[data-testid="product-price"]') or \
                                   item.select_one('[data-automation-id="price"]') or \
-                                  item.select_one('span[itemprop="price"]')
+                                  item.select_one('span[itemprop="price"]') or \
+                                  item.select_one('.f2') # Common price class
                 curr_p = "N/A"
                 if price_container:
                     # Walmart has hidden spans for screen readers. 
@@ -178,7 +230,13 @@ def scrape_walmart_category(query, output_file, driver):
             print(f"Success: {len(products)} products saved to {output_file}")
             return len(products)
         else:
-            print(f"No products found for query: {query}")
+            if items:
+                debug_path = f"walmart_parse_fail_{query.replace(' ', '_')}.html"
+                with open(debug_path, "w", encoding='utf-8') as f:
+                    f.write(driver.page_source)
+                print(f"⚠️ Items were found but NONE could be parsed for '{query}'. Saved HTML to {debug_path}")
+            else:
+                print(f"No products found for query: {query}")
             return 0
             
     except Exception as e:

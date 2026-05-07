@@ -25,7 +25,7 @@ def run_scraper(script_name, cwd):
     # This avoids import conflicts and issues with sys.path
     # Run the script and stream output in real-time
     process = subprocess.Popen(
-        ["python", script_name],
+        ["python", "-u", script_name],
         cwd=cwd,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,

@@ -1,11 +1,10 @@
 from ebay_scraper_utils import scrape_ebay_category
 import os
 import time
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
+import random
 import sys
+# pyrefly: ignore [missing-import]
+import undetected_chromedriver as uc
 
 # Add parent directory to sys.path to import load_all_to_bigtable
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -15,30 +14,51 @@ try:
 except ImportError:
     BIGTABLE_AVAILABLE = False
 
+def _get_chrome_version():
+    """Detect the major version of the installed Chrome binary."""
+    import subprocess as _sp
+    for binary in ("google-chrome", "google-chrome-stable", "chromium", "chromium-browser"):
+        try:
+            out = _sp.check_output([binary, "--version"], stderr=_sp.DEVNULL, text=True)
+            major = int(out.strip().split()[-1].split(".")[0])
+            return major
+        except Exception:
+            continue
+    return None
+
 def run_all_ebay_scrapes():
-    print("Launching Stealth Chrome Browser for eBay... Prepare to solve any CAPTCHAs!")
+    print("Launching Stealth Chrome Browser for eBay...")
     
-    # --- Configuration du navigateur (Mode Docker / Headless) ---
-    options = Options()
-    
-    options.add_argument("--headless=new")
+    options = uc.ChromeOptions()
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
     
-    # Anti-detection flags
-    options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    options.add_experimental_option("useAutomationExtension", False)
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36")
+    # Check if running in Docker/Airflow
+    if os.environ.get("AIRFLOW_HOME") or os.path.exists("/.dockerenv"):
+        options.add_argument("--headless=new")
+        options.add_argument("--disable-extensions")
 
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    chrome_version = _get_chrome_version()
+    driver = uc.Chrome(options=options, version_main=chrome_version, use_subprocess=True)
     
-    # Further hide Selenium
+    # Execute CDP commands to further hide automation
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-        "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+        "source": """
+            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+            window.chrome = { runtime: {} };
+            Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
+            Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
+        """
     })
-    driver.maximize_window()
+
+    print("🌐 Warming up session (Visiting eBay homepage)...")
+    try:
+        driver.get("https://www.ebay.com")
+        time.sleep(random.uniform(3, 6))
+    except Exception as e:
+        print(f"⚠️ Warm-up failed: {e}. Attempting to continue...")
 
     # Initialize Bigtable if available
     table = None
@@ -48,55 +68,78 @@ def run_all_ebay_scrapes():
     else:
         print("⚠️ Bigtable loading utility not found. Scraping only.")
 
+    # Determine base directory for outputs (scrapers/ebay)
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+
     scrapes = [
         # Basketball
-        ("basketball ball",     "ebay/basketball/ebay_basketball_data.json"),
-        ("basketball shoes",    "ebay/basketball/ebay_basketball_shoes_data.json"),
-        ("compression sleeves", "ebay/basketball/ebay_compression_sleeves_data.json"),
+        ("basketball ball",     os.path.join(base_dir, "basketball/ebay_basketball_data.json")),
+        ("basketball shoes",    os.path.join(base_dir, "basketball/ebay_basketball_shoes_data.json")),
+        ("compression sleeves", os.path.join(base_dir, "basketball/ebay_compression_sleeves_data.json")),
 
         # Football (Soccer)
-        ("soccer ball",         "ebay/football/ebay_football_balls_data.json"),
-        ("soccer shoes",       "ebay/football/ebay_football_shoes_data.json"),
-        ("goalkeeper gloves",   "ebay/football/ebay_goalkeeper_gloves_data.json"),
-        ("soccer shin guards",  "ebay/football/ebay_shin_pads_data.json"),
+        ("soccer ball",         os.path.join(base_dir, "football/ebay_football_balls_data.json")),
+        ("soccer shoes",       os.path.join(base_dir, "football/ebay_football_shoes_data.json")),
+        ("goalkeeper gloves",   os.path.join(base_dir, "football/ebay_goalkeeper_gloves_data.json")),
+        ("soccer shin pads",    os.path.join(base_dir, "football/ebay_shin_pads_data.json")),
 
         # Gym
-        ("creatine",            "ebay/gym/ebay_creatine_data.json"),
-        ("supplements",   "ebay/gym/ebay_supplements_data.json"),
-        ("whey protein",        "ebay/gym/ebay_whey_protein_data.json"),
+        ("creatine",            os.path.join(base_dir, "gym/ebay_creatine_data.json")),
+        ("supplements",   os.path.join(base_dir, "gym/ebay_supplements_data.json")),
+        ("whey protein",        os.path.join(base_dir, "gym/ebay_whey_protein_data.json")),
 
         # Combat Sports
-        ("boxing gloves",       "ebay/combat-sports/ebay_combat_gloves_data.json"),
-        ("groin guards",        "ebay/combat-sports/ebay_groin_guards_data.json"),
-        ("mma headgear",        "ebay/combat-sports/ebay_headgear_data.json"),
-        ("mouthguards",   "ebay/combat-sports/ebay_mouthguards_data.json"),
-        ("mma shin protectors", "ebay/combat-sports/ebay_shin_protectors_data.json"),
+        ("boxing gloves",       os.path.join(base_dir, "combat-sports/ebay_combat_gloves_data.json")),
+        ("groin guards",        os.path.join(base_dir, "combat-sports/ebay_groin_guards_data.json")),
+        ("mma headgear",        os.path.join(base_dir, "combat-sports/ebay_headgear_data.json")),
+        ("mouthguards",   os.path.join(base_dir, "combat-sports/ebay_mouthguards_data.json")),
+        ("mma shin protectors", os.path.join(base_dir, "combat-sports/ebay_shin_protectors_data.json")),
 
         # Racket Sports
-        ("tennis balls",        "ebay/Racket-Sports/ebay_tennis_balls_data.json"),
-        ("tennis rackets",      "ebay/Racket-Sports/ebay_tennis_rackets_data.json"),
+        ("tennis balls",        os.path.join(base_dir, "Racket-Sports/ebay_tennis_balls_data.json")),
+        ("tennis rackets",      os.path.join(base_dir, "Racket-Sports/ebay_tennis_rackets_data.json")),
 
         # Volleyball
-        ("volleyball",          "ebay/Volleyball/ebay_volleyball_data.json"),
-        ("volleyball net",      "ebay/Volleyball/ebay_volleyball_nets_data.json"),
+        ("volleyball",          os.path.join(base_dir, "Volleyball/ebay_volleyball_data.json")),
+        ("volleyball net",      os.path.join(base_dir, "Volleyball/ebay_volleyball_nets_data.json")),
     ]
 
+    total_success = 0
+    total_products = 0
+
     for query, output_file in scrapes:
+        # Ensure directory exists
+        os.makedirs(os.path.dirname(output_file), exist_ok=True)
+        
+        # Remove old file to avoid stale data
+        if os.path.exists(output_file):
+            os.remove(output_file)
+
         count = scrape_ebay_category(query, output_file, driver)
         
         # Load to Bigtable if scraping was successful
-        if count > 0 and table:
-            print(f"📥 Loading {count} items from {output_file} to Bigtable...")
-            rows_added = load_file_to_bigtable(table, output_file, "ebay")
-            print(f"✅ Loaded {rows_added} records to Bigtable.")
+        if count > 0:
+            total_success += 1
+            total_products += count
+            if table:
+                print(f"📥 Loading {count} items from {output_file} to Bigtable...")
+                rows_added = load_file_to_bigtable(table, output_file, "ebay")
+                print(f"✅ Loaded {rows_added} records to Bigtable.")
+        else:
+            print(f"⚠️ Failed to scrape any products for: {query}")
             
-        time.sleep(5)
+        time.sleep(random.uniform(4, 7)) # Added more delay between categories
 
-    print("All eBay scraping finished! Closing browser...")
+    print(f"\nScraping Summary (eBay):")
+    print(f"Categories Attempted: {len(scrapes)}")
+    print(f"Categories Successful: {total_success}")
+    print(f"Total Products Scraped: {total_products}")
+
     driver.quit()
 
-if __name__ == "__main__":
-    if not os.path.exists("ebay"):
-        os.makedirs("ebay")
+    if total_products == 0:
+        print("❌ CRITICAL: No products were scraped for eBay. Failing script.")
+        sys.exit(1)
 
+if __name__ == "__main__":
     run_all_ebay_scrapes()
