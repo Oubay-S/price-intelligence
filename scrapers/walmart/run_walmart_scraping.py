@@ -57,8 +57,9 @@ def _fix_permissions(path):
         return
     try:
         print(f"🔓 Fixing permissions for: {path}")
-        # Use system chmod for reliability with symlinks/special files
-        os.system(f"chmod -R 777 {path} 2>/dev/null || true")
+        # Use subprocess.run for better security and reliability
+        import subprocess
+        subprocess.run(["chmod", "-R", "777", path], check=False, stderr=subprocess.DEVNULL)
     except Exception as e:
         print(f"⚠️ Warning: Could not fix permissions for {path}: {e}")
 
@@ -84,8 +85,9 @@ def _get_chrome_version():
 
 def run_all_walmart_scrapes():
     print("🧹 Cleaning up old Chrome processes and locks...")
-    os.system("pkill -9 chrome || true")
-    os.system("pkill -9 chromedriver || true")
+    import subprocess
+    subprocess.run(["pkill", "-9", "chrome"], check=False, stderr=subprocess.DEVNULL)
+    subprocess.run(["pkill", "-9", "chromedriver"], check=False, stderr=subprocess.DEVNULL)
     
     script_dir = os.path.dirname(os.path.abspath(__file__))
     profile_dir = os.path.join(script_dir, "walmart_profile")
