@@ -183,9 +183,16 @@ def delete_patterns(patterns: Iterable[str]) -> int:
 # ---------------------------------------------------------------------------
 
 def _hash_args(arg_values: dict[str, Any]) -> str:
-    """Stable short hash of a kwarg-style mapping."""
+    """Stable short hash of a kwarg-style mapping.
+
+    Used to derive a Redis cache key — NOT for integrity or signing.
+    ``usedforsecurity=False`` is the standard hashlib opt-out (Python
+    3.9+) that documents the intent and silences Bandit B324.
+    """
     blob = json.dumps(arg_values, sort_keys=True, default=str)
-    return hashlib.sha1(blob.encode("utf-8")).hexdigest()[:16]
+    return hashlib.sha1(  # nosec B324 - cache key only, not security
+        blob.encode("utf-8"), usedforsecurity=False
+    ).hexdigest()[:16]
 
 
 def redis_cached(

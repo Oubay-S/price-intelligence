@@ -355,8 +355,14 @@ services:
     # single source of truth for app config.  The `environment:` block
     # below then overrides ONLY the values that must be different inside
     # the Compose network (DB host, Redis host, credential path, etc.).
+    #
+    # `required: false` — Compose Specification long-form so the spec
+    # still parses when backend/.env is absent (CI runners, fresh
+    # clones).  Missing values fall back to Settings defaults or the
+    # `environment:` block below.
     env_file:
-      - ./backend/.env
+      - path: ./backend/.env
+        required: false
     environment:
       # --- Base de données applicative (override host .env) ----------
       # `postgresql+psycopg2://` is SQLAlchemy syntax — raw psycopg2 (the
