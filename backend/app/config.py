@@ -42,6 +42,42 @@ class Settings(BaseSettings):
     REDIS_URL: str
     NIFI_URL: str
 
+    # Shared secret for the /internal/* endpoints (NiFi → FastAPI).
+    # Empty string = dev mode, auth disabled. Set in .env to enforce.
+    INTERNAL_API_KEY: str = ""
+
+    # --- SMTP / email --------------------------------------------------
+    # Dev/testing: Mailtrap (sandbox.smtp.mailtrap.io:587, STARTTLS).
+    # Prod: Resend (smtp.resend.com:587, STARTTLS, username="resend",
+    # password is the Resend API key).
+    SMTP_HOST: str = ""
+    SMTP_PORT: int = 587
+    SMTP_USERNAME: str = ""
+    SMTP_PASSWORD: str = ""
+    SMTP_USE_TLS: bool = True   # STARTTLS on a plaintext port (587)
+    SMTP_USE_SSL: bool = False  # Implicit TLS on port 465; mutually exclusive with STARTTLS
+    SMTP_TIMEOUT: int = 15      # seconds — socket connect/IO timeout
+
+    EMAIL_FROM_ADDRESS: str = "no-reply@priceradar.local"
+    EMAIL_FROM_NAME: str = "PriceRadar"
+
+    # Public URL the frontend is served from. Used to build verification
+    # and password-reset links that land in the user's inbox.
+    FRONTEND_URL: str = "http://localhost:4200"
+
+    # Token TTLs for the email flows (hours).
+    EMAIL_VERIFICATION_TTL_HOURS: int = 24
+    PASSWORD_RESET_TTL_HOURS: int = 1
+
+    # ThreadPoolExecutor size for the non-blocking email sender.
+    # SMTP is sync; 4 workers is enough for dev volume and lets a burst
+    # of registrations / alerts overlap without blocking the event loop.
+    EMAIL_THREAD_POOL_SIZE: int = 4
+
+    # Master kill-switch — when False the email service no-ops every
+    # send. Handy in CI / unit tests where there is no SMTP server.
+    EMAIL_ENABLED: bool = True
+
 
 @lru_cache
 def get_settings() -> Settings:

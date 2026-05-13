@@ -1,5 +1,5 @@
 -- ============================================================
--- SuppleScan — PostgreSQL schema
+-- PriceRadar — PostgreSQL schema
 -- Application & user management database
 -- Run order: extensions → types → tables → indexes → triggers
 -- ============================================================
@@ -470,12 +470,12 @@ ALTER TABLE sessions             ENABLE ROW LEVEL SECURITY;
 ALTER TABLE refresh_tokens       ENABLE ROW LEVEL SECURITY;
 
 -- Application role (used by FastAPI connection pool)
--- CREATE ROLE supplescan_app LOGIN PASSWORD 'change_me';
--- GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO supplescan_app;
--- GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO supplescan_app;
+-- CREATE ROLE priceradar_app LOGIN PASSWORD 'change_me';
+-- GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO priceradar_app;
+-- GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO priceradar_app;
 
 -- RLS policies — each user only sees their own rows
--- (Uncomment after creating the supplescan_app role)
+-- (Uncomment after creating the priceradar_app role)
 
 -- CREATE POLICY watchlist_own_rows ON watchlist_items
 --     USING (user_id = current_setting('app.current_user_id')::UUID);

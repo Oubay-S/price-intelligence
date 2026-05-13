@@ -1,62 +1,58 @@
 """Auth endpoints: register, login, refresh, logout, me.
 
-Token model
------------
-* Access tokens carry `sub` (user UUID), `sid` (session UUID), `type=access`.
-  Lifetime: `ACCESS_TOKEN_EXPIRE_MINUTES`.
-* Refresh tokens carry the same `sid` plus `type=refresh`.
-  Lifetime: 30 days. Single-use — `is_used` flips on first redeem and any
-  reuse attempt revokes the entire session (replay defence).
-
-Sessions row state
-------------------
-On login we insert a sessions row, then mint tokens that embed its UUID.
-`token_hash` is updated to the SHA-256 of the latest access token after
-each issuance. On refresh we rotate both tokens and update the row in
-place. On logout we set `is_revoked=TRUE` and mark all the session's
-refresh tokens used.
+Routers translate HTTP <-> service calls. Login / refresh / logout
+orchestration lives in ``app.services.session_service``; persistence
+in ``app.repositories.*``. This module knows nothing about SQL.
 """
 
 from __future__ import annotations
 
-import json
-import secrets
-from datetime import datetime, timedelta, timezone
 from typing import Annotated, Any
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordRequestForm
-from psycopg2 import IntegrityError
 from psycopg2.extensions import connection as PgConnection
-from psycopg2.extras import RealDictCursor
 
+from app.api_responses import (
+    ERR_400,
+    ERR_401,
+    ERR_403,
+    ERR_409,
+    ERR_422,
+    ERR_429,
+    ERR_500,
+)
 from app.config import settings
 from app.database import get_db
 from app.middleware.core import get_current_user, limiter
 from app.models.user import (
+    ForgotPasswordRequest,
+    MessageResponse,
     RefreshRequest,
+    ResendVerificationRequest,
+    ResetPasswordRequest,
     TokenPair,
     UserLogin,
     UserRegister,
     UserResponse,
+    VerifyEmailRequest,
 )
-from app.services.auth import (
-    REFRESH_TOKEN_TYPE,
-    TokenError,
-    create_access_token,
-    create_refresh_token,
-    decode_token,
-    hash_password,
-    hash_token,
-    verify_password,
+from app.repositories import audit_repo, user_repo
+from app.repositories.exceptions import DuplicateError
+from app.services import email_flow, session_service
+from app.services.auth import hash_password
+from app.services.exceptions import (
+    EmailAlreadyVerifiedError,
+    InvalidCredentialsError,
+    RefreshTokenInvalidError,
+    RefreshTokenReplayError,
+    SessionRevokedError,
+    TokenInvalidError,
+    UserDisabledError,
 )
 
 router = APIRouter()
 
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
 
 def _client_ip(request: Request) -> str | None:
     if request.client is None:
@@ -68,34 +64,6 @@ def _user_agent(request: Request) -> str | None:
     return request.headers.get("user-agent")
 
 
-def _audit(
-    cur,
-    *,
-    user_id: Any,
-    action: str,
-    entity_type: str | None = None,
-    entity_id: str | None = None,
-    request: Request | None = None,
-    metadata: dict[str, Any] | None = None,
-) -> None:
-    cur.execute(
-        """
-        INSERT INTO audit_logs
-            (user_id, action, entity_type, entity_id, ip_address, user_agent, metadata)
-        VALUES (%s, %s, %s, %s, %s, %s, %s::jsonb)
-        """,
-        (
-            str(user_id) if user_id is not None else None,
-            action,
-            entity_type,
-            entity_id,
-            _client_ip(request) if request else None,
-            _user_agent(request) if request else None,
-            json.dumps(metadata) if metadata else None,
-        ),
-    )
-
-
 # ---------------------------------------------------------------------------
 # /register
 # ---------------------------------------------------------------------------
@@ -104,6 +72,8 @@ def _audit(
     "/register",
     response_model=UserResponse,
     status_code=status.HTTP_201_CREATED,
+    response_description="Newly-created user record.",
+    responses={**ERR_409, **ERR_422, **ERR_429, **ERR_500},
 )
 @limiter.limit(settings.RATE_LIMIT_REGISTER)
 def register(
@@ -111,316 +81,306 @@ def register(
     payload: UserRegister,
     conn: Annotated[PgConnection, Depends(get_db)],
 ) -> UserResponse:
+    """Create a user. 409 on duplicate email."""
     hashed = hash_password(payload.password)
-
-    with conn.cursor(cursor_factory=RealDictCursor) as cur:
-        try:
-            cur.execute(
-                """
-                INSERT INTO users (email, hashed_password, full_name)
-                VALUES (%s, %s, %s)
-                RETURNING id, email, full_name, role, is_active, email_verified,
-                          created_at, updated_at, last_login_at
-                """,
-                (str(payload.email), hashed, payload.full_name),
-            )
-            user = cur.fetchone()
-        except IntegrityError as exc:
-            conn.rollback()
-            raise HTTPException(
-                status_code=status.HTTP_409_CONFLICT,
-                detail="Email already registered",
-            ) from exc
-
-        _audit(
-            cur,
-            user_id=user["id"],
-            action="user_register",
-            entity_type="user",
-            entity_id=str(user["id"]),
-            request=request,
+    try:
+        user = user_repo.create(
+            conn,
+            email=str(payload.email),
+            hashed_password=hashed,
+            full_name=payload.full_name,
         )
+    except DuplicateError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Email already registered",
+        ) from exc
+
+    audit_repo.log(
+        conn,
+        user_id=user["id"],
+        action="user_register",
+        entity_type="user",
+        entity_id=str(user["id"]),
+        ip_address=_client_ip(request),
+        user_agent=_user_agent(request),
+    )
+
+    # Fire-and-forget verification email. Runs on the email thread pool
+    # (see app.services.email) so the response is never blocked by SMTP.
+    email_flow.issue_verification_email(
+        conn,
+        user_id=user["id"],
+        email=str(payload.email),
+        full_name=payload.full_name,
+    )
 
     return UserResponse(**user)
 
 
 # ---------------------------------------------------------------------------
-# /login
+# /login + /token
 # ---------------------------------------------------------------------------
 
-def _issue_session_tokens(
-    request: Request,
+def _login_or_raise(
     conn: PgConnection,
+    *,
+    request: Request,
     email: str,
     password: str,
 ) -> TokenPair:
-    """Shared login path used by both /auth/login (JSON) and /auth/token (form)."""
-    access_lifetime = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    refresh_lifetime = timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
-
-    with conn.cursor(cursor_factory=RealDictCursor) as cur:
-        cur.execute(
-            "SELECT id, hashed_password, is_active FROM users WHERE email = %s",
-            (email,),
+    """Map session_service.login exceptions into HTTP responses."""
+    try:
+        return session_service.login(
+            conn,
+            email=email,
+            password=password,
+            ip_address=_client_ip(request),
+            user_agent=_user_agent(request),
         )
-        user = cur.fetchone()
-
-        if user is None or not verify_password(password, user["hashed_password"]):
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid email or password",
-            )
-        if not user["is_active"]:
-            raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
-                detail="User disabled",
-            )
-
-        cur.execute(
-            """
-            INSERT INTO sessions (user_id, token_hash, ip_address, user_agent, expires_at)
-            VALUES (%s, %s, %s, %s, NOW() + %s)
-            RETURNING id
-            """,
-            (
-                str(user["id"]),
-                secrets.token_hex(32),
-                _client_ip(request),
-                _user_agent(request),
-                refresh_lifetime,
-            ),
-        )
-        session_id = cur.fetchone()["id"]
-
-        access_token = create_access_token(
-            subject=user["id"],
-            extra_claims={"sid": str(session_id)},
-        )
-        refresh_token = create_refresh_token(
-            subject=user["id"],
-            session_id=session_id,
-        )
-
-        cur.execute(
-            "UPDATE sessions SET token_hash = %s WHERE id = %s",
-            (hash_token(access_token), str(session_id)),
-        )
-        cur.execute(
-            """
-            INSERT INTO refresh_tokens (user_id, session_id, token_hash, expires_at)
-            VALUES (%s, %s, %s, NOW() + %s)
-            """,
-            (
-                str(user["id"]),
-                str(session_id),
-                hash_token(refresh_token),
-                refresh_lifetime,
-            ),
-        )
-        cur.execute(
-            "UPDATE users SET last_login_at = NOW() WHERE id = %s",
-            (str(user["id"]),),
-        )
-
-        _audit(
-            cur,
-            user_id=user["id"],
-            action="user_login",
-            entity_type="session",
-            entity_id=str(session_id),
-            request=request,
-        )
-
-    return TokenPair(
-        access_token=access_token,
-        refresh_token=refresh_token,
-        expires_in=int(access_lifetime.total_seconds()),
-    )
+    except InvalidCredentialsError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid email or password",
+        ) from exc
+    except UserDisabledError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="User disabled",
+        ) from exc
 
 
-@router.post("/login", response_model=TokenPair)
+@router.post(
+    "/login",
+    response_model=TokenPair,
+    response_description="Access + refresh token pair for the authenticated session.",
+    responses={**ERR_401, **ERR_403, **ERR_422, **ERR_429, **ERR_500},
+)
 @limiter.limit(settings.RATE_LIMIT_LOGIN)
 def login(
     request: Request,
     payload: UserLogin,
     conn: Annotated[PgConnection, Depends(get_db)],
 ) -> TokenPair:
-    return _issue_session_tokens(request, conn, str(payload.email), payload.password)
+    return _login_or_raise(
+        conn, request=request, email=str(payload.email), password=payload.password
+    )
 
 
-@router.post("/token", response_model=TokenPair)
+@router.post(
+    "/token",
+    response_model=TokenPair,
+    response_description="Access + refresh token pair (OAuth2 form-encoded variant).",
+    responses={**ERR_401, **ERR_403, **ERR_422, **ERR_429, **ERR_500},
+)
 @limiter.limit(settings.RATE_LIMIT_LOGIN)
 def login_oauth2_form(
     request: Request,
     form: Annotated[OAuth2PasswordRequestForm, Depends()],
     conn: Annotated[PgConnection, Depends(get_db)],
 ) -> TokenPair:
-    """OAuth2 password-flow variant. The `username` field is the user's email.
-
-    Exists so Swagger UI's "Authorize" button (which posts an
-    `application/x-www-form-urlencoded` body to `tokenUrl`) works end to end.
-    `/auth/login` remains the canonical JSON endpoint for the SPA.
-    """
-    return _issue_session_tokens(request, conn, form.username, form.password)
+    """OAuth2 password-flow variant. The `username` field is the user's email."""
+    return _login_or_raise(
+        conn, request=request, email=form.username, password=form.password
+    )
 
 
 # ---------------------------------------------------------------------------
 # /refresh
 # ---------------------------------------------------------------------------
 
-@router.post("/refresh", response_model=TokenPair)
+@router.post(
+    "/refresh",
+    response_model=TokenPair,
+    response_description="Rotated access + refresh token pair. Old refresh token is now invalid.",
+    responses={**ERR_401, **ERR_422, **ERR_500},
+)
 def refresh(
     payload: RefreshRequest,
     conn: Annotated[PgConnection, Depends(get_db)],
 ) -> TokenPair:
     try:
-        token_payload = decode_token(payload.refresh_token, expected_type=REFRESH_TOKEN_TYPE)
-    except TokenError as exc:
+        return session_service.refresh(conn, payload.refresh_token)
+    except RefreshTokenReplayError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Refresh token reuse detected; session revoked",
+        ) from exc
+    except SessionRevokedError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Session revoked",
+        ) from exc
+    except RefreshTokenInvalidError as exc:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid refresh token",
         ) from exc
-
-    user_id = token_payload.get("sub")
-    session_id = token_payload.get("sid")
-    if not user_id or not session_id:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid refresh token",
-        )
-
-    presented_hash = hash_token(payload.refresh_token)
-    access_lifetime = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    refresh_lifetime = timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
-
-    with conn.cursor(cursor_factory=RealDictCursor) as cur:
-        cur.execute(
-            """
-            SELECT id, is_used, expires_at
-            FROM refresh_tokens
-            WHERE token_hash = %s AND user_id = %s AND session_id = %s
-            """,
-            (presented_hash, user_id, session_id),
-        )
-        rt = cur.fetchone()
-
-        if rt is None or rt["expires_at"] < datetime.now(timezone.utc):
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid refresh token",
-            )
-
-        if rt["is_used"]:
-            # Replay attempt — kill the whole session and force re-login.
-            cur.execute(
-                "UPDATE sessions SET is_revoked = TRUE WHERE id = %s",
-                (session_id,),
-            )
-            _audit(
-                cur,
-                user_id=user_id,
-                action="token_revoke",
-                entity_type="session",
-                entity_id=session_id,
-                metadata={"reason": "refresh_token_replay"},
-            )
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Refresh token reuse detected; session revoked",
-            )
-
-        cur.execute(
-            "SELECT is_revoked FROM sessions WHERE id = %s",
-            (session_id,),
-        )
-        sess = cur.fetchone()
-        if sess is None or sess["is_revoked"]:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Session revoked",
-            )
-
-        cur.execute(
-            "UPDATE refresh_tokens SET is_used = TRUE WHERE id = %s",
-            (rt["id"],),
-        )
-
-        new_access = create_access_token(
-            subject=user_id,
-            extra_claims={"sid": session_id},
-        )
-        new_refresh = create_refresh_token(
-            subject=user_id,
-            session_id=session_id,
-        )
-
-        cur.execute(
-            """
-            UPDATE sessions
-            SET token_hash = %s,
-                expires_at = NOW() + %s
-            WHERE id = %s
-            """,
-            (hash_token(new_access), refresh_lifetime, session_id),
-        )
-        cur.execute(
-            """
-            INSERT INTO refresh_tokens (user_id, session_id, token_hash, expires_at)
-            VALUES (%s, %s, %s, NOW() + %s)
-            """,
-            (user_id, session_id, hash_token(new_refresh), refresh_lifetime),
-        )
-
-    return TokenPair(
-        access_token=new_access,
-        refresh_token=new_refresh,
-        expires_in=int(access_lifetime.total_seconds()),
-    )
 
 
 # ---------------------------------------------------------------------------
 # /logout
 # ---------------------------------------------------------------------------
 
-@router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
+@router.post(
+    "/logout",
+    status_code=status.HTTP_204_NO_CONTENT,
+    response_description="Session and all its refresh tokens revoked. No body.",
+    responses={**ERR_401, **ERR_500},
+)
 def logout(
     request: Request,
     current_user: Annotated[dict[str, Any], Depends(get_current_user)],
     conn: Annotated[PgConnection, Depends(get_db)],
 ) -> None:
-    session_id = current_user["session_id"]
-    user_id = current_user["id"]
-
-    with conn.cursor() as cur:
-        cur.execute(
-            "UPDATE sessions SET is_revoked = TRUE WHERE id = %s",
-            (str(session_id),),
-        )
-        cur.execute(
-            "UPDATE refresh_tokens SET is_used = TRUE WHERE session_id = %s AND is_used = FALSE",
-            (str(session_id),),
-        )
-        cur.execute(
-            """
-            INSERT INTO audit_logs
-                (user_id, action, entity_type, entity_id, ip_address, user_agent)
-            VALUES (%s, 'user_logout', 'session', %s, %s, %s)
-            """,
-            (
-                str(user_id),
-                str(session_id),
-                _client_ip(request),
-                _user_agent(request),
-            ),
-        )
+    session_service.logout(
+        conn,
+        user_id=current_user["id"],
+        session_id=current_user["session_id"],
+        ip_address=_client_ip(request),
+        user_agent=_user_agent(request),
+    )
 
 
 # ---------------------------------------------------------------------------
 # /me
 # ---------------------------------------------------------------------------
 
-@router.get("/me", response_model=UserResponse)
+@router.get(
+    "/me",
+    response_model=UserResponse,
+    response_description="The authenticated user's own profile.",
+    responses={**ERR_401, **ERR_500},
+)
 def me(
     current_user: Annotated[dict[str, Any], Depends(get_current_user)],
 ) -> UserResponse:
     return UserResponse(**current_user)
+
+
+# ---------------------------------------------------------------------------
+# Email verification
+# ---------------------------------------------------------------------------
+#
+# Two endpoints power the flow:
+#
+# * POST /auth/verify-email           — redeem the token from the email link.
+# * POST /auth/resend-verification    — generate + send a fresh token.
+#
+# `/forgot-password` and `/reset-password` follow the same redeem-by-token
+# pattern below.  All four are intentionally rate-limited via slowapi
+# (re-uses RATE_LIMIT_REGISTER as it's the closest "expensive-side-effect
+# anonymous endpoint" knob already in config).
+# ---------------------------------------------------------------------------
+
+@router.post(
+    "/verify-email",
+    response_model=MessageResponse,
+    response_description="Email successfully verified.",
+    responses={**ERR_400, **ERR_422, **ERR_429, **ERR_500},
+)
+@limiter.limit(settings.RATE_LIMIT_REGISTER)
+def verify_email(
+    request: Request,
+    payload: VerifyEmailRequest,
+    conn: Annotated[PgConnection, Depends(get_db)],
+) -> MessageResponse:
+    try:
+        email_flow.verify_email_token(conn, payload.token)
+    except EmailAlreadyVerifiedError:
+        return MessageResponse(message="Email was already verified.")
+    except TokenInvalidError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Verification token is invalid or has expired.",
+        ) from exc
+    return MessageResponse(message="Email verified successfully.")
+
+
+@router.post(
+    "/resend-verification",
+    response_model=MessageResponse,
+    response_description=(
+        "Always returns 200 to avoid leaking which emails exist. If the "
+        "email is registered and unverified, a fresh verification message "
+        "is queued for delivery."
+    ),
+    responses={**ERR_422, **ERR_429, **ERR_500},
+)
+@limiter.limit(settings.RATE_LIMIT_REGISTER)
+def resend_verification(
+    request: Request,
+    payload: ResendVerificationRequest,
+    conn: Annotated[PgConnection, Depends(get_db)],
+) -> MessageResponse:
+    user = user_repo.get_by_email_for_email_flow(conn, str(payload.email))
+    if user is not None and user["is_active"] and not user["email_verified"]:
+        email_flow.issue_verification_email(
+            conn,
+            user_id=user["id"],
+            email=user["email"],
+            full_name=user.get("full_name"),
+        )
+    # Same response shape whether the email was real or not — never confirm
+    # / deny existence at this boundary.
+    return MessageResponse(
+        message="If an account exists for that email, a verification "
+                "message has been sent."
+    )
+
+
+# ---------------------------------------------------------------------------
+# Password reset
+# ---------------------------------------------------------------------------
+
+@router.post(
+    "/forgot-password",
+    response_model=MessageResponse,
+    response_description=(
+        "Always returns 200. If the email is registered, a reset link is "
+        "queued for delivery."
+    ),
+    responses={**ERR_422, **ERR_429, **ERR_500},
+)
+@limiter.limit(settings.RATE_LIMIT_REGISTER)
+def forgot_password(
+    request: Request,
+    payload: ForgotPasswordRequest,
+    conn: Annotated[PgConnection, Depends(get_db)],
+) -> MessageResponse:
+    email_flow.issue_password_reset(conn, email=str(payload.email))
+    return MessageResponse(
+        message="If an account exists for that email, a password reset "
+                "link has been sent."
+    )
+
+
+@router.post(
+    "/reset-password",
+    response_model=MessageResponse,
+    response_description=(
+        "Password updated; every session and refresh token for the user "
+        "is revoked, so all devices must log in again."
+    ),
+    responses={**ERR_400, **ERR_422, **ERR_429, **ERR_500},
+)
+@limiter.limit(settings.RATE_LIMIT_REGISTER)
+def reset_password(
+    request: Request,
+    payload: ResetPasswordRequest,
+    conn: Annotated[PgConnection, Depends(get_db)],
+) -> MessageResponse:
+    try:
+        email_flow.reset_password(
+            conn,
+            raw_token=payload.token,
+            new_password=payload.new_password,
+        )
+    except TokenInvalidError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Reset token is invalid or has expired.",
+        ) from exc
+    return MessageResponse(
+        message="Password updated. Please sign in again."
+    )

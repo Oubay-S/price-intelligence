@@ -37,6 +37,35 @@ class RefreshRequest(BaseModel):
 
 
 # ---------------------------------------------------------------------------
+# Email verification + password reset
+# ---------------------------------------------------------------------------
+
+class VerifyEmailRequest(BaseModel):
+    """POST /auth/verify-email — token is the raw URL-safe string from
+    the email link (we hash it server-side before lookup)."""
+    token: str = Field(..., min_length=16, max_length=128)
+
+
+class ResendVerificationRequest(BaseModel):
+    email: EmailStr
+
+
+class ForgotPasswordRequest(BaseModel):
+    email: EmailStr
+
+
+class ResetPasswordRequest(BaseModel):
+    token: str = Field(..., min_length=16, max_length=128)
+    new_password: str = Field(..., min_length=8, max_length=128, repr=False)
+
+
+class MessageResponse(BaseModel):
+    """Generic ``{"message": "..."}`` shape for endpoints that don't
+    return a resource (verify-email, forgot-password, reset-password)."""
+    message: str
+
+
+# ---------------------------------------------------------------------------
 # Outbound — tokens and the public user shape
 # ---------------------------------------------------------------------------
 

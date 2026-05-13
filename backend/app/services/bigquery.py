@@ -3,10 +3,8 @@ from __future__ import annotations
 import statistics
 from datetime import datetime, timedelta
 from functools import lru_cache
-from threading import RLock
 from typing import Any, Optional
 
-from cachetools import TTLCache, cached
 from google.cloud import bigquery
 from google.oauth2 import service_account
 
@@ -20,6 +18,7 @@ from app.models.product import (
     RatingsInfo,
     SupplementCategory,
 )
+from app.services.cache import redis_cached
 
 # ---------------------------------------------------------------------------
 # Schema-mapping tables — backing BigQuery table is the raw scraper mart
@@ -194,11 +193,7 @@ def _site_token(value: str) -> str:
 # get_all_products
 # ---------------------------------------------------------------------------
 
-_products_cache: TTLCache = TTLCache(maxsize=128, ttl=60)
-_products_cache_lock = RLock()
-
-
-@cached(cache=_products_cache, lock=_products_cache_lock)
+@redis_cached(prefix="bq:get_all_products", ttl=60)
 def get_all_products(
     page: int = 1,
     limit: int = 48,
@@ -254,16 +249,12 @@ def get_all_products(
 # search_products  (LIKE on product name)
 # ---------------------------------------------------------------------------
 
-_search_cache: TTLCache = TTLCache(maxsize=256, ttl=60)
-_search_cache_lock = RLock()
-
-
 def _escape_like(value: str) -> str:
     """Neutralise SQL-LIKE wildcards in user input — '%' and '_' must be literal."""
     return value.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
 
 
-@cached(cache=_search_cache, lock=_search_cache_lock)
+@redis_cached(prefix="bq:search_products", ttl=60)
 def search_products(
     query: str,
     category: Optional[SupplementCategory] = None,
@@ -319,11 +310,7 @@ def search_products(
 # get_product_by_id  (id = TO_HEX(SHA256(product_url)))
 # ---------------------------------------------------------------------------
 
-_product_by_id_cache: TTLCache = TTLCache(maxsize=512, ttl=60)
-_product_by_id_cache_lock = RLock()
-
-
-@cached(cache=_product_by_id_cache, lock=_product_by_id_cache_lock)
+@redis_cached(prefix="bq:get_product_by_id", ttl=60, key_dim="product_id")
 def get_product_by_id(product_id: str) -> Optional[ProductResponse]:
     sql = f"""
         {_select_columns()}
@@ -345,9 +332,6 @@ def get_product_by_id(product_id: str) -> Optional[ProductResponse]:
 # get_price_history  (time-series for one canonical product)
 # ---------------------------------------------------------------------------
 
-_price_history_cache: TTLCache = TTLCache(maxsize=256, ttl=60)
-_price_history_cache_lock = RLock()
-
 _SCRAPED_AT_TS = "SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', scraped_at)"
 
 
@@ -357,7 +341,7 @@ def _discount_pct(current: float, original: Optional[float]) -> Optional[float]:
     return round((original - current) / original * 100, 2)
 
 
-@cached(cache=_price_history_cache, lock=_price_history_cache_lock)
+@redis_cached(prefix="bq:get_price_history", ttl=60, key_dim="product_id")
 def get_price_history(
     product_id: str,
     start_date: Optional[datetime] = None,

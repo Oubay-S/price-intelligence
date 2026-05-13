@@ -3,6 +3,7 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException, Query, status
 from google.api_core.exceptions import GoogleAPICallError
 
+from app.api_responses import ERR_404, ERR_422, ERR_500
 from app.models.product import (
     PaginatedProducts,
     ProductResponse,
@@ -26,7 +27,12 @@ def _raise_bigquery_http_500(exc: GoogleAPICallError) -> None:
     ) from exc
 
 
-@router.get("", response_model=PaginatedProducts)
+@router.get(
+    "",
+    response_model=PaginatedProducts,
+    response_description="Paginated catalogue slice ordered by most recent scrape.",
+    responses={**ERR_422, **ERR_500},
+)
 def list_products(
     page: int = Query(1, ge=1),
     limit: int = Query(48, ge=1, le=200),
@@ -51,7 +57,12 @@ def list_products(
     )
 
 
-@router.get("/search", response_model=PaginatedProducts)
+@router.get(
+    "/search",
+    response_model=PaginatedProducts,
+    response_description="Products whose name matches the search query (case-insensitive LIKE).",
+    responses={**ERR_422, **ERR_500},
+)
 def search(
     q: str = Query(..., min_length=1, max_length=200, description="Match against product title and brand"),
     page: int = Query(1, ge=1),
@@ -76,7 +87,12 @@ def search(
     )
 
 
-@router.get("/trending", response_model=TrendingResponse)
+@router.get(
+    "/trending",
+    response_model=TrendingResponse,
+    response_description="Top products by drop magnitude over the requested window.",
+    responses={**ERR_422, **ERR_500},
+)
 def trending(
     period: str = Query("24h", pattern=r"^(24h|7d|30d)$"),
     category: Optional[SupplementCategory] = Query(None),
@@ -88,7 +104,12 @@ def trending(
         _raise_bigquery_http_500(exc)
 
 
-@router.get("/{product_id}", response_model=ProductResponse)
+@router.get(
+    "/{product_id}",
+    response_model=ProductResponse,
+    response_description="Latest snapshot for the given canonical product ID.",
+    responses={**ERR_404, **ERR_500},
+)
 def get_product(product_id: str) -> ProductResponse:
     try:
         product = get_product_by_id(product_id)

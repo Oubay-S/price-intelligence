@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Query, status
 from google.api_core.exceptions import GoogleAPICallError
 
+from app.api_responses import ERR_404, ERR_422, ERR_500
 from app.models.product import (
     BrandRankingsResponse,
     ProductStats,
@@ -18,7 +19,12 @@ def _raise_bigquery_http_500(exc: GoogleAPICallError) -> None:
     ) from exc
 
 
-@router.get("/brands", response_model=BrandRankingsResponse)
+@router.get(
+    "/brands",
+    response_model=BrandRankingsResponse,
+    response_description="Best-value brands inside one category, ranked.",
+    responses={**ERR_422, **ERR_500},
+)
 def brand_rankings(
     category: SupplementCategory = Query(
         ..., description="Top-level category to rank brands within"
@@ -31,7 +37,12 @@ def brand_rankings(
         _raise_bigquery_http_500(exc)
 
 
-@router.get("/{product_id}", response_model=ProductStats)
+@router.get(
+    "/{product_id}",
+    response_model=ProductStats,
+    response_description="Descriptive + predictive stats for one product over the window.",
+    responses={**ERR_404, **ERR_422, **ERR_500},
+)
 def product_stats(
     product_id: str,
     period_days: int = Query(30, ge=7, le=365),

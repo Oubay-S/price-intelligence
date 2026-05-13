@@ -21,10 +21,8 @@ Two flavours:
 from __future__ import annotations
 
 from datetime import datetime
-from threading import RLock
 from typing import Any, Optional
 
-from cachetools import TTLCache, cached
 from google.cloud import bigquery
 
 from app.config import settings
@@ -53,6 +51,7 @@ from app.services.bigquery import (
     _table_ref,
     get_client,
 )
+from app.services.cache import redis_cached
 
 
 def _mart_ref(table: str) -> str:
@@ -86,11 +85,7 @@ def _category_to_string(category: SupplementCategory) -> str:
 #   sites_tracked INT64
 # ---------------------------------------------------------------------------
 
-_product_stats_cache: TTLCache = TTLCache(maxsize=512, ttl=300)
-_product_stats_cache_lock = RLock()
-
-
-@cached(cache=_product_stats_cache, lock=_product_stats_cache_lock)
+@redis_cached(prefix="analytics:get_product_stats", ttl=300, key_dim="product_id")
 def get_product_stats(
     product_id: str,
     period_days: int = 30,
@@ -173,11 +168,7 @@ def get_product_stats(
 #   rank INT64                     -- 1 = best value
 # ---------------------------------------------------------------------------
 
-_brand_rankings_cache: TTLCache = TTLCache(maxsize=64, ttl=300)
-_brand_rankings_cache_lock = RLock()
-
-
-@cached(cache=_brand_rankings_cache, lock=_brand_rankings_cache_lock)
+@redis_cached(prefix="analytics:get_brand_rankings", ttl=300)
 def get_brand_rankings(
     category: SupplementCategory,
     limit: int = 20,
@@ -244,11 +235,7 @@ def get_brand_rankings(
 
 _TS_PARSE = "SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', scraped_at)"
 
-_price_drops_cache: TTLCache = TTLCache(maxsize=128, ttl=300)
-_price_drops_cache_lock = RLock()
-
-
-@cached(cache=_price_drops_cache, lock=_price_drops_cache_lock)
+@redis_cached(prefix="analytics:get_price_drops", ttl=300)
 def get_price_drops(
     threshold: float = 10.0,
     category: Optional[SupplementCategory] = None,
@@ -366,11 +353,7 @@ def get_price_drops(
 
 _PERIOD_HOURS: dict[str, int] = {"24h": 24, "7d": 24 * 7, "30d": 24 * 30}
 
-_trending_cache: TTLCache = TTLCache(maxsize=64, ttl=300)
-_trending_cache_lock = RLock()
-
-
-@cached(cache=_trending_cache, lock=_trending_cache_lock)
+@redis_cached(prefix="analytics:get_trending_products", ttl=300)
 def get_trending_products(
     period: str = "24h",
     category: Optional[SupplementCategory] = None,
@@ -505,11 +488,7 @@ def get_trending_products(
 #   landed_cost FLOAT64
 # ---------------------------------------------------------------------------
 
-_compare_cache: TTLCache = TTLCache(maxsize=512, ttl=60)
-_compare_cache_lock = RLock()
-
-
-@cached(cache=_compare_cache, lock=_compare_cache_lock)
+@redis_cached(prefix="analytics:get_comparison_for_product", ttl=60, key_dim="product_id")
 def get_comparison_for_product(product_id: str) -> Optional[ProductComparison]:
     """
     Fetch one product's latest per-site snapshot from `mart_site_prices` and
