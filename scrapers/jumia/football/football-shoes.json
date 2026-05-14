@@ -20,8 +20,8 @@
     "product_url": "https://www.jumia.ma/adidas-chaussure-x-crazyfast-league-turf-jaune-if0698-65796936.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/63/969756/1.jpg?6003",
     "stars": "3",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:05.731412"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:18.219848"
   },
   {
     "name": "FUTURE 7 PLAY TT(Tous Terrains) Chaussures de football pour Homme",
@@ -41,8 +41,8 @@
     "product_url": "https://www.jumia.ma/generic-future-7-play-tttous-terrains-chaussures-de-football-pour-homme-67390152.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/25/109376/1.jpg?1717",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:05.650693"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:18.601872"
   },
   {
     "name": "Joma Chaussures Futsal AGUILA black Chaussure football tout terrain noir",
@@ -68,8 +68,8 @@
     "product_url": "https://www.jumia.ma/joma-chaussures-futsal-aguila-black-chaussure-football-tout-terrain-noir-59931632.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/23/613995/1.jpg?3827",
     "stars": "4",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:06.402150"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:18.656760"
   },
   {
     "name": "Joma Chaussures Futsal AGUILA black  Chaussure football tout terrain noir",
@@ -94,8 +94,8 @@
     "product_url": "https://www.jumia.ma/joma-chaussures-futsal-aguila-black-chaussure-football-tout-terrain-noir-56048220.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/02/284065/1.jpg?3541",
     "stars": "3.3",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:06.506473"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:18.922075"
   },
   {
     "name": "Joma Chaussures Futsal AGUILA black  Chaussure football tout terrain noir",
@@ -120,8 +120,104 @@
     "product_url": "https://www.jumia.ma/joma-chaussures-futsal-aguila-black-chaussure-football-tout-terrain-noir-60695242.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/24/259606/1.jpg?2598",
     "stars": "4.8",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:06.304054"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:18.932750"
+  },
+  {
+    "name": "Chaussure de football légère - Jaune",
+    "current_price": "192.00",
+    "price_before_discount": "250.00",
+    "discount": "23%",
+    "sizes": [
+      "CH 39",
+      "CH 40",
+      "CH 43",
+      "CH 44"
+    ],
+    "features": [
+      "Poid léger",
+      "Semelle pliant",
+      "La mode moderne",
+      "Godasse en tricot",
+      "Chaussures confortables pour le football"
+    ],
+    "product_url": "https://www.jumia.ma/generic-chaussure-de-football-legere-jaune-67936761.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/763976/1.jpg?0189",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:19.072803"
+  },
+  {
+    "name": "Chaussure de football légère - Noir",
+    "current_price": "192.00",
+    "price_before_discount": "250.00",
+    "discount": "23%",
+    "sizes": [
+      "CH 39",
+      "CH 40",
+      "CH 41",
+      "CH 42",
+      "CH 44"
+    ],
+    "features": [
+      "Poid léger",
+      "Semelle pliant",
+      "La mode moderne",
+      "Godasse en tricot",
+      "Chaussures confortables pour le football"
+    ],
+    "product_url": "https://www.jumia.ma/generic-chaussure-de-football-legere-noir-67936886.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/68/863976/1.jpg?3733",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:19.316122"
+  },
+  {
+    "name": "Chaussure de football légère - Bleu",
+    "current_price": "192.00",
+    "price_before_discount": "250.00",
+    "discount": "23%",
+    "sizes": [
+      "CH 39",
+      "CH 40",
+      "CH 41",
+      "CH 42",
+      "CH 43",
+      "CH 44"
+    ],
+    "features": [
+      "Poid léger",
+      "Semelle pliant",
+      "La mode moderne",
+      "Godasse en tricot",
+      "Chaussures confortables pour le football"
+    ],
+    "product_url": "https://www.jumia.ma/generic-chaussure-de-football-legere-bleu-67936898.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/89/863976/1.jpg?5654",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:19.378307"
+  },
+  {
+    "name": "Chaussure de football légère Jaune avec semelle bleu",
+    "current_price": "192.00",
+    "price_before_discount": "250.00",
+    "discount": "23%",
+    "sizes": [
+      "CH 41"
+    ],
+    "features": [
+      "Poid léger",
+      "Semelle pliant",
+      "La mode moderne",
+      "Godasse en tricot",
+      "Chaussures confortables pour le football"
+    ],
+    "product_url": "https://www.jumia.ma/generic-chaussure-de-football-legere-jaune-avec-semelle-bleu-67936900.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/00/963976/1.jpg?7874",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:19.627593"
   },
   {
     "name": "Imperial Chaussures de football pour Les Hommes (Original)",
@@ -145,7 +241,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/88/082176/1.jpg?6604",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:06.509993"
+    "scraped_at": "2026-05-14T18:00:19.475861"
   },
   {
     "name": "Nike Mercurial Superfly 8 Club",
@@ -165,30 +261,8 @@
     "product_url": "https://www.jumia.ma/nike-mercurial-superfly-8-club-65960977.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/77/906956/1.jpg?5568",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:06.301931"
-  },
-  {
-    "name": "chaussure futsal, chaussure de football",
-    "current_price": "199.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "42",
-      "43"
-    ],
-    "features": [
-      "chaussures futsal",
-      "high quality",
-      "SKU: GE232FS0YKS5YNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: blue"
-    ],
-    "product_url": "https://www.jumia.ma/generic-chaussure-futsal-chaussure-de-football-66567085.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/58/076566/1.jpg?5277",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:06.869747"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:19.712646"
   },
   {
     "name": "Joma Chaussures Futsal AGUILA  Chaussure football tout terrain",
@@ -213,8 +287,106 @@
     "product_url": "https://www.jumia.ma/joma-chaussures-futsal-aguila-chaussure-football-tout-terrain-54634247.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/74/243645/1.jpg?7383",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:07.390301"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:19.923372"
+  },
+  {
+    "name": "Godasse de mini foot légère - Jaune",
+    "current_price": "211.00",
+    "price_before_discount": "279.00",
+    "discount": "24%",
+    "sizes": [
+      "CH 41",
+      "CH 42",
+      "CH 43",
+      "CH 44"
+    ],
+    "features": [
+      "Poid léger",
+      "Semelle pliant",
+      "La mode moderne",
+      "Godasse en tricot",
+      "Chaussures confortables pour le football"
+    ],
+    "product_url": "https://www.jumia.ma/generic-godasse-de-mini-foot-legere-jaune-67936905.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/963976/1.jpg?9824",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:20.023152"
+  },
+  {
+    "name": "chaussure futsal, chaussure de football",
+    "current_price": "199.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [
+      "42",
+      "43"
+    ],
+    "features": [
+      "chaussures futsal",
+      "high quality",
+      "SKU: GE232FS0YKS5YNAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: blue"
+    ],
+    "product_url": "https://www.jumia.ma/generic-chaussure-futsal-chaussure-de-football-66567085.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/58/076566/1.jpg?5277",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:20.123784"
+  },
+  {
+    "name": "Godasse de mini foot légère - Noir",
+    "current_price": "211.00",
+    "price_before_discount": "279.00",
+    "discount": "24%",
+    "sizes": [
+      "CH 39",
+      "CH 40",
+      "CH 41",
+      "CH 42",
+      "CH 43",
+      "CH 44"
+    ],
+    "features": [
+      "Poid léger",
+      "Semelle pliant",
+      "La mode moderne",
+      "Godasse en tricot",
+      "Chaussures confortables pour le football"
+    ],
+    "product_url": "https://www.jumia.ma/generic-godasse-de-mini-foot-legere-noir-67936909.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/90/963976/1.jpg?1204",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:20.298243"
+  },
+  {
+    "name": "Godasse de mini foot légère - Blanc",
+    "current_price": "211.00",
+    "price_before_discount": "279.00",
+    "discount": "24%",
+    "sizes": [
+      "CH 39",
+      "CH 40",
+      "CH 41",
+      "CH 42",
+      "CH 43",
+      "CH 44"
+    ],
+    "features": [
+      "Poid léger",
+      "Semelle pliant",
+      "La mode moderne",
+      "Godasse en tricot",
+      "Chaussures confortables pour le football"
+    ],
+    "product_url": "https://www.jumia.ma/generic-godasse-de-mini-foot-legere-blanc-67936916.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/61/963976/1.jpg?3574",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:20.424262"
   },
   {
     "name": "Joma Chaussures Futsal numéro-10 Noir Chaussure football tout terrain",
@@ -238,27 +410,8 @@
     "product_url": "https://www.jumia.ma/joma-chaussures-futsal-numero-10-noir-chaussure-football-tout-terrain-59965225.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/52/256995/1.jpg?9864",
     "stars": "4.5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:06.942661"
-  },
-  {
-    "name": "Bienvenue dans la chaussure - Football Cahier à spirale",
-    "current_price": "89.00",
-    "price_before_discount": "119.00",
-    "discount": "25%",
-    "sizes": [],
-    "features": [
-      "Taille : 14x20cm",
-      "Bloc Note",
-      "Peint Artistique",
-      "SKU: GE232SN0B8N68NAFAMZ",
-      "Modèle: notebook"
-    ],
-    "product_url": "https://www.jumia.ma/generic-bienvenue-dans-la-chaussure-football-cahier-a-spirale-65097881.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/879056/1.jpg?0408",
-    "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:07.128999"
+    "scraped_at": "2026-05-14T18:00:20.652530"
   },
   {
     "name": "Imperial Chaussures de footballTurquoise pour Les Hommes (Original)",
@@ -282,34 +435,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/58/082176/1.jpg?5283",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:08.052108"
+    "scraped_at": "2026-05-14T18:00:20.776731"
   },
   {
-    "name": "Imperial Chaussure de football adulte terrain dur agility 100 turf tf noire blanche",
-    "current_price": "999.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "39",
-      "40",
-      "41",
-      "42",
-      "43",
-      "44",
-      "45",
-      "46",
-      "47"
-    ],
+    "name": "Bienvenue dans la chaussure - Football Cahier à spirale",
+    "current_price": "89.00",
+    "price_before_discount": "119.00",
+    "discount": "25%",
+    "sizes": [],
     "features": [
-      "SKU: IM159FS0PXFZ8NAFAMZ",
-      "Poids (kg): 0,4",
-      "Couleur: Noir"
+      "Taille : 14x20cm",
+      "Bloc Note",
+      "Peint Artistique",
+      "SKU: GE232SN0B8N68NAFAMZ",
+      "Modèle: notebook"
     ],
-    "product_url": "https://www.jumia.ma/imperial-chaussure-de-football-adulte-terrain-dur-agility-100-turf-tf-noire-blanche-65705534.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/43/550756/1.jpg?4085",
+    "product_url": "https://www.jumia.ma/generic-bienvenue-dans-la-chaussure-football-cahier-a-spirale-65097881.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/879056/1.jpg?0408",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:07.465919"
+    "scraped_at": "2026-05-14T18:00:20.888841"
   },
   {
     "name": "Adidas Chaussure de football Predator League Terrain souple -Jaune - IG7761",
@@ -337,7 +482,31 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/97/969756/1.jpg?7169",
     "stars": "2.5",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:08.275237"
+    "scraped_at": "2026-05-14T18:00:21.297784"
+  },
+  {
+    "name": "Imperial Chaussures de football Orange pour Les Hommes (Original)",
+    "current_price": "549.00",
+    "price_before_discount": "999.00",
+    "discount": "45%",
+    "sizes": [
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "features": [
+      "SKU: IM159FS1BJB54NAFAMZ",
+      "Poids (kg): 0,4",
+      "Couleur: Multi-Couleur"
+    ],
+    "product_url": "https://www.jumia.ma/imperial-chaussures-de-football-orange-pour-les-hommes-original-65824897.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/79/842856/1.jpg?3368",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:21.254113"
   },
   {
     "name": "Kelme Chaussure de football et de futsal pour gazon intérieur KELME Original",
@@ -361,8 +530,8 @@
     "product_url": "https://www.jumia.ma/kelme-chaussure-de-football-et-de-futsal-pour-gazon-interieur-kelme-original-38174261.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/247183/1.jpg?6241",
     "stars": "4.2",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:08.027745"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:21.692352"
   },
   {
     "name": "Trophée Football Doré – Ballon & Chaussure",
@@ -381,7 +550,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/73/248676/1.jpg?1658",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:08.113667"
+    "scraped_at": "2026-05-14T18:00:21.630955"
   },
   {
     "name": "Imperial Chaussures de football Vert pour Les Hommes (Original)",
@@ -405,31 +574,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/40/073176/1.jpg?5003",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:08.276487"
+    "scraped_at": "2026-05-14T18:00:21.811887"
   },
   {
-    "name": "Imperial Chaussures de football Orange pour Les Hommes (Original)",
-    "current_price": "799.00  - 1199.00",
-    "price_before_discount": "1199.00",
-    "discount": "33%",
-    "sizes": [
-      "39",
-      "40",
-      "41",
-      "42",
-      "43",
-      "44"
-    ],
+    "name": "jeu de football de Table en bois avec 6 tiges pour enfants, 69x37x65cm SUR PIED",
+    "current_price": "439.00",
+    "price_before_discount": "550.00",
+    "discount": "20%",
+    "sizes": [],
     "features": [
-      "SKU: IM159FS04LEZCNAFAMZ",
-      "Poids (kg): 0,4",
-      "Couleur: Orange"
+      "Mouvement: Quartz",
+      "Résistance à l'eau jusqu'à 3Bars",
+      "Matériau de Boîte: Alliage",
+      "Type de matériau de fenêtre de cadran: Hardlex",
+      "Type de matériel de bande: Acier"
     ],
-    "product_url": "https://www.jumia.ma/imperial-chaussures-de-football-orange-pour-les-hommes-original-65671770.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/07/717656/1.jpg?5985",
-    "stars": "5",
+    "product_url": "https://www.jumia.ma/generic-jeu-de-football-de-table-en-bois-avec-6-tiges-pour-enfants-69x37x65cm-sur-pied-67271117.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/71/117276/1.jpg?0276",
+    "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:08.749335"
+    "scraped_at": "2026-05-14T18:00:22.061451"
   },
   {
     "name": "Welcome To The Shoe - Football  Spiral Notebook Bloc note",
@@ -448,53 +612,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/98/631785/1.jpg?0347",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:08.596730"
-  },
-  {
-    "name": "Imperial Chaussures de football Noir pour Les Hommes (Original)",
-    "current_price": "699.00  - 1199.00",
-    "price_before_discount": "1199.00",
-    "discount": "42%",
-    "sizes": [
-      "39",
-      "40",
-      "41",
-      "43",
-      "44"
-    ],
-    "features": [
-      "SKU: IM159FS12J4GONAFAMZ",
-      "Poids (kg): 0,4",
-      "Couleur: Noir"
-    ],
-    "product_url": "https://www.jumia.ma/imperial-chaussures-de-football-noir-pour-les-hommes-original-65671746.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/717656/1.jpg?3464",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-07T22:13:08.823021"
-  },
-  {
-    "name": "Imperial Chaussures de football Vert pour Les Hommes (Original)",
-    "current_price": "999.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "40",
-      "41",
-      "42",
-      "43",
-      "44"
-    ],
-    "features": [
-      "SKU: IM159FS0BZMBCNAFAMZ",
-      "Poids (kg): 0,4",
-      "Couleur: Vert"
-    ],
-    "product_url": "https://www.jumia.ma/imperial-chaussures-de-football-vert-pour-les-hommes-original-65673102.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/20/137656/1.jpg?7362",
-    "stars": "5",
-    "availability": "-",
-    "scraped_at": "2026-05-07T22:13:09.229197"
+    "scraped_at": "2026-05-14T18:00:22.075543"
   },
   {
     "name": "Kelme Chaussure de football et de futsal pour gazon intérieur K ELME Original",
@@ -518,51 +636,8 @@
     "product_url": "https://www.jumia.ma/kelme-chaussure-de-football-et-de-futsal-pour-gazon-interieur-k-elme-original-39366687.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/78/666393/1.jpg?8024",
     "stars": "4.4",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:08.904754"
-  },
-  {
-    "name": "jeu de football de Table en bois avec 6 tiges pour enfants, 69x37x65cm SUR PIED",
-    "current_price": "439.00",
-    "price_before_discount": "550.00",
-    "discount": "20%",
-    "sizes": [],
-    "features": [
-      "Mouvement: Quartz",
-      "Résistance à l'eau jusqu'à 3Bars",
-      "Matériau de Boîte: Alliage",
-      "Type de matériau de fenêtre de cadran: Hardlex",
-      "Type de matériel de bande: Acier"
-    ],
-    "product_url": "https://www.jumia.ma/generic-jeu-de-football-de-table-en-bois-avec-6-tiges-pour-enfants-69x37x65cm-sur-pied-67271117.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/71/117276/1.jpg?0276",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:09.015903"
-  },
-  {
-    "name": "Imperial Chaussures de football Noir pour Les Hommes (Original)",
-    "current_price": "999.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "39",
-      "40",
-      "41",
-      "42",
-      "43",
-      "44"
-    ],
-    "features": [
-      "SKU: IM159FS0FB7VCNAFAMZ",
-      "Poids (kg): 0,4",
-      "Couleur: Turquoise"
-    ],
-    "product_url": "https://www.jumia.ma/imperial-chaussures-de-football-noir-pour-les-hommes-original-65671752.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/25/717656/1.jpg?4904",
-    "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:09.324822"
+    "scraped_at": "2026-05-14T18:00:22.237474"
   },
   {
     "name": "Chaussure de football adulte terrain dur Agilit...",
@@ -590,7 +665,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/55/401846/1.jpg?3664",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:09.603269"
+    "scraped_at": "2026-05-14T18:00:22.560175"
   },
   {
     "name": "Kipsta Chaussure de football adulte terrain  100 NOIR blanche",
@@ -610,56 +685,8 @@
     "product_url": "https://www.jumia.ma/kipsta-chaussure-de-football-adulte-terrain-100-noir-blanche-65782427.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/72/428756/1.jpg?3266",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:09.487491"
-  },
-  {
-    "name": "Imperial Chaussures de football Orange pour Les Hommes (Original)",
-    "current_price": "549.00",
-    "price_before_discount": "999.00",
-    "discount": "45%",
-    "sizes": [
-      "39",
-      "40",
-      "41",
-      "42",
-      "43",
-      "44"
-    ],
-    "features": [
-      "SKU: IM159FS1BJB54NAFAMZ",
-      "Poids (kg): 0,4",
-      "Couleur: Multi-Couleur"
-    ],
-    "product_url": "https://www.jumia.ma/imperial-chaussures-de-football-orange-pour-les-hommes-original-65824897.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/79/842856/1.jpg?3368",
-    "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:10.032562"
-  },
-  {
-    "name": "Imperial Chaussures de football Orange pour Les Hommes (Original)",
-    "current_price": "999.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "39",
-      "40",
-      "41",
-      "42",
-      "43",
-      "44"
-    ],
-    "features": [
-      "SKU: IM159FS03ZZDKNAFAMZ",
-      "Poids (kg): 0,4",
-      "Couleur: Orange"
-    ],
-    "product_url": "https://www.jumia.ma/imperial-chaussures-de-football-orange-pour-les-hommes-original-65671760.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/06/717656/1.jpg?5384",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-07T22:13:10.086448"
+    "scraped_at": "2026-05-14T18:00:22.518161"
   },
   {
     "name": "50pcs Ted Lasso 1 Soccer Sports TV Show Stickers",
@@ -678,7 +705,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/91/632066/1.jpg?5297",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:09.904529"
+    "scraped_at": "2026-05-14T18:00:22.798364"
   },
   {
     "name": "Funny Panda Shooting Maroc Football - Drapeau Marocain Football Cahier à spirale",
@@ -697,53 +724,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/22/589056/1.jpg?0440",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:10.102366"
-  },
-  {
-    "name": "Kipsta Short de football pour homme et femme bleu",
-    "current_price": "189.00",
-    "price_before_discount": "249.00",
-    "discount": "24%",
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL"
-    ],
-    "features": [
-      "Évacuation de la transpiration",
-      "Composant favorisant l'évacuation de la AÉvacuation de la transpiration",
-      "Composant favorisant l'évacuation de la transpiration.",
-      "Liberté de mouvement",
-      "Coupe et composant favorisant une liberté de mouvement optimale."
-    ],
-    "product_url": "https://www.jumia.ma/kipsta-short-de-football-pour-homme-et-femme-bleu-67280391.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/19/308276/1.jpg?0197",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-07T22:13:10.253335"
-  },
-  {
-    "name": "Kipsta Short de football pour homme et femme noir",
-    "current_price": "189.00",
-    "price_before_discount": "249.00",
-    "discount": "24%",
-    "sizes": [
-      "S"
-    ],
-    "features": [
-      "Évacuation de la transpiration",
-      "Composant favorisant l'évacuation de la transpiration.",
-      "Liberté de mouvement",
-      "Coupe et composant favorisant une liberté de mouvement optimale.",
-      "Maintien du produit"
-    ],
-    "product_url": "https://www.jumia.ma/kipsta-short-de-football-pour-homme-et-femme-noir-67280837.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/73/808276/1.jpg?6639",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:10.669390"
+    "scraped_at": "2026-05-14T18:00:22.834312"
   },
   {
     "name": "1 Sac Fourre-Tout Dinamo Zagreb Football Club Imprimé - Noir en Polyester Durable, Grande Capacité pour Plage et Shopping avec Design Éclatant d'Emblème, Lavable à la Main, Cadeau Unisexe pour Fans de Sport, Accessoire Thématique Urbain, Poignée Robuste",
@@ -762,53 +743,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/49/242376/1.jpg?4734",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:10.784187"
-  },
-  {
-    "name": "Imperial Chaussures de football vert pour Les enfants (Original)",
-    "current_price": "599.00",
-    "price_before_discount": "1099.00",
-    "discount": "45%",
-    "sizes": [
-      "38",
-      "31"
-    ],
-    "features": [
-      "SKU: IM159FS0TUMGONAFAMZ",
-      "Poids (kg): 0,4",
-      "Couleur: Vert"
-    ],
-    "product_url": "https://www.jumia.ma/imperial-chaussures-de-football-vert-pour-les-enfants-original-65673105.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/137656/1.jpg?7610",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-07T22:13:10.664418"
-  },
-  {
-    "name": "Imperial Chaussures de football Rouge pour Les enfants (Original)",
-    "current_price": "999.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "38",
-      "37",
-      "36",
-      "35",
-      "31",
-      "32",
-      "33",
-      "34"
-    ],
-    "features": [
-      "SKU: IM159FS1HNYNSNAFAMZ",
-      "Poids (kg): 0,4",
-      "Couleur: Rouge"
-    ],
-    "product_url": "https://www.jumia.ma/imperial-chaussures-de-football-rouge-pour-les-enfants-original-65673109.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/90/137656/1.jpg?8503",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-07T22:13:10.989758"
+    "scraped_at": "2026-05-14T18:00:22.926907"
   },
   {
     "name": "1 Sac Fourre-Tout Imprimé Personnage Anime Football - Polyester Durable Grande Capacité, Sac de Plage Camping Shopping Lavable à la Main Noir pour Femmes & Hommes, Thème Sportif Anime, Design Éclatant, Tissu de Qualité, Style Urbain, Construction Robust",
@@ -827,32 +762,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/77/042376/1.jpg?4670",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:10.853515"
-  },
-  {
-    "name": "Chaussures de football viralto i turf tf orange",
-    "current_price": "1499.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "39",
-      "40",
-      "41",
-      "42",
-      "43",
-      "44",
-      "45"
-    ],
-    "features": [
-      "SKU: GE232FS1D33JWNAFAMZ",
-      "Poids (kg): 0,4",
-      "Couleur: Orange"
-    ],
-    "product_url": "https://www.jumia.ma/generic-chaussures-de-football-viralto-i-turf-tf-orange-65754428.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/82/445756/1.jpg?0265",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-07T22:13:11.373255"
+    "scraped_at": "2026-05-14T18:00:23.041739"
   },
   {
     "name": "Sac fourre-tout pour femmes et unisexes - Lettrage GATORS audacieuse et graphique de football, sac de shopping en polyester durable à ouverture supérieure pour les fans de sport, la salle de sport, les voyages, l'utilisation quotidienne - Cadeau léger e",
@@ -871,7 +781,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/47/632376/1.jpg?4559",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:11.156796"
+    "scraped_at": "2026-05-14T18:00:23.230597"
   },
   {
     "name": "1pc Sac Fourre-Tout Imprimé TIGER CATS FOOTBALL pour Femmes & Hommes - Polyester Durable Grande Capacité, Sac de Plage Camping Cadeau Shopping, Accessoire Urbain Noir Lavable à la Main, Thème Sportif, Poignées Solides, Simple, Matière Haute Qualité, Spa",
@@ -890,7 +800,28 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/542376/1.jpg?4796",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:11.446048"
+    "scraped_at": "2026-05-14T18:00:23.904678"
+  },
+  {
+    "name": "Juste une Fille qui Aime le Football Sac Fourre-Tout - Design Dynamique de Ballon et Nœud, Grande Capacité en Tissu Résistant pour Femmes, Style Décontracté Chic pour Pique-nique, Voyage, Shopping, Soirées, Essentiels de Pique-nique Graphisme Ludique Po",
+    "current_price": "64.00",
+    "price_before_discount": "119.00",
+    "discount": "46%",
+    "sizes": [
+      "noire"
+    ],
+    "features": [
+      "Un sac réutilisable et léger à emporter partout, pratique pour transporter votre barda ou vos courses.",
+      "Dimensions du sac : 38,5 x 40 cm",
+      "Sac en tissu  léger",
+      "Le design de votre choix imprimé sur un côté à la demande.",
+      "Le tote bag doublé fera votre bonheur."
+    ],
+    "product_url": "https://www.jumia.ma/generic-juste-une-fille-qui-aime-le-football-sac-fourre-tout-design-dynamique-de-ballon-et-noeud-grande-capacite-en-tissu-resistant-pour-femmes-style-decontracte-chic-pour-pique-nique-voyage-shopping-soirees-essentiels-de-pique-nique-graphisme-ludique-po-67859177.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/77/195876/1.jpg?3661",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:23.927548"
   },
   {
     "name": "Funny Panda Shooting Maroc Football - Drapeau Marocain Football Sweat à capuche léger",
@@ -914,6 +845,73 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/92/862446/1.jpg?8993",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:11.535034"
+    "scraped_at": "2026-05-14T18:00:24.020487"
+  },
+  {
+    "name": "Ouri shop Runs in the Family: An Incredible True Story of Football, Fatherhood, and Belonging",
+    "current_price": "220.00",
+    "price_before_discount": "299.00",
+    "discount": "26%",
+    "sizes": [
+      "No"
+    ],
+    "features": [
+      "High-quality books",
+      "Carefully curated selections",
+      "Wide variety of genres",
+      "Books for all ages",
+      "For learning, entertainment, and inspiration"
+    ],
+    "product_url": "https://www.jumia.ma/ouri-shop-runs-in-the-family-an-incredible-true-story-of-football-fatherhood-and-belonging-67516852.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/25/861576/1.jpg?3974",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:24.047585"
+  },
+  {
+    "name": "Ouri shop Soccer Anatomy",
+    "current_price": "190.00",
+    "price_before_discount": "299.00",
+    "discount": "36%",
+    "sizes": [
+      "No"
+    ],
+    "features": [
+      "High-quality books",
+      "Carefully curated selections",
+      "Wide variety of genres",
+      "Books for all ages",
+      "For learning, entertainment, and inspiration"
+    ],
+    "product_url": "https://www.jumia.ma/ouri-shop-soccer-anatomy-67511787.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/78/711576/1.jpg?1051",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:24.089163"
+  },
+  {
+    "name": "Funny Panda Shooting Maroc Football - Drapeau Marocain Football Sweat à capuche épais",
+    "current_price": "149.00  - 179.00",
+    "price_before_discount": "200.00  - 210.00",
+    "discount": "26%",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "features": [
+      "Remarque : si vous préférez porter vos sweats à capuche bien larges, optez pour 2 tailles en plus.",
+      "Molleton en coton mélangé épais : 280 g/m² (8,25 oz).",
+      "Les couleurs unies sont 80 % coton filé, 20 % polyester. Le gris chiné est 70 % coton, 30 % polyester. Le gris anthracite chiné est 60 % coton, 40 % polyester.",
+      "Poche kangourou sur le devant, cordons assortis et poignets bords-côtes.",
+      "Impression par une imprimerie indépendante conforme aux normes de l'Organisation internationale du travail."
+    ],
+    "product_url": "https://www.jumia.ma/full-metal-alchemist-blood-seal-pullover-hoodie-sweats-capuche-hoodie-generic-mpg1433811.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/662446/1.jpg?8925",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:00:24.684040"
   }
 ]

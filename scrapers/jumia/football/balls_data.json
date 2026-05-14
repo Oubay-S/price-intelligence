@@ -15,8 +15,8 @@
     "product_url": "https://www.jumia.ma/molten-ballon-de-football-vantaggio-1000-t5-67395979.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/97/959376/1.jpg?7835",
     "stars": "4",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:56.116088"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:45.750278"
   },
   {
     "name": "Ballon de Football Taille 5 Résistant – Surface Antidérapante Entraînement & Match",
@@ -34,8 +34,8 @@
     "product_url": "https://www.jumia.ma/generic-ballon-de-football-taille-5-resistant-surface-antiderapante-entrainement-match-67659250.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/05/295676/1.jpg?0896",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:56.421475"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:46.370204"
   },
   {
     "name": "Ballon de Football Mini Foot Taille 5 -Jeu Sport Foot - Soccer Fifa",
@@ -49,14 +49,33 @@
       "Ballon de FootBall Taille 5.",
       "1er Prix Technique",
       "Nouveau design .",
-      "A utiliser sur gazon, sable, Terrain mini Foot et terre",
-      "Ne convient pas pour les terrain caillouteux ou rocheux"
+      "Football et Mini Foot",
+      "SKU: GE232SE19H8ECNAFAMZ"
     ],
     "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-foot-taille-5-jeu-sport-foot-soccer-fifa-65768367.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/76/386756/1.jpg?8971",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:56.391466"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:45.920592"
+  },
+  {
+    "name": "Ballon de Football Marocain, Design Drapeau du Maroc",
+    "current_price": "49.00",
+    "price_before_discount": "80.00",
+    "discount": "39%",
+    "sizes": [],
+    "features": [
+      "Design marocain unique aux couleurs du drapeau ????????",
+      "Adapté aux enfants et à l’entraînement léger",
+      "Léger et facile à contrôler",
+      "Convient pour le jeu en extérieur et les terrains d’entraînement",
+      "Idéal comme cadeau pour les jeunes fans de football"
+    ],
+    "product_url": "https://www.jumia.ma/generic-ballon-de-football-marocain-design-drapeau-du-maroc-67513659.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/95/631576/1.jpg?7722",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:46.404521"
   },
   {
     "name": "Molten Ballon de football en fusion Vantaggio F5A1710 cousu à la main",
@@ -75,7 +94,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/30/888356/1.jpg?9846",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:12:56.288727"
+    "scraped_at": "2026-05-14T18:22:46.032534"
   },
   {
     "name": "Molten Ballon de football en fusion Vantaggio F5A1710 cousu à la main",
@@ -93,27 +112,8 @@
     "product_url": "https://www.jumia.ma/molten-ballon-de-football-en-fusion-vantaggio-f5a1710-cousu-a-la-main-58800712.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/21/700885/1.jpg?4641",
     "stars": "3",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:56.203477"
-  },
-  {
-    "name": "Ballon de Football Marocain, Design Drapeau du Maroc",
-    "current_price": "49.00",
-    "price_before_discount": "80.00",
-    "discount": "39%",
-    "sizes": [],
-    "features": [
-      "Design marocain unique aux couleurs du drapeau ????????",
-      "Adapté aux enfants et à l’entraînement léger",
-      "Léger et facile à contrôler",
-      "Convient pour le jeu en extérieur et les terrains d’entraînement",
-      "Idéal comme cadeau pour les jeunes fans de football"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-marocain-design-drapeau-du-maroc-67513659.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/95/631576/1.jpg?7722",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:56.584392"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:46.546555"
   },
   {
     "name": "Molten BALLON DE FOOTBALL VANTAGGIO A1710 TAILLE 5",
@@ -131,8 +131,8 @@
     "product_url": "https://www.jumia.ma/molten-ballon-de-football-vantaggio-a1710-taille-5-67666739.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/93/766676/1.jpg?9483",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:56.712718"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:46.868920"
   },
   {
     "name": "Molten ballon futsal à faible élasticité fondu F9A4800 de haute qualité MOLTEN football",
@@ -150,8 +150,8 @@
     "product_url": "https://www.jumia.ma/molten-ballon-futsal-a-faible-elasticite-fondu-f9a4800-de-haute-qualite-molten-football-65388814.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/41/888356/1.jpg?9845",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:56.810457"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:46.661838"
   },
   {
     "name": "Molten BALLON DE FOOTBALL VANTAGGIO F5A1510 TAILLE 5",
@@ -169,65 +169,25 @@
     "product_url": "https://www.jumia.ma/molten-ballon-de-football-vantaggio-f5a1510-taille-5-67667011.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/11/076676/1.jpg?5128",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:56.952474"
-  },
-  {
-    "name": "Molten Ballon de football en fusion Vantaggio F5A1710 cousu à la main",
-    "current_price": "199.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Football",
-      "Nombre de panneaux : 32",
-      "Matériau de la couverture : cuir synthétique",
-      "Vessie : Latex",
-      "Taille : 5"
-    ],
-    "product_url": "https://www.jumia.ma/generic-molten-ballon-de-football-en-fusion-vantaggio-f5a1710-cousu-a-la-main-65294735.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/53/749256/1.jpg?7365",
-    "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:12:56.891810"
+    "scraped_at": "2026-05-14T18:22:47.213855"
   },
   {
-    "name": "Ballon de Football Taille 5 Officiel Rouge et Noir – Entraînement et Match",
-    "current_price": "89.00",
-    "price_before_discount": "",
-    "discount": null,
+    "name": "ballon de football  Couleur Aléatoire",
+    "current_price": "99.00",
+    "price_before_discount": "129.00",
+    "discount": "23%",
     "sizes": [],
     "features": [
-      "Taille officielle 5 adaptée aux matchs et aux entraînements",
-      "Revêtement texturé pour un meilleur contrôle du ballon",
-      "Bonne résistance pour une utilisation régulière",
-      "Design rouge et noir visible sur le terrain",
-      "Convient aux joueurs débutants comme confirmés"
+      "SKU: GE232SE1CS5VYNAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: multicouleurs"
     ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-taille-5-officiel-rouge-et-noir-entrainement-et-match-67659240.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/04/295676/1.jpg?0132",
-    "stars": "0",
+    "product_url": "https://www.jumia.ma/generic-ballon-de-football-couleur-aleatoire-66553918.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/81/935566/1.jpg?4242",
+    "stars": "1",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:12:57.025702"
-  },
-  {
-    "name": "Molten Ballon de football en fusion Vantaggio F5A1710 cousu à la main",
-    "current_price": "199.00",
-    "price_before_discount": "349.00",
-    "discount": "43%",
-    "sizes": [],
-    "features": [
-      "Football",
-      "Nombre de panneaux : 32",
-      "Matériau de la couverture : cuir synthétique",
-      "Vessie : Latex",
-      "Taille : 5"
-    ],
-    "product_url": "https://www.jumia.ma/molten-ballon-de-football-en-fusion-vantaggio-f5a1710-cousu-a-la-main-42748970.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/07/984724/1.jpg?6766",
-    "stars": "3.5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:57.273583"
+    "scraped_at": "2026-05-14T18:22:47.701571"
   },
   {
     "name": "BALLON DE FOOTBALL JAUNE (TAILLE 5)",
@@ -247,25 +207,46 @@
     "product_url": "https://www.jumia.ma/generic-ballon-de-football-jaune-taille-5-55205725.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/52/750255/1.jpg?9119",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:57.254157"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:47.636370"
   },
   {
-    "name": "ballon de football  Couleur Aléatoire",
-    "current_price": "99.00",
-    "price_before_discount": "129.00",
-    "discount": "23%",
+    "name": "Molten Ballon de football en fusion Vantaggio F5A1710 cousu à la main",
+    "current_price": "199.00",
+    "price_before_discount": "349.00",
+    "discount": "43%",
     "sizes": [],
     "features": [
-      "SKU: GE232SE1CS5VYNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: multicouleurs"
+      "Football",
+      "Nombre de panneaux : 32",
+      "Matériau de la couverture : cuir synthétique",
+      "Vessie : Latex",
+      "Taille : 5"
     ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-couleur-aleatoire-66553918.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/81/935566/1.jpg?4242",
-    "stars": "1",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:57.760370"
+    "product_url": "https://www.jumia.ma/molten-ballon-de-football-en-fusion-vantaggio-f5a1710-cousu-a-la-main-42748970.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/07/984724/1.jpg?6766",
+    "stars": "3.5",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:47.697193"
+  },
+  {
+    "name": "Molten Ballon de football en fusion Vantaggio F5A1710 cousu à la main",
+    "current_price": "199.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Football",
+      "Nombre de panneaux : 32",
+      "Matériau de la couverture : cuir synthétique",
+      "Vessie : Latex",
+      "Taille : 5"
+    ],
+    "product_url": "https://www.jumia.ma/generic-molten-ballon-de-football-en-fusion-vantaggio-f5a1710-cousu-a-la-main-65294735.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/53/749256/1.jpg?7365",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:48.087402"
   },
   {
     "name": "Molten Ballon de football en fusion Vantaggio F5A1710 cousu à la main",
@@ -283,101 +264,8 @@
     "product_url": "https://www.jumia.ma/molten-ballon-de-football-en-fusion-vantaggio-f5a1710-cousu-a-la-main-64253653.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/635246/1.jpg?1111",
     "stars": "1",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:57.733869"
-  },
-  {
-    "name": "Molten Ballon de football Taille 5",
-    "current_price": "199.00",
-    "price_before_discount": "253.00",
-    "discount": "21%",
-    "sizes": [],
-    "features": [
-      "Football",
-      "Nombre de panneaux : 32",
-      "Matériau de la couverture : cuir synthétique",
-      "Vessie : Latex",
-      "Taille : 5"
-    ],
-    "product_url": "https://www.jumia.ma/generic-molten-ballon-de-football-taille-5-65143418.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/81/434156/1.jpg?9108",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:57.897334"
-  },
-  {
-    "name": "Ballon de Football Mini – Taille 5 – Jeu Sport Foot – Soccer FIFA",
-    "current_price": "60.00",
-    "price_before_discount": "80.00",
-    "discount": "25%",
-    "sizes": [],
-    "features": [
-      "Type de produit : Ballon de football",
-      "Taille : 5",
-      "Utilisation : Loisirs / Entraînement",
-      "Public cible : Enfants & Adultes",
-      "Sport : Football / Soccer"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-taille-5-jeu-sport-foot-soccer-fifa-67582771.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/17/728576/1.jpg?9201",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:58.001068"
-  },
-  {
-    "name": "Molten ballon futsal  fondu F9A4800 de haute qualité MOLTEN football",
-    "current_price": "590.00",
-    "price_before_discount": "650.00",
-    "discount": "9%",
-    "sizes": [],
-    "features": [
-      "Nom de la marque: Molten",
-      "Gonflable: Oui",
-      "Couleur: comme l'image",
-      "Caractéristique: toucher doux, original, résistance à l'usure, haute qualité",
-      "FIFA QUALITY PR"
-    ],
-    "product_url": "https://www.jumia.ma/generic-molten-ballon-futsal-fondu-f9a4800-de-haute-qualite-molten-football-65143422.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/22/434156/1.jpg?9107",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:58.065256"
-  },
-  {
-    "name": "Ballon de Football Mini – Taille 5 – Jeu Sport Foot – Soccer FIFA",
-    "current_price": "184.80",
-    "price_before_discount": "258.72",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE11S56KNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-taille-5-jeu-sport-foot-soccer-fifa-67885436.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/63/458876/1.jpg?0742",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:58.290706"
-  },
-  {
-    "name": "Ballon de Football Taille 5 – 430g Bonne Qualité",
-    "current_price": "159.00",
-    "price_before_discount": "250.00",
-    "discount": "36%",
-    "sizes": [
-      "430g"
-    ],
-    "features": [
-      "SKU: GE232SE0LPY7ONAFAMZ",
-      "Poids (kg): 430g",
-      "Couleur: blanc orange vert"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-taille-5-430g-bonne-qualite-67628463.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/36/482676/1.jpg?3801",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:58.272224"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:48.157916"
   },
   {
     "name": "Ballon de Football Mini Foot Taille 5 -Jeu Sport Foot - Soccer Fifa",
@@ -390,11 +278,87 @@
       "Poids (kg): 1",
       "Couleur: Multicolour"
     ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-foot-taille-5-jeu-sport-foot-soccer-fifa-67871555.html",
+    "product_url": "https://www.jumia.ma/ballon-de-football-mini-foot-taille-5-jeu-sport-foot-soccer-fifa-generic-mpg1613586.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/55/517876/1.jpg?8289",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:58.362940"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:48.670423"
+  },
+  {
+    "name": "Ballon de Football Mini – Taille 5 – Jeu Sport Foot – Soccer FIFA",
+    "current_price": "60.00",
+    "price_before_discount": "80.00",
+    "discount": "25%",
+    "sizes": [],
+    "features": [
+      "⚽ Taille 5 standard – idéale pour entraînement et loisirs",
+      "???? Matériau résistant pour une longue durée d’utilisation",
+      "???? Bonne adhérence et contrôle du ballon",
+      "???????? Convient aux enfants, adolescents et adultes",
+      "???? Utilisation intérieure et extérieure"
+    ],
+    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-taille-5-jeu-sport-foot-soccer-fifa-67582771.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/17/728576/1.jpg?9201",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:48.377774"
+  },
+  {
+    "name": "Ballon de Football Taille 5 Officiel Rouge et Noir – Entraînement et Match",
+    "current_price": "119.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Taille officielle 5 adaptée aux matchs et aux entraînements",
+      "Revêtement texturé pour un meilleur contrôle du ballon",
+      "Bonne résistance pour une utilisation régulière",
+      "Design rouge et noir visible sur le terrain",
+      "Convient aux joueurs débutants comme confirmés"
+    ],
+    "product_url": "https://www.jumia.ma/generic-ballon-de-football-taille-5-officiel-rouge-et-noir-entrainement-et-match-67659240.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/04/295676/1.jpg?0132",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:48.637477"
+  },
+  {
+    "name": "Molten Ballon de football Taille 5",
+    "current_price": "149.00",
+    "price_before_discount": "199.00",
+    "discount": "25%",
+    "sizes": [],
+    "features": [
+      "Matériau : cuir synthétique TPU",
+      "Taille: 5",
+      "Poids : 410-450 grammes",
+      "SKU: MO338SE0IZ9RUNAFAMZ",
+      "Modèle: F5A1000"
+    ],
+    "product_url": "https://www.jumia.ma/molten-ballon-de-football-taille-5-41787813.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/31/878714/1.jpg?1761",
+    "stars": "3.8",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:48.892775"
+  },
+  {
+    "name": "Molten Ballon de football en fusion Vantaggio F5A1710 cousu à la main",
+    "current_price": "199.00",
+    "price_before_discount": "229.00",
+    "discount": "13%",
+    "sizes": [],
+    "features": [
+      "Football",
+      "Nombre de panneaux : 32",
+      "Matériau de la couverture : cuir synthétique",
+      "Vessie : Latex",
+      "Taille : 5"
+    ],
+    "product_url": "https://www.jumia.ma/molten-ballon-de-football-en-fusion-vantaggio-f5a1710-cousu-a-la-main-64238015.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/51/083246/1.jpg?0790",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:48.901342"
   },
   {
     "name": "Molten Ballon de football Taille 5",
@@ -413,62 +377,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/71/840356/1.jpg?4964",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:12:58.447648"
-  },
-  {
-    "name": "Ballon de Football Professionnel – Design Moderne et Haute Performance",
-    "current_price": "135.00",
-    "price_before_discount": "199.00",
-    "discount": "32%",
-    "sizes": [],
-    "features": [
-      "Surface texturée antidérapante ???? – Pour un meilleur contrôle et des passes précises.",
-      "Design dynamique multicolore ???? – Visibilité accrue sur tous types de terrains.",
-      "Construction robuste cousue à la machine ???? – Résistance maximale aux chocs et à l'usure.",
-      "Taille standard (n°5) ???? – Conforme aux normes officielles pour les compétitions.",
-      "SKU: GE232SE0VG3U6NAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/ballon-de-football-professionnel-design-moderne-et-haute-performance-generic-mpg1518192.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/52/819566/1.jpg?2371",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:58.551263"
-  },
-  {
-    "name": "Ballon de Football Mini Foot Taille 5 -Jeu Sport Foot - Soccer Fifa",
-    "current_price": "204.40",
-    "price_before_discount": "286.16",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE05RN7ONAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-foot-taille-5-jeu-sport-foot-soccer-fifa-67878690.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/09/687876/1.jpg?8155",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:58.793081"
-  },
-  {
-    "name": "Molten Ballon de football en fusion Vantaggio F5A1710 cousu à la main",
-    "current_price": "199.00",
-    "price_before_discount": "229.00",
-    "discount": "13%",
-    "sizes": [],
-    "features": [
-      "Football",
-      "Nombre de panneaux : 32",
-      "Matériau de la couverture : cuir synthétique",
-      "Vessie : Latex",
-      "Taille : 5"
-    ],
-    "product_url": "https://www.jumia.ma/molten-ballon-de-football-en-fusion-vantaggio-f5a1710-cousu-a-la-main-64238015.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/51/083246/1.jpg?0790",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:58.823540"
+    "scraped_at": "2026-05-14T18:22:49.043482"
   },
   {
     "name": "Ballon de Football Mini – Taille 5 – Jeu Sport Foot – Soccer FIFA",
@@ -477,34 +386,53 @@
     "discount": "29%",
     "sizes": [],
     "features": [
-      "SKU: GE232SE0V30MKNAFAMZ",
+      "SKU: GE232SE02FGWGNAFAMZ",
       "Poids (kg): 1",
       "Couleur: Multicolour"
     ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-taille-5-jeu-sport-foot-soccer-fifa-67880225.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/52/208876/1.jpg?1306",
+    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-taille-5-jeu-sport-foot-soccer-fifa-67908040.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/04/080976/1.jpg?4394",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:58.890185"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:49.500352"
   },
   {
-    "name": "Ballon de Football Taille 5, Ballon de Foot Numéro 5 – Balle Haute Qualité pour Enfants, Adolescents et Adultes– Résistant, Idéal Match & Entraînement Usage Scolaire, Amateur, Professionnelen Club, École, Loisir, Terrain Synthétique ou Gazon",
-    "current_price": "79.00",
-    "price_before_discount": "",
-    "discount": null,
+    "name": "Molten Ballon de football Taille 5",
+    "current_price": "148.99",
+    "price_before_discount": "249.00",
+    "discount": "40%",
     "sizes": [],
     "features": [
-      "⚽ Taille Officielle FIFA (N°5) : Idéal pour les joueurs de 12 ans et plus – Matchs, entraînements, loisirs",
-      "???? Haute Résistance : Enveloppe en cuir synthétique (PU/PVC) robuste – Résiste à l’usure et aux chocs",
-      "????️ Polyvalent Tous Terrains : Convient pour gazon naturel, synthétique, bitume ou sol dur",
-      "???? Rebond Contrôlé & Stabilité : Vessie en latex ou butyle – Trajectoire précise et confort de jeu",
-      "???? Cousu Machine ou Main : Finitions soignées pour une durabilité renforcée"
+      "Matériau : cuir synthétique TPU",
+      "Taille: 5",
+      "Poids : 410-450 grammes",
+      "SKU: MO338SE0X5GIYNAFAMZ",
+      "Modèle: F5A1000-y"
     ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-taille-5-ballon-de-foot-numero-5-balle-haute-qualite-pour-enfants-adolescents-et-adultes-resistant-ideal-match-entrainement-usage-scolaire-amateur-professionnelen-club-ecole-loisir-terrain-synthetique-ou-gazon-66661670.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/07/616666/1.jpg?1707",
+    "product_url": "https://www.jumia.ma/molten-ballon-de-football-taille-5-62028655.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/55/682026/1.jpg?9202",
+    "stars": "4.3",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:49.227566"
+  },
+  {
+    "name": "Mini Cage de Football Enfant Pliable avec Ballon et Pompe",
+    "current_price": "100.32",
+    "price_before_discount": "200.00",
+    "discount": "50%",
+    "sizes": [],
+    "features": [
+      "Cage de football pliable et légère",
+      "Livré avec ballon et pompe",
+      "Facile à installer et transporter",
+      "Idéal pour extérieur (jardin, plage, parc)",
+      "Rangement rapide et pratique"
+    ],
+    "product_url": "https://www.jumia.ma/generic-mini-cage-de-football-enfant-pliable-avec-ballon-et-pompe-67715645.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/54/651776/1.jpg?4470",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:59.032926"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:49.536009"
   },
   {
     "name": "Ballon de Football 7SPORT FT-5 Premium Match - Rouge et Blanc, Taille 5 Officielle, Haute Performance, Durable.",
@@ -525,30 +453,62 @@
     ],
     "product_url": "https://www.jumia.ma/generic-ballon-de-football-7sport-ft-5-premium-match-rouge-et-blanc-taille-5-officielle-haute-performance-durable.-67684759.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/95/748676/1.jpg?1680",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:58.977844"
+    "stars": "1",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:49.656071"
   },
   {
-    "name": "Aiguille en Acier Inoxydable pour  Ballon Basket-ball Foot-ball",
-    "current_price": "15.99",
-    "price_before_discount": "41.00",
-    "discount": "61%",
-    "sizes": [
-      "ONE SIZE FITS ALL"
-    ],
+    "name": "Ballon de Football Professionnel – Design Moderne et Haute Performance",
+    "current_price": "135.00",
+    "price_before_discount": "199.00",
+    "discount": "32%",
+    "sizes": [],
     "features": [
-      "Il sagit dune aiguille toute neuve et de haute qualit servant  gonfler des chaussures de soccer, de basketball, de volleyball, de football, etc.",
-      "La description:",
-      "Il est fait d\\'acier inoxydable",
-      "C\\'est une aiguille de taille standard",
-      "Longueur: env. 38.5mm / 1.5 pouce"
+      "Surface texturée antidérapante ???? – Pour un meilleur contrôle et des passes précises.",
+      "Design dynamique multicolore ???? – Visibilité accrue sur tous types de terrains.",
+      "Construction robuste cousue à la machine ???? – Résistance maximale aux chocs et à l'usure.",
+      "Taille standard (n°5) ???? – Conforme aux normes officielles pour les compétitions.",
+      "SKU: GE232SE0VG3U6NAFAMZ"
     ],
-    "product_url": "https://www.jumia.ma/aiguille-en-acier-inoxydable-pour-ballon-basket-ball-foot-ball-generic-mpg1258702.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/983774/1.jpg?5138",
-    "stars": "3.3",
+    "product_url": "https://www.jumia.ma/ballon-de-football-professionnel-design-moderne-et-haute-performance-generic-mpg1518192.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/52/819566/1.jpg?2371",
+    "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:12:59.211348"
+    "scraped_at": "2026-05-14T18:22:49.814110"
+  },
+  {
+    "name": "Ballon de Football Mini – Taille 5 – Jeu Sport Foot – Soccer FIFA",
+    "current_price": "184.80",
+    "price_before_discount": "258.72",
+    "discount": "29%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232SE12J5EKNAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: Multicolour"
+    ],
+    "product_url": "https://www.jumia.ma/ballon-de-football-mini-taille-5-jeu-sport-foot-soccer-fifa-generic-mpg1615942.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/718876/1.jpg?8395",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:51.261192"
+  },
+  {
+    "name": "Ballon de Football Mini – Taille 5 – Jeu Sport Foot – Soccer FIFA",
+    "current_price": "184.80",
+    "price_before_discount": "258.72",
+    "discount": "29%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232SE0V4K9CNAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: Multicolour"
+    ],
+    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-taille-5-jeu-sport-foot-soccer-fifa-67908225.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/52/280976/1.jpg?6982",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:50.226485"
   },
   {
     "name": "Ballon de Football Match Ball Jeu Sport Balle de Foot en cuir synthétique de haute qualité Taille 5",
@@ -566,116 +526,84 @@
     "product_url": "https://www.jumia.ma/generic-ballon-de-football-match-ball-jeu-sport-balle-de-foot-en-cuir-synthetique-de-haute-qualite-taille-5-62969420.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/02/496926/1.jpg?7020",
     "stars": "3.8",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:59.286119"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:50.783465"
   },
   {
-    "name": "Chope à Bière en Verre au Design Ballon de Football - Grande Capacité avec Poignée Ergonomique",
-    "current_price": "62.10",
-    "price_before_discount": "109.00",
-    "discount": "43%",
-    "sizes": [],
-    "features": [
-      "Points Forts",
-      "Design Thématique Unique : Une esthétique originale inspirée du sport qui apporte une touche festive à vos soirées de visionnage.",
-      "Confort d'Utilisation : Doté d'une poignée large et solide pour une manipulation aisée, évitant le réchauffement de la boisson par la main.",
-      "Dimensions Généreuses : Avec une hauteur de 18,5 cm, il permet de servir de larges volumes de rafraîchissements sans avoir à se resservir fréquemment.",
-      "Robustesse et Stabilité : Fabriqué en verre de haute qualité avec un pied renforcé pour prévenir les basculements accidentels."
-    ],
-    "product_url": "https://www.jumia.ma/generic-chope-a-biere-en-verre-au-design-ballon-de-football-grande-capacite-avec-poignee-ergonomique-67708431.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/13/480776/1.jpg?4214",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:59.506273"
-  },
-  {
-    "name": "Ballon de Football Mini Foot Taille 5 -Jeu Sport Foot - Soccer Fifa",
-    "current_price": "204.40",
-    "price_before_discount": "286.16",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE0U11CCNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-foot-taille-5-jeu-sport-foot-soccer-fifa-67863405.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/436876/1.jpg?6174",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:59.514881"
-  },
-  {
-    "name": "Ballon de Football Mini Foot Taille 5 -Jeu Sport Foot - Soccer Fifa",
-    "current_price": "204.40",
-    "price_before_discount": "286.16",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE032JUCNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-foot-taille-5-jeu-sport-foot-soccer-fifa-67875150.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/05/157876/1.jpg?3069",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:59.543611"
-  },
-  {
-    "name": "Ballon de Football Mini – Taille 5 – Jeu Sport Foot – Soccer FIFA",
-    "current_price": "184.80",
-    "price_before_discount": "258.72",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE0GJDJONAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-taille-5-jeu-sport-foot-soccer-fifa-67877772.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/777876/1.jpg?0709",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:59.601656"
-  },
-  {
-    "name": "Ballon de Football Mini – Taille 5 – Jeu Sport Foot – Soccer FIFA",
-    "current_price": "184.80",
-    "price_before_discount": "258.72",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE12J5EKNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/generic-ballon-de-football-mini-taille-5-jeu-sport-foot-soccer-fifa-67881746.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/718876/1.jpg?8395",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:59.787604"
-  },
-  {
-    "name": "Molten ballon futsal à faible élasticité fondu F9A4800 de haute qualité MOLTEN football",
-    "current_price": "459.99",
+    "name": "Molten ballon de Football  Molten F5A4800 Taille 5 Match Ball de haute qualité",
+    "current_price": "449.00",
     "price_before_discount": "599.00",
-    "discount": "23%",
-    "sizes": [
-      "futsal"
-    ],
+    "discount": "25%",
+    "sizes": [],
     "features": [
-      "Nom de la marque: Molten",
-      "Gonflable: Oui",
-      "Couleur: comme l'image",
-      "Caractéristique: toucher doux, original, résistance à l'usure, haute qualité",
+      "Balle de compétition supérieure",
+      "Matériau PU",
+      "Haute résistance à l'abrasion",
+      "Contact de balle souple",
       "FIFA QUALITY PRO"
     ],
-    "product_url": "https://www.jumia.ma/molten-ballon-futsal-a-faible-elasticite-fondu-f9a4800-de-haute-qualite-molten-football-58800714.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/41/700885/1.jpg?4639",
+    "product_url": "https://www.jumia.ma/molten-ballon-de-football-molten-f5a4800-taille-5-match-ball-de-haute-qualite-58800717.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/71/700885/1.jpg?4641",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:59.923762"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:50.345663"
+  },
+  {
+    "name": "Ballon de Football Mini Foot  Taille 5 -Jeu Sport Foot - Soccer Fifa -",
+    "current_price": "599.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Ballon de FootBall Taille 5.",
+      "1er Prix Technique",
+      "Nouveau design .",
+      "Football et Mini Foot",
+      "SKU: GE232SE14LW44NAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/ballon-de-football-mini-foot-taille-5-jeu-sport-foot-soccer-fifa-generic-mpg1533205.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/68/206036/1.jpg?1924",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:51.230759"
+  },
+  {
+    "name": "Ballon de Football Design Noir & Rose – Style Audacieux et Performance",
+    "current_price": "159.00",
+    "price_before_discount": "219.00",
+    "discount": "27%",
+    "sizes": [],
+    "features": [
+      "Design vibrant et accrocheur ???? – Pour se démarquer sur tous les terrains.",
+      "Surface texturée pour un meilleur contrôle ✋ – Améliore la précision des passes et des tirs.",
+      "Construction durable cousue à la machine ???? – Résiste aux chocs et à une utilisation intensive.",
+      "Taille standard (n°5) ???? – Idéal pour les jeunes et les adultes passionnés de football.",
+      "SKU: GE232TG0QQS5QNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/ballon-de-football-design-noir-rose-style-audacieux-et-performance-generic-mpg1518490.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/919566/1.jpg?0646",
+    "stars": "5",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:51.733704"
+  },
+  {
+    "name": "Molten Ballon de football en cuir synthétique 1510 - Taille 5",
+    "current_price": "279.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Mesure: 5",
+      "Qualités de vol idéal",
+      "Résistant à l'eau",
+      "MOLTEN 1510",
+      "BLEU ET BLANC"
+    ],
+    "product_url": "https://www.jumia.ma/molten-ballon-de-football-en-cuir-synthetique-1510-taille-5-64253681.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/635246/1.jpg?1747",
+    "stars": "2",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:51.316901"
   },
   {
     "name": "Molten Ballon de football Taille 5",
@@ -696,7 +624,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/094956/1.jpg?1765",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:13:00.019176"
+    "scraped_at": "2026-05-14T18:22:51.937515"
   },
   {
     "name": "Ballon de football (1 pièce) jaune",
@@ -711,27 +639,48 @@
     "product_url": "https://www.jumia.ma/generic-ballon-de-football-1-piece-jaune-38285673.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/37/658283/1.jpg?2104",
     "stars": "2.7",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:12:59.983326"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:52.484660"
   },
   {
-    "name": "Molten ballon de Football  Molten F5A4800 Taille 5 Match Ball de haute qualité",
-    "current_price": "449.00",
+    "name": "Molten ballon futsal à faible élasticité fondu F9A4800 de haute qualité MOLTEN football",
+    "current_price": "459.99",
     "price_before_discount": "599.00",
-    "discount": "25%",
-    "sizes": [],
+    "discount": "23%",
+    "sizes": [
+      "futsal"
+    ],
     "features": [
-      "Balle de compétition supérieure",
-      "Matériau PU",
-      "Haute résistance à l'abrasion",
-      "Contact de balle souple",
+      "Nom de la marque: Molten",
+      "Gonflable: Oui",
+      "Couleur: comme l'image",
+      "Caractéristique: toucher doux, original, résistance à l'usure, haute qualité",
       "FIFA QUALITY PRO"
     ],
-    "product_url": "https://www.jumia.ma/molten-ballon-de-football-molten-f5a4800-taille-5-match-ball-de-haute-qualite-58800717.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/71/700885/1.jpg?4641",
+    "product_url": "https://www.jumia.ma/molten-ballon-futsal-a-faible-elasticite-fondu-f9a4800-de-haute-qualite-molten-football-58800714.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/41/700885/1.jpg?4639",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:00.115641"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:52.658972"
+  },
+  {
+    "name": "مرمى كرة قدم للأطفال مع كرة ومضخة –  buts de football pour enfants avec ballon et pompe de football - Pour le jardin et l'intérieur",
+    "current_price": "240.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Idéal pour les enfants dès 3 ans : parfait pour initier les petits au football en toute sécurité.",
+      "Structure légère et durable : matériaux résistants et adaptés à une utilisation extérieure.",
+      "Facile à monter : installation simple et rapide, sans outils compliqués.",
+      "Développe les compétences sportives : coordination, agilité, esprit d’équipe.",
+      "Inclus : ballon de football pour jouer immédiatement après l’installation."
+    ],
+    "product_url": "https://www.jumia.ma/generic-buts-de-football-pour-enfants-avec-ballon-et-pompe-de-football-pour-le-jardin-et-linterieur-67413255.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/55/231476/1.jpg?1146",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:52.536456"
   },
   {
     "name": "Guirlande lumineuse à LED Ballon de Football avec batterie 2M 10LEDs - Warm - Coupe d'Afrique",
@@ -749,7 +698,64 @@
     "product_url": "https://www.jumia.ma/generic-guirlande-lumineuse-a-led-ballon-de-football-avec-batterie-2m-10leds-warm-coupe-dafrique-67262170.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/07/126276/1.jpg?0571",
     "stars": "5",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:13:00.237719"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:52.937644"
+  },
+  {
+    "name": "Molten ballon de Football  Molten F5A4800 Taille 5 Match Ball de haute qualité",
+    "current_price": "560.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Balle de compétition supérieure",
+      "Matériau PU",
+      "Haute résistance à l'abrasion",
+      "Contact de balle souple",
+      "FIFA QUALITY PRO"
+    ],
+    "product_url": "https://www.jumia.ma/ballon-de-football-f5a4800-taille-5-match-ball-de-haute-qualite-molten-mpg977887.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/74/234883/1.jpg?1432",
+    "stars": "3.8",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:53.017164"
+  },
+  {
+    "name": "Ensemble de cage de gardien football et ballon portail détachable",
+    "current_price": "139.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      ". 100% neuf avec haute qualité",
+      ". Les changements rapides entre la course, la marche et le sprint sont un excellent exercice aérobique",
+      ". Jouer au football développe la coordination et la motricité et favorise un mode de vie actif",
+      ". Portable et facile à assembler, ce qui signifie qu'un terrain de football n'est jamais loin",
+      ". Boule gonflable de 6 pouces et pompe incluse"
+    ],
+    "product_url": "https://www.jumia.ma/generic-ensemble-de-cage-de-gardien-football-et-ballon-portail-detachable-65102261.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/220156/1.jpg?7989",
+    "stars": "2",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:53.660791"
+  },
+  {
+    "name": "Ballon de Football Taille 5, Ballon de Foot Numéro 5 – Balle Haute Qualité pour Enfants, Adolescents et Adultes– Résistant, Idéal Match & Entraînement Usage Scolaire, Amateur, Professionnelen Club, École, Loisir, Terrain Synthétique ou Gazon",
+    "current_price": "79.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "⚽ Taille Officielle FIFA (N°5) : Idéal pour les joueurs de 12 ans et plus – Matchs, entraînements, loisirs",
+      "???? Haute Résistance : Enveloppe en cuir synthétique (PU/PVC) robuste – Résiste à l’usure et aux chocs",
+      "????️ Polyvalent Tous Terrains : Convient pour gazon naturel, synthétique, bitume ou sol dur",
+      "???? Rebond Contrôlé & Stabilité : Vessie en latex ou butyle – Trajectoire précise et confort de jeu",
+      "???? Cousu Machine ou Main : Finitions soignées pour une durabilité renforcée"
+    ],
+    "product_url": "https://www.jumia.ma/generic-ballon-de-football-taille-5-ballon-de-foot-numero-5-balle-haute-qualite-pour-enfants-adolescents-et-adultes-resistant-ideal-match-entrainement-usage-scolaire-amateur-professionnelen-club-ecole-loisir-terrain-synthetique-ou-gazon-66661670.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/07/616666/1.jpg?1707",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:22:53.299548"
   }
 ]

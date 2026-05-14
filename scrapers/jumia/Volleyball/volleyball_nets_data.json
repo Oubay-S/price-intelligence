@@ -1,22 +1,5 @@
 [
   {
-    "name": "Standard Kit Filet  Portable  pour volleyball et tennis avec ballon gratuit",
-    "current_price": "349.00",
-    "price_before_discount": "799.00",
-    "discount": "56%",
-    "sizes": [],
-    "features": [
-      "SKU: ST778SE113R5YNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: maron,jaune;bleu"
-    ],
-    "product_url": "https://www.jumia.ma/standard-kit-filet-portable-pour-volleyball-et-tennis-avec-ballon-gratuit-66902326.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/62/320966/1.jpg?1661",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:57.968196"
-  },
-  {
     "name": "topgym Filet de volleyball avec Ballon de volleyball Original",
     "current_price": "1299.00",
     "price_before_discount": "1499.00",
@@ -35,13 +18,13 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/89/932176/1.jpg?5483",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:14:58.315890"
+    "scraped_at": "2026-05-14T18:02:37.689922"
   },
   {
     "name": "Standard KIT de Volleyball Classique Créatif 2025, 3 Pièces - Comprend (Volleyball + Sac Filet Sacoche + Pompe Portable et Aiguille)",
-    "current_price": "189.00",
+    "current_price": "149.00",
     "price_before_discount": "259.00",
-    "discount": "27%",
+    "discount": "42%",
     "sizes": [],
     "features": [
       "SKU: ST778SE055VF0NAFAMZ",
@@ -51,8 +34,25 @@
     "product_url": "https://www.jumia.ma/standard-kit-de-volleyball-classique-creatif-2025-3-pieces-comprend-volleyball-sac-filet-sacoche-pompe-portable-et-aiguille-67027680.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/672076/1.jpg?6143",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:58.052794"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:37.846849"
+  },
+  {
+    "name": "Standard Kit Filet  Portable  pour volleyball et tennis avec ballon gratuit",
+    "current_price": "349.00",
+    "price_before_discount": "799.00",
+    "discount": "56%",
+    "sizes": [],
+    "features": [
+      "SKU: ST778SE113R5YNAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: maron,jaune;bleu"
+    ],
+    "product_url": "https://www.jumia.ma/standard-kit-filet-portable-pour-volleyball-et-tennis-avec-ballon-gratuit-66902326.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/62/320966/1.jpg?1661",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:38.259350"
   },
   {
     "name": "Standard Kit Filet  Portable  pour volleyball avec ballon gratuit",
@@ -68,25 +68,43 @@
     "product_url": "https://www.jumia.ma/standard-kit-filet-portable-pour-volleyball-avec-ballon-gratuit-66902330.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/03/320966/1.jpg?1745",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:58.211480"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:38.036683"
   },
   {
-    "name": "Paniers de poisson Filet de parapluie de pêche, Cage à crevettes, filet de pêche pliable",
-    "current_price": "238.41",
-    "price_before_discount": "333.77",
-    "discount": "29%",
+    "name": "Intex Filet de volley-ball pour piscine 239 x 64 x 91 cm",
+    "current_price": "219.00",
+    "price_before_discount": "350.00",
+    "discount": "37%",
     "sizes": [],
     "features": [
-      "SKU: GE232SE04FF3ONAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
+      "SKU: IN332TG0GH9XGNAFAMZ",
+      "Poids (kg): 1.5"
     ],
-    "product_url": "https://www.jumia.ma/generic-paniers-de-poisson-filet-de-parapluie-de-peche-cage-a-crevettes-filet-de-peche-pliable-67873470.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/07/437876/1.jpg?3739",
+    "product_url": "https://www.jumia.ma/intex-filet-de-volley-ball-pour-piscine-239-x-64-x-91-cm-67897672.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/679876/1.jpg?8555",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:58.227457"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:38.333091"
+  },
+  {
+    "name": "topgym Filet de volleyball avec Ballon de volleyball Original Gratuit",
+    "current_price": "1499.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Matériau : polyéthylène de haute qualité, haute résistance et résistance à la déchirure.",
+      "Reliure en toile robuste, attrayante et durable.",
+      "Câble en acier aéronautique et cordes de serrage, facile à installer.",
+      "Dimensions (L x l) : 32 x 3 cm",
+      "Les diamètre de filet disponible : 1mm"
+    ],
+    "product_url": "https://www.jumia.ma/topgym-filet-de-volleyball-avec-ballon-de-volleyball-original-gratuit-65517572.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/571556/1.jpg?0343",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:38.456532"
   },
   {
     "name": "Paniers de poisson Filet de parapluie de pêche, Cage à crevettes, filet de pêche pliable",
@@ -104,44 +122,8 @@
     "product_url": "https://www.jumia.ma/generic-paniers-de-poisson-filet-de-parapluie-de-peche-cage-a-crevettes-filet-de-peche-pliable-66547962.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/26/974566/1.jpg?3082",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:58.596928"
-  },
-  {
-    "name": "Paniers de poisson Filet de parapluie de pêche, Cage à crevettes, filet de pêche pliable",
-    "current_price": "238.41",
-    "price_before_discount": "333.77",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE0XR8D0NAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/generic-paniers-de-poisson-filet-de-parapluie-de-peche-cage-a-crevettes-filet-de-peche-pliable-67879665.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/56/697876/1.jpg?9747",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:58.533830"
-  },
-  {
-    "name": "But de football gonflable avec filet et ballon – Jeu d’extérieur ou piscine",
-    "current_price": "138.00",
-    "price_before_discount": "210.00",
-    "discount": "34%",
-    "sizes": [],
-    "features": [
-      "Installation rapide et structure légère à transporter.",
-      "Polyvalent : adapté pour le jardin, la piscine ou la plage.",
-      "Vinyle résistant : supporte le jeu soutenu et l’usage extérieur.",
-      "Filet solide pour arrêter les tirs et garantir la sécurité.",
-      "Ballon inclus pour jouer immédiatement."
-    ],
-    "product_url": "https://www.jumia.ma/generic-but-de-football-gonflable-avec-filet-et-ballon-jeu-dexterieur-ou-piscine-67384026.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/62/048376/1.jpg?7199",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:58.816278"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:38.589686"
   },
   {
     "name": "topgym Filet de volleyball Pro,Accessoires beach volleyball, Installation facile",
@@ -164,7 +146,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/00/028656/1.jpg?2066",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:14:58.715498"
+    "scraped_at": "2026-05-14T18:02:39.199537"
   },
   {
     "name": "Filet de pêche rétractable avec accessoires – Idéal pour poissons et crustacés",
@@ -182,27 +164,8 @@
     "product_url": "https://www.jumia.ma/generic-filet-de-peche-retractable-avec-accessoires-ideal-pour-poissons-et-crustaces-67570973.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/37/907576/1.jpg?8289",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:58.886959"
-  },
-  {
-    "name": "topgym Filet de volleyball avec Ballon de volleyball Original Gratuit",
-    "current_price": "1499.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Matériau : polyéthylène de haute qualité, haute résistance et résistance à la déchirure.",
-      "Reliure en toile robuste, attrayante et durable.",
-      "Câble en acier aéronautique et cordes de serrage, facile à installer.",
-      "Dimensions (L x l) : 32 x 3 cm",
-      "Les diamètre de filet disponible : 1mm"
-    ],
-    "product_url": "https://www.jumia.ma/topgym-filet-de-volleyball-avec-ballon-de-volleyball-original-gratuit-65517572.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/571556/1.jpg?0343",
-    "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-07T22:14:59.057535"
+    "scraped_at": "2026-05-14T18:02:39.412332"
   },
   {
     "name": "Filet de pêche rétractable avec accessoires – Idéal pour poissons et crustacés",
@@ -218,8 +181,8 @@
     "product_url": "https://www.jumia.ma/generic-filet-de-peche-retractable-avec-accessoires-ideal-pour-poissons-et-crustaces-67740924.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/42/904776/1.jpg?2264",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:58.965739"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:39.566698"
   },
   {
     "name": "Piège aquatique",
@@ -237,8 +200,8 @@
     "product_url": "https://www.jumia.ma/generic-piege-aquatique-67570972.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/907576/1.jpg?8288",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:59.288215"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:39.574424"
   },
   {
     "name": "Filet de pêche rétractable avec accessoires – Idéal pour poissons et crustacés",
@@ -254,8 +217,8 @@
     "product_url": "https://www.jumia.ma/generic-filet-de-peche-retractable-avec-accessoires-ideal-pour-poissons-et-crustaces-67676831.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/13/867676/1.jpg?8450",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:59.215430"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:39.417513"
   },
   {
     "name": "Paniers de poisson Filet de parapluie de pêche, Cage à crevettes, filet de pêche pliable",
@@ -271,25 +234,8 @@
     "product_url": "https://www.jumia.ma/paniers-de-poisson-filet-de-parapluie-de-peche-cage-a-crevettes-filet-de-peche-pliable-generic-mpg1590342.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/19/562776/1.jpg?2237",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:59.367586"
-  },
-  {
-    "name": "Paniers de poisson Filet de parapluie de pêche, Cage à crevettes, filet de pêche pliable",
-    "current_price": "207.42",
-    "price_before_discount": "333.77",
-    "discount": "38%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE0CVYOKNAFAMZ",
-      "Poids (kg): 1",
-      "Couleur: Multicolour"
-    ],
-    "product_url": "https://www.jumia.ma/paniers-de-poisson-filet-de-parapluie-de-peche-cage-a-crevettes-filet-de-peche-pliable-generic-mpg1608651.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/21/646676/1.jpg?8639",
-    "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:59.455245"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:40.205226"
   },
   {
     "name": "Paniers de poisson Filet de parapluie de pêche, Cage à crevettes, filet de pêche pliable",
@@ -298,15 +244,49 @@
     "discount": "29%",
     "sizes": [],
     "features": [
-      "SKU: GE232SE0JGEESNAFAMZ",
+      "SKU: GE232SE01OOE8NAFAMZ",
       "Poids (kg): 1",
       "Couleur: Multicolour"
     ],
-    "product_url": "https://www.jumia.ma/generic-paniers-de-poisson-filet-de-parapluie-de-peche-cage-a-crevettes-filet-de-peche-pliable-67877623.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/32/677876/1.jpg?8625",
+    "product_url": "https://www.jumia.ma/generic-paniers-de-poisson-filet-de-parapluie-de-peche-cage-a-crevettes-filet-de-peche-pliable-67903820.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/02/830976/1.jpg?1490",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:59.541341"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:39.950213"
+  },
+  {
+    "name": "Paniers de poisson Filet de parapluie de pêche, Cage à crevettes, filet de pêche pliable",
+    "current_price": "207.42",
+    "price_before_discount": "333.77",
+    "discount": "38%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232SE1BBHD8NAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: Multicolour"
+    ],
+    "product_url": "https://www.jumia.ma/paniers-de-poisson-filet-de-parapluie-de-peche-cage-a-crevettes-filet-de-peche-pliable-generic-mpg1613971.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/79/477676/1.jpg?3520",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:40.347011"
+  },
+  {
+    "name": "Filet de pêche rétractable avec accessoires – Idéal pour poissons et crustacés",
+    "current_price": "282.35",
+    "price_before_discount": "395.29",
+    "discount": "29%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232SE11340WNAFAMZ",
+      "Poids (kg): 1",
+      "Couleur: Multicolour"
+    ],
+    "product_url": "https://www.jumia.ma/generic-filet-de-peche-retractable-avec-accessoires-ideal-pour-poissons-et-crustaces-67909226.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/62/290976/1.jpg?7409",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:40.117539"
   },
   {
     "name": "Piège aquatique",
@@ -322,8 +302,8 @@
     "product_url": "https://www.jumia.ma/piege-aquatique-generic-mpg1579673.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/529576/1.jpg?6817",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:59.860359"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:40.515742"
   },
   {
     "name": "Piège aquatique",
@@ -339,7 +319,7 @@
     "product_url": "https://www.jumia.ma/generic-piege-aquatique-67740516.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/61/504776/1.jpg?2382",
     "stars": "0",
-    "availability": "In Stock",
-    "scraped_at": "2026-05-07T22:14:59.754181"
+    "availability": "-",
+    "scraped_at": "2026-05-14T18:02:40.578140"
   }
 ]

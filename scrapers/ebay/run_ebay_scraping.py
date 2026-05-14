@@ -6,14 +6,6 @@ import sys
 # pyrefly: ignore [missing-import]
 import undetected_chromedriver as uc
 
-# Add parent directory to sys.path to import load_all_to_bigtable
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-try:
-    from load_all_to_bigtable import get_bigtable_table, load_file_to_bigtable
-    BIGTABLE_AVAILABLE = True
-except ImportError:
-    BIGTABLE_AVAILABLE = False
-
 def _get_chrome_version():
     """Detect the major version of the installed Chrome binary."""
     import subprocess as _sp
@@ -59,14 +51,6 @@ def run_all_ebay_scrapes():
         time.sleep(random.uniform(3, 6))
     except Exception as e:
         print(f"⚠️ Warm-up failed: {e}. Attempting to continue...")
-
-    # Initialize Bigtable if available
-    table = None
-    if BIGTABLE_AVAILABLE:
-        print("🔗 Connecting to Bigtable Emulator...")
-        table = get_bigtable_table()
-    else:
-        print("⚠️ Bigtable loading utility not found. Scraping only.")
 
     # Determine base directory for outputs (scrapers/ebay)
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -117,14 +101,9 @@ def run_all_ebay_scrapes():
 
         count = scrape_ebay_category(query, output_file, driver)
         
-        # Load to Bigtable if scraping was successful
         if count > 0:
             total_success += 1
             total_products += count
-            if table:
-                print(f"📥 Loading {count} items from {output_file} to Bigtable...")
-                rows_added = load_file_to_bigtable(table, output_file, "ebay")
-                print(f"✅ Loaded {rows_added} records to Bigtable.")
         else:
             print(f"⚠️ Failed to scrape any products for: {query}")
             

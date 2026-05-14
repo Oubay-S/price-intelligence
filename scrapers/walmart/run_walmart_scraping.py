@@ -7,14 +7,6 @@ import random
 # pyrefly: ignore [missing-import]
 import undetected_chromedriver as uc
 
-# Add parent directory to sys.path to import load_all_to_bigtable
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-try:
-    from load_all_to_bigtable import get_bigtable_table, load_file_to_bigtable
-    BIGTABLE_AVAILABLE = True
-except ImportError:
-    BIGTABLE_AVAILABLE = False
-
 def _build_chrome_options(profile_dir, use_profile=True):
     """Build a fresh ChromeOptions object (must NOT be reused across launch attempts)."""
     # Detect version to match UA
@@ -211,14 +203,6 @@ def run_all_walmart_scrapes():
         time.sleep(10) # Give user a chance to solve it
     # ----------------------------
     
-    # Initialize Bigtable if available
-    table = None
-    if BIGTABLE_AVAILABLE:
-        print("🔗 Connecting to Bigtable Emulator...")
-        table = get_bigtable_table()
-    else:
-        print("⚠️ Bigtable loading utility not found. Scraping only.")
-
     scrapes = [
         # Basketball
         ("basketball", os.path.join(script_dir, "basketball", "walmart_basketball_data.json")),
@@ -267,11 +251,6 @@ def run_all_walmart_scrapes():
         if num_products > 0:
             total_success += 1
             total_products += num_products
-            # Load to Bigtable if scraping was successful and table is available
-            if table and os.path.exists(output_file):
-                print(f"📥 Loading data from {output_file} to Bigtable...")
-                rows_added = load_file_to_bigtable(table, output_file, "walmart")
-                print(f"✅ Loaded {rows_added} records to Bigtable.")
         else:
             print(f"⚠️ Failed to scrape any products for: {query}")
             

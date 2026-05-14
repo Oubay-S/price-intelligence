@@ -69,8 +69,8 @@ x-airflow-common: &airflow-common
     GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
     BIGTABLE_INSTANCE_ID: ${BIGTABLE_INSTANCE_ID:-price-intel-instance}
 
-    # Disable GCP auth (pas nécessaire avec l'émulateur)
-    GOOGLE_APPLICATION_CREDENTIALS: ""
+    # GCP credentials for BigQuery (export + dbt)
+    GOOGLE_APPLICATION_CREDENTIALS: "/opt/airflow/gcp-credentials.json"
     _PIP_ADDITIONAL_REQUIREMENTS: "webdriver-manager undetected-chromedriver selenium beautifulsoup4 requests"
 
   volumes:
@@ -78,6 +78,8 @@ x-airflow-common: &airflow-common
     - ./airflow/dags:/opt/airflow/dags:Z
     - ./plugins:/opt/airflow/plugins:Z
     - ./scrapers:/app:Z
+    - ./gcp-credentials.json:/opt/airflow/gcp-credentials.json:ro,z
+    - ./dbt:/usr/app/dbt:Z
 
   user: "${AIRFLOW_UID:-50000}:0"
 

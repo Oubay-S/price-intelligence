@@ -3,5 +3,7 @@ beautifulsoup4
 undetected-chromedriver
 selenium
 google-cloud-bigtable
+google-cloud-bigquery
 psycopg2-binary
 webdriver-manager
+dbt-bigquery
