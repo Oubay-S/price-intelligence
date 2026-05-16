@@ -60,7 +60,7 @@ def _parse_timestamp(value):
 
 def _row_key(source, category, row_data):
     stable_part = row_data.get("product_url") or row_data.get("image_url") or row_data.get("name") or json.dumps(row_data, sort_keys=True)
-    digest = hashlib.sha1(str(stable_part).encode("utf-8")).hexdigest()[:16]
+    digest = hashlib.sha1(str(stable_part).encode("utf-8"), usedforsecurity=False).hexdigest()[:16]
     return f"{source}#{category}#{digest}".encode("utf-8")
 
 
