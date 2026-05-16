@@ -16,7 +16,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/99/465936/1.jpg?4923",
     "stars": "4.3",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:39.905155"
+    "scraped_at": "2026-05-15T21:58:16.803376"
   },
   {
     "name": "Biotech Usa Créatine Monohydrate 500g Sans Saveur",
@@ -35,7 +35,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/98/424376/1.jpg?0363",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:40.124879"
+    "scraped_at": "2026-05-15T21:58:17.146561"
+  },
+  {
+    "name": "Herbialife Créatine Monohydrate 100% Pure – 1200 mg / j – 120 gélules",
+    "current_price": "219.00",
+    "price_before_discount": "289.00",
+    "discount": "24%",
+    "sizes": [],
+    "features": [
+      "Marque familiale",
+      "Créatine monohydrate 100% pure",
+      "Soutient la force et la performance",
+      "Favorise le développement musculaire",
+      "Aide à la récupération"
+    ],
+    "product_url": "https://www.jumia.ma/herbialife-creatine-monohydrate-100-pure-1200-mg-j-120-gelules-67522705.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/722576/1.jpg?9724",
+    "stars": "5",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:15.904944"
   },
   {
     "name": "Muscle Tech Platinum 100% créatine 400 g",
@@ -56,26 +75,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/02/147156/1.jpg?8639",
     "stars": "4.5",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:40.505936"
-  },
-  {
-    "name": "Herbialife Créatine Monohydrate 100% Pure – 1200 mg / j – 120 gélules",
-    "current_price": "219.00",
-    "price_before_discount": "289.00",
-    "discount": "24%",
-    "sizes": [],
-    "features": [
-      "Marque familiale",
-      "Créatine monohydrate 100% pure",
-      "Soutient la force et la performance",
-      "Favorise le développement musculaire",
-      "Aide à la récupération"
-    ],
-    "product_url": "https://www.jumia.ma/herbialife-creatine-monohydrate-100-pure-1200-mg-j-120-gelules-67522705.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/722576/1.jpg?9724",
-    "stars": "5",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:40.482769"
+    "scraped_at": "2026-05-15T21:58:16.907157"
   },
   {
     "name": "OstroVit Creatine Monohydrate 100 Servings Micronized 300 g Mangue - Performance, Force, Muscle",
@@ -94,142 +94,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/38/243926/1.jpg?9855",
     "stars": "4.1",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:40.227250"
-  },
-  {
-    "name": "HX NUTRITION Pack de 2 Creatine Monohydrate 300g",
-    "current_price": "379.00",
-    "price_before_discount": "499.00",
-    "discount": "24%",
-    "sizes": [],
-    "features": [
-      "Créatine MONOHYDRATE de HX NATURE",
-      "Améliore les performances physiques dans des séries successives d'exercices",
-      "Le monohydrate de créatine crée du phosphate de créatine",
-      "Favorise l'intensité et l'augmentation des charges de travail lors de la formation,",
-      "Meilleure assimilation de la créatine au niveau musculaire sans ajout de glucides."
-    ],
-    "product_url": "https://www.jumia.ma/hx-nutrition-pack-de-2-creatine-monohydrate-300g-67242727.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/72/724276/1.jpg?8658",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:40.633923"
-  },
-  {
-    "name": "Now Foods Creatine Monohydrate 750 mg 120 Veg Capsules",
-    "current_price": "309.00",
-    "price_before_discount": "469.00",
-    "discount": "34%",
-    "sizes": [
-      "120 capsules"
-    ],
-    "features": [
-      "Classement de produit:",
-      "n°2 sur Gainers",
-      "n°2 sur Monohydrate de créatine",
-      "n°2 sur Créatine, Sports",
-      "n°14 sur Sports"
-    ],
-    "product_url": "https://www.jumia.ma/now-foods-creatine-monohydrate-750-mg-120-veg-capsules-64629188.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/88/192646/1.jpg?2066",
-    "stars": "4.5",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:40.828912"
-  },
-  {
-    "name": "Lazar Angelov Nutrition LA Creatine Monohydrate powder Unflavoured – 300g",
-    "current_price": "250.00",
-    "price_before_discount": "350.00",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "10 000 g de monohydrate de créatine par portion quotidienne",
-      "8792 mg de créatine pure par jour",
-      "Sans arômes artificiels",
-      "monohydrate de créatine 100 % pure",
-      "L'excellence de la fabrication européenne"
-    ],
-    "product_url": "https://www.jumia.ma/lazar-angelov-nutrition-la-creatine-monohydrate-powder-unflavoured-300g-67673123.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/32/137676/1.jpg?4866",
-    "stars": "5",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:40.928477"
-  },
-  {
-    "name": "OstroVit Pack Creatine Monohydrate 300 g Mangue + Shaker",
-    "current_price": "279.00",
-    "price_before_discount": "349.00",
-    "discount": "20%",
-    "sizes": [],
-    "features": [
-      "Créatine pure : 2600 mg de créatine monohydrate par portion.",
-      "Dosage : 1 portion = ¾ mesure = 3 g.",
-      "Utilisation : Mélanger 3 g dans 100-150 ml d'eau ou de jus.Jours d'entraînement : 1 portion après le réveil ou après l'entraînement.Jours sans entraînement : 1 portion après le réveil.",
-      "Jours d'entraînement : 1 portion après le réveil ou après l'entraînement.",
-      "Jours sans entraînement : 1 portion après le réveil."
-    ],
-    "product_url": "https://www.jumia.ma/ostrovit-pack-creatine-monohydrate-300-g-mangue-shaker-65100110.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/01/100156/1.jpg?2747",
-    "stars": "4",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:41.168265"
-  },
-  {
-    "name": "OstroVit Creatine Monohydrate 166 Servings Micronized 500 g Pastéque - Performance, Force, Muscle",
-    "current_price": "339.00",
-    "price_before_discount": "499.00",
-    "discount": "32%",
-    "sizes": [],
-    "features": [
-      "2600 mg de créatine/portion pour un soutien musculaire optimal.",
-      "Saveurs variées : Pastèque, cola, mangue, orange, cerise, pomme verte.citron",
-      "Sans sucre ajouté, édulcoré pour un faible apport calorique.",
-      "Portion : ¾ de mesure = 3 g.",
-      "Efficacité : 166 portions par emballage."
-    ],
-    "product_url": "https://www.jumia.ma/ostrovit-creatine-monohydrate-166-servings-micronized-500-g-pasteque-performance-force-muscle-64881475.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/57/418846/1.jpg?5086",
-    "stars": "3.8",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:41.213686"
-  },
-  {
-    "name": "OstroVit Creatine Monohydrate 100 Servings Micronized 300 g Cerise - Performance, Force, Muscle",
-    "current_price": "239.00",
-    "price_before_discount": "389.00",
-    "discount": "39%",
-    "sizes": [],
-    "features": [
-      "Poids du paquet : 300 g (100 portions)",
-      "Portion : 3 g (3/4 mesure)",
-      "Créatine par portion : 2600 mg",
-      "Sans sucre ajouté : Contient des édulcorants à faible teneur en énergie",
-      "Forme : Poudre facile à consommer, idéale pour ceux qui ont du mal à avaler des comprimés"
-    ],
-    "product_url": "https://www.jumia.ma/creatine-monohydrate-100-servings-micronized-300-g-cerise-performance-force-muscle-ostrovit-mpg1516241.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/95/199756/1.jpg?0514",
-    "stars": "3.9",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:42.298983"
-  },
-  {
-    "name": "Essence Vernis a ongle n 45 CREATING MEMORIES",
-    "current_price": "55.00",
-    "price_before_discount": "70.00",
-    "discount": "21%",
-    "sizes": [],
-    "features": [
-      "Fini gel longue tenue",
-      "brillance extrême",
-      "Sèche en seulement 40 secondes",
-      "Clean beauty",
-      "végan"
-    ],
-    "product_url": "https://www.jumia.ma/essence-vernis-a-ongle-n-45-creating-memories-65549591.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/19/594556/1.jpg?6966",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:41.392558"
+    "scraped_at": "2026-05-15T21:58:16.980865"
   },
   {
     "name": "OstroVit Creatine Monohydrate 100 Servings Micronized 300 g Citron - Performance, Force, Muscle",
@@ -248,26 +113,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/03/199756/1.jpg?0517",
     "stars": "4.1",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:41.556228"
-  },
-  {
-    "name": "Evlution Nutrition Creatine Monohydrate 1000 mg  - 120 Veggie Capsules",
-    "current_price": "261.00",
-    "price_before_discount": "499.00",
-    "discount": "48%",
-    "sizes": [],
-    "features": [
-      "SKU: EV060DV01UXXNNAFAMZ",
-      "Gamme de produits: EVLution Nutrition, Creatine Monohydrate 1000 mg 120 Veggie Capsules",
-      "Modèle: Creatine Monohydrate 1000 mg  - 120 Veggie Capsules",
-      "Pays de production: USA",
-      "Taille (Longueur x Largeur x Hauteur cm): 11.2 x 6.4 x 6.4"
-    ],
-    "product_url": "https://www.jumia.ma/creatine-monohydrate-1000-mg-120-veggie-capsules-evlution-nutrition-mpg1421208.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/03/123275/1.jpg?0104",
-    "stars": "4.2",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:42.319238"
+    "scraped_at": "2026-05-15T21:58:17.233731"
   },
   {
     "name": "WeightWorld Creatine Poudre Micronisée de Monohydrate Soutien de la Performance Physique Sans Saveur 300g",
@@ -288,7 +134,140 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/94/562576/1.jpg?4436",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:41.812135"
+    "scraped_at": "2026-05-15T21:58:17.417858"
+  },
+  {
+    "name": "HX NUTRITION Pack de 2 Creatine Monohydrate 300g",
+    "current_price": "379.00",
+    "price_before_discount": "499.00",
+    "discount": "24%",
+    "sizes": [],
+    "features": [
+      "Créatine MONOHYDRATE de HX NATURE",
+      "Améliore les performances physiques dans des séries successives d'exercices",
+      "Le monohydrate de créatine crée du phosphate de créatine",
+      "Favorise l'intensité et l'augmentation des charges de travail lors de la formation,",
+      "Meilleure assimilation de la créatine au niveau musculaire sans ajout de glucides."
+    ],
+    "product_url": "https://www.jumia.ma/hx-nutrition-pack-de-2-creatine-monohydrate-300g-67242727.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/72/724276/1.jpg?8658",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:17.767239"
+  },
+  {
+    "name": "Lazar Angelov Nutrition LA Creatine Monohydrate powder Unflavoured – 300g",
+    "current_price": "250.00",
+    "price_before_discount": "350.00",
+    "discount": "29%",
+    "sizes": [],
+    "features": [
+      "10 000 g de monohydrate de créatine par portion quotidienne",
+      "8792 mg de créatine pure par jour",
+      "Sans arômes artificiels",
+      "monohydrate de créatine 100 % pure",
+      "L'excellence de la fabrication européenne"
+    ],
+    "product_url": "https://www.jumia.ma/lazar-angelov-nutrition-la-creatine-monohydrate-powder-unflavoured-300g-67673123.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/32/137676/1.jpg?4866",
+    "stars": "5",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:18.125058"
+  },
+  {
+    "name": "OstroVit Creatine Monohydrate 166 Servings Micronized 500 g Pastéque - Performance, Force, Muscle",
+    "current_price": "339.00",
+    "price_before_discount": "499.00",
+    "discount": "32%",
+    "sizes": [],
+    "features": [
+      "2600 mg de créatine/portion pour un soutien musculaire optimal.",
+      "Saveurs variées : Pastèque, cola, mangue, orange, cerise, pomme verte.citron",
+      "Sans sucre ajouté, édulcoré pour un faible apport calorique.",
+      "Portion : ¾ de mesure = 3 g.",
+      "Efficacité : 166 portions par emballage."
+    ],
+    "product_url": "https://www.jumia.ma/ostrovit-creatine-monohydrate-166-servings-micronized-500-g-pasteque-performance-force-muscle-64881475.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/57/418846/1.jpg?5086",
+    "stars": "3.8",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:18.877965"
+  },
+  {
+    "name": "OstroVit Pack Creatine Monohydrate 300 g Mangue + Shaker",
+    "current_price": "279.00",
+    "price_before_discount": "349.00",
+    "discount": "20%",
+    "sizes": [],
+    "features": [
+      "Créatine pure : 2600 mg de créatine monohydrate par portion.",
+      "Dosage : 1 portion = ¾ mesure = 3 g.",
+      "Utilisation : Mélanger 3 g dans 100-150 ml d'eau ou de jus.Jours d'entraînement : 1 portion après le réveil ou après l'entraînement.Jours sans entraînement : 1 portion après le réveil.",
+      "Jours d'entraînement : 1 portion après le réveil ou après l'entraînement.",
+      "Jours sans entraînement : 1 portion après le réveil."
+    ],
+    "product_url": "https://www.jumia.ma/ostrovit-pack-creatine-monohydrate-300-g-mangue-shaker-65100110.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/01/100156/1.jpg?2747",
+    "stars": "4",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:19.034335"
+  },
+  {
+    "name": "Essence Vernis a ongle n 45 CREATING MEMORIES",
+    "current_price": "55.00",
+    "price_before_discount": "70.00",
+    "discount": "21%",
+    "sizes": [],
+    "features": [
+      "Fini gel longue tenue",
+      "brillance extrême",
+      "Sèche en seulement 40 secondes",
+      "Clean beauty",
+      "végan"
+    ],
+    "product_url": "https://www.jumia.ma/essence-vernis-a-ongle-n-45-creating-memories-65549591.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/19/594556/1.jpg?6966",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:18.879917"
+  },
+  {
+    "name": "OstroVit Creatine Monohydrate 100 Servings Micronized 300 g Cerise - Performance, Force, Muscle",
+    "current_price": "239.00",
+    "price_before_discount": "389.00",
+    "discount": "39%",
+    "sizes": [],
+    "features": [
+      "Poids du paquet : 300 g (100 portions)",
+      "Portion : 3 g (3/4 mesure)",
+      "Créatine par portion : 2600 mg",
+      "Sans sucre ajouté : Contient des édulcorants à faible teneur en énergie",
+      "Forme : Poudre facile à consommer, idéale pour ceux qui ont du mal à avaler des comprimés"
+    ],
+    "product_url": "https://www.jumia.ma/creatine-monohydrate-100-servings-micronized-300-g-cerise-performance-force-muscle-ostrovit-mpg1516241.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/95/199756/1.jpg?0514",
+    "stars": "3.9",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:19.123254"
+  },
+  {
+    "name": "Evlution Nutrition Creatine Monohydrate 1000 mg  - 120 Veggie Capsules",
+    "current_price": "261.00",
+    "price_before_discount": "499.00",
+    "discount": "48%",
+    "sizes": [],
+    "features": [
+      "SKU: EV060DV01UXXNNAFAMZ",
+      "Gamme de produits: EVLution Nutrition, Creatine Monohydrate 1000 mg 120 Veggie Capsules",
+      "Modèle: Creatine Monohydrate 1000 mg  - 120 Veggie Capsules",
+      "Pays de production: USA",
+      "Taille (Longueur x Largeur x Hauteur cm): 11.2 x 6.4 x 6.4"
+    ],
+    "product_url": "https://www.jumia.ma/creatine-monohydrate-1000-mg-120-veggie-capsules-evlution-nutrition-mpg1421208.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/03/123275/1.jpg?0104",
+    "stars": "4.2",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:19.352628"
   },
   {
     "name": "OstroVit 2 X Creatine Monohydrate 100 Servings Micronized 300 g Mangue",
@@ -307,45 +286,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/776456/1.jpg?5819",
     "stars": "4.5",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:42.279190"
-  },
-  {
-    "name": "OstroVit Creatine Monohydrate 166 Servings Micronized 500 g Cola - Performance, Force, Muscle",
-    "current_price": "339.00",
-    "price_before_discount": "519.00",
-    "discount": "35%",
-    "sizes": [],
-    "features": [
-      "2600 mg de créatine/portion pour un soutien musculaire optimal.",
-      "Saveurs variées : Pastèque, cola, mangue, orange, cerise, pomme verte.citron",
-      "Sans sucre ajouté, édulcoré pour un faible apport calorique.",
-      "Portion : ¾ de mesure = 3 g.",
-      "Efficacité : 166 portions par emballage."
-    ],
-    "product_url": "https://www.jumia.ma/ostrovit-creatine-monohydrate-166-servings-micronized-500-g-cola-performance-force-muscle-64109279.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/97/290146/1.jpg?2898",
-    "stars": "4",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:42.439011"
-  },
-  {
-    "name": "Ostra OstrVit Creatine Monohydrate 166 Servings Micronized 500 g Pomme - Performance, Force, Muscle",
-    "current_price": "339.00",
-    "price_before_discount": "449.00",
-    "discount": "24%",
-    "sizes": [],
-    "features": [
-      "2600 mg de créatine/portion pour un soutien musculaire optimal.",
-      "Saveurs variées : Pastèque, cola, mangue, orange, cerise, pomme verte.citron",
-      "Sans sucre ajouté, édulcoré pour un faible apport calorique.",
-      "Portion : ¾ de mesure = 3 g.",
-      "Efficacité : 166 portions par emballage."
-    ],
-    "product_url": "https://www.jumia.ma/ostra-ostrvit-creatine-monohydrate-166-servings-micronized-500-g-pomme-performance-force-muscle-64939068.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/86/093946/1.jpg?3226",
-    "stars": "5",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:42.548722"
+    "scraped_at": "2026-05-15T21:58:19.931460"
   },
   {
     "name": "OstroVit Creatine Monohydrate 100 Servings Micronized 300 g Pastéque + Oat Flakes 500 g",
@@ -364,159 +305,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/25/960156/1.jpg?3158",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:43.369508"
-  },
-  {
-    "name": "Now Foods Créatine // Sports / Créatine monohydrate / 227 g",
-    "current_price": "332.00",
-    "price_before_discount": "369.00",
-    "discount": "10%",
-    "sizes": [],
-    "features": [
-      "Vegan",
-      "Casher",
-      "Sans OGM",
-      "Halal",
-      "SKU: NO879DV0KBQYKNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/now-foods-creatine-sports-creatine-monohydrate-227-g-67404143.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/34/140476/1.jpg?0442",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:43.375395"
-  },
-  {
-    "name": "Cellucor Creatine 306 g Cor-Performance Creatine - Pure Creatine Monohydrate",
-    "current_price": "349.00",
-    "price_before_discount": "499.00",
-    "discount": "30%",
-    "sizes": [],
-    "features": [
-      "Forme : Poudre",
-      "Poids net : 306 g",
-      "Portions : Environ 90 portions",
-      "Ingrédient principal : Créatine Monohydrate (3.6 g par portion)",
-      "Posologie : Mélanger 3.6 g avec 200-300 ml d'eau ou d'une autre boisson, avant ou après l'entraînement"
-    ],
-    "product_url": "https://www.jumia.ma/cellucor-creatine-306-g-cor-performance-creatine-pure-creatine-monohydrate-61472764.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/46/727416/1.jpg?9893",
-    "stars": "5",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:42.879435"
-  },
-  {
-    "name": "OstroVit 100 % Pure Creatine Monohydrate 333 Servings Micronized 1000 g Citron",
-    "current_price": "699.00",
-    "price_before_discount": "799.00",
-    "discount": "13%",
-    "sizes": [],
-    "features": [
-      "La source de créatine - Une portion du complément alimentaire apporte à l'organisme 2600 mg de créatine monohydrate.",
-      "De délicieuses variantes de saveurs.",
-      "Sans sucre ajouté - Le produit contient des édulcorants à faible teneur énergétique qui contribuent à réduire la teneur énergétique du produit.",
-      "1 portion = ¾ mesure = 3 g .",
-      "Efficacité - L'emballage du produit contient 100 portions de la préparation."
-    ],
-    "product_url": "https://www.jumia.ma/ostrovit-100-pure-creatine-monohydrate-333-servings-micronized-1000-g-citron-66572625.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/52/627566/1.jpg?8528",
-    "stars": "4",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:43.535740"
-  },
-  {
-    "name": "ironflex Iron Creatine Monohydrate 1000 g Apple - 4560 mg de Créatine + Taurine et Vitamine B6",
-    "current_price": "599.00",
-    "price_before_discount": "699.00",
-    "discount": "14%",
-    "sizes": [],
-    "features": [
-      "Marque : IronFlex",
-      "Nom du produit : Creatine Monohydrate",
-      "Poids net : 1000 g",
-      "Forme du produit : Poudre",
-      "Portions recommandées par jour : 12 g (2 portions de 6 g chacune)"
-    ],
-    "product_url": "https://www.jumia.ma/ironflex-iron-creatine-monohydrate-1000-g-apple-4560-mg-de-creatine-taurine-et-vitamine-b6-67163315.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/51/336176/1.jpg?3738",
-    "stars": "5",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:43.519036"
-  },
-  {
-    "name": "Now Foods Créatine / Sports / Créatine monohydrate / 750 mg / 120 capsules végétales",
-    "current_price": "350.00",
-    "price_before_discount": "389.00",
-    "discount": "10%",
-    "sizes": [],
-    "features": [
-      "Masse maigre",
-      "Informed-Sport.Com - Trusted by Sport",
-      "Complément alimentaire",
-      "Informed-Choice.Org - Trusted by Sport",
-      "Sans stéroïdes"
-    ],
-    "product_url": "https://www.jumia.ma/now-foods-creatine-sports-creatine-monohydrate-750-mg-120-capsules-vegetales-67405166.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/66/150476/1.jpg?9208",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:43.716221"
-  },
-  {
-    "name": "Lazar Angelov Nutrition LA Creatine Monohydrate powder Unflavoured – 300g",
-    "current_price": "250.00",
-    "price_before_discount": "350.00",
-    "discount": "29%",
-    "sizes": [],
-    "features": [
-      "10 000 g de monohydrate de créatine par portion quotidienne",
-      "8792 mg de créatine pure par jour",
-      "Sans arômes artificiels",
-      "monohydrate de créatine 100 % pure",
-      "L'excellence de la fabrication européenne"
-    ],
-    "product_url": "https://www.jumia.ma/lazar-angelov-nutrition-la-creatine-monohydrate-powder-unflavoured-300g-67673124.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/42/137676/1.jpg?0941",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:43.867505"
-  },
-  {
-    "name": "OstroVit 2 X Creatine Monohydrate 100 Servings Micronized 300 g Pastéque",
-    "current_price": "449.00",
-    "price_before_discount": "549.00",
-    "discount": "18%",
-    "sizes": [],
-    "features": [
-      "Qualité Supérieure : Contient une créatine monohydrate de qualité exceptionnelle.",
-      "Format Pratique : Emballage de 300 g offrant 100 portions, assurant une utilisation prolongée et économique.",
-      "Vraie Saveur : Disponible en plusieurs saveurs pour une expérience gustative authentique (TRUE TASTE).",
-      "Origine Naturelle : La créatine est extraite de sources animales telles que la viande, les œufs et le poisson.",
-      "Mécanisme Bénéfique : La créatine décompose la phosphocréatine dans les muscles, libérant de l'énergie sous forme de molécules d'ATP (adénosine triphosphate)."
-    ],
-    "product_url": "https://www.jumia.ma/ostrovit-2-x-creatine-monohydrate-100-servings-micronized-300-g-pasteque-65702129.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/92/120756/1.jpg?9075",
-    "stars": "4.9",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:43.993920"
-  },
-  {
-    "name": "OstroVit 2 X Creatine Monohydrate 100 Servings Micronized 300 g Citron",
-    "current_price": "449.00",
-    "price_before_discount": "799.00",
-    "discount": "44%",
-    "sizes": [],
-    "features": [
-      "Poids Net : 300 g",
-      "Portions par paquet : 100 portions",
-      "Dose par portion : 3 g (¾ de dose)",
-      "Quantité de créatine par portion : 2600 mg (créatine monohydrate)",
-      "Sans sucre ajouté : Le produit contient des édulcorants à faible teneur en calories pour limiter l'apport énergétique."
-    ],
-    "product_url": "https://www.jumia.ma/ostrovit-2-x-creatine-monohydrate-100-servings-micronized-300-g-citron-65787004.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/40/078756/1.jpg?8964",
-    "stars": "3.3",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:44.294976"
+    "scraped_at": "2026-05-15T21:58:19.827485"
   },
   {
     "name": "OstroVit Pack Creatine Monohydrate 300 g Citron + Oat Flakes 200 g Chocolat",
@@ -535,26 +324,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/960156/1.jpg?2650",
     "stars": "4",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:44.300036"
-  },
-  {
-    "name": "Scitec Nutrition CREA CAPS 250 Caps - Creatine Monohydrate 2860mg Force, Performance, Muscle",
-    "current_price": "379.00",
-    "price_before_discount": "599.00",
-    "discount": "37%",
-    "sizes": [],
-    "features": [
-      "Formule de haute qualité : Contient de la créatine monohydrate de haute qualité.",
-      "Avantages pour la performance : Améliore la puissance musculaire, l'endurance et favorise la récupération.",
-      "Origine naturelle : Produit organique essentiellement issu des acides aminés naturels du corps.",
-      "Facile à intégrer : Capsules pratiques pour une utilisation quotidienne.",
-      "Utilisation recommandée : 1x5 capsules avant l'entraînement les jours d'entraînement, et 1x5 capsules le matin les jours de repos."
-    ],
-    "product_url": "https://www.jumia.ma/scitec-nutrition-crea-caps-250-caps-creatine-monohydrate-2860mg-force-performance-muscle-65044380.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/344056/1.jpg?8584",
-    "stars": "4",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:44.513447"
+    "scraped_at": "2026-05-15T21:58:20.011452"
   },
   {
     "name": "OstroVit Pack Creatine Monohydrate 300 g Pastéque + Oat Flakes 200 g Chocolat",
@@ -573,7 +343,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/960156/1.jpg?3084",
     "stars": "3",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:44.585745"
+    "scraped_at": "2026-05-15T21:58:20.514896"
   },
   {
     "name": "OstroVit Pack Creatine Monohydrate 300 g Mangue + Oat Flakes 200 g Kiwi Banane",
@@ -592,7 +362,237 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/14/960156/1.jpg?3081",
     "stars": "4",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:44.739018"
+    "scraped_at": "2026-05-15T21:58:20.483764"
+  },
+  {
+    "name": "OstroVit Creatine Monohydrate 166 Servings Micronized 500 g Cola - Performance, Force, Muscle",
+    "current_price": "339.00",
+    "price_before_discount": "519.00",
+    "discount": "35%",
+    "sizes": [],
+    "features": [
+      "2600 mg de créatine/portion pour un soutien musculaire optimal.",
+      "Saveurs variées : Pastèque, cola, mangue, orange, cerise, pomme verte.citron",
+      "Sans sucre ajouté, édulcoré pour un faible apport calorique.",
+      "Portion : ¾ de mesure = 3 g.",
+      "Efficacité : 166 portions par emballage."
+    ],
+    "product_url": "https://www.jumia.ma/ostrovit-creatine-monohydrate-166-servings-micronized-500-g-cola-performance-force-muscle-64109279.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/97/290146/1.jpg?2898",
+    "stars": "4",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:20.970890"
+  },
+  {
+    "name": "Ostra OstrVit Creatine Monohydrate 166 Servings Micronized 500 g Pomme - Performance, Force, Muscle",
+    "current_price": "339.00",
+    "price_before_discount": "449.00",
+    "discount": "24%",
+    "sizes": [],
+    "features": [
+      "2600 mg de créatine/portion pour un soutien musculaire optimal.",
+      "Saveurs variées : Pastèque, cola, mangue, orange, cerise, pomme verte.citron",
+      "Sans sucre ajouté, édulcoré pour un faible apport calorique.",
+      "Portion : ¾ de mesure = 3 g.",
+      "Efficacité : 166 portions par emballage."
+    ],
+    "product_url": "https://www.jumia.ma/ostra-ostrvit-creatine-monohydrate-166-servings-micronized-500-g-pomme-performance-force-muscle-64939068.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/86/093946/1.jpg?3226",
+    "stars": "5",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:21.028303"
+  },
+  {
+    "name": "Cellucor Creatine 306 g Cor-Performance Creatine - Pure Creatine Monohydrate",
+    "current_price": "349.00",
+    "price_before_discount": "499.00",
+    "discount": "30%",
+    "sizes": [],
+    "features": [
+      "Forme : Poudre",
+      "Poids net : 306 g",
+      "Portions : Environ 90 portions",
+      "Ingrédient principal : Créatine Monohydrate (3.6 g par portion)",
+      "Posologie : Mélanger 3.6 g avec 200-300 ml d'eau ou d'une autre boisson, avant ou après l'entraînement"
+    ],
+    "product_url": "https://www.jumia.ma/cellucor-creatine-306-g-cor-performance-creatine-pure-creatine-monohydrate-61472764.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/46/727416/1.jpg?9893",
+    "stars": "5",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:21.138177"
+  },
+  {
+    "name": "Now Foods Créatine // Sports / Créatine monohydrate / 227 g",
+    "current_price": "332.00",
+    "price_before_discount": "369.00",
+    "discount": "10%",
+    "sizes": [],
+    "features": [
+      "Vegan",
+      "Casher",
+      "Sans OGM",
+      "Halal",
+      "SKU: NO879DV0KBQYKNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/now-foods-creatine-sports-creatine-monohydrate-227-g-67404143.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/34/140476/1.jpg?0442",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:21.704422"
+  },
+  {
+    "name": "OstroVit 100 % Pure Creatine Monohydrate 333 Servings Micronized 1000 g Citron",
+    "current_price": "699.00",
+    "price_before_discount": "799.00",
+    "discount": "13%",
+    "sizes": [],
+    "features": [
+      "La source de créatine - Une portion du complément alimentaire apporte à l'organisme 2600 mg de créatine monohydrate.",
+      "De délicieuses variantes de saveurs.",
+      "Sans sucre ajouté - Le produit contient des édulcorants à faible teneur énergétique qui contribuent à réduire la teneur énergétique du produit.",
+      "1 portion = ¾ mesure = 3 g .",
+      "Efficacité - L'emballage du produit contient 100 portions de la préparation."
+    ],
+    "product_url": "https://www.jumia.ma/ostrovit-100-pure-creatine-monohydrate-333-servings-micronized-1000-g-citron-66572625.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/52/627566/1.jpg?8528",
+    "stars": "4",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:21.708271"
+  },
+  {
+    "name": "Now Foods Créatine / Sports / Créatine monohydrate / 750 mg / 120 capsules végétales",
+    "current_price": "350.00",
+    "price_before_discount": "389.00",
+    "discount": "10%",
+    "sizes": [],
+    "features": [
+      "Masse maigre",
+      "Informed-Sport.Com - Trusted by Sport",
+      "Complément alimentaire",
+      "Informed-Choice.Org - Trusted by Sport",
+      "Sans stéroïdes"
+    ],
+    "product_url": "https://www.jumia.ma/now-foods-creatine-sports-creatine-monohydrate-750-mg-120-capsules-vegetales-67405166.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/66/150476/1.jpg?9208",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:22.292705"
+  },
+  {
+    "name": "Lazar Angelov Nutrition LA Creatine Monohydrate powder Unflavoured – 300g",
+    "current_price": "250.00",
+    "price_before_discount": "350.00",
+    "discount": "29%",
+    "sizes": [],
+    "features": [
+      "10 000 g de monohydrate de créatine par portion quotidienne",
+      "8792 mg de créatine pure par jour",
+      "Sans arômes artificiels",
+      "monohydrate de créatine 100 % pure",
+      "L'excellence de la fabrication européenne"
+    ],
+    "product_url": "https://www.jumia.ma/lazar-angelov-nutrition-la-creatine-monohydrate-powder-unflavoured-300g-67673124.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/42/137676/1.jpg?0941",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:22.180044"
+  },
+  {
+    "name": "ironflex Iron Creatine Monohydrate 1000 g Apple - 4560 mg de Créatine + Taurine et Vitamine B6",
+    "current_price": "599.00",
+    "price_before_discount": "699.00",
+    "discount": "14%",
+    "sizes": [],
+    "features": [
+      "Marque : IronFlex",
+      "Nom du produit : Creatine Monohydrate",
+      "Poids net : 1000 g",
+      "Forme du produit : Poudre",
+      "Portions recommandées par jour : 12 g (2 portions de 6 g chacune)"
+    ],
+    "product_url": "https://www.jumia.ma/ironflex-iron-creatine-monohydrate-1000-g-apple-4560-mg-de-creatine-taurine-et-vitamine-b6-67163315.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/51/336176/1.jpg?3738",
+    "stars": "5",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:22.348647"
+  },
+  {
+    "name": "OstroVit 2 X Creatine Monohydrate 100 Servings Micronized 300 g Pastéque",
+    "current_price": "449.00",
+    "price_before_discount": "549.00",
+    "discount": "18%",
+    "sizes": [],
+    "features": [
+      "Qualité Supérieure : Contient une créatine monohydrate de qualité exceptionnelle.",
+      "Format Pratique : Emballage de 300 g offrant 100 portions, assurant une utilisation prolongée et économique.",
+      "Vraie Saveur : Disponible en plusieurs saveurs pour une expérience gustative authentique (TRUE TASTE).",
+      "Origine Naturelle : La créatine est extraite de sources animales telles que la viande, les œufs et le poisson.",
+      "Mécanisme Bénéfique : La créatine décompose la phosphocréatine dans les muscles, libérant de l'énergie sous forme de molécules d'ATP (adénosine triphosphate)."
+    ],
+    "product_url": "https://www.jumia.ma/ostrovit-2-x-creatine-monohydrate-100-servings-micronized-300-g-pasteque-65702129.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/92/120756/1.jpg?9075",
+    "stars": "4.9",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:22.682039"
+  },
+  {
+    "name": "Scitec Nutrition CREA CAPS 250 Caps - Creatine Monohydrate 2860mg Force, Performance, Muscle",
+    "current_price": "379.00",
+    "price_before_discount": "599.00",
+    "discount": "37%",
+    "sizes": [],
+    "features": [
+      "Formule de haute qualité : Contient de la créatine monohydrate de haute qualité.",
+      "Avantages pour la performance : Améliore la puissance musculaire, l'endurance et favorise la récupération.",
+      "Origine naturelle : Produit organique essentiellement issu des acides aminés naturels du corps.",
+      "Facile à intégrer : Capsules pratiques pour une utilisation quotidienne.",
+      "Utilisation recommandée : 1x5 capsules avant l'entraînement les jours d'entraînement, et 1x5 capsules le matin les jours de repos."
+    ],
+    "product_url": "https://www.jumia.ma/scitec-nutrition-crea-caps-250-caps-creatine-monohydrate-2860mg-force-performance-muscle-65044380.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/344056/1.jpg?8584",
+    "stars": "4",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:22.704059"
+  },
+  {
+    "name": "OstroVit 2 X Creatine Monohydrate 100 Servings Micronized 300 g Citron",
+    "current_price": "449.00",
+    "price_before_discount": "799.00",
+    "discount": "44%",
+    "sizes": [],
+    "features": [
+      "Poids Net : 300 g",
+      "Portions par paquet : 100 portions",
+      "Dose par portion : 3 g (¾ de dose)",
+      "Quantité de créatine par portion : 2600 mg (créatine monohydrate)",
+      "Sans sucre ajouté : Le produit contient des édulcorants à faible teneur en calories pour limiter l'apport énergétique."
+    ],
+    "product_url": "https://www.jumia.ma/ostrovit-2-x-creatine-monohydrate-100-servings-micronized-300-g-citron-65787004.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/40/078756/1.jpg?8964",
+    "stars": "3.3",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:22.914152"
+  },
+  {
+    "name": "Hsn Creatine Monohydrate Micronisee – 500g Poudre – Sans Saveur – Vegan – Sans OGM – Sans Gluten – Mesh 200",
+    "current_price": "309.00",
+    "price_before_discount": "599.00",
+    "discount": "48%",
+    "sizes": [
+      "500g"
+    ],
+    "features": [
+      "Creatine monohydrate pure en poudre",
+      "Micronisee Mesh 200 pour une meilleure solubilite",
+      "Sans saveur, facile a melanger",
+      "Soutient la production d energie ATP lors des entrainements",
+      "Aide a ameliorer les performances physiques"
+    ],
+    "product_url": "https://www.jumia.ma/hsn-creatine-monohydrate-micronisee-500g-poudre-sans-saveur-vegan-sans-ogm-sans-gluten-mesh-200-67416433.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/33/461476/1.jpg?8880",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:23.215296"
   },
   {
     "name": "HX Creatine Monohydrate pure, micronized créatine 300g",
@@ -611,7 +611,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/91/585936/1.jpg?0607",
     "stars": "4.2",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:44.868301"
+    "scraped_at": "2026-05-15T21:58:23.038574"
   },
   {
     "name": "HX NUTRITION Creatine Monohydrate pure, micronized créatine 300g",
@@ -630,7 +630,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/79/510776/1.jpg?5701",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:45.020147"
+    "scraped_at": "2026-05-15T21:58:23.492473"
   },
   {
     "name": "HX NUTRITION Creatine monohydrate 300 grammes unflavored",
@@ -649,26 +649,47 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/60/292456/1.jpg?4923",
     "stars": "3.7",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:45.291497"
+    "scraped_at": "2026-05-15T21:58:23.880946"
   },
   {
-    "name": "OstroVit Créatine 300 g bio cerise rouge",
-    "current_price": "196.00",
-    "price_before_discount": "220.00",
-    "discount": "11%",
+    "name": "Optimum Nutrition Créatine Monohydrate Micronisée - 317 g - Sans Saveur",
+    "current_price": "379.95",
+    "price_before_discount": "",
+    "discount": null,
     "sizes": [],
     "features": [
-      "Servir de 2.5g à 5g 2 fois par jour",
-      "une dose avant l'entrainement",
-      "une dose après l'entrainement",
-      "pour les sportifs en préparation peuvent rajouter une dose le matin",
-      "à prendre une dose avec avec 100 à 300 ml d'eau ou de jus de fruit"
+      "Améliore la force et la puissance.",
+      "Favorise la croissance musculaire et l’hydratation des fibres.",
+      "Accélère la récupération après l’effort.",
+      "Améliore les performances lors des efforts courts et intenses.",
+      "SKU: OP922DV053B7KNAFAMZ"
     ],
-    "product_url": "https://www.jumia.ma/ostrovit-creatine-300-g-bio-cerise-rouge-67218305.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/381276/1.jpg?0531",
-    "stars": "4",
+    "product_url": "https://www.jumia.ma/optimum-nutrition-creatine-monohydrate-micronisee-317-g-sans-saveur-67525580.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/552576/1.jpg?1211",
+    "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:45.267935"
+    "scraped_at": "2026-05-15T21:58:24.255641"
+  },
+  {
+    "name": "7nutrition Micronized Creatine (Creapure) - 500g",
+    "current_price": "441.00",
+    "price_before_discount": "580.00",
+    "discount": "24%",
+    "sizes": [
+      "500g"
+    ],
+    "features": [
+      "Micronized Creatine , 500g",
+      "with the addition of Taurine",
+      "Designed for active athletes of strength and endurance disciplines.",
+      "SKU: BR418DV1C18TKNAFAMZ",
+      "Poids (kg): 0.5"
+    ],
+    "product_url": "https://www.jumia.ma/7nutrition-micronized-creatine-creapure-500g-65697608.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/80/679656/1.jpg?7904",
+    "stars": "4.8",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:24.155193"
   },
   {
     "name": "Applied Nutrition Créatine Monohydrate Micronisée 500g (100 portions)",
@@ -685,26 +706,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/070476/1.jpg?6928",
     "stars": "3",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:45.610904"
+    "scraped_at": "2026-05-15T21:58:24.239223"
   },
   {
-    "name": "Optimum Nutrition Créatine Monohydrate Micronisée - 317 g - Sans Saveur",
-    "current_price": "333.95",
-    "price_before_discount": "",
-    "discount": null,
+    "name": "Biotech Usa Créatine Monohydrate 500g Sans Saveur",
+    "current_price": "418.00",
+    "price_before_discount": "520.00",
+    "discount": "20%",
     "sizes": [],
     "features": [
-      "Améliore la force et la puissance.",
-      "Favorise la croissance musculaire et l’hydratation des fibres.",
-      "Accélère la récupération après l’effort.",
-      "Améliore les performances lors des efforts courts et intenses.",
-      "SKU: OP922DV053B7KNAFAMZ"
+      "Préparé avec de la créatine pure, de qualité pharmaceutique, sous forme de poudre",
+      "Augmentation de la force musculaire",
+      "Amélioration de la performance physique",
+      "Gain de masse musculaire",
+      "SKU: BI846DV1HFFCGNAFAMZ"
     ],
-    "product_url": "https://www.jumia.ma/optimum-nutrition-creatine-monohydrate-micronisee-317-g-sans-saveur-67525580.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/552576/1.jpg?1211",
-    "stars": "0",
+    "product_url": "https://www.jumia.ma/biotech-usa-creatine-monohydrate-500g-sans-saveur-67393798.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/89/739376/1.jpg?7854",
+    "stars": "1",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:45.601296"
+    "scraped_at": "2026-05-15T21:58:24.408581"
   },
   {
     "name": "Biotech Usa 100% creatine monohydrate poudre 300g",
@@ -725,7 +746,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/66/178066/1.jpg?1645",
     "stars": "4.8",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:45.740675"
+    "scraped_at": "2026-05-15T21:58:24.763903"
   },
   {
     "name": "OPTIMUM NITRUTION Creatine Micronised Powder 100% pure - 317 G",
@@ -742,29 +763,8 @@
     ],
     "product_url": "https://www.jumia.ma/optimum-nitrution-creatine-micronised-powder-100-pure-317-g-65238647.html",
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/74/683256/1.jpg?2432",
-    "stars": "4.3",
+    "stars": "4.4",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:46.157576"
-  },
-  {
-    "name": "Health Power Créatine Monohydrate 500mg 240 Gélules",
-    "current_price": "169.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "Créatine Monohydrate"
-    ],
-    "features": [
-      "Ce produit est réservé aux adultes effectuant des exercices physiques intenses.",
-      "Ne pas dépasser la dose journalière indiquée.",
-      "Ce produit est déconseillé aux femmes enceintes et allaitantes ainsi qu'aux enfants,",
-      "Tenir hors de portée des jeunes enfants.",
-      "SKU: HE526DV15HC8SNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/health-power-creatine-monohydrate-500mg-240-gelules-67237696.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/69/673276/1.jpg?4845",
-    "stars": "3.3",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:46.108590"
+    "scraped_at": "2026-05-15T21:58:24.916358"
   }
 ]

@@ -18,47 +18,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/74/769756/1.jpg?0344",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:51.576128"
-  },
-  {
-    "name": "OstroVit L-Theanine + L-Tyrosine 90 Caps - Supplément, Acides Aminés, Santé Cognitive",
-    "current_price": "279.00",
-    "price_before_discount": "419.00",
-    "discount": "33%",
-    "sizes": [],
-    "features": [
-      "Acides aminés : 200 mg L-théanine, 400 mg L-tyrosine par portion",
-      "Vegan : Sans ingrédients d'origine animale",
-      "Portion : 1 capsule",
-      "Durée : 90 portions (3 mois)",
-      "Utilisation : 1 capsule/jour avec un repas"
-    ],
-    "product_url": "https://www.jumia.ma/ostrovit-l-theanine-l-tyrosine-90-caps-supplement-acides-amines-sante-cognitive-65245861.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/854256/1.jpg?1956",
-    "stars": "3.5",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:52.403277"
-  },
-  {
-    "name": "VITAMATIC L-Theanine Supplement 400mg Supports Calm & Relaxation. 240 Tablets",
-    "current_price": "301.00",
-    "price_before_discount": "311.00",
-    "discount": "3%",
-    "sizes": [
-      "400mg 240 Tablets"
-    ],
-    "features": [
-      "Formule haute puissance – Apporte 400 mg de L-théanine par portion (2 comprimés) pour soutenir votre routine bien-être quotidienne.",
-      "Flacon format économique – Contient 240 comprimés pour un approvisionnement de 120 jours, idéal pour une utilisation régulière et à long terme.",
-      "Ingrédients simples et efficaces – Sans OGM, gluten, soja, produits laitiers, sucre ni additifs artificiels.",
-      "Convient aux végétariens – Formulé selon une approche végétale pour répondre à un large éventail de besoins alimentaires.",
-      "Fabriqué aux États-Unis – Fabriqué dans une usine respectant des normes de qualité strictes."
-    ],
-    "product_url": "https://www.jumia.ma/vitamatic-l-theanine-supplement-400mg-supports-calm-relaxation.-240-tablets-67177712.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/21/777176/1.jpg?8655",
-    "stars": "4",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:52.429208"
+    "scraped_at": "2026-05-15T21:58:31.166080"
   },
   {
     "name": "Sports Research Astaxanthin Triple force 12mg - Antioxidant Supplement, Gluten Free - 60 Softgels",
@@ -77,7 +37,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/12/730466/1.jpg?3307",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:52.485240"
+    "scraped_at": "2026-05-15T21:58:30.236822"
   },
   {
     "name": "Nutricost Taurine 2000mg Non aromatisée Amino Acid Supplement Pour Energy, 250 g",
@@ -98,7 +58,47 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/15/216376/1.jpg?5453",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:52.113659"
+    "scraped_at": "2026-05-15T21:58:30.517932"
+  },
+  {
+    "name": "OstroVit L-Theanine + L-Tyrosine 90 Caps - Supplément, Acides Aminés, Santé Cognitive",
+    "current_price": "279.00",
+    "price_before_discount": "419.00",
+    "discount": "33%",
+    "sizes": [],
+    "features": [
+      "Acides aminés : 200 mg L-théanine, 400 mg L-tyrosine par portion",
+      "Vegan : Sans ingrédients d'origine animale",
+      "Portion : 1 capsule",
+      "Durée : 90 portions (3 mois)",
+      "Utilisation : 1 capsule/jour avec un repas"
+    ],
+    "product_url": "https://www.jumia.ma/ostrovit-l-theanine-l-tyrosine-90-caps-supplement-acides-amines-sante-cognitive-65245861.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/854256/1.jpg?1956",
+    "stars": "3.5",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:30.949582"
+  },
+  {
+    "name": "VITAMATIC L-Theanine Supplement 400mg Supports Calm & Relaxation. 240 Tablets",
+    "current_price": "301.00",
+    "price_before_discount": "311.00",
+    "discount": "3%",
+    "sizes": [
+      "400mg 240 Tablets"
+    ],
+    "features": [
+      "Formule haute puissance – Apporte 400 mg de L-théanine par portion (2 comprimés) pour soutenir votre routine bien-être quotidienne.",
+      "Flacon format économique – Contient 240 comprimés pour un approvisionnement de 120 jours, idéal pour une utilisation régulière et à long terme.",
+      "Ingrédients simples et efficaces – Sans OGM, gluten, soja, produits laitiers, sucre ni additifs artificiels.",
+      "Convient aux végétariens – Formulé selon une approche végétale pour répondre à un large éventail de besoins alimentaires.",
+      "Fabriqué aux États-Unis – Fabriqué dans une usine respectant des normes de qualité strictes."
+    ],
+    "product_url": "https://www.jumia.ma/vitamatic-l-theanine-supplement-400mg-supports-calm-relaxation.-240-tablets-67177712.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/21/777176/1.jpg?8655",
+    "stars": "4",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:31.096679"
   },
   {
     "name": "Kal KAL, B-12 méthylcobalamine,adénosylcobalamine, fruits des bois, 2000 µg Sticker",
@@ -117,7 +117,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/54/873926/1.jpg?2365",
     "stars": "3.4",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:52.646038"
+    "scraped_at": "2026-05-15T21:58:31.316176"
   },
   {
     "name": "WeightWorld Bromelain High Strength Supplement 650mg - High Potent 2500GDU/g per Serving - 180 Vegan Capsules",
@@ -138,7 +138,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/110166/1.jpg?4747",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:52.798037"
+    "scraped_at": "2026-05-15T21:58:31.506877"
   },
   {
     "name": "Now Foods Huile MCT Sports Sans arôme, 473 ml Contrôle du poids Sticker",
@@ -159,70 +159,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/58/283646/1.jpg?2884",
     "stars": "3",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:54.047471"
-  },
-  {
-    "name": "NATURE'S TRUTH Glucosamine HCI 1500mg Mega Strength Supplement",
-    "current_price": "254.00",
-    "price_before_discount": "289.00",
-    "discount": "12%",
-    "sizes": [
-      "1500mg 60 Capsules"
-    ],
-    "features": [
-      "MÉGA FORCE : 1500 mg de glucosamine HCL pour un soutien maximal",
-      "FORME OPTIMALE : Valeur de portion quotidienne fournie dans un seul comprimé enrobé de qualité supérieure",
-      "PURETÉ ET PUISSANCE : Nature's Truth propose des ingrédients de haute qualité testés pour leur pureté et leur puissance",
-      "DES EXPERTS EN QUI VOUS POUVEZ FAIRE CONFIANCE : Soutenus par trois générations d'innovateurs en vitamines pour une qualité inégalée",
-      "FABRIQUÉ SANS : Gluten, blé, levure, lait, lactose, arômes et édulcorants artificiels et SANS OGM"
-    ],
-    "product_url": "https://www.jumia.ma/natures-truth-glucosamine-hci-1500mg-mega-strength-supplement-65797694.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/49/679756/1.jpg?2287",
-    "stars": "4",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:53.762164"
-  },
-  {
-    "name": "Natural Factors Ubiquinol Active CoQ10 100mg,High-Absorption Coenzyme Q10 Supplement Energy,Heart,Cognitive,60 caps",
-    "current_price": "660.00",
-    "price_before_discount": "670.00",
-    "discount": "1%",
-    "sizes": [
-      "100mg 60 Capsules"
-    ],
-    "features": [
-      "Ubiquinol Kaneka de pointe : Formulé avec de l'ubiquinol Kaneka avancé, qui est plus absorbable que la CoQ10 conventionnelle, permettant une restauration rapide et efficace des niveaux optimaux de CoQ10 dans le corps*",
-      "Qualité supérieure : L'ubiquinol Kaneka est fabriqué aux États-Unis, garantissant la plus haute qualité et pureté. Notre formule est mélangée à de l'huile de lin biologique, favorisant une meilleure biodisponibilité*",
-      "Allumez votre énergie et votre bien-être général : Stimule la production d'énergie cellulaire, favorisant le fonctionnement optimal de vos organes vitaux. Fournit un soutien antioxydant robuste*",
-      "Dosage : Prendre 1 gélule molle 1 à 3 fois par jour. Sans OGM, sans soja et sans gluten, sans colorants, conservateurs ou édulcorants artificiels",
-      "SKU: NA537DV05FFP6NAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/natural-factors-ubiquinol-active-coq10-100mghigh-absorption-coenzyme-q10-supplement-energyheartcognitive60-caps-66281190.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/09/118266/1.jpg?0009",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:53.950915"
-  },
-  {
-    "name": "Garden Of Life Probiotic 50 Billion Prebiotic Postbiotics Avec  Ashwagandha Supplement Pour Immune, Digestive & Mood Support 30 Caps",
-    "current_price": "628.00",
-    "price_before_discount": "638.00",
-    "discount": "2%",
-    "sizes": [
-      "50 Billion CFU 30 Capsules"
-    ],
-    "features": [
-      "Formule triple action : Pré + Pro + Postbiotiques",
-      "Soutient le système immunitaire, la digestion et l'humeur",
-      "Aide à rester calme et concentré",
-      "50 milliards d'UFC de probiotiques, 14 souches",
-      "Contient la souche L. paracasei Lpc-37 cliniquement étudiée"
-    ],
-    "product_url": "https://www.jumia.ma/garden-of-life-probiotic-50-billion-prebiotic-postbiotics-avec-ashwagandha-supplement-pour-immune-digestive-mood-support-30-caps-66999318.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/81/399966/1.jpg?5784",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:53.980726"
+    "scraped_at": "2026-05-15T21:58:31.759120"
   },
   {
     "name": "Natural Factors Ubiquinol Active CoQ10 200mg, High-Absorption Coenzyme Q10 Supplement Energy,Heart,Cognitive,30 caps",
@@ -243,49 +180,28 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/13/218266/1.jpg?5200",
     "stars": "4",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:53.472791"
+    "scraped_at": "2026-05-15T21:58:31.991619"
   },
   {
-    "name": "Now Foods Psyllium Hush Caps 500 mg ,Santé intestinale,Fibres alimentaires naturelles",
-    "current_price": "284.00",
-    "price_before_discount": "475.31",
-    "discount": "40%",
+    "name": "NATURE'S TRUTH Glucosamine HCI 1500mg Mega Strength Supplement",
+    "current_price": "254.00",
+    "price_before_discount": "289.00",
+    "discount": "12%",
     "sizes": [
-      "500 mg, 200 capsules végétariennes"
+      "1500mg 60 Capsules"
     ],
     "features": [
-      "Fibres naturelles solubles",
-      "Aide à maintenir la régularité*",
-      "Santé intestinale",
-      "Fibres alimentaires solubles naturelles",
-      "Contribue à la régularité du transit"
+      "MÉGA FORCE : 1500 mg de glucosamine HCL pour un soutien maximal",
+      "FORME OPTIMALE : Valeur de portion quotidienne fournie dans un seul comprimé enrobé de qualité supérieure",
+      "PURETÉ ET PUISSANCE : Nature's Truth propose des ingrédients de haute qualité testés pour leur pureté et leur puissance",
+      "DES EXPERTS EN QUI VOUS POUVEZ FAIRE CONFIANCE : Soutenus par trois générations d'innovateurs en vitamines pour une qualité inégalée",
+      "FABRIQUÉ SANS : Gluten, blé, levure, lait, lactose, arômes et édulcorants artificiels et SANS OGM"
     ],
-    "product_url": "https://www.jumia.ma/now-foods-psyllium-hush-caps-500-mg-sante-intestinalefibres-alimentaires-naturelles-65649224.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/42/294656/1.jpg?6964",
-    "stars": "0",
+    "product_url": "https://www.jumia.ma/natures-truth-glucosamine-hci-1500mg-mega-strength-supplement-65797694.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/49/679756/1.jpg?2287",
+    "stars": "4",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:54.159529"
-  },
-  {
-    "name": "Natural Factors  Coenzyme Q10 50 mg, Natural Coenzyme Q10 Supplement for Energy, Heart Cognitive Support, 120 Softgels",
-    "current_price": "319.00",
-    "price_before_discount": "329.00",
-    "discount": "3%",
-    "sizes": [
-      "50 mg 120 Softgels"
-    ],
-    "features": [
-      "Ubiquinone à haute absorption : Formulé avec de l’ubiquinone hautement absorbable et mélangé à de l’huile de son de riz pour une biodisponibilité et une efficacité accrues*",
-      "Rechargez votre énergie : Stimulez la production d’énergie de votre corps grâce à la coenzyme Q10*, un antioxydant naturel et catalyseur de la production d’ATP*",
-      "Force cellulaire : La CoQ10 agit au sein des mitochondries pour convertir les aliments en énergie qui alimente les cellules de tout le corps, en particulier le cœur et le cerveau*",
-      "Gélules faciles à avaler : Prendre 1 gélule 1 à 2 fois par jour ; Sans OGM, sans soja, sans gluten, sans colorants, conservateurs ni édulcorants artificiels",
-      "Testé par un organisme indépendant : Testé indépendamment et certifié par un organisme indépendant pour la présence d’OGM et de plus de 800 contaminants,"
-    ],
-    "product_url": "https://www.jumia.ma/natural-factors-coenzyme-q10-50-mg-natural-coenzyme-q10-supplement-for-energy-heart-cognitive-support-120-softgels-67181484.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/418176/1.jpg?2807",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:54.310531"
+    "scraped_at": "2026-05-15T21:58:32.144249"
   },
   {
     "name": "Microingredients Lions Mane 8400mg Champignons Avec L-Ergothioneine Mushroom Supplement Healthy Brain Cognitive 240 Capsules",
@@ -306,7 +222,91 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/46/840076/1.jpg?6931",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:54.849497"
+    "scraped_at": "2026-05-15T21:58:32.217487"
+  },
+  {
+    "name": "Natural Factors Ubiquinol Active CoQ10 100mg,High-Absorption Coenzyme Q10 Supplement Energy,Heart,Cognitive,60 caps",
+    "current_price": "660.00",
+    "price_before_discount": "670.00",
+    "discount": "1%",
+    "sizes": [
+      "100mg 60 Capsules"
+    ],
+    "features": [
+      "Ubiquinol Kaneka de pointe : Formulé avec de l'ubiquinol Kaneka avancé, qui est plus absorbable que la CoQ10 conventionnelle, permettant une restauration rapide et efficace des niveaux optimaux de CoQ10 dans le corps*",
+      "Qualité supérieure : L'ubiquinol Kaneka est fabriqué aux États-Unis, garantissant la plus haute qualité et pureté. Notre formule est mélangée à de l'huile de lin biologique, favorisant une meilleure biodisponibilité*",
+      "Allumez votre énergie et votre bien-être général : Stimule la production d'énergie cellulaire, favorisant le fonctionnement optimal de vos organes vitaux. Fournit un soutien antioxydant robuste*",
+      "Dosage : Prendre 1 gélule molle 1 à 3 fois par jour. Sans OGM, sans soja et sans gluten, sans colorants, conservateurs ou édulcorants artificiels",
+      "SKU: NA537DV05FFP6NAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/natural-factors-ubiquinol-active-coq10-100mghigh-absorption-coenzyme-q10-supplement-energyheartcognitive60-caps-66281190.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/09/118266/1.jpg?0009",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:32.320667"
+  },
+  {
+    "name": "Garden Of Life Probiotic 50 Billion Prebiotic Postbiotics Avec  Ashwagandha Supplement Pour Immune, Digestive & Mood Support 30 Caps",
+    "current_price": "628.00",
+    "price_before_discount": "638.00",
+    "discount": "2%",
+    "sizes": [
+      "50 Billion CFU 30 Capsules"
+    ],
+    "features": [
+      "Formule triple action : Pré + Pro + Postbiotiques",
+      "Soutient le système immunitaire, la digestion et l'humeur",
+      "Aide à rester calme et concentré",
+      "50 milliards d'UFC de probiotiques, 14 souches",
+      "Contient la souche L. paracasei Lpc-37 cliniquement étudiée"
+    ],
+    "product_url": "https://www.jumia.ma/garden-of-life-probiotic-50-billion-prebiotic-postbiotics-avec-ashwagandha-supplement-pour-immune-digestive-mood-support-30-caps-66999318.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/81/399966/1.jpg?5784",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:32.453468"
+  },
+  {
+    "name": "Now Foods Psyllium Hush Caps 500 mg ,Santé intestinale,Fibres alimentaires naturelles",
+    "current_price": "284.00",
+    "price_before_discount": "475.31",
+    "discount": "40%",
+    "sizes": [
+      "500 mg, 200 capsules végétariennes"
+    ],
+    "features": [
+      "Fibres naturelles solubles",
+      "Aide à maintenir la régularité*",
+      "Santé intestinale",
+      "Fibres alimentaires solubles naturelles",
+      "Contribue à la régularité du transit"
+    ],
+    "product_url": "https://www.jumia.ma/now-foods-psyllium-hush-caps-500-mg-sante-intestinalefibres-alimentaires-naturelles-65649224.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/42/294656/1.jpg?6964",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:32.607686"
+  },
+  {
+    "name": "Natural Factors  Coenzyme Q10 50 mg, Natural Coenzyme Q10 Supplement for Energy, Heart Cognitive Support, 120 Softgels",
+    "current_price": "319.00",
+    "price_before_discount": "329.00",
+    "discount": "3%",
+    "sizes": [
+      "50 mg 120 Softgels"
+    ],
+    "features": [
+      "Ubiquinone à haute absorption : Formulé avec de l’ubiquinone hautement absorbable et mélangé à de l’huile de son de riz pour une biodisponibilité et une efficacité accrues*",
+      "Rechargez votre énergie : Stimulez la production d’énergie de votre corps grâce à la coenzyme Q10*, un antioxydant naturel et catalyseur de la production d’ATP*",
+      "Force cellulaire : La CoQ10 agit au sein des mitochondries pour convertir les aliments en énergie qui alimente les cellules de tout le corps, en particulier le cœur et le cerveau*",
+      "Gélules faciles à avaler : Prendre 1 gélule 1 à 2 fois par jour ; Sans OGM, sans soja, sans gluten, sans colorants, conservateurs ni édulcorants artificiels",
+      "Testé par un organisme indépendant : Testé indépendamment et certifié par un organisme indépendant pour la présence d’OGM et de plus de 800 contaminants,"
+    ],
+    "product_url": "https://www.jumia.ma/natural-factors-coenzyme-q10-50-mg-natural-coenzyme-q10-supplement-for-energy-heart-cognitive-support-120-softgels-67181484.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/418176/1.jpg?2807",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:32.788333"
   },
   {
     "name": "Kal  Glucosamine 100% Vegetarian 1000 mg, Joint Health Supplement with Vegan Glucosamine HCl",
@@ -327,211 +327,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/38/799656/1.jpg?7406",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:54.817011"
-  },
-  {
-    "name": "Solgar Viviscal Hair growth supplement for women, 60 Count, 1 Month Supply",
-    "current_price": "899.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Santé capillaire avancée.",
-      "Formule cliniquement prouvée - Marque la plus vendue.",
-      "Nourrit les cheveux clairsemés, réduit la chute et augmente l'épaisseur des cheveux.",
-      "Ne contient aucun médicament.",
-      "Complément alimentair."
-    ],
-    "product_url": "https://www.jumia.ma/solgar-viviscal-hair-growth-supplement-for-women-60-count-1-month-supply-67762160.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/06/126776/1.jpg?9030",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:54.805021"
-  },
-  {
-    "name": "NaturesPlus Potassium Iodide 150mcg Thyroid Support Supplement, Supports Respiratory Health 100 Tablets",
-    "current_price": "249.00",
-    "price_before_discount": "259.00",
-    "discount": "4%",
-    "sizes": [
-      "150mcg 100 Tablets"
-    ],
-    "features": [
-      "Favorise une fonction thyroïdienne saine. *Ces affirmations n'ont pas été évaluées par la Food and Drug Administration. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une quelconque maladie.",
-      "Favorise la formation d'hormones thyroïdiennes. *Ces affirmations n'ont pas été évaluées par la Food and Drug Administration. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une quelconque maladie.",
-      "Favorise la santé physique et mentale. *Ces affirmations n'ont pas été évaluées par la Food and Drug Administration. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une quelconque maladie.",
-      "Aide à maintenir une température corporelle saine. *Ces affirmations n'ont pas été évaluées par la Food and Drug Administration. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une quelconque maladie.100 portions par contenant",
-      "SKU: BR334DV144C46NAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/naturesplus-potassium-iodide-150mcg-thyroid-support-supplement-supports-respiratory-health-100-tablets-66968376.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/67/386966/1.jpg?4424",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:55.181164"
-  },
-  {
-    "name": "Now Foods Garlic Oil 1500 mg Huile d'ail Supplément de fines herbes 100 Softgels",
-    "current_price": "131.00",
-    "price_before_discount": "179.00",
-    "discount": "27%",
-    "sizes": [],
-    "features": [
-      "Équivalent à la gousse d'ail entière",
-      "Un complément alimentaire",
-      "Traditionnellement utilisé pour ses bienfaits sur les systèmes cardiaque et circulatoire",
-      "Santé cardiovasculaire",
-      "Complément à base de plantes/herbes"
-    ],
-    "product_url": "https://www.jumia.ma/now-foods-garlic-oil-1500-mg-huile-dail-supplement-de-fines-herbes-100-softgels-62079589.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/98/597026/1.jpg?6764",
-    "stars": "5",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:55.254878"
-  },
-  {
-    "name": "NATURE'S TRUTH Beta Carotene 25000 IU, Vitamine A Supplement",
-    "current_price": "254.00",
-    "price_before_discount": "289.00",
-    "discount": "12%",
-    "sizes": [
-      "100 Softgels"
-    ],
-    "features": [
-      "BÊTA-CAROTÈNE : Traditionnellement présent dans les fruits et légumes, le caroténoïde est un précurseur de la vitamine A",
-      "FORME OPTIMALE : Une seule gélule à libération rapide fournit 7 500 mcg de cette vitamine essentielle !",
-      "PURETÉ ET PUISSANCE : Nature's Truth propose des ingrédients de haute qualité testés pour leur pureté et leur puissance",
-      "DES EXPERTS EN QUI VOUS POUVEZ FAIRE CONFIANCE : Appuyés par trois générations d'innovateurs en matière de vitamines pour une qualité inégaléeFABRIQUÉ SANS : Gluten, blé, levure, lait, lactose, arômes et édulcorants artificiels et SANS OGM",
-      "SKU: NA705DV0TDZUONAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/natures-truth-beta-carotene-25000-iu-vitamine-a-supplement-65816394.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/49/361856/1.jpg?0740",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:55.650278"
-  },
-  {
-    "name": "Nature'S Answer Passion Flower 2000mg Super Concentrated  Liquid Herbal Tincture Supplement Drops Natural Calming Botanical 30ml",
-    "current_price": "269.00",
-    "price_before_discount": "279.00",
-    "discount": "4%",
-    "sizes": [
-      "2000mg 30 ml"
-    ],
-    "features": [
-      "QUALITÉ SUPÉRIEURE : L’extrait fluide de passiflore sans alcool Nature’s Answer est un extrait concentré de plantes, issu de l’écorce interne de la passiflore (Passiflora incarnata). Il offre les bienfaits exceptionnels de 2 000 mg de plante séchée par portion. Les extraits sans alcool Nature’s Answer sont",
-      "élaborés à partir d’alcool, d’eau et d’agents d’extraction naturels, préservant ainsi leur équilibre holistique naturel. L’alcool et les substances d’extraction sont éliminés grâce à notre procédé unique d’extraction à froid biochélatée.",
-      "Caractéristiques exceptionnelles : Ultra concentré. Chaque portion de 2 000 mg contient 2 000 mg de plantes séchées (équivalent 1:1 de plantes sèches), testées, vérifiées et certifiées pour leur authenticité.",
-      "CHOIX IDÉAL : Grâce à la technologie avancée d’empreinte botanique, Nature’s Answer vous garantit la qualité de chaque ingrédient en identifiant la pureté de chaque plante entrante, vous garantissant ainsi la forme la plus pure de chaque extrait dans chaque produit.",
-      "100 % DE SATISFACTION CLIENT : L’extrait fluide de passiflore Nature’s Answer est un complément puissant et hautement concentré. Nous espérons que vous apprécierez notre extrait de passiflore autant que nous. Si vous n'êtes pas satisfait de nos produits, quelle qu'en soit la raison, veuillez les retourner"
-    ],
-    "product_url": "https://www.jumia.ma/natures-answer-passion-flower-2000mg-super-concentrated-liquid-herbal-tincture-supplement-drops-natural-calming-botanical-30ml-66966409.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/90/466966/1.jpg?0692",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:55.558519"
-  },
-  {
-    "name": "Solaray L-Arginine 500 mg, Nitric Oxide Supplement, Endurance, Energy, Heart Health Support, 100 VegCaps",
-    "current_price": "360.00",
-    "price_before_discount": "429.00",
-    "discount": "16%",
-    "sizes": [
-      "100 VegCaps"
-    ],
-    "features": [
-      "Santé cardiovasculaire",
-      "Complément alimentaire",
-      "Produit testé en laboratoire",
-      "Une meilleure voie",
-      "SKU: SO243DV1L7FPWNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/solaray-l-arginine-500-mg-nitric-oxide-supplement-endurance-energy-heart-health-support-100-vegcaps-67058069.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/96/085076/1.jpg?9104",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:55.649136"
-  },
-  {
-    "name": "ForestLeaf Advanced Collagen + Hyaluronic Acid & Vitamin C, 10 Capsules Sticker",
-    "current_price": "76.00",
-    "price_before_discount": "128.14",
-    "discount": "41%",
-    "sizes": [
-      "10 Capsules"
-    ],
-    "features": [
-      "Peau, cheveux et ongles sains : Le collagène est la principale protéine qui donne à notre peau son élasticité. Un apport en collagène peut aider à améliorer la force des cheveux, la croissance des ongles et à donner une peau d’apparence saine.",
-      "Formule Os et Articulations : Peut réduire le risque de fractures osseuses et améliorer la mobilité avec un supplément qui aide à donner aux os et aux articulations leur flexibilité et à augmenter leur force.",
-      "Pour les ridules et les rides : paraissez et sentez-vous plus jeune en améliorant la santé globale de votre peau. Cette formule réduit les marques en maintenant l'hydratation et l'élasticité de votre peau.",
-      "Peau jeune : Les protéines aident à former le tissu conjonctif de votre peau, la rendant plus serrée et aidant à réduire les ridules, les rides, les vergetures et peuvent également aider à minimiser la cellulite.",
-      "SKU: FO460DV1E63XYNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/forestleaf-advanced-collagen-hyaluronic-acid-vitamin-c-10-capsules-sticker-64856248.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/84/265846/1.jpg?8944",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:55.747279"
-  },
-  {
-    "name": "Solaray Vitamin B Complex - Healthy Energy Supplement  Nerve Immune Support - 50 VegCaps",
-    "current_price": "269.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "100 % vegan",
-      "Sans OGM",
-      "Complément alimentaire",
-      "À l'aloe vera",
-      "Produit testé en laboratoire"
-    ],
-    "product_url": "https://www.jumia.ma/solaray-vitamin-b-complex-healthy-energy-supplement-nerve-immune-support-50-vegcaps-64938993.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/39/983946/1.jpg?1488",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:55.850957"
-  },
-  {
-    "name": "NATURE'S TRUTH Prostate Support Supplement Avec Säw Palmetto Pour Homme Herbal Complex 60 Caps",
-    "current_price": "253.00",
-    "price_before_discount": "288.00",
-    "discount": "12%",
-    "sizes": [
-      "60 Capsules"
-    ],
-    "features": [
-      "MÉLANGE DE PLANTES : Notre complexe Prostaid contient un mélange synergique de plantes pour un soutien maximal !*",
-      "GÉLULES PRATIQUES : Ces capsules extra-fortes à libération rapide sont faciles à absorber et à prendre.",
-      "NUTRITIONS SUPÉRIEURES : Notre complexe contient des plantes naturelles aux propriétés bénéfiques.",
-      "LA VÉRITÉ DE LA NATURE : Testés en laboratoire, ingrédients fiables, qualité supérieure, 100 % garantis !",
-      "NATURELLEMENT SANS : gluten, blé, levure, lait, lactose, soja, colorants et arômes artificiels, et SANS OGM."
-    ],
-    "product_url": "https://www.jumia.ma/natures-truth-prostate-support-supplement-avec-saw-palmetto-pour-homme-herbal-complex-60-caps-67146487.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/78/464176/1.jpg?1344",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:56.220151"
-  },
-  {
-    "name": "WeightWorld Choline Bitartrate,Soutient la fonction hépatique 714mg ,180 Capsules",
-    "current_price": "286.00",
-    "price_before_discount": "999.00",
-    "discount": "71%",
-    "sizes": [
-      "714mg ,180 Capsules"
-    ],
-    "features": [
-      "Soutient la fonction hépatique : Contribue au maintien d'une fonction hépatique normale, essentielle pour le métabolisme des lipides et la santé générale. [1]",
-      "Stimule les fonctions cognitives : Une supplémentation en bitartrate de choline aide à soutenir la concentration et la mémoire pour une performance cérébrale optimale. [2]",
-      "Contribue au bon fonctionnement circulatoire : La choline permet de mieux gérer le métabolisme des homocystéines et à veiller sur les fonctions cardiovasculaires. [3]",
-      "Améliore la gestion du stress et de la fatigue : La choline participe à réduire les effets de la fatigue et du stress quotidien. [4]",
-      "Dosage optimal : Chaque dose fournit 714 mg de Bitartrate de Choline pour garantir une efficacité maximale et une meilleure absorption."
-    ],
-    "product_url": "https://www.jumia.ma/weightworld-choline-bitartratesoutient-la-fonction-hepatique-714mg-180-capsules-65585446.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/458556/1.jpg?8248",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:56.394523"
+    "scraped_at": "2026-05-15T21:58:33.039327"
   },
   {
     "name": "Solaray Phytosome de curcuma, 30 Vegcaps Sticker",
@@ -552,7 +348,192 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/53/643946/1.jpg?4764",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:56.316428"
+    "scraped_at": "2026-05-15T21:58:33.093957"
+  },
+  {
+    "name": "NaturesPlus Potassium Iodide 150mcg Thyroid Support Supplement, Supports Respiratory Health 100 Tablets",
+    "current_price": "249.00",
+    "price_before_discount": "259.00",
+    "discount": "4%",
+    "sizes": [
+      "150mcg 100 Tablets"
+    ],
+    "features": [
+      "Favorise une fonction thyroïdienne saine. *Ces affirmations n'ont pas été évaluées par la Food and Drug Administration. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une quelconque maladie.",
+      "Favorise la formation d'hormones thyroïdiennes. *Ces affirmations n'ont pas été évaluées par la Food and Drug Administration. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une quelconque maladie.",
+      "Favorise la santé physique et mentale. *Ces affirmations n'ont pas été évaluées par la Food and Drug Administration. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une quelconque maladie.",
+      "Aide à maintenir une température corporelle saine. *Ces affirmations n'ont pas été évaluées par la Food and Drug Administration. Ce produit n'est pas destiné à diagnostiquer, traiter, guérir ou prévenir une quelconque maladie.100 portions par contenant",
+      "SKU: BR334DV144C46NAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/naturesplus-potassium-iodide-150mcg-thyroid-support-supplement-supports-respiratory-health-100-tablets-66968376.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/67/386966/1.jpg?4424",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:33.570040"
+  },
+  {
+    "name": "NATURE'S TRUTH Beta Carotene 25000 IU, Vitamine A Supplement",
+    "current_price": "254.00",
+    "price_before_discount": "289.00",
+    "discount": "12%",
+    "sizes": [
+      "100 Softgels"
+    ],
+    "features": [
+      "BÊTA-CAROTÈNE : Traditionnellement présent dans les fruits et légumes, le caroténoïde est un précurseur de la vitamine A",
+      "FORME OPTIMALE : Une seule gélule à libération rapide fournit 7 500 mcg de cette vitamine essentielle !",
+      "PURETÉ ET PUISSANCE : Nature's Truth propose des ingrédients de haute qualité testés pour leur pureté et leur puissance",
+      "DES EXPERTS EN QUI VOUS POUVEZ FAIRE CONFIANCE : Appuyés par trois générations d'innovateurs en matière de vitamines pour une qualité inégaléeFABRIQUÉ SANS : Gluten, blé, levure, lait, lactose, arômes et édulcorants artificiels et SANS OGM",
+      "SKU: NA705DV0TDZUONAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/natures-truth-beta-carotene-25000-iu-vitamine-a-supplement-65816394.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/49/361856/1.jpg?0740",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:33.514926"
+  },
+  {
+    "name": "Now Foods Garlic Oil 1500 mg Huile d'ail Supplément de fines herbes 100 Softgels",
+    "current_price": "131.00",
+    "price_before_discount": "179.00",
+    "discount": "27%",
+    "sizes": [],
+    "features": [
+      "Équivalent à la gousse d'ail entière",
+      "Un complément alimentaire",
+      "Traditionnellement utilisé pour ses bienfaits sur les systèmes cardiaque et circulatoire",
+      "Santé cardiovasculaire",
+      "Complément à base de plantes/herbes"
+    ],
+    "product_url": "https://www.jumia.ma/now-foods-garlic-oil-1500-mg-huile-dail-supplement-de-fines-herbes-100-softgels-62079589.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/98/597026/1.jpg?6764",
+    "stars": "5",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:33.633984"
+  },
+  {
+    "name": "Nature'S Answer Passion Flower 2000mg Super Concentrated  Liquid Herbal Tincture Supplement Drops Natural Calming Botanical 30ml",
+    "current_price": "269.00",
+    "price_before_discount": "279.00",
+    "discount": "4%",
+    "sizes": [
+      "2000mg 30 ml"
+    ],
+    "features": [
+      "QUALITÉ SUPÉRIEURE : L’extrait fluide de passiflore sans alcool Nature’s Answer est un extrait concentré de plantes, issu de l’écorce interne de la passiflore (Passiflora incarnata). Il offre les bienfaits exceptionnels de 2 000 mg de plante séchée par portion. Les extraits sans alcool Nature’s Answer sont",
+      "élaborés à partir d’alcool, d’eau et d’agents d’extraction naturels, préservant ainsi leur équilibre holistique naturel. L’alcool et les substances d’extraction sont éliminés grâce à notre procédé unique d’extraction à froid biochélatée.",
+      "Caractéristiques exceptionnelles : Ultra concentré. Chaque portion de 2 000 mg contient 2 000 mg de plantes séchées (équivalent 1:1 de plantes sèches), testées, vérifiées et certifiées pour leur authenticité.",
+      "CHOIX IDÉAL : Grâce à la technologie avancée d’empreinte botanique, Nature’s Answer vous garantit la qualité de chaque ingrédient en identifiant la pureté de chaque plante entrante, vous garantissant ainsi la forme la plus pure de chaque extrait dans chaque produit.",
+      "100 % DE SATISFACTION CLIENT : L’extrait fluide de passiflore Nature’s Answer est un complément puissant et hautement concentré. Nous espérons que vous apprécierez notre extrait de passiflore autant que nous. Si vous n'êtes pas satisfait de nos produits, quelle qu'en soit la raison, veuillez les retourner"
+    ],
+    "product_url": "https://www.jumia.ma/natures-answer-passion-flower-2000mg-super-concentrated-liquid-herbal-tincture-supplement-drops-natural-calming-botanical-30ml-66966409.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/90/466966/1.jpg?0692",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:33.915434"
+  },
+  {
+    "name": "Solaray L-Arginine 500 mg, Nitric Oxide Supplement, Endurance, Energy, Heart Health Support, 100 VegCaps",
+    "current_price": "360.00",
+    "price_before_discount": "429.00",
+    "discount": "16%",
+    "sizes": [
+      "100 VegCaps"
+    ],
+    "features": [
+      "Santé cardiovasculaire",
+      "Complément alimentaire",
+      "Produit testé en laboratoire",
+      "Une meilleure voie",
+      "SKU: SO243DV1L7FPWNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/solaray-l-arginine-500-mg-nitric-oxide-supplement-endurance-energy-heart-health-support-100-vegcaps-67058069.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/96/085076/1.jpg?9104",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:33.998003"
+  },
+  {
+    "name": "ForestLeaf Advanced Collagen + Hyaluronic Acid & Vitamin C, 10 Capsules Sticker",
+    "current_price": "76.00",
+    "price_before_discount": "128.14",
+    "discount": "41%",
+    "sizes": [
+      "10 Capsules"
+    ],
+    "features": [
+      "Peau, cheveux et ongles sains : Le collagène est la principale protéine qui donne à notre peau son élasticité. Un apport en collagène peut aider à améliorer la force des cheveux, la croissance des ongles et à donner une peau d’apparence saine.",
+      "Formule Os et Articulations : Peut réduire le risque de fractures osseuses et améliorer la mobilité avec un supplément qui aide à donner aux os et aux articulations leur flexibilité et à augmenter leur force.",
+      "Pour les ridules et les rides : paraissez et sentez-vous plus jeune en améliorant la santé globale de votre peau. Cette formule réduit les marques en maintenant l'hydratation et l'élasticité de votre peau.",
+      "Peau jeune : Les protéines aident à former le tissu conjonctif de votre peau, la rendant plus serrée et aidant à réduire les ridules, les rides, les vergetures et peuvent également aider à minimiser la cellulite.",
+      "SKU: FO460DV1E63XYNAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/forestleaf-advanced-collagen-hyaluronic-acid-vitamin-c-10-capsules-sticker-64856248.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/84/265846/1.jpg?8944",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:34.379746"
+  },
+  {
+    "name": "NATURE'S TRUTH Prostate Support Supplement Avec Säw Palmetto Pour Homme Herbal Complex 60 Caps",
+    "current_price": "253.00",
+    "price_before_discount": "288.00",
+    "discount": "12%",
+    "sizes": [
+      "60 Capsules"
+    ],
+    "features": [
+      "MÉLANGE DE PLANTES : Notre complexe Prostaid contient un mélange synergique de plantes pour un soutien maximal !*",
+      "GÉLULES PRATIQUES : Ces capsules extra-fortes à libération rapide sont faciles à absorber et à prendre.",
+      "NUTRITIONS SUPÉRIEURES : Notre complexe contient des plantes naturelles aux propriétés bénéfiques.",
+      "LA VÉRITÉ DE LA NATURE : Testés en laboratoire, ingrédients fiables, qualité supérieure, 100 % garantis !",
+      "NATURELLEMENT SANS : gluten, blé, levure, lait, lactose, soja, colorants et arômes artificiels, et SANS OGM."
+    ],
+    "product_url": "https://www.jumia.ma/natures-truth-prostate-support-supplement-avec-saw-palmetto-pour-homme-herbal-complex-60-caps-67146487.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/78/464176/1.jpg?1344",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:34.618638"
+  },
+  {
+    "name": "Solaray Vitamin B Complex - Healthy Energy Supplement  Nerve Immune Support - 50 VegCaps",
+    "current_price": "269.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "100 % vegan",
+      "Sans OGM",
+      "Complément alimentaire",
+      "À l'aloe vera",
+      "Produit testé en laboratoire"
+    ],
+    "product_url": "https://www.jumia.ma/solaray-vitamin-b-complex-healthy-energy-supplement-nerve-immune-support-50-vegcaps-64938993.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/39/983946/1.jpg?1488",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:34.434354"
+  },
+  {
+    "name": "WeightWorld Choline Bitartrate,Soutient la fonction hépatique 714mg ,180 Capsules",
+    "current_price": "286.00",
+    "price_before_discount": "999.00",
+    "discount": "71%",
+    "sizes": [
+      "714mg ,180 Capsules"
+    ],
+    "features": [
+      "Soutient la fonction hépatique : Contribue au maintien d'une fonction hépatique normale, essentielle pour le métabolisme des lipides et la santé générale. [1]",
+      "Stimule les fonctions cognitives : Une supplémentation en bitartrate de choline aide à soutenir la concentration et la mémoire pour une performance cérébrale optimale. [2]",
+      "Contribue au bon fonctionnement circulatoire : La choline permet de mieux gérer le métabolisme des homocystéines et à veiller sur les fonctions cardiovasculaires. [3]",
+      "Améliore la gestion du stress et de la fatigue : La choline participe à réduire les effets de la fatigue et du stress quotidien. [4]",
+      "Dosage optimal : Chaque dose fournit 714 mg de Bitartrate de Choline pour garantir une efficacité maximale et une meilleure absorption."
+    ],
+    "product_url": "https://www.jumia.ma/weightworld-choline-bitartratesoutient-la-fonction-hepatique-714mg-180-capsules-65585446.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/458556/1.jpg?8248",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:34.956665"
   },
   {
     "name": "Solaray Prebiotic Powder Mycrobiome Digestive Nutritional Supplements Pour Colone et Gut Health",
@@ -573,28 +554,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/61/845956/1.jpg?9071",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:56.730648"
-  },
-  {
-    "name": "Natural Factors  Coenzyme Q10 100 mg, Natural Coenzyme Q10 Supplement for Energy, Heart Cognitive Support, 120 Softgels",
-    "current_price": "502.00",
-    "price_before_discount": "512.00",
-    "discount": "2%",
-    "sizes": [
-      "100 mg 120 Softgels"
-    ],
-    "features": [
-      "Ubiquinone à haute absorption : Formulé avec de l’ubiquinone hautement absorbable et mélangé à de l’huile de son de riz pour une biodisponibilité et une efficacité accrues*",
-      "Rechargez votre énergie : Stimulez la production d’énergie de votre corps grâce à la coenzyme Q10*, un antioxydant naturel et catalyseur de la production d’ATP*",
-      "Force cellulaire : La CoQ10 agit au sein des mitochondries pour convertir les aliments en énergie qui alimente les cellules de tout le corps, en particulier le cœur et le cerveau*",
-      "Gélules faciles à avaler : Prendre 1 gélule 1 à 2 fois par jour ; Sans OGM, sans soja, sans gluten, sans colorants, conservateurs ni édulcorants artificiels",
-      "Testé par un organisme indépendant : Testé indépendamment et certifié par un organisme indépendant pour la présence d’OGM et de plus de 800 contaminants,"
-    ],
-    "product_url": "https://www.jumia.ma/natural-factors-coenzyme-q10-100-mg-natural-coenzyme-q10-supplement-for-energy-heart-cognitive-support-120-softgels-67180014.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/41/008176/1.jpg?7269",
-    "stars": "5",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:56.805016"
+    "scraped_at": "2026-05-15T21:58:34.964870"
   },
   {
     "name": "NATURE'S TRUTH  Valerian Root 2400 mg Supplement, 90 Capsules",
@@ -615,7 +575,28 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/40/550756/1.jpg?0665",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:56.999719"
+    "scraped_at": "2026-05-15T21:58:35.290208"
+  },
+  {
+    "name": "Natural Factors  Coenzyme Q10 100 mg, Natural Coenzyme Q10 Supplement for Energy, Heart Cognitive Support, 120 Softgels",
+    "current_price": "502.00",
+    "price_before_discount": "512.00",
+    "discount": "2%",
+    "sizes": [
+      "100 mg 120 Softgels"
+    ],
+    "features": [
+      "Ubiquinone à haute absorption : Formulé avec de l’ubiquinone hautement absorbable et mélangé à de l’huile de son de riz pour une biodisponibilité et une efficacité accrues*",
+      "Rechargez votre énergie : Stimulez la production d’énergie de votre corps grâce à la coenzyme Q10*, un antioxydant naturel et catalyseur de la production d’ATP*",
+      "Force cellulaire : La CoQ10 agit au sein des mitochondries pour convertir les aliments en énergie qui alimente les cellules de tout le corps, en particulier le cœur et le cerveau*",
+      "Gélules faciles à avaler : Prendre 1 gélule 1 à 2 fois par jour ; Sans OGM, sans soja, sans gluten, sans colorants, conservateurs ni édulcorants artificiels",
+      "Testé par un organisme indépendant : Testé indépendamment et certifié par un organisme indépendant pour la présence d’OGM et de plus de 800 contaminants,"
+    ],
+    "product_url": "https://www.jumia.ma/natural-factors-coenzyme-q10-100-mg-natural-coenzyme-q10-supplement-for-energy-heart-cognitive-support-120-softgels-67180014.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/41/008176/1.jpg?7269",
+    "stars": "5",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:35.124079"
   },
   {
     "name": "Now Foods Ultra VItamine A et D3,25,000/1,000 IU 100 caps Santé oculaire osseuse Sticker",
@@ -636,28 +617,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/23/127546/1.jpg?9211",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:57.056574"
-  },
-  {
-    "name": "Protocol Acetyl- L-Carnitine 500mg  Energy Supplement, Nerve et Brain Support 100 Caps",
-    "current_price": "407.00",
-    "price_before_discount": "417.00",
-    "discount": "2%",
-    "sizes": [
-      "500mg 100 Caps"
-    ],
-    "features": [
-      "Acétyl-L-Carnitine : Chaque capsule contient 500 mg d’acétyl-L-Carnitine, un composant naturel essentiel au métabolisme des graisses et à la production d’énergie cellulaire*",
-      "Pilules pour le cerveau : Ces pilules pour le cerveau sont conçues pour vous aider à maintenir un mode de vie sain et équilibré*",
-      "Suppléments mitochondriaux : Notre complément alimentaire est sans gluten, casher, végétalien, sans produits laitiers, sans levure et sans OGM",
-      "Protocole pour un équilibre de vie : Nous sommes convaincus que les produits naturels sont plus sûrs et plus efficaces",
-      "Fabricant certifié BPF : Compléments alimentaires haut de gamme conçus pour les professionnels de santé"
-    ],
-    "product_url": "https://www.jumia.ma/protocol-acetyl-l-carnitine-500mg-energy-supplement-nerve-et-brain-support-100-caps-66568861.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/886566/1.jpg?5676",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:57.186733"
+    "scraped_at": "2026-05-15T21:58:35.428487"
   },
   {
     "name": "NATURE'S TRUTH  Ultra Chromium Picolinate 1000mcg 90 Tablets ,Vegan, Non-GMO & Gluten Free Supplement",
@@ -678,7 +638,28 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/24/487166/1.jpg?1613",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:57.472922"
+    "scraped_at": "2026-05-15T21:58:37.012225"
+  },
+  {
+    "name": "Protocol Acetyl- L-Carnitine 500mg  Energy Supplement, Nerve et Brain Support 100 Caps",
+    "current_price": "407.00",
+    "price_before_discount": "417.00",
+    "discount": "2%",
+    "sizes": [
+      "500mg 100 Caps"
+    ],
+    "features": [
+      "Acétyl-L-Carnitine : Chaque capsule contient 500 mg d’acétyl-L-Carnitine, un composant naturel essentiel au métabolisme des graisses et à la production d’énergie cellulaire*",
+      "Pilules pour le cerveau : Ces pilules pour le cerveau sont conçues pour vous aider à maintenir un mode de vie sain et équilibré*",
+      "Suppléments mitochondriaux : Notre complément alimentaire est sans gluten, casher, végétalien, sans produits laitiers, sans levure et sans OGM",
+      "Protocole pour un équilibre de vie : Nous sommes convaincus que les produits naturels sont plus sûrs et plus efficaces",
+      "Fabricant certifié BPF : Compléments alimentaires haut de gamme conçus pour les professionnels de santé"
+    ],
+    "product_url": "https://www.jumia.ma/protocol-acetyl-l-carnitine-500mg-energy-supplement-nerve-et-brain-support-100-caps-66568861.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/16/886566/1.jpg?5676",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:36.304709"
   },
   {
     "name": "Dr. Tobias Enzymes digestives avec amylase, bromélaïne, lipase, lactase, protéase, papaïne et plus, supplément de digestion avec 18 enzymes pour la digestion et la santé intestinale, 60 capsules, 30 portions",
@@ -697,7 +678,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/46/814176/1.jpg?7505",
     "stars": "2",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:57.428327"
+    "scraped_at": "2026-05-15T21:58:35.691282"
+  },
+  {
+    "name": "Dr. Tobias Enzymes digestives avec amylase, bromélaïne, lipase, lactase, protéase, papaïne et plus, supplément de digestion avec 18 enzymes pour la digestion et la santé intestinale, 60 capsules, 30 portions",
+    "current_price": "135.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Complément d'enzymes digestives : notre formule enzymatique aide à digérer les aliments difficiles à digérer. Chaque enzyme est spécialisée pour décomposer des composés spécifiques dans les protéines, les graisses, les produits laitiers, le gluten et les glucides.",
+      "Enzymes essentielles pour une meilleure absorption des nutriments : un mélange complet de 18 enzymes végétales pour la digestion, notamment l'amylase, la lipase, la bromélaïne, la lactase, la papaïne, la protéase, la cellulase, l'invertase, la glucoamylase, etc.",
+      "Soulagement des gaz et des ballonnements : Prendre 1 capsule, 1 à 2 fois par jour, de préférence au début d'un repas pour aider à reconstituer les enzymes et minimiser l'inconfort digestif.",
+      "SKU: GE232DV0TO9XGNAFAMZ",
+      "Poids (kg): 0.200"
+    ],
+    "product_url": "https://www.jumia.ma/dr.-tobias-enzymes-digestives-avec-amylase-bromelaine-lipase-lactase-protease-papaine-et-plus-supplement-de-digestion-avec-18-enzymes-pour-la-digestion-et-la-sante-intestinale-60-capsules-30-portions-generic-mpg1549155.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/49/841476/1.jpg?7550",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-15T21:58:36.834283"
   },
   {
     "name": "Complexe de magnésium naturel 1000 mg,120 capsules, supplément de magnésium chélaté (glycinat, malate, taurate et citrate), avec vitamines C, E, B1, B2, B6 et B12",
@@ -714,26 +714,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/66/815676/1.jpg?5125",
     "stars": "4",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:57.769326"
-  },
-  {
-    "name": "21st Century Vitamine B12 2500 mcg - VIT B12 naturel pour l'énergie et le soutien du métabolisme - Suppléments de vitamine B-12 sans gluten pour hommes et femmes - 110 comprimés végétariens Avec sticker",
-    "current_price": "199.00",
-    "price_before_discount": "390.38",
-    "discount": "49%",
-    "sizes": [],
-    "features": [
-      "Dissolution rapide",
-      "Soutien énergétique",
-      "Supplément de vitamines",
-      "Sans gluten",
-      "Qualité garantie testée en laboratoire"
-    ],
-    "product_url": "https://www.jumia.ma/vitamine-b12-2500-mcg-vit-b12-naturel-pour-lenergie-et-le-soutien-du-metabolisme-supplements-de-vitamine-b-12-sans-gluten-pour-hommes-et-femmes-110-comprimes-vegetariens-avec-sticker-21st-century-mpg1257643.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/43/357524/1.jpg?2841",
-    "stars": "4.2",
-    "availability": "-",
-    "scraped_at": "2026-05-14T18:00:58.214695"
+    "scraped_at": "2026-05-15T21:58:37.082371"
   },
   {
     "name": "PRIMAFORCE Taurine 1000 mg Capsules, 180 Caps, Non-GMO & Gluten Free Supplement",
@@ -754,7 +735,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/52/242756/1.jpg?6913",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:58.268658"
+    "scraped_at": "2026-05-15T21:58:37.440934"
   },
   {
     "name": "Nutribiotic Sodium Ascorbate Buffered Vitamine C Powder Essential Immune Support & Antioxidant Supplement 227g",
@@ -775,7 +756,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/21/775076/1.jpg?2904",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:58.461767"
+    "scraped_at": "2026-05-15T21:58:37.826901"
   },
   {
     "name": "Source Naturals Bromelain 500mg Supplément d'enzyme protéolytique - 120 comprimés  Sticker",
@@ -796,7 +777,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/19/252446/1.jpg?0025",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:58.574218"
+    "scraped_at": "2026-05-15T21:58:38.064845"
   },
   {
     "name": "Nutrabio Ashwagandha KSM-66, complément alimentaire à base de plantes pour un bien-être général accru - Supplément d'Ashwagandha - 600 mg - 60 capsules végétales",
@@ -815,6 +796,6 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/39/077176/1.jpg?5897",
     "stars": "3.4",
     "availability": "-",
-    "scraped_at": "2026-05-14T18:00:58.647938"
+    "scraped_at": "2026-05-15T21:58:38.039428"
   }
 ]

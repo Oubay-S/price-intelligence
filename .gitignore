@@ -141,6 +141,11 @@ scrapers/walmart/chromedriver/
 scrapers/walmart/*.html
 scrapers/walmart/*.json
 scrapers/walmart/*.log
+scrapers/nifi_inbox/
+scrapers/backup/
+scrapers/*debug*.html
+scrapers/**/*debug*.html
+scrapers/bigtable_dashboard.html
 .vscode/
 !.vscode/extensions.json    # On peut partager les extensions recommandées
 .idea/
