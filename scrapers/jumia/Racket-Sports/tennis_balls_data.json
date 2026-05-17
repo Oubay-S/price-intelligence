@@ -16,7 +16,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/448825/1.jpg?5698",
     "stars": "3.8",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:59:59.153244"
+    "scraped_at": "2026-05-17T17:31:14.786383"
+  },
+  {
+    "name": "Entraîneur de Tennis avec Balle Élastique – Tennis Trainer Rebondissant",
+    "current_price": "90.00",
+    "price_before_discount": "199.00",
+    "discount": "55%",
+    "sizes": [],
+    "features": [
+      "Entraînement solo sans partenaire",
+      "Base stable à remplir (eau ou sable)",
+      "Balles de tennis avec cordes élastiques résistantes",
+      "Améliore la précision et la coordination",
+      "Facile à transporter et à utiliser"
+    ],
+    "product_url": "https://www.jumia.ma/entraineur-de-tennis-avec-balle-elastique-tennis-trainer-rebondissant-generic-mpg1549932.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/91/798476/1.jpg?8916",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-17T17:31:14.872206"
   },
   {
     "name": "Balle de rebond pour entraîneur de tennis avec longue corde élastique, bleu, équipement d'entraînement portable pour adultes, enfants, débutants",
@@ -35,7 +54,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/29/724676/1.jpg?2627",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:59:59.447982"
+    "scraped_at": "2026-05-17T17:31:14.949473"
   },
   {
     "name": "Balles de tennis d'entraînement - Idéales pour débuter Lot de 2, 4, 6 & 12 Bales",
@@ -59,26 +78,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/53/801956/1.jpg?5689",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:59:59.960194"
-  },
-  {
-    "name": "Entraîneur de Tennis avec Balle Élastique – Tennis Trainer Rebondissant",
-    "current_price": "90.00",
-    "price_before_discount": "199.00",
-    "discount": "55%",
-    "sizes": [],
-    "features": [
-      "Entraînement solo sans partenaire",
-      "Base stable à remplir (eau ou sable)",
-      "Balles de tennis avec cordes élastiques résistantes",
-      "Améliore la précision et la coordination",
-      "Facile à transporter et à utiliser"
-    ],
-    "product_url": "https://www.jumia.ma/entraineur-de-tennis-avec-balle-elastique-tennis-trainer-rebondissant-generic-mpg1549932.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/91/798476/1.jpg?8916",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-15T22:00:00.033801"
+    "scraped_at": "2026-05-17T17:31:15.049553"
   },
   {
     "name": "Majestic Kit Tennis de Table Portable – Filet Rétractable + Raquettes + Balles",
@@ -97,7 +97,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/08/479176/1.jpg?4942",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:59:59.784651"
+    "scraped_at": "2026-05-17T17:31:14.984566"
   },
   {
     "name": "Mascow Jouets pour chiens 4 grandes balles tennis",
@@ -116,7 +116,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/92/218855/1.jpg?0566",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:00.243204"
+    "scraped_at": "2026-05-17T17:31:15.231487"
   },
   {
     "name": "Balle de rebond pour entraîneur de tennis avec longue corde élastique, bleu, équipement d'entraînement portable pour adultes, enfants, débutants",
@@ -135,7 +135,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/58/344676/1.jpg?0939",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:00.906833"
+    "scraped_at": "2026-05-17T17:31:15.675097"
   },
   {
     "name": "Top Raquette de tennis pour enfant 81 P-1 (120) double, avec balle",
@@ -153,7 +153,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/771276/1.jpg?3028",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:01.124960"
+    "scraped_at": "2026-05-17T17:31:15.578205"
   },
   {
     "name": "Entraîneur de Tennis Rétractable – Système d’Entraînement Solo avec Balle et Base Antidérapante",
@@ -172,7 +172,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/59/798376/1.jpg?3767",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:00.940744"
+    "scraped_at": "2026-05-17T17:31:15.612921"
   },
   {
     "name": "Entraîneur de Tennis Rétractable – Kit d’Entraînement avec Balle et Base Antidérapante",
@@ -191,7 +191,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/02/339376/1.jpg?7135",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:01.086224"
+    "scraped_at": "2026-05-17T17:31:15.442280"
   },
   {
     "name": "Kit Tennis de Table Complet – 2 Raquettes, 3 Balles, Filet et Supports – Idéal pour Jouer en Famille ou entre Amis",
@@ -208,7 +208,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/12/209176/1.jpg?8045",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:01.292130"
+    "scraped_at": "2026-05-17T17:31:15.747741"
   },
   {
     "name": "Créatif Porte-clés Balle de Tennis Peluche Balle de Tennis Pendentif Porte-Clés Convient Aux Amateurs de Tennis, Fêtes",
@@ -231,7 +231,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/33/171476/1.jpg?2020",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:01.752735"
+    "scraped_at": "2026-05-17T17:31:15.865250"
   },
   {
     "name": "Set 12 balles de tennis jaunes pour débutants",
@@ -250,7 +250,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/71/306735/1.jpg?8712",
     "stars": "3.3",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:01.987496"
+    "scraped_at": "2026-05-17T17:31:16.161241"
   },
   {
     "name": "Pack de 3 balles de Tennis Jaunes, très léger, facile à transporter",
@@ -269,7 +269,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/66/052956/1.jpg?8545",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:02.402284"
+    "scraped_at": "2026-05-17T17:31:16.254467"
   },
   {
     "name": "Set de deux raquettes tennis de plage + 1 balle offerte",
@@ -288,7 +288,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/45/002176/1.jpg?7586",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:02.242321"
+    "scraped_at": "2026-05-17T17:31:16.277174"
   },
   {
     "name": "Ensemble d’entraînement de tennis individuel – Rebond automatique avec balle et corde élastique",
@@ -307,7 +307,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/29/198176/1.jpg?0491",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:02.480871"
+    "scraped_at": "2026-05-17T17:31:16.345482"
   },
   {
     "name": "Ensemble De Tennis De Table Ping Pong Et Deux Raquettes en Bois Et 3 Balles",
@@ -326,26 +326,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/95/943056/1.jpg?6199",
     "stars": "4",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:02.826483"
-  },
-  {
-    "name": "Entraîneur de Tennis Solo – Base Stable et Balle Rétractable",
-    "current_price": "89.00",
-    "price_before_discount": "149.00",
-    "discount": "40%",
-    "sizes": [],
-    "features": [
-      "Base stable et antidérapante",
-      "Cordon élastique résistant et durable",
-      "Entraînement individuel sans partenaire",
-      "Portable, léger et facile à transporter",
-      "Améliore précision, vitesse et coordination"
-    ],
-    "product_url": "https://www.jumia.ma/generic-entraineur-de-tennis-solo-base-stable-et-balle-retractable-67389805.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/898376/1.jpg?5033",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-15T22:00:02.907924"
+    "scraped_at": "2026-05-17T17:31:16.405469"
   },
   {
     "name": "Entraîneur de Tennis avec Balle Élastique – Tennis Trainer Rebondissant",
@@ -364,26 +345,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/72/798476/1.jpg?9291",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:03.314553"
+    "scraped_at": "2026-05-17T17:31:16.687681"
   },
   {
-    "name": "Entraîneur de Tennis Rétractable avec Balle – Base Stable pour Entraînement Solo",
+    "name": "Entraîneur de Tennis Solo – Base Stable et Balle Rétractable",
     "current_price": "89.00",
-    "price_before_discount": "169.00",
-    "discount": "47%",
+    "price_before_discount": "149.00",
+    "discount": "40%",
     "sizes": [],
     "features": [
-      "Base stable et antidérapante, remplissable pour un meilleur maintien",
-      "Balle de tennis attachée avec corde élastique résistante",
-      "Système de retour automatique pour un entraînement en solo",
-      "Portable et léger, facile à transporter",
-      "Convient à tous les niveaux : enfants, adultes, débutants et joueurs avancés"
+      "Base stable et antidérapante",
+      "Cordon élastique résistant et durable",
+      "Entraînement individuel sans partenaire",
+      "Portable, léger et facile à transporter",
+      "Améliore précision, vitesse et coordination"
     ],
-    "product_url": "https://www.jumia.ma/generic-entraineur-de-tennis-retractable-avec-balle-base-stable-pour-entrainement-solo-67400452.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/25/400476/1.jpg?0372",
+    "product_url": "https://www.jumia.ma/generic-entraineur-de-tennis-solo-base-stable-et-balle-retractable-67389805.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/898376/1.jpg?5033",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:03.571349"
+    "scraped_at": "2026-05-17T17:31:16.818899"
   },
   {
     "name": "Ensemble De Tennis De Table Ping Pong Et Deux Raquettes en Bois Et 3 Balles",
@@ -402,7 +383,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/98/016756/1.jpg?1485",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:03.473604"
+    "scraped_at": "2026-05-17T17:31:16.804852"
+  },
+  {
+    "name": "Entraîneur de Tennis Rétractable avec Balle – Base Stable pour Entraînement Solo",
+    "current_price": "89.00",
+    "price_before_discount": "169.00",
+    "discount": "47%",
+    "sizes": [],
+    "features": [
+      "Base stable et antidérapante, remplissable pour un meilleur maintien",
+      "Balle de tennis attachée avec corde élastique résistante",
+      "Système de retour automatique pour un entraînement en solo",
+      "Portable et léger, facile à transporter",
+      "Convient à tous les niveaux : enfants, adultes, débutants et joueurs avancés"
+    ],
+    "product_url": "https://www.jumia.ma/generic-entraineur-de-tennis-retractable-avec-balle-base-stable-pour-entrainement-solo-67400452.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/25/400476/1.jpg?0372",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-17T17:31:16.920424"
   },
   {
     "name": "Pack 12 Balles de Tennis Professionnelles pour Entraînement",
@@ -418,62 +418,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/07/159376/1.jpg?4561",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:03.904460"
-  },
-  {
-    "name": "Pack 3 Balles de Tennis Jaunes Haute Performance Training et Match",
-    "current_price": "39.00",
-    "price_before_discount": "60.00",
-    "discount": "35%",
-    "sizes": [],
-    "features": [
-      "SKU: GE232SE19CCY8NAFAMZ",
-      "Poids (kg): 0.2",
-      "Couleur: Jaunes"
-    ],
-    "product_url": "https://www.jumia.ma/generic-pack-3-balles-de-tennis-jaunes-haute-performance-training-et-match-67395167.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/76/159376/1.jpg?4328",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-15T22:00:03.889612"
-  },
-  {
-    "name": "Entraîneur de Tennis Rebond, Balle de rebond pour entraîneur de tennis avec longue corde élastique, bleu, équipement d'entraînement portable pour adultes, enfants, débutants.",
-    "current_price": "75.00",
-    "price_before_discount": "119.00",
-    "discount": "37%",
-    "sizes": [],
-    "features": [
-      "Portable",
-      "Excellent cadeau pour les débutants en tennis",
-      "Équipement d'entraînement unique",
-      "SKU: GE232SE0CECF8NAFAMZ",
-      "Modèle: Entraîneur de Tennis Rebond"
-    ],
-    "product_url": "https://www.jumia.ma/generic-entraineur-de-tennis-rebond-balle-de-rebond-pour-entraineur-de-tennis-avec-longue-corde-elastique-bleu-equipement-dentrainement-portable-pour-adultes-enfants-debutants.-67642802.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/20/824676/1.jpg?3132",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-15T22:00:04.208952"
-  },
-  {
-    "name": "Entraîneur de Tennis Rétractable avec Balle Attachée – Base Antidérapante à Remplir d’Eau/Sable pour Entraînement Solo, Amélioration du Service, de la Précision et de la Coordination",
-    "current_price": "89.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [],
-    "features": [
-      "Entraînement solo sans besoin de partenaire.",
-      "Balle rétractable grâce au cordon élastique solide.",
-      "Base stable remplissable d’eau ou de sable pour une fixation optimale.",
-      "Portable et léger, facile à transporter.",
-      "Idéal pour améliorer le service, les coups droits, revers et contrôles."
-    ],
-    "product_url": "https://www.jumia.ma/generic-entraineur-de-tennis-retractable-avec-balle-attachee-base-antiderapante-a-remplir-deausable-pour-entrainement-solo-amelioration-du-service-de-la-precision-et-de-la-coordination-67393285.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/58/239376/1.jpg?2640",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-15T22:00:04.574059"
+    "scraped_at": "2026-05-17T17:31:16.941852"
   },
   {
     "name": "Entraîneur de Tennis avec Balle Élastique – Tennis Trainer Rebondissant",
@@ -492,7 +437,62 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/66/666476/1.jpg?2376",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:04.414821"
+    "scraped_at": "2026-05-17T17:31:17.136831"
+  },
+  {
+    "name": "Pack 3 Balles de Tennis Jaunes Haute Performance Training et Match",
+    "current_price": "39.00",
+    "price_before_discount": "60.00",
+    "discount": "35%",
+    "sizes": [],
+    "features": [
+      "SKU: GE232SE19CCY8NAFAMZ",
+      "Poids (kg): 0.2",
+      "Couleur: Jaunes"
+    ],
+    "product_url": "https://www.jumia.ma/generic-pack-3-balles-de-tennis-jaunes-haute-performance-training-et-match-67395167.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/76/159376/1.jpg?4328",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-17T17:31:17.311372"
+  },
+  {
+    "name": "Entraîneur de Tennis Rebond, Balle de rebond pour entraîneur de tennis avec longue corde élastique, bleu, équipement d'entraînement portable pour adultes, enfants, débutants.",
+    "current_price": "75.00",
+    "price_before_discount": "119.00",
+    "discount": "37%",
+    "sizes": [],
+    "features": [
+      "Portable",
+      "Excellent cadeau pour les débutants en tennis",
+      "Équipement d'entraînement unique",
+      "SKU: GE232SE0CECF8NAFAMZ",
+      "Modèle: Entraîneur de Tennis Rebond"
+    ],
+    "product_url": "https://www.jumia.ma/generic-entraineur-de-tennis-rebond-balle-de-rebond-pour-entraineur-de-tennis-avec-longue-corde-elastique-bleu-equipement-dentrainement-portable-pour-adultes-enfants-debutants.-67642802.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/20/824676/1.jpg?3132",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-17T17:31:17.377050"
+  },
+  {
+    "name": "Entraîneur de Tennis Rétractable avec Balle Attachée – Base Antidérapante à Remplir d’Eau/Sable pour Entraînement Solo, Amélioration du Service, de la Précision et de la Coordination",
+    "current_price": "89.00",
+    "price_before_discount": "",
+    "discount": null,
+    "sizes": [],
+    "features": [
+      "Entraînement solo sans besoin de partenaire.",
+      "Balle rétractable grâce au cordon élastique solide.",
+      "Base stable remplissable d’eau ou de sable pour une fixation optimale.",
+      "Portable et léger, facile à transporter.",
+      "Idéal pour améliorer le service, les coups droits, revers et contrôles."
+    ],
+    "product_url": "https://www.jumia.ma/generic-entraineur-de-tennis-retractable-avec-balle-attachee-base-antiderapante-a-remplir-deausable-pour-entrainement-solo-amelioration-du-service-de-la-precision-et-de-la-coordination-67393285.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/58/239376/1.jpg?2640",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-17T17:31:17.443167"
   },
   {
     "name": "Entraîneur de Tennis Rebond Solo – Outil Portable avec Corde Élastique et Balle, Forme Octogonale Robuste, Pour Réflexes et Coordination – Bleu",
@@ -513,7 +513,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/09/285076/1.jpg?8243",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:05.294636"
+    "scraped_at": "2026-05-17T17:31:17.504686"
   },
   {
     "name": "Ensemble de tennis de table : 2 raquettes et 3 balles",
@@ -534,7 +534,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/51/405756/1.jpg?2866",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:04.941568"
+    "scraped_at": "2026-05-17T17:31:17.568708"
   },
   {
     "name": "Lot de 8 Balles de Tennis Jaunes, Balles de Tennis",
@@ -553,7 +553,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/57/184706/1.jpg?7848",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:05.454537"
+    "scraped_at": "2026-05-17T17:31:17.781746"
   },
   {
     "name": "Ensemble d'entraînement de rebond de tennis simple, appareil d'entraînement de tennis pour la pratique individuelle, présente une base durable avec un cordon élastique haut, parfait pour l'entraînement de tennis sans avoir besoin de récupérer les balles",
@@ -574,7 +574,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/98/935076/1.jpg?9107",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:05.731253"
+    "scraped_at": "2026-05-17T17:31:17.845167"
   },
   {
     "name": "4 balles de tennis jaunes pour débutants",
@@ -593,7 +593,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/32/750626/1.jpg?8083",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:05.759240"
+    "scraped_at": "2026-05-17T17:31:17.955093"
   },
   {
     "name": "Balles de Tennis, Pack de 3 balles de Tennis Jaunes",
@@ -612,7 +612,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/535716/1.jpg?4244",
     "stars": "3.8",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:06.140348"
+    "scraped_at": "2026-05-17T17:31:17.974085"
   },
   {
     "name": "Mini Table de Tennis de Table, Jeu de Ping-Pong Amusant pour Famille & Amis, avec 2 Raquettes et Balle",
@@ -631,7 +631,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/66/376166/1.jpg?5305",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:06.439117"
+    "scraped_at": "2026-05-17T17:31:18.036930"
   },
   {
     "name": "T-shirt ennis Femme Hommes rendy tennis Rackets Ball",
@@ -655,7 +655,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/71/076426/1.jpg?5785",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:06.690761"
+    "scraped_at": "2026-05-17T17:31:18.325214"
   },
   {
     "name": "Entraîneur de Tennis avec Balle Élastique – Tennis Trainer Rebondissant",
@@ -674,7 +674,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/22/798476/1.jpg?9021",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:07.033508"
+    "scraped_at": "2026-05-17T17:31:18.293766"
   },
   {
     "name": "Balles de Tennis, Lot de 12 balles de Tennis Jaunes",
@@ -691,7 +691,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/88/473376/1.jpg?5566",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:06.945123"
+    "scraped_at": "2026-05-17T17:31:18.521088"
   },
   {
     "name": "Entraîneur de Tennis avec Balle sur Corde – Tennis Trainer",
@@ -708,7 +708,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/631576/1.jpg?1322",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:07.155107"
+    "scraped_at": "2026-05-17T17:31:18.417774"
   },
   {
     "name": "Tennis Trainer, Balle de Rebond avec Ficelle, Équipement d’Entraînement Portable",
@@ -727,7 +727,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/13/542776/1.jpg?3373",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:07.413683"
+    "scraped_at": "2026-05-17T17:31:18.533684"
   },
   {
     "name": "Pack 6 Balles de Tennis Professionnelles – Training & Match",
@@ -744,7 +744,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/49/736376/1.jpg?9750",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:07.507782"
+    "scraped_at": "2026-05-17T17:31:18.740657"
   },
   {
     "name": "topgym Lot de 2 Raquettes de Tennis Pro de Table Ping Pong + 3 balles de Tennis",
@@ -765,6 +765,6 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/69/143176/1.jpg?2743",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T22:00:07.782450"
+    "scraped_at": "2026-05-17T17:31:18.827884"
   }
 ]

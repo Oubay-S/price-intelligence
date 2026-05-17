@@ -14,7 +14,7 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['JUMIA', 'EBAY', 'WALMART']
+              values: ['JUMIA', 'EBAY', 'SPORT-DIRECT']
       - name: category_name
         tests:
           - not_null

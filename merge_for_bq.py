@@ -9,7 +9,7 @@ if sys.platform.startswith('win'):
 def merge_json_files(base_path, output_file):
     all_data = []
     
-    # Loop through all folders in scrapers (jumia, walmart, ebay)
+    # Loop through all folders in scrapers (jumia, sport-direct, ebay)
     for root, dirs, files in os.walk(base_path):
         for file in files:
             if file.endswith('.json'):

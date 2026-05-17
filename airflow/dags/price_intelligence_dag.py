@@ -39,6 +39,23 @@ def run_scraper(script_name, cwd):
         raise Exception(f"Scraper {script_name} failed with exit code {process.returncode}")
     print(f"Finished scraper: {script_name}")
 
+def run_scraper_command(command, cwd):
+    print(f"Starting command: {' '.join(command)} in {cwd}")
+    process = subprocess.Popen(
+        command,
+        cwd=cwd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1
+    )
+    for line in process.stdout:
+        print(line, end='')
+    process.wait()
+    if process.returncode != 0:
+        raise Exception(f"Command {' '.join(command)} failed with exit code {process.returncode}")
+    print(f"Finished command: {' '.join(command)}")
+
 def ensure_nifi_available():
     host = os.environ.get("NIFI_HOST", "nifi")
     port = int(os.environ.get("NIFI_PORT", "8443"))
@@ -118,7 +135,7 @@ def validate_scraper_json_file(json_path):
 def stage_scraped_json_for_nifi():
     source_root = Path(os.environ.get("SCRAPER_OUTPUT_ROOT", "/app"))
     inbox = Path(os.environ.get("NIFI_INBOX", "/app/nifi_inbox"))
-    stores = ["jumia", "walmart", "ebay"]
+    stores = ["jumia", "sport-direct", "ebay"]
 
     if inbox.exists():
         shutil.rmtree(inbox)
@@ -134,7 +151,13 @@ def stage_scraped_json_for_nifi():
             continue
 
         for json_path in sorted(store_dir.rglob("*.json")):
-            if json_path.name.lower() == "manifest.json":
+            path_parts = {part.lower() for part in json_path.relative_to(store_dir).parts}
+            if "_metadata" in path_parts:
+                print(f"Skipping browser metadata file: {json_path}")
+                continue
+
+            name = json_path.name.lower()
+            if name == "manifest.json" or name.endswith("_cookies.json"):
                 print(f"Skipping scraper metadata file: {json_path}")
                 continue
 
@@ -265,16 +288,22 @@ with DAG(
         op_kwargs={'script_name': 'jumia/run_jumia_scraping.py', 'cwd': '/app'}
     )
 
-    task_walmart = PythonOperator(
-        task_id='scrape_walmart',
-        python_callable=run_scraper,
-        op_kwargs={'script_name': 'walmart/run_walmart_scraping.py', 'cwd': '/app'}
+    task_sport_direct = PythonOperator(
+        task_id='scrape_sport_direct',
+        python_callable=run_scraper_command,
+        op_kwargs={
+            'command': ['python', '-u', 'sport-direct/run_sport_direct_scraping.py'],
+            'cwd': '/app',
+        }
     )
 
     task_ebay = PythonOperator(
         task_id='scrape_ebay',
-        python_callable=run_scraper,
-        op_kwargs={'script_name': 'ebay/run_ebay_scraping.py', 'cwd': '/app'}
+        python_callable=run_scraper_command,
+        op_kwargs={
+            'command': ['xvfb-run', '-a', 'python', '-u', 'ebay/run_ebay_scraping.py'],
+            'cwd': '/app',
+        }
     )
 
     task_check_nifi = PythonOperator(
@@ -303,4 +332,4 @@ with DAG(
         python_callable=run_dbt,
     )
 
-    [task_jumia, task_walmart, task_ebay] >> task_check_nifi >> task_stage_nifi >> task_wait_bigtable >> task_export_bq >> task_dbt_run
+    [task_jumia, task_sport_direct, task_ebay] >> task_check_nifi >> task_stage_nifi >> task_wait_bigtable >> task_export_bq >> task_dbt_run

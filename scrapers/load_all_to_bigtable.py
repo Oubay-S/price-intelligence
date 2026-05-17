@@ -130,7 +130,7 @@ def load_all():
         raise RuntimeError("Could not connect to Bigtable")
 
     total_rows = 0
-    for store in ["jumia", "walmart", "ebay"]:
+    for store in ["jumia", "sport-direct", "ebay"]:
         store_path = Path(store)
         if not store_path.exists():
             print(f"Skipping missing store directory: {store}")

@@ -136,11 +136,6 @@ postgres_data/
 bigtable_data/
 
 # Scraper internals
-scrapers/walmart/walmart_profile/
-scrapers/walmart/chromedriver/
-scrapers/walmart/*.html
-scrapers/walmart/*.json
-scrapers/walmart/*.log
 scrapers/nifi_inbox/
 scrapers/backup/
 scrapers/*debug*.html
@@ -169,3 +164,4 @@ infra/terraform/override.tf
 
 
 CLAUDE.md
+DATA_ENGINEER_WORK_SUMMARY.md

@@ -77,7 +77,7 @@ x-airflow-common: &airflow-common
     - ./logs:/opt/airflow/logs:Z
     - ./airflow/dags:/opt/airflow/dags:Z
     - ./plugins:/opt/airflow/plugins:Z
-    - ./scrapers:/app:Z
+    - ./scrapers:/app:z
     - ./gcp-credentials.json:/opt/airflow/gcp-credentials.json:ro,z
     - ./dbt:/usr/app/dbt:Z
 

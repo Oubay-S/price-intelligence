@@ -39,8 +39,8 @@ def _detect_source(row_data, source_arg):
     url = str(row_data.get("product_url", "")).lower()
     if "ebay." in url:
         return "ebay"
-    if "walmart." in url:
-        return "walmart"
+    if "sportsdirect" in url:
+        return "sport-direct"
     if "jumia" in url:
         return "jumia"
     return str(row_data.get("source") or row_data.get("store") or "unknown")
@@ -72,7 +72,7 @@ def _cell_value(value):
 
 def main():
     parser = argparse.ArgumentParser(description="NiFi to Bigtable ingestion")
-    parser.add_argument("--source", help="Scraping source: ebay, walmart, jumia")
+    parser.add_argument("--source", help="Scraping source: ebay, sport-direct, jumia")
     parser.add_argument("--category", help="Product category")
     args = parser.parse_args()
 

@@ -18,7 +18,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/20/936956/1.jpg?0169",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:19.322322"
+    "scraped_at": "2026-05-17T17:29:27.176824"
   },
   {
     "name": "Espadrilles pour femmes couleur gris",
@@ -43,7 +43,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/450376/1.jpg?4639",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:20.704525"
+    "scraped_at": "2026-05-17T17:29:26.835655"
   },
   {
     "name": "lacet Chaussures_Sport, basket-ball en toile",
@@ -62,7 +62,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/655836/1.jpg?8045",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:19.930422"
+    "scraped_at": "2026-05-17T17:29:26.960808"
   },
   {
     "name": "lacet Chaussures_Sport, basket-ball en toile",
@@ -81,7 +81,26 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/695936/1.jpg?4944",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:20.553584"
+    "scraped_at": "2026-05-17T17:29:27.209551"
+  },
+  {
+    "name": "lacet Chaussures_Sport, basket-ball en toile",
+    "current_price": "49.00",
+    "price_before_discount": "59.00",
+    "discount": "17%",
+    "sizes": [],
+    "features": [
+      "Lacet pour enfants et adultes",
+      "couleur :blanc mauve",
+      "Spécial pour les amoureux du sport",
+      "magnifique pour travail, sport et voyage",
+      "Materiau : polyester"
+    ],
+    "product_url": "https://www.jumia.ma/generic-lacet-chaussuressport-basket-ball-en-toile-63650417.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/71/405636/1.jpg?0026",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-17T17:29:26.993634"
   },
   {
     "name": "Espadrilles pour femmes couleur blanc",
@@ -106,26 +125,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/62/450376/1.jpg?5543",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:20.500167"
-  },
-  {
-    "name": "lacet Chaussures_Sport, basket-ball en toile",
-    "current_price": "49.00",
-    "price_before_discount": "59.00",
-    "discount": "17%",
-    "sizes": [],
-    "features": [
-      "Lacet pour enfants et adultes",
-      "couleur :blanc mauve",
-      "Spécial pour les amoureux du sport",
-      "magnifique pour travail, sport et voyage",
-      "Materiau : polyester"
-    ],
-    "product_url": "https://www.jumia.ma/generic-lacet-chaussuressport-basket-ball-en-toile-63650417.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/71/405636/1.jpg?0026",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-15T21:57:21.350263"
+    "scraped_at": "2026-05-17T17:29:27.294200"
   },
   {
     "name": "Tommy Hilfiger Baskets basses en cuir bleu marine",
@@ -144,7 +144,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/88/258676/1.jpg?6495",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:22.244271"
+    "scraped_at": "2026-05-17T17:29:27.490499"
   },
   {
     "name": "Espadrilles pour femmes couleur beige",
@@ -169,7 +169,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/63/231376/1.jpg?2400",
     "stars": "3",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:23.341184"
+    "scraped_at": "2026-05-17T17:29:27.568040"
   },
   {
     "name": "King Sport King Basketball Shoot Playset - Réglable jusqu'à 150 cm",
@@ -188,7 +188,47 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/05/828384/1.jpg?1529",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:23.540998"
+    "scraped_at": "2026-05-17T17:29:27.852785"
+  },
+  {
+    "name": "BASKET",
+    "current_price": "199.00",
+    "price_before_discount": "499.00",
+    "discount": "60%",
+    "sizes": [
+      "EU 36"
+    ],
+    "features": [
+      "Marque: Gémo",
+      "Taille: 36",
+      "Couleur: Beige",
+      "Saison: Toutes",
+      "SKU: GE216FS0WXPMONAFAMZ"
+    ],
+    "product_url": "https://www.jumia.ma/gemo-basket-67502355.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/55/320576/1.jpg?6066",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-17T17:29:27.694914"
+  },
+  {
+    "name": "Derbies femme",
+    "current_price": "279.00",
+    "price_before_discount": "399.00",
+    "discount": "30%",
+    "sizes": [
+      "EU 36"
+    ],
+    "features": [
+      "SKU: GE216FS0QDXZ4NAFAMZ",
+      "Poids (kg): 0.32",
+      "Couleur: gris"
+    ],
+    "product_url": "https://www.jumia.ma/gemo-derbies-femme-67502344.html",
+    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/44/320576/1.jpg?2438",
+    "stars": "0",
+    "availability": "-",
+    "scraped_at": "2026-05-17T17:29:27.854593"
   },
   {
     "name": "King Sport King Basketball Shoot Playset -  Adjustable upto 112cm",
@@ -207,7 +247,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/94/828384/1.jpg?1529",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:23.720024"
+    "scraped_at": "2026-05-17T17:29:28.063241"
   },
   {
     "name": "King Basketball Shoot Panier de Basket Enfant Réglable 60 à 112 cm Panneau 42 cm Support Stable Jeu Intérieur Extérieur Entraînement Amusant",
@@ -226,32 +266,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/94/086576/1.jpg?0854",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:24.041277"
-  },
-  {
-    "name": "Sandale unisexe Noir Basketball orange polyvalente pour plage, gym et maison",
-    "current_price": "79.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "40",
-      "41",
-      "42",
-      "43",
-      "44"
-    ],
-    "features": [
-      "SKU: GE232FS0TU96WNAFAMZ",
-      "Pays de production: Morocco",
-      "Poids (kg): 0,1",
-      "Couleur: noir",
-      "Matière principale: caoutchouc"
-    ],
-    "product_url": "https://www.jumia.ma/generic-sandale-unisexe-noir-basketball-orange-polyvalente-pour-plage-gym-et-maison-65402105.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/50/120456/1.jpg?6846",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-15T21:57:24.921538"
+    "scraped_at": "2026-05-17T17:29:28.031081"
   },
   {
     "name": "Grand autocollant mural en vinyle de basket-Ball Dunk Shoot Ball",
@@ -270,34 +285,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/33/934145/1.jpg?1436",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:25.438680"
-  },
-  {
-    "name": "Defacto Ensemble T-shirt imprimé BasketBall et Short pour bébé garçon",
-    "current_price": "86.00",
-    "price_before_discount": "129.00",
-    "discount": "33%",
-    "sizes": [
-      "3-4 Ans",
-      "4-5 Ans",
-      "5-6 Ans",
-      "9-12 Mois",
-      "12-18 Mois",
-      "18-24 Mois",
-      "24-36 Mois"
-    ],
-    "features": [
-      "Material: Cotton 100%",
-      "Product Code: E6793A525SMER42",
-      "Color: Ecru",
-      "Gender: BABY BOY",
-      "SKU: DE898MW0HXY5CNAFAMZ"
-    ],
-    "product_url": "https://www.jumia.ma/defacto-ensemble-t-shirt-imprime-basketball-et-short-pour-bebe-garcon-67373103.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/30/137376/1.jpg?2131",
-    "stars": "0",
-    "availability": "-",
-    "scraped_at": "2026-05-15T21:57:25.501571"
+    "scraped_at": "2026-05-17T17:29:28.179702"
   },
   {
     "name": "Ejeton Jeu Ejection Seat Connect 4 & Shoot Basketball 2 in 1",
@@ -318,31 +306,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/56/617956/1.jpg?4165",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:25.630115"
-  },
-  {
-    "name": "Sandale unisexe Noir basketball polyvalente pour plage, gym et maison",
-    "current_price": "79.00",
-    "price_before_discount": "",
-    "discount": null,
-    "sizes": [
-      "40",
-      "41",
-      "43",
-      "44"
-    ],
-    "features": [
-      "SKU: GE232FS0AQ8O8NAFAMZ",
-      "Pays de production: Morocco",
-      "Poids (kg): 0,1",
-      "Couleur: noir , blanc",
-      "Matière principale: caoutchouc"
-    ],
-    "product_url": "https://www.jumia.ma/generic-sandale-unisexe-noir-basketball-polyvalente-pour-plage-gym-et-maison-65402081.html",
-    "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/020456/1.jpg?7589",
-    "stars": "4.5",
-    "availability": "-",
-    "scraped_at": "2026-05-15T21:57:25.680465"
+    "scraped_at": "2026-05-17T17:29:28.397005"
   },
   {
     "name": "Sac fourre-tout en toile de polyester noir pour femmes avec un motif de basket-ball coloré, sac de shopping réutilisable pour l'école, les voyages, la plage, l'usage quotidien, cadeau idéal pour les fêtes",
@@ -361,7 +325,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/35/032376/1.jpg?4389",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:25.780933"
+    "scraped_at": "2026-05-17T17:29:28.270014"
   },
   {
     "name": "Jeu Ejection Set Shoot Basketball 2 in 1",
@@ -380,7 +344,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/59/407266/1.jpg?5564",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:25.987999"
+    "scraped_at": "2026-05-17T17:29:28.529194"
   },
   {
     "name": "Jeu Ejection Set Connect4 & Shoot Basketball 2 in 1",
@@ -399,7 +363,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/89/590956/1.jpg?7298",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:26.270082"
+    "scraped_at": "2026-05-17T17:29:28.608353"
   },
   {
     "name": "Jumping Basketball Player Wall Decal Large BaskePlayer Dunk Shoot Ball",
@@ -418,7 +382,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/27/064795/1.jpg?4187",
     "stars": "5",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:26.774129"
+    "scraped_at": "2026-05-17T17:29:28.696279"
   },
   {
     "name": "Take the Shot Basketball Quote  Spiral Notebook Bloc note",
@@ -437,7 +401,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/62/852785/1.jpg?7534",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:26.737472"
+    "scraped_at": "2026-05-17T17:29:28.762243"
   },
   {
     "name": "Take the Shot Motivational Basketball Spiral Notebook Bloc note",
@@ -456,7 +420,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/76/953685/1.jpg?1105",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:26.701307"
+    "scraped_at": "2026-05-17T17:29:28.827121"
   },
   {
     "name": "Sac fourre-tout de basketball March Madness, parfait pour les cadeaux, avec une grande capacité et un style tendance et facile, idéal pour les pique-niques en plein air, les fêtes, les voyages et le shopping.",
@@ -477,7 +441,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/64/195876/1.jpg?3645",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:26.868020"
+    "scraped_at": "2026-05-17T17:29:28.976356"
   },
   {
     "name": "Ouri shop Marché noir : un voyage initiatique dans le monde à enjeux élevés du basket-ball universitaire",
@@ -495,7 +459,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/48/603476/1.jpg?6902",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:26.999361"
+    "scraped_at": "2026-05-17T17:29:29.165747"
   },
   {
     "name": "Ouri shop Beyond Basketball: Coach K's Keywords for Success",
@@ -513,7 +477,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/18/770576/1.jpg?0914",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:27.193819"
+    "scraped_at": "2026-05-17T17:29:29.182744"
   },
   {
     "name": "Ouri shop Black Market: An Insider's Journey into the High-Stakes World of College Basketball",
@@ -531,7 +495,7 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/38/950576/1.jpg?0183",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:27.312375"
+    "scraped_at": "2026-05-17T17:29:29.239518"
   },
   {
     "name": "Ouri shop Leading with the Heart: Coach K's Successful Strategies for Basketball, Business, and Life",
@@ -549,6 +513,6 @@
     "image_url": "https://ma.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/67/660576/1.jpg?0355",
     "stars": "0",
     "availability": "-",
-    "scraped_at": "2026-05-15T21:57:27.390588"
+    "scraped_at": "2026-05-17T17:29:29.293784"
   }
 ]
