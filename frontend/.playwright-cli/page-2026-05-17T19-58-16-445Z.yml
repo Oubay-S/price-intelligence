@@ -1,0 +1,104 @@
+- generic [ref=e3]:
+  - banner [ref=e5]:
+    - link "PriceIntelligent" [ref=e6] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e8]:
+        - text: Price
+        - emphasis [ref=e9]: Intelligent
+    - navigation [ref=e10]:
+      - link "Home" [ref=e11] [cursor=pointer]:
+        - /url: /
+      - link "Catalogue" [ref=e12] [cursor=pointer]:
+        - /url: /products
+      - link "Compare" [ref=e13] [cursor=pointer]:
+        - /url: /compare
+      - link "Price drops" [ref=e14] [cursor=pointer]:
+        - /url: /alerts
+    - generic [ref=e15]:
+      - button "Switch to light mode" [ref=e16] [cursor=pointer]:
+        - img [ref=e18]
+      - link "Sign in" [ref=e21] [cursor=pointer]:
+        - /url: /login
+      - link "Get started" [ref=e22] [cursor=pointer]:
+        - /url: /register
+  - generic [ref=e24]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]: Live — tracking sports retailers in real time
+          - heading "Never pay full price on your gear again." [level=1] [ref=e31]:
+            - text: Never pay full price
+            - text: on your gear again.
+          - paragraph [ref=e32]: PriceIntelligent scrapes every major sports retailer in real time — gym, team sports, running, combat. Find the lowest price on any product and get alerted the moment it drops.
+          - generic [ref=e33]:
+            - link "Browse catalogue" [ref=e34] [cursor=pointer]:
+              - /url: /products
+              - text: Browse catalogue
+              - img [ref=e36]
+            - link "See live price drops" [ref=e38] [cursor=pointer]:
+              - /url: /alerts
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - generic [ref=e42]: Running · −22%
+            - generic [ref=e44]: $142.80
+          - generic [ref=e45]:
+            - generic [ref=e47]: GPS Watch
+            - generic [ref=e49]: $489.00
+          - generic [ref=e50]:
+            - generic [ref=e52]: Team · size 5
+            - generic [ref=e54]: $24.99
+          - generic [ref=e57]: PRICE DROPPED · 3s AGO
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - emphasis [ref=e61]: "0"
+          - generic [ref=e62]: Prices tracked
+        - generic [ref=e63]:
+          - emphasis [ref=e65]: "0"
+          - generic [ref=e66]: Stores scraped
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - text: $
+            - emphasis [ref=e69]: "0.0"
+            - text: M
+          - generic [ref=e70]: Saved by users
+        - generic [ref=e71]:
+          - generic [ref=e72]:
+            - emphasis [ref=e73]: "0"
+            - text: min
+          - generic [ref=e74]: Refresh interval
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - img [ref=e80]
+        - heading "Price history that matters" [level=3] [ref=e83]
+        - paragraph [ref=e84]: 90 days of scraped price data per product — see the real floor, not just today's deal.
+      - generic [ref=e85]:
+        - img [ref=e88]
+        - heading "Side-by-side comparison" [level=3] [ref=e91]
+        - paragraph [ref=e92]: One table, every store. Shipping, stock and delivery window all normalized.
+      - generic [ref=e93]:
+        - img [ref=e96]
+        - heading "Threshold alerts" [level=3] [ref=e99]
+        - paragraph [ref=e100]: Set a target price on anything in your watchlist. We ping you the second it's hit.
+      - generic [ref=e101]:
+        - img [ref=e104]
+        - heading "Every store, one place" [level=3] [ref=e107]
+        - paragraph [ref=e108]: From big marketplaces to niche sports specialists — if they sell it, we're watching.
+      - generic [ref=e109]:
+        - img [ref=e112]
+        - heading "15-minute refresh" [level=3] [ref=e114]
+        - paragraph [ref=e115]: Not a nightly batch. Hot items are rechecked every 15 minutes via the streaming path.
+      - generic [ref=e116]:
+        - img [ref=e119]
+        - heading "No affiliate bias" [level=3] [ref=e121]
+        - paragraph [ref=e122]: We show the cheapest price. Full stop. No reordered tables or sponsored stores.
+    - generic [ref=e124]:
+      - generic [ref=e125]:
+        - heading "Start tracking in under a minute." [level=2] [ref=e126]
+        - paragraph [ref=e127]: Free forever — no credit card, no store accounts. Search a product and we'll do the rest.
+      - link "Create free account" [ref=e128] [cursor=pointer]:
+        - /url: /register
+        - text: Create free account
+        - img [ref=e130]
+  - contentinfo [ref=e133]:
+    - generic [ref=e134]: © 2026 PriceIntelligent — Sports price intelligence
+    - generic [ref=e135]: batch + streaming pipeline · refreshed every 15 min

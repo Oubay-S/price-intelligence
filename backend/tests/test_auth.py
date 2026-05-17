@@ -34,7 +34,7 @@ def _user_row() -> dict:
 def test_register_success(client: TestClient, fake_conn: FakeConn) -> None:
     fake_conn.scripted.extend([_user_row(), None])  # INSERT users RETURNING, audit_logs
     resp = client.post(
-        "/auth/register",
+        "/api/auth/register",
         json={"email": "alice@example.com", "password": "supersecret", "full_name": "Alice"},
     )
     assert resp.status_code == 201, resp.text
@@ -51,7 +51,7 @@ def test_register_duplicate_email_returns_409(
 
     monkeypatch.setattr(fake_conn.cursor_obj, "execute", _raise)
     resp = client.post(
-        "/auth/register",
+        "/api/auth/register",
         json={"email": "alice@example.com", "password": "supersecret"},
     )
     assert resp.status_code == 409
@@ -60,7 +60,7 @@ def test_register_duplicate_email_returns_409(
 
 def test_register_short_password_returns_422(client: TestClient) -> None:
     resp = client.post(
-        "/auth/register",
+        "/api/auth/register",
         json={"email": "alice@example.com", "password": "short"},
     )
     assert resp.status_code == 422
@@ -75,7 +75,7 @@ def test_login_wrong_password_returns_401(client: TestClient, fake_conn: FakeCon
         "is_active": True,
     })
     resp = client.post(
-        "/auth/login",
+        "/api/auth/login",
         json={"email": "alice@example.com", "password": "nope"},
     )
     assert resp.status_code == 401
@@ -85,20 +85,20 @@ def test_login_wrong_password_returns_401(client: TestClient, fake_conn: FakeCon
 def test_login_unknown_email_returns_401(client: TestClient, fake_conn: FakeConn) -> None:
     fake_conn.scripted.append(None)  # no row from SELECT users
     resp = client.post(
-        "/auth/login",
+        "/api/auth/login",
         json={"email": "ghost@example.com", "password": "whatever1"},
     )
     assert resp.status_code == 401
 
 
 def test_me_without_token_returns_401(client: TestClient) -> None:
-    resp = client.get("/auth/me")
+    resp = client.get("/api/auth/me")
     assert resp.status_code == 401
     assert resp.json()["error"]["code"] == "unauthorized"
 
 
 def test_me_with_overridden_user_returns_profile(auth_client: TestClient) -> None:
-    resp = auth_client.get("/auth/me")
+    resp = auth_client.get("/api/auth/me")
     assert resp.status_code == 200
     body = resp.json()
     assert body["email"] == "test@example.com"
@@ -106,5 +106,5 @@ def test_me_with_overridden_user_returns_profile(auth_client: TestClient) -> Non
 
 
 def test_refresh_with_garbage_token_returns_401(client: TestClient) -> None:
-    resp = client.post("/auth/refresh", json={"refresh_token": "not-a-jwt"})
+    resp = client.post("/api/auth/refresh", json={"refresh_token": "not-a-jwt"})
     assert resp.status_code == 401

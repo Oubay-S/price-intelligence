@@ -41,7 +41,7 @@ from app.services.auth import (
 # in env: settings.REDIS_URL) so limits are shared across replicas.
 limiter = Limiter(key_func=get_remote_address)
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token", auto_error=True)
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/token", auto_error=True)
 
 
 _CREDENTIALS_EXC = HTTPException(

@@ -99,15 +99,24 @@ app.add_middleware(
 # ---------------------------------------------------------------------------
 # Router mounts
 # ---------------------------------------------------------------------------
+#
+# Public REST endpoints live under ``/api`` so the reverse proxy can route
+# ``/api/*`` to this service untouched (see ``nginx/nginx.conf``). The three
+# unprefixed groups are intentional:
+#
+# * health    — ``/health*`` probes hit by Docker / CI healthchecks.
+# * websocket — ``/ws/*``, proxied by a separate nginx ``location``.
+# * internal  — ``/internal/*``, called by NiFi over the data network only.
+API_PREFIX = "/api"
 
 app.include_router(health.router, tags=["health"])
 app.include_router(websocket.router)
 app.include_router(internal.router, prefix="/internal")
-app.include_router(auth.router, prefix="/auth", tags=["auth"])
-app.include_router(products.router, prefix="/products", tags=["products"])
-app.include_router(prices.router, prefix="/prices", tags=["prices"])
-app.include_router(watchlist.router, prefix="/watchlist", tags=["watchlist"])
-app.include_router(stats.router, prefix="/stats", tags=["stats"])
+app.include_router(auth.router, prefix=f"{API_PREFIX}/auth", tags=["auth"])
+app.include_router(products.router, prefix=f"{API_PREFIX}/products", tags=["products"])
+app.include_router(prices.router, prefix=f"{API_PREFIX}/prices", tags=["prices"])
+app.include_router(watchlist.router, prefix=f"{API_PREFIX}/watchlist", tags=["watchlist"])
+app.include_router(stats.router, prefix=f"{API_PREFIX}/stats", tags=["stats"])
 
 
 # ---------------------------------------------------------------------------
