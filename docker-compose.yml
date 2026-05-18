@@ -16,7 +16,6 @@
 # └──────────────────────────────────────────────────────────┘
 # =============================================================
 
-
 # --------------------------
 # RÉSEAUX
 # --------------------------
@@ -32,18 +31,19 @@ networks:
 # VOLUMES PERSISTANTS
 # --------------------------
 volumes:
-  postgres_data:          # Données PostgreSQL Airflow
-  postgres_app_data:      # Données PostgreSQL App (users, watchlist, alerts)
-  redis_data:             # Données Redis (sessions, cache)
-  nifi_conf:              # Configuration NiFi
-  nifi_database_repo:     # Dépôt interne NiFi
-  nifi_flowfile_repo:     # FlowFiles en transit NiFi
-  nifi_content_repo:      # Contenu des FlowFiles NiFi
-  nifi_provenance_repo:   # Traçabilité NiFi
+  postgres_data: # Données PostgreSQL Airflow
+  postgres_app_data: # Données PostgreSQL App (users, watchlist, alerts)
+  redis_data: # Données Redis (sessions, cache)
+  nifi_conf: # Configuration NiFi
+  nifi_database_repo: # Dépôt interne NiFi
+  nifi_flowfile_repo: # FlowFiles en transit NiFi
+  nifi_content_repo: # Contenu des FlowFiles NiFi
+  nifi_provenance_repo:
+    # Traçabilité NiFi
 
-# --------------------------
-# BLOC COMMUN AIRFLOW (YAML Anchor)
-# --------------------------
+    # --------------------------
+    # BLOC COMMUN AIRFLOW (YAML Anchor)
+    # --------------------------
 x-airflow-common: &airflow-common
   build: .
   environment:
@@ -69,15 +69,17 @@ x-airflow-common: &airflow-common
     GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
     BIGTABLE_INSTANCE_ID: ${BIGTABLE_INSTANCE_ID:-price-intel-instance}
 
-    # Disable GCP auth (pas nécessaire avec l'émulateur)
-    GOOGLE_APPLICATION_CREDENTIALS: ""
+    # GCP credentials for BigQuery (export + dbt)
+    GOOGLE_APPLICATION_CREDENTIALS: "/opt/airflow/gcp-credentials.json"
     _PIP_ADDITIONAL_REQUIREMENTS: "webdriver-manager undetected-chromedriver selenium beautifulsoup4 requests"
 
   volumes:
     - ./logs:/opt/airflow/logs:Z
     - ./airflow/dags:/opt/airflow/dags:Z
     - ./plugins:/opt/airflow/plugins:Z
-    - ./scrapers:/app:Z
+    - ./scrapers:/app:z
+    - ./gcp-credentials.json:/opt/airflow/gcp-credentials.json:ro,z
+    - ./dbt:/usr/app/dbt:Z
 
   user: "${AIRFLOW_UID:-50000}:0"
 
@@ -241,7 +243,10 @@ services:
   # Accès : https://localhost:8443/nifi (admin / adminpassword123)
   # -----------------------------------------------------------
   nifi:
-    image: apache/nifi:1.23.2
+    build:
+      context: ./nifi
+      dockerfile: Dockerfile
+    image: price-intelligence-nifi
     container_name: nifi
     environment:
       AUTH: single-user
@@ -249,9 +254,10 @@ services:
       SINGLE_USER_CREDENTIALS_PASSWORD: ${NIFI_PASSWORD:-adminpassword123}
       BIGTABLE_EMULATOR_HOST: bigtable-emulator:8086
       GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
+      BIGTABLE_INSTANCE_ID: ${BIGTABLE_INSTANCE_ID:-price-intel-instance}
     volumes:
       - ./scrapers:/app:z
-      - ./nifi/templates:/opt/nifi/nifi-current/conf/templates
+      - ./nifi/templates:/opt/nifi/nifi-current/conf/templates:ro,z
       - nifi_conf:/opt/nifi/nifi-current/conf
       - nifi_database_repo:/opt/nifi/nifi-current/database_repository
       - nifi_flowfile_repo:/opt/nifi/nifi-current/flowfile_repository
@@ -285,7 +291,7 @@ services:
     working_dir: /usr/app/dbt/dbt
     environment:
       GCP_PROJECT_ID: price-intelligence-495411
-    profiles: ["cli"]
+    profiles: [ "cli" ]
 
   # ═══════════════════════════════════════════════════════════
   #                 COUCHE APPLICATIVE

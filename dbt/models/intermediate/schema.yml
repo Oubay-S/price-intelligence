@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: int_price_daily
+    description: "Daily product price rollup from cleaned staged prices."
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+      - name: product_name
+        tests:
+          - not_null
+      - name: store_name
+        tests:
+          - not_null
+      - name: category_name
+        tests:
+          - not_null
+      - name: price_date
+        tests:
+          - not_null
+      - name: observations_count
+        tests:
+          - not_null
+      - name: latest_price
+        tests:
+          - not_null
+      - name: latest_scraped_at
+        tests:
+          - not_null

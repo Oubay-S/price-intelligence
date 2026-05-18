@@ -135,9 +135,12 @@ dbt/.user.yml               # Fichier utilisateur local dbt
 postgres_data/
 bigtable_data/
 
-# --------------------------
-# IDEs & Éditeurs
-# --------------------------
+# Scraper internals
+scrapers/nifi_inbox/
+scrapers/backup/
+scrapers/*debug*.html
+scrapers/**/*debug*.html
+scrapers/bigtable_dashboard.html
 .vscode/
 !.vscode/extensions.json    # On peut partager les extensions recommandées
 .idea/
@@ -161,3 +164,4 @@ infra/terraform/override.tf
 
 
 CLAUDE.md
+DATA_ENGINEER_WORK_SUMMARY.md

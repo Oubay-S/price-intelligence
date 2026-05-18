@@ -9,8 +9,24 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-# Conversion Rate: 1 USD = 9.25 MAD (Approx) — same as Walmart
+# Conversion Rate: 1 USD = 9.25 MAD (Approx) — same as other USD sources
 USD_TO_MAD = 9.25
+
+
+class EbayDriverLostError(RuntimeError):
+    """Raised when Selenium's connection to Chrome is no longer usable."""
+
+
+def _is_driver_lost_error(exc):
+    message = str(exc).lower()
+    return any(marker in message for marker in (
+        "connection refused",
+        "remote end closed connection",
+        "max retries exceeded",
+        "invalid session id",
+        "disconnected",
+        "chrome not reachable",
+    ))
 
 def convert_to_mad(price_str):
     if not price_str or price_str == "N/A":
@@ -69,9 +85,13 @@ def scrape_ebay_category(query, output_file, driver):
                 soup.select('.su-card-container')
 
         if not items:
-            with open("ebay_debug.html", "w", encoding='utf-8') as f:
-                f.write(driver.page_source)
-            print("No items found. Saved HTML to ebay_debug.html")
+            source = driver.page_source
+            if source and len(source) > 100:
+                with open("ebay_debug.html", "w", encoding='utf-8') as f:
+                    f.write(source)
+                print(f"No items found. Saved {len(source)} bytes of HTML to ebay_debug.html")
+            else:
+                print("No items found, and page source was empty or too small. Likely a connection block.")
 
         products = []
         for item in items:
@@ -163,5 +183,7 @@ def scrape_ebay_category(query, output_file, driver):
             return 0
 
     except Exception as e:
+        if _is_driver_lost_error(e):
+            raise EbayDriverLostError(f"eBay Chrome/WebDriver session was lost: {e}") from e
         print(f"Error scraping eBay: {e}")
         return 0
