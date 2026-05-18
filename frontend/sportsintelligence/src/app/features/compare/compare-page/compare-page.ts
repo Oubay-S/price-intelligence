@@ -65,7 +65,7 @@ const MAX_PRODUCTS = 4;
                     <div class="gs-row-name">{{ r.product_name }}</div>
                     <div class="gs-row-sub">{{ r.brand_raw }} · {{ r.best_site }}</div>
                   </div>
-                  <div class="gs-row-price mono">{{ r.current_price | currency: 'USD' }}</div>
+                  <div class="gs-row-price mono">{{ r.current_price | currency: 'MAD' }}</div>
                 </button>
               }
             </div>
@@ -146,14 +146,14 @@ const MAX_PRODUCTS = 4;
                             }
                           </div>
                         </td>
-                        <td><span class="cmp-price">{{ row.price_usd | currency: 'USD' }}</span></td>
+                        <td><span class="cmp-price">{{ row.price_usd | currency: 'MAD' }}</span></td>
                         <td class="mono" [style.color]="
                           (row.shipping_cost ?? 0) === 0 ? 'var(--success)' : 'var(--text-dim)'">
                           {{ (row.shipping_cost ?? 0) === 0
-                            ? 'Free' : (row.shipping_cost | currency: 'USD') }}
+                            ? 'Free' : (row.shipping_cost | currency: 'MAD') }}
                         </td>
                         <td class="mono" style="font-weight:500">
-                          {{ landed(row) | currency: 'USD' }}
+                          {{ landed(row) | currency: 'MAD' }}
                         </td>
                         <td>
                           @if (row.in_stock) {

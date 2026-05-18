@@ -43,7 +43,7 @@ from app.models.product import (
 )
 from app.services.bigquery import (
     _CATEGORY_TO_RAW,
-    _STORE_CURRENCY,
+    _PRICE_CURRENCY,
     _map_category,
     _parse_dt,
     _site_token,
@@ -323,7 +323,7 @@ def get_price_drops(
                 category=_map_category(row["raw_category"]),
                 price_before=float(row["price_before"]),
                 price_after=float(row["price_after"]),
-                currency=_STORE_CURRENCY.get(site_name, "USD"),
+                currency=_PRICE_CURRENCY,
                 drop_pct=float(row["drop_pct"]),
                 alert_type=AlertType.PRICE_DROP,
                 scraped_at=row["scraped_ts"] or detected,

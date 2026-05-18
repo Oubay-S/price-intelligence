@@ -60,7 +60,7 @@ interface WatchRow {
             <div>
               <div class="lbl">Potential savings</div>
               <div class="big" style="color:var(--accent)">
-                {{ totalSavings() | currency: 'USD' }}
+                {{ totalSavings() | currency: 'MAD' }}
               </div>
             </div>
             <div>
@@ -98,7 +98,7 @@ interface WatchRow {
                     <div class="sub">
                       {{ row.item.site || 'No live listing' }}
                       @if (row.item.current_price != null) {
-                        · now {{ row.item.current_price | currency: 'USD' }}
+                        · now {{ row.item.current_price | currency: 'MAD' }}
                       }
                     </div>
                     <div class="tags">
@@ -115,7 +115,7 @@ interface WatchRow {
                   <div class="thr-slider">
                     <div class="row">
                       <span>Target</span>
-                      <span style="color:var(--accent)">{{ row.target | currency: 'USD' }}</span>
+                      <span style="color:var(--accent)">{{ row.target | currency: 'MAD' }}</span>
                     </div>
                     <input type="range"
                       [min]="sliderMin(row)" [max]="sliderMax(row)" step="0.5"
@@ -123,15 +123,15 @@ interface WatchRow {
                       (ngModelChange)="setTarget(row, $event)"
                       (change)="commitTarget(row)" />
                     <div class="row">
-                      <span>{{ sliderMin(row) | currency: 'USD' }}</span>
-                      <span>{{ sliderMax(row) | currency: 'USD' }}</span>
+                      <span>{{ sliderMin(row) | currency: 'MAD' }}</span>
+                      <span>{{ sliderMax(row) | currency: 'MAD' }}</span>
                     </div>
                   </div>
 
                   <div class="wl-cta">
                     <div class="save-bubble">
                       {{ belowCurrent(row)
-                        ? ('Save ' + (savingFor(row) | currency: 'USD'))
+                        ? ('Save ' + (savingFor(row) | currency: 'MAD'))
                         : 'Above current' }}
                     </div>
                     <div class="small">{{ belowCurrent(row) ? 'when target hit' : 'lower the target' }}</div>

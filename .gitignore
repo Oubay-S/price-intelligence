@@ -17,7 +17,7 @@
 gcp-credentials.json
 service-account*.json
 keyfile*.json
-
+gcp-bq-views.json
 # --------------------------
 # PYTHON
 # --------------------------

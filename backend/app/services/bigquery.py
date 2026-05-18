@@ -46,7 +46,8 @@ _CATEGORY_TO_RAW: dict[SupplementCategory, list[str]] = {
     SupplementCategory.STRENGTH_HOME_GYM: ["gym", "general"],
 }
 
-_STORE_CURRENCY: dict[str, str] = {"ebay": "USD", "walmart": "USD", "jumia": "MAD"}
+# Every scraped price in BigQuery is standardized to MAD by the data pipeline.
+_PRICE_CURRENCY = "MAD"
 
 
 @lru_cache(maxsize=1)
@@ -131,7 +132,7 @@ def _row_to_product(row: bigquery.Row) -> ProductResponse:
     pricing = PriceInfo(
         current=current,
         original=original,
-        currency_raw=_STORE_CURRENCY.get(store, "USD"),
+        currency_raw=_PRICE_CURRENCY,
         trend=PriceTrend.STABLE,
     )
 
@@ -197,7 +198,7 @@ def _site_token(value: str) -> str:
 def get_all_products(
     page: int = 1,
     limit: int = 48,
-    site: Optional[str] = None,
+    sites: Optional[list[str]] = None,
     category: Optional[SupplementCategory] = None,
 ) -> tuple[list[ProductResponse], int]:
     where: list[str] = [_PRICE_VALID]
@@ -207,10 +208,12 @@ def get_all_products(
         bigquery.ScalarQueryParameter("limit", "INT64", limit),
     ]
 
-    if site:
-        where.append("LOWER(store) = @site")
+    if sites:
+        where.append("LOWER(store) IN UNNEST(@sites)")
         params.append(
-            bigquery.ScalarQueryParameter("site", "STRING", _site_token(site))
+            bigquery.ArrayQueryParameter(
+                "sites", "STRING", [_site_token(s) for s in sites]
+            )
         )
 
     if category is not None:
@@ -260,6 +263,7 @@ def search_products(
     category: Optional[SupplementCategory] = None,
     page: int = 1,
     limit: int = 48,
+    sites: Optional[list[str]] = None,
 ) -> tuple[list[ProductResponse], int]:
     pattern = f"%{_escape_like(query.strip().lower())}%"
     offset = (page - 1) * limit
@@ -273,6 +277,14 @@ def search_products(
         bigquery.ScalarQueryParameter("offset", "INT64", offset),
         bigquery.ScalarQueryParameter("limit", "INT64", limit),
     ]
+
+    if sites:
+        where.append("LOWER(store) IN UNNEST(@sites)")
+        params.append(
+            bigquery.ArrayQueryParameter(
+                "sites", "STRING", [_site_token(s) for s in sites]
+            )
+        )
 
     if category is not None:
         raw_values = _CATEGORY_TO_RAW.get(category, [])

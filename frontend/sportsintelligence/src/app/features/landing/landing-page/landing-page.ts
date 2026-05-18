@@ -1,8 +1,9 @@
 /**
  * LandingPageComponent — the marketing home page.
  *
- * Static by design (hero, animated stat counters, feature grid, CTA). The
- * stat counters ease in once, in the browser only, via requestAnimationFrame.
+ * Hero with a product search bar, a live trending-drops grid (real data
+ * from `GET /products/trending`), animated stat counters, feature grid and
+ * CTA. The stat counters ease in once, in the browser only, via rAF.
  */
 import {
   ChangeDetectionStrategy,
@@ -14,9 +15,20 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
+import {
+  ApiError,
+  ProductResponse,
+  TrendingProduct,
+} from '../../../core/models';
+import { ApiService } from '../../../core/services/api.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { ToastService } from '../../../core/services/toast.service';
 import { IconComponent, IconName } from '../../../shared/components/icon/icon';
+import { LoadingSkeletonComponent } from '../../../shared/components/loading-skeleton/loading-skeleton';
+import { ProductCardComponent } from '../../../shared/components/product-card/product-card';
 
 interface Feature {
   icon: IconName;
@@ -34,7 +46,14 @@ interface HeroTile {
 @Component({
   selector: 'app-landing-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, DecimalPipe, IconComponent],
+  imports: [
+    RouterLink,
+    DecimalPipe,
+    FormsModule,
+    IconComponent,
+    LoadingSkeletonComponent,
+    ProductCardComponent,
+  ],
   template: `
     <div class="page fade-up">
       <section class="hero">
@@ -55,6 +74,25 @@ interface HeroTile {
                 sports, running, combat. Find the lowest price on any product and get alerted
                 the moment it drops.
               </p>
+
+              <form
+                class="search"
+                role="search"
+                (submit)="submitSearch($event)"
+                style="margin-bottom:18px;max-width:460px"
+              >
+                <app-icon name="search" [size]="16" />
+                <input
+                  class="input"
+                  type="search"
+                  name="q"
+                  placeholder="Search shoes, watches, gloves, supplements…"
+                  aria-label="Search products"
+                  [ngModel]="query()"
+                  (ngModelChange)="query.set($event)"
+                />
+              </form>
+
               <div style="display:flex;gap:10px;margin-bottom:56px;flex-wrap:wrap">
                 <a class="btn primary lg" routerLink="/products">
                   Browse catalogue <app-icon name="arrow-r" [size]="16" />
@@ -100,7 +138,46 @@ interface HeroTile {
         </div>
       </section>
 
-      <section class="container">
+      <section class="container" style="padding-top:64px">
+        <div class="page-head">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+            <h1>Trending price drops</h1>
+            <a
+              routerLink="/products"
+              class="mono"
+              style="color:var(--accent);font-size:12px;text-decoration:none"
+              >View all <app-icon name="arrow-r" [size]="12" /></a>
+          </div>
+          <p>The biggest live drops across every tracked store in the last 24 hours.</p>
+        </div>
+
+        @if (trendingLoading()) {
+          <app-loading-skeleton variant="card-grid" [count]="6" />
+        } @else if (trendingError()) {
+          <div class="card empty-state">
+            <div class="big">Couldn't load trending products.</div>
+            <div>{{ trendingError()!.message }}</div>
+          </div>
+        } @else if (trending().length === 0) {
+          <div class="card empty-state">
+            <div class="big">No trending drops right now.</div>
+            <div>Check back soon — prices refresh every 15 minutes.</div>
+          </div>
+        } @else {
+          <div class="cat-grid">
+            @for (p of trending(); track p.canonical_product_id) {
+              <app-product-card
+                [product]="p"
+                [inWatchlist]="watchlistIds().has(p.canonical_product_id)"
+                (watchlistToggle)="toggleWatchlist($event)"
+                (compareSelect)="addToCompare($event)"
+              />
+            }
+          </div>
+        }
+      </section>
+
+      <section class="container" style="padding-top:72px">
         <div class="features">
           @for (f of features; track f.title) {
             <div class="feature card">
@@ -112,7 +189,7 @@ interface HeroTile {
         </div>
       </section>
 
-      <section class="container" style="padding-bottom:100px">
+      <section class="container" style="padding-bottom:100px;padding-top:72px">
         <div class="card elev" style="padding:48px;display:grid;
           grid-template-columns:1fr auto;align-items:center;gap:24px">
           <div>
@@ -135,6 +212,17 @@ interface HeroTile {
 })
 export class LandingPageComponent {
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly api = inject(ApiService);
+  private readonly auth = inject(AuthService);
+  private readonly toast = inject(ToastService);
+  private readonly router = inject(Router);
+
+  protected readonly query = signal('');
+
+  protected readonly trending = signal<ProductResponse[]>([]);
+  protected readonly trendingLoading = signal(true);
+  protected readonly trendingError = signal<ApiError | null>(null);
+  protected readonly watchlistIds = signal<Set<string>>(new Set());
 
   private readonly targets = [184293, 428, 2.4, 15];
   protected readonly counts = signal<number[]>(this.targets);
@@ -194,10 +282,110 @@ export class LandingPageComponent {
   ];
 
   constructor() {
+    this.loadTrending();
+    this.loadWatchlistIds();
+
     if (this.isBrowser) {
       this.counts.set([0, 0, 0, 0]);
       afterNextRender(() => this.animate());
     }
+  }
+
+  protected submitSearch(event: Event): void {
+    event.preventDefault();
+    const q = this.query().trim();
+    if (!q) return;
+    this.router.navigate(['/products'], { queryParams: { q } });
+  }
+
+  protected toggleWatchlist(product: ProductResponse): void {
+    if (!this.auth.isAuthenticated()) {
+      this.toast.info('Sign in to build your watchlist.');
+      this.router.navigate(['/login'], { queryParams: { returnUrl: '/' } });
+      return;
+    }
+    const id = product.canonical_product_id;
+    if (this.watchlistIds().has(id)) {
+      this.api.removeFromWatchlist(id).subscribe({
+        next: () => {
+          this.mutateIds(id, false);
+          this.toast.info('Removed from watchlist.');
+        },
+        error: (err: ApiError) => this.toast.error(err.message),
+      });
+    } else {
+      this.api.addToWatchlist(id, { alert_enabled: true }).subscribe({
+        next: () => {
+          this.mutateIds(id, true);
+          this.toast.success(`Tracking "${product.name}".`);
+        },
+        error: (err: ApiError) => this.toast.error(err.message),
+      });
+    }
+  }
+
+  protected addToCompare(product: ProductResponse): void {
+    this.router.navigate(['/compare'], {
+      queryParams: { ids: product.canonical_product_id },
+    });
+  }
+
+  private loadTrending(): void {
+    this.api.getTrending('24h', { limit: 6 }).subscribe({
+      next: (res) => {
+        this.trending.set(res.products.map((t) => this.toProduct(t)));
+        this.trendingLoading.set(false);
+      },
+      error: (err: ApiError) => {
+        this.trendingError.set(err);
+        this.trendingLoading.set(false);
+      },
+    });
+  }
+
+  private loadWatchlistIds(): void {
+    if (!this.auth.isAuthenticated()) return;
+    this.api.getWatchlist(1, 100).subscribe({
+      next: (res) =>
+        this.watchlistIds.set(new Set(res.items.map((i) => i.canonical_product_id))),
+      error: () => {
+        /* non-fatal — landing still works without watchlist state */
+      },
+    });
+  }
+
+  private mutateIds(id: string, add: boolean): void {
+    const next = new Set(this.watchlistIds());
+    add ? next.add(id) : next.delete(id);
+    this.watchlistIds.set(next);
+  }
+
+  /** Adapt the lean TrendingProduct shape into the ProductResponse the
+   *  shared ProductCardComponent expects. */
+  private toProduct(t: TrendingProduct): ProductResponse {
+    return {
+      canonical_product_id: t.canonical_product_id,
+      name: t.product_name,
+      site: t.best_site,
+      listing_url: t.listing_url,
+      category: t.category,
+      brand_raw: t.brand_raw,
+      in_stock: true,
+      image_url: t.image_url ?? null,
+      pricing: {
+        current: t.current_price,
+        currency_raw: 'MAD',
+        discount_pct: t.drop_pct ?? null,
+        trend: t.price_trend,
+      },
+      ratings:
+        t.rating_score != null ? { score: t.rating_score, count: 0 } : null,
+      certifications: [],
+      tags: t.tags,
+      purpose_tags: [],
+      brand_tier: t.brand_tier,
+      scraped_at: new Date().toISOString(),
+    };
   }
 
   /** Ease the four counters from 0 to their target over ~1.6s. */

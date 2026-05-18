@@ -8,7 +8,7 @@ import { BrandTier, SortOption, SupplementCategory } from './enums';
 export interface ProductFilterParams {
   category?: SupplementCategory;
   subcategory?: string;
-  site?: string;
+  site?: string[];
   brand?: string;
   min_price?: number;
   max_price?: number;

@@ -36,14 +36,16 @@ def _raise_bigquery_http_500(exc: GoogleAPICallError) -> None:
 def list_products(
     page: int = Query(1, ge=1),
     limit: int = Query(48, ge=1, le=200),
-    site: Optional[str] = Query(None, description="e.g. 'jumia.ma', 'ebay.com', 'walmart.com'"),
+    site: Optional[list[str]] = Query(
+        None, description="Repeatable — e.g. ?site=ebay&site=walmart"
+    ),
     category: Optional[SupplementCategory] = Query(None),
 ) -> PaginatedProducts:
     try:
         items, total_count = get_all_products(
             page=page,
             limit=limit,
-            site=site,
+            sites=site,
             category=category,
         )
     except GoogleAPICallError as exc:
@@ -67,6 +69,9 @@ def search(
     q: str = Query(..., min_length=1, max_length=200, description="Match against product title and brand"),
     page: int = Query(1, ge=1),
     category: Optional[SupplementCategory] = Query(None),
+    site: Optional[list[str]] = Query(
+        None, description="Repeatable — e.g. ?site=ebay&site=walmart"
+    ),
     limit: int = Query(48, ge=1, le=200),
 ) -> PaginatedProducts:
     try:
@@ -75,6 +80,7 @@ def search(
             category=category,
             page=page,
             limit=limit,
+            sites=site,
         )
     except GoogleAPICallError as exc:
         _raise_bigquery_http_500(exc)

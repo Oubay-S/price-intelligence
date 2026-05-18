@@ -76,15 +76,15 @@ import { LoadingSkeletonComponent } from '../../../shared/components/loading-ske
                   </a>
                   <div class="meta">
                     {{ a.site }} ·
-                    {{ a.price_before | currency: 'USD' }} →
-                    {{ a.price_after | currency: 'USD' }}
+                    {{ a.price_before | currency: 'MAD' }} →
+                    {{ a.price_after | currency: 'MAD' }}
                     · {{ a.detected_at | date: 'short' }}
                     @if (a.live) { · <span style="color:var(--accent)">live</span> }
                   </div>
                 </div>
                 <div class="drop">
                   <div class="pct">−{{ a.drop_pct | number: '1.0-1' }}%</div>
-                  <div class="now">{{ a.price_after | currency: 'USD' }}</div>
+                  <div class="now">{{ a.price_after | currency: 'MAD' }}</div>
                 </div>
               </div>
             }

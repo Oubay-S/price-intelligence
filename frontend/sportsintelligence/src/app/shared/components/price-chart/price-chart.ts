@@ -54,11 +54,11 @@ Chart.register(
 export class PriceChartComponent {
   /** X-axis labels (dates). */
   readonly labels = input<string[]>([]);
-  /** Y-axis values (USD prices) — same length as labels. */
+  /** Y-axis values (MAD prices) — same length as labels. */
   readonly values = input<number[]>([]);
   readonly height = input('320px');
   /** Series label shown in the tooltip. */
-  readonly seriesLabel = input('Price (USD)');
+  readonly seriesLabel = input('Price (MAD)');
 
   private readonly canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));

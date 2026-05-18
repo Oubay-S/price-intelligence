@@ -66,6 +66,23 @@ const PAGE_SIZE = 24;
             </div>
           </div>
           <div class="filter-block">
+            <h5>Stores</h5>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              @for (s of sites; track s.id) {
+                <label
+                  style="display:flex;align-items:center;gap:9px;font-size:13px;cursor:pointer"
+                >
+                  <input
+                    type="checkbox"
+                    [checked]="selectedSites().has(s.id)"
+                    (change)="toggleSite(s.id)"
+                  />
+                  <span>{{ s.label }}</span>
+                </label>
+              }
+            </div>
+          </div>
+          <div class="filter-block">
             <h5>Price range (this page)</h5>
             <div class="mono" style="font-size:12px;color:var(--text-dim);
               display:flex;justify-content:space-between;margin-bottom:8px">
@@ -131,6 +148,7 @@ const PAGE_SIZE = 24;
                   [product]="p"
                   [inWatchlist]="watchlistIds().has(p.canonical_product_id)"
                   (watchlistToggle)="toggleWatchlist($event)"
+                  (compareSelect)="addToCompare($event)"
                 />
               }
             </div>
@@ -169,6 +187,11 @@ export class ProductCatalogComponent {
   }));
   protected readonly sortOptions = SORT_OPTIONS;
   protected readonly sortLabels = SORT_LABELS;
+  protected readonly sites = [
+    { id: 'ebay', label: 'eBay' },
+    { id: 'walmart', label: 'Walmart' },
+    { id: 'jumia', label: 'Jumia' },
+  ];
 
   protected readonly data = signal<PaginatedProducts | null>(null);
   protected readonly loading = signal(true);
@@ -176,6 +199,7 @@ export class ProductCatalogComponent {
   protected readonly watchlistIds = signal<Set<string>>(new Set());
 
   protected readonly category = signal<SupplementCategory | null>(null);
+  protected readonly selectedSites = signal<Set<string>>(new Set());
   protected readonly query = signal('');
   protected readonly sort = signal<SortOption>('scraped_at_desc');
   protected readonly page = signal(1);
@@ -229,6 +253,14 @@ export class ProductCatalogComponent {
     this.load();
   }
 
+  protected toggleSite(id: string): void {
+    const next = new Set(this.selectedSites());
+    next.has(id) ? next.delete(id) : next.add(id);
+    this.selectedSites.set(next);
+    this.page.set(1);
+    this.load();
+  }
+
   protected goToPage(page: number): void {
     this.page.set(page);
     this.load();
@@ -240,16 +272,19 @@ export class ProductCatalogComponent {
     this.error.set(null);
 
     const q = this.query().trim();
+    const sites = this.selectedSites().size ? [...this.selectedSites()] : undefined;
     const request = q
       ? this.api.searchProducts(q, {
           page: this.page(),
           limit: PAGE_SIZE,
           category: this.category() ?? undefined,
+          site: sites,
         })
       : this.api.getProducts({
           page: this.page(),
           limit: PAGE_SIZE,
           category: this.category() ?? undefined,
+          site: sites,
         });
 
     request.subscribe({
@@ -289,6 +324,12 @@ export class ProductCatalogComponent {
         error: (err: ApiError) => this.toast.error(err.message),
       });
     }
+  }
+
+  protected addToCompare(product: ProductResponse): void {
+    this.router.navigate(['/compare'], {
+      queryParams: { ids: product.canonical_product_id },
+    });
   }
 
   private loadWatchlistIds(): void {

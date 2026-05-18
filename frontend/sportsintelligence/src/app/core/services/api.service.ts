@@ -103,7 +103,12 @@ export class ApiService {
 
   searchProducts(
     q: string,
-    opts: { page?: number; limit?: number; category?: SupplementCategory } = {},
+    opts: {
+      page?: number;
+      limit?: number;
+      category?: SupplementCategory;
+      site?: string[];
+    } = {},
   ): Observable<PaginatedProducts> {
     return this.get<PaginatedProducts>('/products/search', this.toParams({ q, ...opts }));
   }

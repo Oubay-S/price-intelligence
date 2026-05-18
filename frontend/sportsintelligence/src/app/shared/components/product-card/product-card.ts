@@ -2,8 +2,9 @@
  * ProductCardComponent — catalogue grid tile.
  *
  * Pure presentational: takes a ProductResponse, links to the detail page,
- * and emits `watchlistToggle` when the heart button is clicked. The parent
- * owns the actual add/remove call and the `inWatchlist` state.
+ * and emits `watchlistToggle` (heart) / `compareSelect` (compare) when the
+ * action buttons are clicked. The parent owns the actual add/remove call
+ * and the `inWatchlist` state.
  */
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
@@ -38,7 +39,14 @@ import { PriceBadgeComponent } from '../price-badge/price-badge';
       </a>
 
       <a class="prod-body" [routerLink]="['/products', product().canonical_product_id]">
-        <span class="prod-brand">{{ product().brand_raw }}</span>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+          <span class="prod-brand">{{ product().brand_raw }}</span>
+          <span
+            class="pill"
+            style="font-size:9px;padding:1px 7px;letter-spacing:.04em;text-transform:none"
+            >{{ product().site }}</span
+          >
+        </div>
         <span class="prod-name">{{ product().name }}</span>
         <div class="prod-meta">
           @if (product().ratings) {
@@ -53,13 +61,21 @@ import { PriceBadgeComponent } from '../price-badge/price-badge';
 
       <div class="prod-foot">
         <div class="prod-price">
-          <span class="cur">{{ product().pricing.current | currency: 'USD' }}</span>
+          <span class="cur">{{ product().pricing.current | currency: 'MAD' }}</span>
           @if (product().pricing.original) {
-            <span class="was">{{ product().pricing.original | currency: 'USD' }}</span>
+            <span class="was">{{ product().pricing.original | currency: 'MAD' }}</span>
           }
         </div>
         <div style="display:flex;align-items:center;gap:6px">
           <app-price-badge [trend]="product().pricing.trend" />
+          <button
+            type="button"
+            class="iconbtn"
+            aria-label="Compare across stores"
+            (click)="compareSelect.emit(product())"
+          >
+            <app-icon name="compare" [size]="14" />
+          </button>
           <button
             type="button"
             class="iconbtn"
@@ -80,6 +96,7 @@ export class ProductCardComponent {
   readonly inWatchlist = input(false);
 
   readonly watchlistToggle = output<ProductResponse>();
+  readonly compareSelect = output<ProductResponse>();
 
   protected readonly categoryLabel = computed(
     () => CATEGORY_LABELS[this.product().category] ?? this.product().category,

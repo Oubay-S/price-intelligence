@@ -80,14 +80,14 @@ type Range = '7d' | '30d' | '90d' | 'all';
                 <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:14px;
                   flex-wrap:wrap">
                   <span class="serif" style="font-size:48px;letter-spacing:-.02em;line-height:1">
-                    {{ p.pricing.current | currency: 'USD' }}
+                    {{ p.pricing.current | currency: 'MAD' }}
                   </span>
                   <app-price-badge [trend]="p.pricing.trend" [pct]="p.pricing.discount_pct" />
                   @if (history(); as h) {
                     <span class="mono" style="color:var(--text-faint);font-size:12px;
                       margin-left:auto">
-                      Low {{ h.min_price | currency: 'USD' }} ·
-                      High {{ h.max_price | currency: 'USD' }}
+                      Low {{ h.min_price | currency: 'MAD' }} ·
+                      High {{ h.max_price | currency: 'MAD' }}
                     </span>
                   }
                 </div>
@@ -98,7 +98,7 @@ type Range = '7d' | '30d' | '90d' | 'all';
                   <app-price-chart
                     [labels]="chartLabels()"
                     [values]="chartValues()"
-                    seriesLabel="Lowest price (USD)"
+                    seriesLabel="Lowest price (MAD)"
                   />
                 } @else {
                   <div class="empty-state" style="padding:40px">
@@ -111,21 +111,21 @@ type Range = '7d' | '30d' | '90d' | 'all';
                 <div class="ph-stats">
                   <div class="stat2">
                     <div class="lbl">Current</div>
-                    <div class="num">{{ p.pricing.current | currency: 'USD' }}</div>
+                    <div class="num">{{ p.pricing.current | currency: 'MAD' }}</div>
                   </div>
                   <div class="stat2">
                     <div class="lbl">Lowest</div>
                     <div class="num" style="color:var(--success)">
-                      {{ h.min_price | currency: 'USD' }}
+                      {{ h.min_price | currency: 'MAD' }}
                     </div>
                   </div>
                   <div class="stat2">
                     <div class="lbl">Average</div>
-                    <div class="num">{{ h.avg_price | currency: 'USD' }}</div>
+                    <div class="num">{{ h.avg_price | currency: 'MAD' }}</div>
                   </div>
                   <div class="stat2">
                     <div class="lbl">Highest</div>
-                    <div class="num">{{ h.max_price | currency: 'USD' }}</div>
+                    <div class="num">{{ h.max_price | currency: 'MAD' }}</div>
                   </div>
                 </div>
               }
@@ -173,7 +173,7 @@ type Range = '7d' | '30d' | '90d' | 'all';
                 <div class="body">
                   <b>Daily velocity</b>
                   <div style="color:var(--text-dim);font-size:12px;margin-top:2px">
-                    {{ s.velocity_per_day | currency: 'USD' }}/day · trend {{ s.price_trend }}
+                    {{ s.velocity_per_day | currency: 'MAD' }}/day · trend {{ s.price_trend }}
                   </div>
                 </div>
               </div>
@@ -182,7 +182,7 @@ type Range = '7d' | '30d' | '90d' | 'all';
                   <div class="body">
                     <b>Predicted 30-day floor</b>
                     <div style="color:var(--accent);font-size:12px;margin-top:2px">
-                      {{ s.estimated_floor_30d | currency: 'USD' }}
+                      {{ s.estimated_floor_30d | currency: 'MAD' }}
                     </div>
                   </div>
                 </div>
