@@ -98,12 +98,13 @@ def main():
                 continue
             row.set_cell(COLUMN_FAMILY, str(key).encode("utf-8"), _cell_value(value).encode("utf-8"), timestamp=timestamp)
 
-        ingested_at = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        ingestion_timestamp = datetime.datetime.now(datetime.timezone.utc)
+        ingested_at = ingestion_timestamp.isoformat()
         row.set_cell(COLUMN_FAMILY, b"source", source.encode("utf-8"), timestamp=timestamp)
         row.set_cell(COLUMN_FAMILY, b"store", source.encode("utf-8"), timestamp=timestamp)
         row.set_cell(COLUMN_FAMILY, b"category", str(category).encode("utf-8"), timestamp=timestamp)
-        row.set_cell(COLUMN_FAMILY, b"ingestion_method", b"nifi", timestamp=timestamp)
-        row.set_cell(COLUMN_FAMILY, b"ingested_at", ingested_at.encode("utf-8"), timestamp=timestamp)
+        row.set_cell(COLUMN_FAMILY, b"ingestion_method", b"nifi", timestamp=ingestion_timestamp)
+        row.set_cell(COLUMN_FAMILY, b"ingested_at", ingested_at.encode("utf-8"), timestamp=ingestion_timestamp)
         row.commit()
         print(f"ingested source={source} category={category}")
     except Exception as exc:

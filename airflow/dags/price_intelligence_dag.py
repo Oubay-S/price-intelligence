@@ -194,12 +194,18 @@ def wait_for_bigtable_stability(**context):
     expected_records = context["ti"].xcom_pull(task_ids="stage_scraped_json_for_nifi") or 1
     print(f"Waiting for NiFi to ingest at least {expected_records} records into Bigtable")
 
-    def count_rows():
-        return sum(1 for _ in table.read_rows())
+    def count_rows_up_to(limit):
+        count = 0
+        for _ in table.read_rows():
+            count += 1
+            if count >= limit:
+                return count
+        return count
+
     stable_count = -1
     stable_checks = 0
     for attempt in range(40):
-        current = count_rows()
+        current = count_rows_up_to(expected_records)
         if current == stable_count:
             stable_checks += 1
             if stable_checks >= 3 and current >= expected_records:

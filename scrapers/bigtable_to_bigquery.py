@@ -32,6 +32,7 @@ BQ_SCHEMA = [
     bigquery.SchemaField("_export_run_id", "STRING"),
 ]
 SCHEMA_FIELDS = {field.name for field in BQ_SCHEMA}
+REQUIRED_PRODUCT_FIELDS = ("name", "current_price", "scraped_at")
 
 
 def _get_bq_client():
@@ -95,16 +96,28 @@ def main():
     rows_before = _count_bq_rows(bq_client, table_ref)
     print(f"BigQuery raw rows before export: {rows_before}")
 
-    loaded_at = datetime.datetime.now(datetime.UTC).isoformat()
+    loaded_at = datetime.datetime.now(datetime.timezone.utc).isoformat()
     export_run_id = os.environ.get("EXPORT_RUN_ID", str(uuid.uuid4()))
+    valid_products = [
+        p for p in products
+        if all(p.get(field) not in (None, "") for field in REQUIRED_PRODUCT_FIELDS)
+    ]
+    skipped_products = len(products) - len(valid_products)
+    if skipped_products:
+        print(f"Skipped {skipped_products} Bigtable rows missing required product fields: "
+              f"{REQUIRED_PRODUCT_FIELDS}")
+
     products = [
         {
             key: value
             for key, value in {**p, "_loaded_at": loaded_at, "_export_run_id": export_run_id}.items()
             if key in SCHEMA_FIELDS
         }
-        for p in products
+        for p in valid_products
     ]
+    if not products:
+        print("No valid products to export after required-field filtering")
+        return
 
     job_config = bigquery.LoadJobConfig(
         write_disposition=bigquery.WriteDisposition.WRITE_APPEND,

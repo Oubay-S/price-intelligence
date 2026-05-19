@@ -136,7 +136,8 @@ postgres_data/
 bigtable_data/
 
 # Scraper internals
-scrapers/nifi_inbox/
+scrapers/nifi_inbox/*
+!scrapers/nifi_inbox/.gitkeep
 scrapers/backup/
 scrapers/*debug*.html
 scrapers/**/*debug*.html
