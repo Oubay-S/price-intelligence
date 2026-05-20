@@ -1,8 +1,8 @@
 # Rapport Final - Data Analysis
 
-Date de generation : 2026-05-20 19:17
+Date de g?n?ration : 2026-05-20 19:22
 
-## Resume Executif
+## R?sum? Ex?cutif
 
 | summary_point                                                                                   |
 |:------------------------------------------------------------------------------------------------|
@@ -33,7 +33,7 @@ Date de generation : 2026-05-20 19:17
 | La comparaison entre plateformes peut être influencée par des produits non strictement équivalents.                                                            |
 | Les outliers ont été traités avec une méthode statistique IQR ; certains peuvent être de vrais produits premium et non des erreurs.                            |
 
-## Prochaines Etapes
+## Prochaines ?tapes
 
 | next_step                                                                                              |
 |:-------------------------------------------------------------------------------------------------------|

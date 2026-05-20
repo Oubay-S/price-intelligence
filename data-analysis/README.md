@@ -18,15 +18,28 @@ Le travail Data Analyst commence après la collecte et le stockage des données.
 
 ```bash
 conda activate price-analytics
-cd C:\Users\Admin\Desktop\data-analysis
+cd C:\Users\Admin\Desktop\price-intelligence\data-analysis
 pip install -r requirements.txt
 ```
 
-## Dashboard
+## Export pour dashboard / full stack
 
 ```bash
-streamlit run dashboard/app.py
+python export_for_dashboard.py
 ```
+
+Le script `export_for_dashboard.py` transforme le dataset nettoyé et les conclusions finales en fichiers JSON prêts à être consommés par Streamlit, Plotly, une API backend ou une interface frontend.
+
+Sorties générées dans `outputs/app/` :
+
+- `manifest.json` : contrat des fichiers produits.
+- `kpis.json` : indicateurs globaux.
+- `price_by_store.json` : prix par plateforme.
+- `price_by_category.json` : prix par catégorie.
+- `time_series_by_store.json` : évolution temporelle des prix par plateforme.
+- `heatmap_store_category.json` : données pour heatmap plateforme/catégorie.
+- `top_discounts.json` : produits avec les plus grandes remises.
+- `recommendations.json` : recommandations business finales.
 
 ## Couverture du PDF
 
