@@ -9,9 +9,10 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
-DEFAULT_PROJECT_ROOT = Path(r"C:\Users\Admin\Desktop\price-intelligence")
+DEFAULT_ANALYSIS_ROOT = Path(__file__).resolve().parent
+DEFAULT_PROJECT_ROOT = DEFAULT_ANALYSIS_ROOT.parent
 DEFAULT_BQ_TABLE = "price-intelligence-495411.price_intelligence.products"
-DEFAULT_RAW_DATA_DIR = Path(r"C:\Users\Admin\Desktop\data-analysis\outputs\raw_data")
+DEFAULT_RAW_DATA_DIR = DEFAULT_ANALYSIS_ROOT / "outputs" / "raw_data"
 DEFAULT_RAW_EXPORT = DEFAULT_RAW_DATA_DIR / "bigquery_products_export.csv"
 
 
