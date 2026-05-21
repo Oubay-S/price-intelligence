@@ -11,6 +11,7 @@ import shutil
 import socket
 import subprocess
 import time
+import uuid
 
 default_args = {
     'owner': 'data_engineer',
@@ -136,6 +137,8 @@ def stage_scraped_json_for_nifi():
     source_root = Path(os.environ.get("SCRAPER_OUTPUT_ROOT", "/app"))
     inbox = Path(os.environ.get("NIFI_INBOX", "/app/nifi_inbox"))
     stores = ["jumia", "sport-direct", "ebay"]
+    ingestion_run_id = os.environ.get("INGESTION_RUN_ID") or f"airflow-{datetime.utcnow().strftime('%Y%m%dT%H%M%S')}"
+    staged_at = datetime.utcnow().isoformat()
 
     if inbox.exists():
         shutil.rmtree(inbox)
@@ -169,7 +172,19 @@ def stage_scraped_json_for_nifi():
             relative_path = json_path.relative_to(source_root)
             target_path = inbox / relative_path
             target_path.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(json_path, target_path)
+            category = json_path.parent.name
+            enriched_data = [
+                {
+                    **record,
+                    "source": record.get("source") or record.get("store") or store,
+                    "store": record.get("store") or record.get("source") or store,
+                    "category": record.get("category") or category,
+                    "_ingestion_run_id": ingestion_run_id,
+                    "_staged_at": staged_at,
+                }
+                for record in data
+            ]
+            target_path.write_text(json.dumps(enriched_data, ensure_ascii=False), encoding="utf-8")
             files_staged += 1
             records_expected += len(data)
             store_counts.setdefault(store, {"files": 0, "records": 0})
@@ -182,7 +197,8 @@ def stage_scraped_json_for_nifi():
     for store, counts in sorted(store_counts.items()):
         print(f"Staged {store}: {counts['files']} files, {counts['records']} records")
     print(f"Staged total: {files_staged} JSON files for NiFi in {inbox}; expected records: {records_expected}")
-    return records_expected
+    print(f"Ingestion run id: {ingestion_run_id}")
+    return {"expected_records": records_expected, "ingestion_run_id": ingestion_run_id}
 
 def wait_for_bigtable_stability(**context):
     from google.cloud import bigtable
@@ -191,12 +207,24 @@ def wait_for_bigtable_stability(**context):
     client = bigtable.Client(project=project, admin=True)
     instance = client.instance(instance_id)
     table = instance.table("products")
-    expected_records = context["ti"].xcom_pull(task_ids="stage_scraped_json_for_nifi") or 1
-    print(f"Waiting for NiFi to ingest at least {expected_records} records into Bigtable")
+    stage_result = context["ti"].xcom_pull(task_ids="stage_scraped_json_for_nifi") or {}
+    if isinstance(stage_result, dict):
+        expected_records = stage_result.get("expected_records") or 1
+        ingestion_run_id = stage_result.get("ingestion_run_id")
+    else:
+        expected_records = stage_result or 1
+        ingestion_run_id = None
+    print(f"Waiting for NiFi to ingest {expected_records} records into Bigtable")
+    if ingestion_run_id:
+        print(f"Tracking ingestion run id: {ingestion_run_id}")
 
-    def count_rows_up_to(limit):
+    def count_rows_for_run(limit):
         count = 0
-        for _ in table.read_rows():
+        for row in table.read_rows():
+            if ingestion_run_id:
+                cells = row.cells.get("info", {}).get(b"_ingestion_run_id", [])
+                if not cells or cells[0].value.decode("utf-8") != ingestion_run_id:
+                    continue
             count += 1
             if count >= limit:
                 return count
@@ -205,7 +233,7 @@ def wait_for_bigtable_stability(**context):
     stable_count = -1
     stable_checks = 0
     for attempt in range(40):
-        current = count_rows_up_to(expected_records)
+        current = count_rows_for_run(expected_records)
         if current == stable_count:
             stable_checks += 1
             if stable_checks >= 3 and current >= expected_records:
@@ -219,15 +247,79 @@ def wait_for_bigtable_stability(**context):
         time.sleep(15)
     raise Exception(f"Bigtable did not stabilize. Last count: {stable_count}")
 
-def run_export_to_bigquery():
+def run_export_to_bigquery(**context):
     script = "/app/bigtable_to_bigquery.py"
     if not os.path.exists(script):
         raise Exception(f"Export script not found: {script}")
-    result = subprocess.run(["python", "-u", script], capture_output=True, text=True)
+    env = os.environ.copy()
+    stage_result = context["ti"].xcom_pull(task_ids="stage_scraped_json_for_nifi") or {}
+    if isinstance(stage_result, dict) and stage_result.get("ingestion_run_id"):
+        env["EXPORT_INGESTION_RUN_ID"] = stage_result["ingestion_run_id"]
+        print(f"Exporting Bigtable rows for ingestion_run_id={stage_result['ingestion_run_id']}")
+    result = subprocess.run(["python", "-u", script], env=env, capture_output=True, text=True)
     print(result.stdout)
     if result.returncode != 0:
         print(result.stderr)
         raise Exception(f"Bigquery export failed with code {result.returncode}")
+
+
+def remove_unknown_category_rows(**context):
+    from google.cloud import bigquery
+
+    stage_result = context["ti"].xcom_pull(task_ids="stage_scraped_json_for_nifi") or {}
+    ingestion_run_id = stage_result.get("ingestion_run_id") if isinstance(stage_result, dict) else None
+    if not ingestion_run_id:
+        print("No ingestion_run_id found; skipping unknown-category cleanup")
+        return 0
+
+    project = os.environ.get("BQ_PROJECT", "price-intelligence-495411")
+    dataset = os.environ.get("BQ_DATASET", "price_intelligence")
+    table = os.environ.get("BQ_TABLE", "products")
+    table_id = f"{project}.{dataset}.{table}"
+    temp_table_id = f"{project}.{dataset}._products_without_unknown_categories_{uuid.uuid4().hex[:12]}"
+    client = _get_bigquery_client()
+
+    unknown_filter = "category is null or trim(category) = '' or lower(trim(category)) = 'unknown'"
+    count_query = f"""
+        select count(*) as row_count
+        from `{table_id}`
+        where _ingestion_run_id = @ingestion_run_id
+          and ({unknown_filter})
+    """
+    job_config = bigquery.QueryJobConfig(
+        query_parameters=[
+            bigquery.ScalarQueryParameter("ingestion_run_id", "STRING", ingestion_run_id),
+        ]
+    )
+    unknown_count = next(client.query(count_query, job_config=job_config).result()).row_count
+    print(f"Unknown-category rows in ingestion_run_id={ingestion_run_id}: {unknown_count}")
+    if unknown_count == 0:
+        print("No unknown-category rows to remove")
+        return 0
+
+    rewrite_query = f"""
+        select *
+        from `{table_id}`
+        where not (
+            _ingestion_run_id = @ingestion_run_id
+            and ({unknown_filter})
+        )
+    """
+    rewrite_config = bigquery.QueryJobConfig(
+        destination=temp_table_id,
+        write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
+        query_parameters=[
+            bigquery.ScalarQueryParameter("ingestion_run_id", "STRING", ingestion_run_id),
+        ],
+    )
+    client.query(rewrite_query, job_config=rewrite_config).result()
+    print(f"Created cleaned replacement table: {temp_table_id}")
+
+    copy_config = bigquery.CopyJobConfig(write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE)
+    client.copy_table(temp_table_id, table_id, job_config=copy_config).result()
+    client.delete_table(temp_table_id, not_found_ok=True)
+    print(f"Removed {unknown_count} unknown-category rows from {table_id}")
+    return unknown_count
 
 
 def _get_bigquery_client():
@@ -333,9 +425,14 @@ with DAG(
         python_callable=run_export_to_bigquery,
     )
 
+    task_remove_unknown_categories = PythonOperator(
+        task_id='remove_unknown_category_rows',
+        python_callable=remove_unknown_category_rows,
+    )
+
     task_dbt_run = PythonOperator(
         task_id='dbt_run',
         python_callable=run_dbt,
     )
 
-    [task_jumia, task_sport_direct, task_ebay] >> task_check_nifi >> task_stage_nifi >> task_wait_bigtable >> task_export_bq >> task_dbt_run
+    [task_jumia, task_sport_direct, task_ebay] >> task_check_nifi >> task_stage_nifi >> task_wait_bigtable >> task_export_bq >> task_remove_unknown_categories >> task_dbt_run

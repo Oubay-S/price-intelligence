@@ -28,6 +28,11 @@ BQ_SCHEMA = [
     bigquery.SchemaField("source", "STRING"),
     bigquery.SchemaField("store", "STRING"),
     bigquery.SchemaField("category", "STRING"),
+    bigquery.SchemaField("_bigtable_row_key", "STRING"),
+    bigquery.SchemaField("_ingestion_run_id", "STRING"),
+    bigquery.SchemaField("_staged_at", "TIMESTAMP"),
+    bigquery.SchemaField("ingested_at", "TIMESTAMP"),
+    bigquery.SchemaField("ingestion_method", "STRING"),
     bigquery.SchemaField("_loaded_at", "TIMESTAMP"),
     bigquery.SchemaField("_export_run_id", "STRING"),
 ]
@@ -47,7 +52,13 @@ def _ensure_table(bq_client):
     dataset_ref = bigquery.DatasetReference(BQ_PROJECT, BQ_DATASET)
     table_ref = bigquery.TableReference(dataset_ref, BQ_TABLE)
     try:
-        bq_client.get_table(table_ref)
+        table = bq_client.get_table(table_ref)
+        existing_fields = {field.name for field in table.schema}
+        missing_fields = [field for field in BQ_SCHEMA if field.name not in existing_fields]
+        if missing_fields:
+            table.schema = list(table.schema) + missing_fields
+            bq_client.update_table(table, ["schema"])
+            print(f"Added BigQuery schema fields: {', '.join(field.name for field in missing_fields)}")
         return table_ref
     except Exception:
         try:
@@ -66,6 +77,15 @@ def _count_bq_rows(bq_client, table_ref):
     return next(bq_client.query(query).result()).row_count
 
 
+def _existing_bigtable_keys(bq_client, table_ref):
+    query = f"""
+        select distinct _bigtable_row_key
+        from `{table_ref.project}.{table_ref.dataset_id}.{table_ref.table_id}`
+        where _bigtable_row_key is not null
+    """
+    return {row._bigtable_row_key for row in bq_client.query(query).result()}
+
+
 def main():
     print("Connecting to Bigtable Emulator...")
     client = bigtable.Client(project=BT_PROJECT, admin=True)
@@ -75,7 +95,7 @@ def main():
     rows = table.read_rows()
     products = []
     for row in rows:
-        product = {}
+        product = {"_bigtable_row_key": row.row_key.decode("utf-8")}
         for cf, cols in row.cells.items():
             for col_name, cells in cols.items():
                 key = col_name.decode("utf-8")
@@ -87,6 +107,13 @@ def main():
             products.append(product)
 
     print(f"Read {len(products)} products from Bigtable")
+    export_ingestion_run_id = os.environ.get("EXPORT_INGESTION_RUN_ID")
+    if export_ingestion_run_id:
+        products = [
+            p for p in products
+            if p.get("_ingestion_run_id") == export_ingestion_run_id
+        ]
+        print(f"Filtered to {len(products)} products for ingestion_run_id={export_ingestion_run_id}")
     if not products:
         print("No data to export")
         return
@@ -95,6 +122,9 @@ def main():
     table_ref = _ensure_table(bq_client)
     rows_before = _count_bq_rows(bq_client, table_ref)
     print(f"BigQuery raw rows before export: {rows_before}")
+    existing_keys = _existing_bigtable_keys(bq_client, table_ref)
+    if existing_keys:
+        print(f"Found {len(existing_keys)} Bigtable row keys already exported to BigQuery")
 
     loaded_at = datetime.datetime.now(datetime.timezone.utc).isoformat()
     export_run_id = os.environ.get("EXPORT_RUN_ID", str(uuid.uuid4()))
@@ -107,16 +137,27 @@ def main():
         print(f"Skipped {skipped_products} Bigtable rows missing required product fields: "
               f"{REQUIRED_PRODUCT_FIELDS}")
 
+    new_products = [
+        p for p in valid_products
+        if p.get("_bigtable_row_key") not in existing_keys
+    ]
+    duplicate_products = len(valid_products) - len(new_products)
+    if duplicate_products:
+        print(f"Skipped {duplicate_products} Bigtable rows already exported to BigQuery")
+
     products = [
         {
             key: value
             for key, value in {**p, "_loaded_at": loaded_at, "_export_run_id": export_run_id}.items()
             if key in SCHEMA_FIELDS
         }
-        for p in valid_products
+        for p in new_products
     ]
     if not products:
-        print("No valid products to export after required-field filtering")
+        if valid_products and not new_products:
+            print("No new Bigtable rows to export; all valid observations are already in BigQuery")
+        else:
+            print("No valid products to export after required-field filtering")
         return
 
     job_config = bigquery.LoadJobConfig(
