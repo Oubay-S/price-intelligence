@@ -1,0 +1,152 @@
+{
+  "generated_at": "2026-05-20T18:30:25Z",
+  "data": [
+    {
+      "store": "ebay",
+      "category": "basketball",
+      "products": 428,
+      "median_price": 323.75,
+      "average_price": 438.68
+    },
+    {
+      "store": "ebay",
+      "category": "combat-sports",
+      "products": 560,
+      "median_price": 277.41,
+      "average_price": 417.77
+    },
+    {
+      "store": "ebay",
+      "category": "football",
+      "products": 545,
+      "median_price": 462.41,
+      "average_price": 543.71
+    },
+    {
+      "store": "ebay",
+      "category": "gym",
+      "products": 511,
+      "median_price": 212.66,
+      "average_price": 296.45
+    },
+    {
+      "store": "ebay",
+      "category": "racket-sports",
+      "products": 241,
+      "median_price": 375.83,
+      "average_price": 566.9
+    },
+    {
+      "store": "ebay",
+      "category": "unknown",
+      "products": 1119,
+      "median_price": 369.91,
+      "average_price": 471.44
+    },
+    {
+      "store": "ebay",
+      "category": "volleyball",
+      "products": 231,
+      "median_price": 429.29,
+      "average_price": 510.72
+    },
+    {
+      "store": "jumia",
+      "category": "basketball",
+      "products": 73,
+      "median_price": 169.99,
+      "average_price": 232.89
+    },
+    {
+      "store": "jumia",
+      "category": "combat-sports",
+      "products": 160,
+      "median_price": 84.5,
+      "average_price": 133.9
+    },
+    {
+      "store": "jumia",
+      "category": "football",
+      "products": 84,
+      "median_price": 199.0,
+      "average_price": 253.37
+    },
+    {
+      "store": "jumia",
+      "category": "gym",
+      "products": 135,
+      "median_price": 330.0,
+      "average_price": 389.35
+    },
+    {
+      "store": "jumia",
+      "category": "racket-sports",
+      "products": 40,
+      "median_price": 89.0,
+      "average_price": 111.23
+    },
+    {
+      "store": "jumia",
+      "category": "unknown",
+      "products": 37,
+      "median_price": 160.0,
+      "average_price": 260.28
+    },
+    {
+      "store": "jumia",
+      "category": "volleyball",
+      "products": 55,
+      "median_price": 195.0,
+      "average_price": 266.14
+    },
+    {
+      "store": "sport-direct",
+      "category": "basketball",
+      "products": 157,
+      "median_price": 299.88,
+      "average_price": 382.1
+    },
+    {
+      "store": "sport-direct",
+      "category": "combat-sports",
+      "products": 123,
+      "median_price": 168.62,
+      "average_price": 273.46
+    },
+    {
+      "store": "sport-direct",
+      "category": "football",
+      "products": 206,
+      "median_price": 312.38,
+      "average_price": 435.54
+    },
+    {
+      "store": "sport-direct",
+      "category": "gym",
+      "products": 70,
+      "median_price": 368.5,
+      "average_price": 388.46
+    },
+    {
+      "store": "sport-direct",
+      "category": "racket-sports",
+      "products": 47,
+      "median_price": 287.38,
+      "average_price": 546.48
+    },
+    {
+      "store": "sport-direct",
+      "category": "unknown",
+      "products": 35,
+      "median_price": 374.88,
+      "average_price": 437.11
+    },
+    {
+      "store": "sport-direct",
+      "category": "volleyball",
+      "products": 33,
+      "median_price": 687.38,
+      "average_price": 747.49
+    }
+  ]
+}

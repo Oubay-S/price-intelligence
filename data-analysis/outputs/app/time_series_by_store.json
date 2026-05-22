@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-05-20T18:30:25Z",
+  "data": [
+    {
+      "scraped_date": "2026-05-15",
+      "store": "ebay",
+      "products": 1075,
+      "average_price": 422.7,
+      "median_price": 323.29
+    },
+    {
+      "scraped_date": "2026-05-15",
+      "store": "jumia",
+      "products": 134,
+      "average_price": 207.24,
+      "median_price": 154.0
+    },
+    {
+      "scraped_date": "2026-05-16",
+      "store": "ebay",
+      "products": 666,
+      "average_price": 423.62,
+      "median_price": 314.46
+    },
+    {
+      "scraped_date": "2026-05-16",
+      "store": "jumia",
+      "products": 134,
+      "average_price": 272.05,
+      "median_price": 199.5
+    },
+    {
+      "scraped_date": "2026-05-17",
+      "store": "ebay",
+      "products": 942,
+      "average_price": 477.85,
+      "median_price": 369.96
+    },
+    {
+      "scraped_date": "2026-05-17",
+      "store": "jumia",
+      "products": 193,
+      "average_price": 236.69,
+      "median_price": 195.0
+    },
+    {
+      "scraped_date": "2026-05-17",
+      "store": "sport-direct",
+      "products": 214,
+      "average_price": 389.38,
+      "median_price": 274.88
+    },
+    {
+      "scraped_date": "2026-05-18",
+      "store": "ebay",
+      "products": 473,
+      "average_price": 516.04,
+      "median_price": 416.16
+    },
+    {
+      "scraped_date": "2026-05-18",
+      "store": "jumia",
+      "products": 93,
+      "average_price": 256.03,
+      "median_price": 192.0
+    },
+    {
+      "scraped_date": "2026-05-18",
+      "store": "sport-direct",
+      "products": 392,
+      "average_price": 432.41,
+      "median_price": 312.5
+    },
+    {
+      "scraped_date": "2026-05-19",
+      "store": "ebay",
+      "products": 31,
+      "average_price": 767.25,
+      "median_price": 795.68
+    },
+    {
+      "scraped_date": "2026-05-19",
+      "store": "jumia",
+      "products": 6,
+      "average_price": 246.08,
+      "median_price": 141.56
+    },
+    {
+      "scraped_date": "2026-05-19",
+      "store": "sport-direct",
+      "products": 23,
+      "average_price": 357.57,
+      "median_price": 274.88
+    },
+    {
+      "scraped_date": "2026-05-20",
+      "store": "ebay",
+      "products": 448,
+      "average_price": 440.0,
+      "median_price": 318.29
+    },
+    {
+      "scraped_date": "2026-05-20",
+      "store": "jumia",
+      "products": 24,
+      "average_price": 241.48,
+      "median_price": 192.5
+    },
+    {
+      "scraped_date": "2026-05-20",
+      "store": "sport-direct",
+      "products": 42,
+      "average_price": 360.37,
+      "median_price": 281.13
+    }
+  ]
+}

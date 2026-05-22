@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-05-20T18:30:25Z",
+  "data": [
+    {
+      "store": "jumia",
+      "products": 584,
+      "average_price": 241.42,
+      "median_price": 180.0,
+      "min_price": 9.0,
+      "max_price": 1499.0,
+      "std_price": 226.12
+    },
+    {
+      "store": "sport-direct",
+      "products": 671,
+      "average_price": 411.61,
+      "median_price": 306.25,
+      "min_price": 31.25,
+      "max_price": 1562.5,
+      "std_price": 341.48
+    },
+    {
+      "store": "ebay",
+      "products": 3635,
+      "average_price": 454.38,
+      "median_price": 342.06,
+      "min_price": 9.16,
+      "max_price": 1563.25,
+      "std_price": 364.33
+    }
+  ]
+}

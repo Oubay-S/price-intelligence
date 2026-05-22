@@ -1,0 +1,15 @@
+﻿pandas>=2.2
+numpy>=1.26
+scipy>=1.13
+statsmodels>=0.14
+matplotlib>=3.8
+seaborn>=0.13
+google-cloud-bigquery>=3.25
+db-dtypes>=1.2
+pyarrow>=15.0
+pingouin>=0.5
+streamlit>=1.36
+plotly>=5.22
+charset-normalizer>=3.3,<4
+chardet>=5.2
+google-cloud-bigquery-storage>=2.25
