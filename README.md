@@ -1,5 +1,7 @@
 # 🛒 Price Intelligence Platform
 
+[![CI Pipeline](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml)
+
 **Plateforme hybride Batch + Streaming de veille tarifaire e-commerce** spécialisée dans les produits de nutrition sportive (protéines, créatine, vitamines...).
 
 Le système scrape automatiquement les prix depuis **Jumia**, **Sports Direct** et **eBay**, les stocke dans Google Cloud Bigtable, puis les transforme via dbt pour alimenter des analyses statistiques et un tableau de bord interactif.

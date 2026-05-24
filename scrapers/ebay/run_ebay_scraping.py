@@ -1,8 +1,34 @@
 from ebay_scraper_utils import EbayDriverLostError, scrape_ebay_category
 import os
+from pathlib import Path
 import time
 import random
 import sys
+
+
+def _configure_writable_runtime_dirs():
+    runtime_root = Path(os.environ.get("EBAY_CHROME_RUNTIME_DIR", "/tmp/ebay_chrome"))
+    runtime_root.mkdir(parents=True, exist_ok=True)
+    home_dir = runtime_root / "home"
+    home_dir.mkdir(parents=True, exist_ok=True)
+    (runtime_root / "undetected_chromedriver").mkdir(parents=True, exist_ok=True)
+    for env_name, child in (
+        ("XDG_CACHE_HOME", "cache"),
+        ("XDG_CONFIG_HOME", "config"),
+        ("XDG_DATA_HOME", "data"),
+    ):
+        path = runtime_root / child
+        path.mkdir(parents=True, exist_ok=True)
+        os.environ.setdefault(env_name, str(path))
+
+    current_home = Path(os.environ.get("HOME", str(home_dir)))
+    if not os.access(current_home, os.W_OK):
+        os.environ["HOME"] = str(home_dir)
+    return runtime_root
+
+
+EBAY_CHROME_RUNTIME_ROOT = _configure_writable_runtime_dirs()
+
 # pyrefly: ignore [missing-import]
 import undetected_chromedriver as uc
 
@@ -35,6 +61,9 @@ def _build_chrome_options():
     options.add_argument("--disable-infobars")
 
     if os.environ.get("AIRFLOW_HOME") or os.path.exists("/.dockerenv"):
+        profile_dir = EBAY_CHROME_RUNTIME_ROOT / f"profile-{os.getpid()}"
+        profile_dir.mkdir(parents=True, exist_ok=True)
+        options.add_argument(f"--user-data-dir={profile_dir}")
         options.add_argument("--disable-extensions")
         options.add_argument("--no-first-run")
         options.add_argument("--no-default-browser-check")
@@ -75,6 +104,7 @@ def _launch_driver():
             driver = uc.Chrome(
                 options=_build_chrome_options(),
                 version_main=chrome_version,
+                driver_executable_path=str(EBAY_CHROME_RUNTIME_ROOT / "undetected_chromedriver" / "chromedriver"),
                 use_subprocess=True,
                 headless=False,
             )
