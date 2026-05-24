@@ -163,6 +163,11 @@ infra/terraform/override.tf
 CLAUDE.md
 .github/
 GEMINI.md
+
+# --------------------------
+# Playwright CLI session artifacts
+# --------------------------
+.playwright-cli/
 #--------------------------
 #Google cloud service account keys
 #----------------------------

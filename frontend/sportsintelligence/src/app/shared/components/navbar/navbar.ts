@@ -5,11 +5,12 @@
  * auth-aware right side: signed-out shows Sign in / Get started; signed-in
  * shows the alerts bell and a user-menu dropdown with logout.
  */
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { AuthService } from '../../../core/services/auth.service';
+import { LiveFeedService } from '../../../core/services/live-feed.service';
 import { ThemeService } from '../../../core/services/theme.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { IconComponent } from '../icon/icon';
@@ -50,6 +51,14 @@ import { IconComponent } from '../icon/icon';
       </form>
 
       <div class="header-right">
+        <span
+          class="ws-dot"
+          [style.background]="wsDotColor()"
+          [title]="wsDotTitle()"
+          aria-hidden="true"
+          style="width:8px;height:8px;border-radius:50%;display:inline-block;flex:none"
+        ></span>
+
         <button
           type="button"
           class="btn quiet"
@@ -99,12 +108,38 @@ import { IconComponent } from '../icon/icon';
 export class NavbarComponent {
   protected readonly auth = inject(AuthService);
   protected readonly theme = inject(ThemeService);
+  private readonly liveFeed = inject(LiveFeedService);
   private readonly toast = inject(ToastService);
   private readonly router = inject(Router);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 
   protected readonly menuOpen = signal(false);
   protected readonly searchTerm = signal('');
+
+  /** Live-feed status dot: green = connected, amber = reconnecting, red = down. */
+  protected readonly wsDotColor = computed(() => {
+    switch (this.liveFeed.status()) {
+      case 'open':
+        return 'var(--success)';
+      case 'connecting':
+      case 'error':
+        return '#f5a623';
+      default:
+        return 'var(--danger)';
+    }
+  });
+
+  protected readonly wsDotTitle = computed(() => {
+    switch (this.liveFeed.status()) {
+      case 'open':
+        return 'Live price feed connected';
+      case 'connecting':
+      case 'error':
+        return 'Live price feed reconnecting…';
+      default:
+        return 'Live price feed offline';
+    }
+  });
 
   protected submitSearch(event: Event): void {
     event.preventDefault();

@@ -29,8 +29,10 @@ let chartJsRegistered = false;
       .chart-box {
         position: relative;
         width: 100%;
-        height: 100%;
-        min-height: 260px;
+        /* Fixed height: with maintainAspectRatio:false + responsive, a
+           percentage height lets the canvas drive its own container height,
+           causing an infinite resize/grow loop. A definite height breaks it. */
+        height: 300px;
       }
     `,
   ],

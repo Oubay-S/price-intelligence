@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { LiveFeedService } from './core/services/live-feed.service';
 import { ThemeService } from './core/services/theme.service';
 import { FooterComponent } from './shared/components/footer/footer';
 import { NavbarComponent } from './shared/components/navbar/navbar';
@@ -18,8 +19,10 @@ import { ToastComponent } from './shared/components/toast/toast';
 })
 export class App {
   private readonly theme = inject(ThemeService);
+  private readonly liveFeed = inject(LiveFeedService);
 
   constructor() {
     this.theme.init();
+    this.liveFeed.start();
   }
 }

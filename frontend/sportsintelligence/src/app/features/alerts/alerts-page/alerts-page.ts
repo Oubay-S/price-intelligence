@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
 
 import { ApiError, PriceDropAlert, WsStatus } from '../../../core/models';
 import { ApiService } from '../../../core/services/api.service';
-import { WebSocketService } from '../../../core/services/websocket.service';
+import { LiveFeedService } from '../../../core/services/live-feed.service';
 import { IconComponent } from '../../../shared/components/icon/icon';
 import { LoadingSkeletonComponent } from '../../../shared/components/loading-skeleton/loading-skeleton';
 
@@ -36,6 +36,15 @@ import { LoadingSkeletonComponent } from '../../../shared/components/loading-ske
         <div class="page-head">
           <h1>Price drops</h1>
           <p>Every significant drop our pipeline detects — refreshed live as new scrapes land.</p>
+        </div>
+
+        <div class="range-tabs" style="margin-bottom:14px">
+          <span style="color:var(--text-dim);font-size:13px;margin-right:6px">Min drop</span>
+          @for (t of thresholds; track t) {
+            <button [attr.aria-pressed]="threshold() === t" (click)="setThreshold(t)">
+              {{ t }}%+
+            </button>
+          }
         </div>
 
         <div class="live-banner">
@@ -96,7 +105,7 @@ import { LoadingSkeletonComponent } from '../../../shared/components/loading-ske
 })
 export class AlertsPageComponent implements OnDestroy {
   private readonly api = inject(ApiService);
-  private readonly ws = inject(WebSocketService);
+  private readonly liveFeed = inject(LiveFeedService);
 
   protected readonly drops = signal<PriceDropAlert[]>([]);
   protected readonly liveEvents = signal<(PriceDropAlert & { live: true })[]>([]);
@@ -104,6 +113,9 @@ export class AlertsPageComponent implements OnDestroy {
   protected readonly error = signal<ApiError | null>(null);
   protected readonly wsStatus = signal<WsStatus>('closed');
   protected readonly liveOn = signal(true);
+
+  protected readonly thresholds = [5, 10, 20, 30];
+  protected readonly threshold = signal(10);
 
   /** Live events first, then the historical drops. */
   protected readonly feed = computed(() => [
@@ -128,12 +140,19 @@ export class AlertsPageComponent implements OnDestroy {
     this.startLive();
   }
 
+  protected setThreshold(t: number): void {
+    if (this.threshold() === t) return;
+    this.threshold.set(t);
+    this.load();
+  }
+
   protected load(): void {
     this.loading.set(true);
     this.error.set(null);
-    this.api.getPriceDrops({ threshold: 10, limit: 30 }).subscribe({
+    this.api.getPriceDrops({ threshold: this.threshold(), limit: 30 }).subscribe({
       next: (res) => {
-        this.drops.set(res.alerts);
+        // Sort historical drops by drop percentage, largest first.
+        this.drops.set([...res.alerts].sort((a, b) => b.drop_pct - a.drop_pct));
         this.loading.set(false);
       },
       error: (err: ApiError) => {
@@ -154,7 +173,7 @@ export class AlertsPageComponent implements OnDestroy {
   }
 
   private startLive(): void {
-    this.wsSub = this.ws.connectLivePrices().subscribe((msg) => {
+    this.wsSub = this.liveFeed.events$().subscribe((msg) => {
       if (msg.kind === 'status') {
         this.wsStatus.set(msg.status);
       } else if (msg.kind === 'price-event') {
