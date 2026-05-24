@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20T18:30:25Z",
+  "generated_at": "2026-05-24T12:14:10Z",
   "data": [
     {
       "store": "jumia",
@@ -18,6 +18,22 @@
       "stars": 2.0
     },
     {
+      "store": "sport-direct",
+      "category": "basketball",
+      "name": "Laptop Sleeve",
+      "price": 75.0,
+      "discount": 85.0,
+      "stars": 0.0
+    },
+    {
+      "store": "sport-direct",
+      "category": "basketball",
+      "name": "Ankle Sleeve With Compression Fit",
+      "price": 37.5,
+      "discount": 85.0,
+      "stars": 0.0
+    },
+    {
       "store": "jumia",
       "category": "combat-sports",
       "name": "Pakka 2PCS Prot&egrave;ge tibia De thai boxing et kick boxing De Protection noir",
@@ -34,26 +50,18 @@
       "stars": 0.0
     },
     {
-      "store": "sport-direct",
-      "category": "basketball",
-      "name": "Ankle Sleeve With Compression Fit",
-      "price": 37.5,
-      "discount": 85.0,
-      "stars": 0.0
+      "store": "jumia",
+      "category": "combat-sports",
+      "name": "Protège-dents simple Shock Doctor",
+      "price": 19.0,
+      "discount": 81.0,
+      "stars": 3.8
     },
     {
       "store": "sport-direct",
       "category": "basketball",
-      "name": "Essentials Compression Unisex",
-      "price": 87.5,
-      "discount": 80.0,
-      "stars": 0.0
-    },
-    {
-      "store": "sport-direct",
-      "category": "basketball",
-      "name": "Women's Basic Compression Shorts",
-      "price": 50.0,
+      "name": "Men's Series Arm Compression Sleeve",
+      "price": 62.5,
       "discount": 80.0,
       "stars": 0.0
     },
@@ -68,8 +76,16 @@
     {
       "store": "sport-direct",
       "category": "basketball",
-      "name": "Men's Series Arm Compression Sleeve",
-      "price": 62.5,
+      "name": "Women's Basic Compression Shorts",
+      "price": 50.0,
+      "discount": 80.0,
+      "stars": 0.0
+    },
+    {
+      "store": "sport-direct",
+      "category": "basketball",
+      "name": "Men's Arm Compression Sleeve",
+      "price": 75.0,
       "discount": 80.0,
       "stars": 0.0
     },
@@ -78,6 +94,30 @@
       "category": "basketball",
       "name": "A200 Compression Mens",
       "price": 162.5,
+      "discount": 80.0,
+      "stars": 0.0
+    },
+    {
+      "store": "sport-direct",
+      "category": "basketball",
+      "name": "A200 Compression Mens",
+      "price": 150.0,
+      "discount": 80.0,
+      "stars": 0.0
+    },
+    {
+      "store": "sport-direct",
+      "category": "basketball",
+      "name": "Essentials Compression Unisex",
+      "price": 87.5,
+      "discount": 80.0,
+      "stars": 0.0
+    },
+    {
+      "store": "sport-direct",
+      "category": "basketball",
+      "name": "A200 Compression Mens",
+      "price": 175.0,
       "discount": 80.0,
       "stars": 0.0
     },
@@ -98,30 +138,6 @@
       "stars": 0.0
     },
     {
-      "store": "sport-direct",
-      "category": "basketball",
-      "name": "Men's Arm Compression Sleeve",
-      "price": 75.0,
-      "discount": 80.0,
-      "stars": 0.0
-    },
-    {
-      "store": "sport-direct",
-      "category": "basketball",
-      "name": "A200 Compression Mens",
-      "price": 175.0,
-      "discount": 80.0,
-      "stars": 0.0
-    },
-    {
-      "store": "sport-direct",
-      "category": "basketball",
-      "name": "A200 Compression Mens",
-      "price": 150.0,
-      "discount": 80.0,
-      "stars": 0.0
-    },
-    {
       "store": "jumia",
       "category": "football",
       "name": "Ballon de Football 7SPORT FT-5 Premium Match - Rouge et Blanc, Taille 5 Officielle, Haute Performance, Durable.",
@@ -132,32 +148,16 @@
     {
       "store": "sport-direct",
       "category": "basketball",
-      "name": "Men's Series Arm Compression Sleeve",
-      "price": 87.5,
-      "discount": 75.0,
-      "stars": 0.0
-    },
-    {
-      "store": "sport-direct",
-      "category": "unknown",
-      "name": "Men's Athletics 86 Basketball Trainers",
-      "price": 512.5,
+      "name": "Diverse Basketball Trainers Mens",
+      "price": 187.5,
       "discount": 75.0,
       "stars": 0.0
     },
     {
       "store": "sport-direct",
       "category": "basketball",
-      "name": "Women's All Over Print Compression Shorts",
-      "price": 137.5,
-      "discount": 75.0,
-      "stars": 0.0
-    },
-    {
-      "store": "sport-direct",
-      "category": "basketball",
-      "name": "Unisex Kids Performance Basketball Jersey",
-      "price": 62.5,
+      "name": "Men's Arm Compression Sleeve",
+      "price": 112.5,
       "discount": 75.0,
       "stars": 0.0
     }

@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-20T18:30:25Z",
+  "generated_at": "2026-05-24T12:14:10Z",
   "purpose": "Dashboard and full-stack consumption of Data Analyst outputs.",
   "source_dataset": "outputs\\cleaned_data\\02_clean_prices_no_outliers.csv",
-  "record_count": 4890,
+  "record_count": 6306,
   "files": [
     "heatmap_store_category.json",
     "kpis.json",
