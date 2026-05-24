@@ -51,13 +51,13 @@ CATEGORY_PRIORITY = {
     "basketball": 2,
     "gym": 3,
     "combat-sports": 4,
-    "Racket-Sports": 5,
-    "Volleyball": 6,
+    "racket-sports": 5,
+    "volleyball": 6,
 }
 
 
 def _category_priority(category):
-    return CATEGORY_PRIORITY.get(category, 100)
+    return CATEGORY_PRIORITY.get(str(category).lower(), 100)
 
 
 def _load_category_map():
@@ -74,7 +74,7 @@ def _load_category_map():
         if not isinstance(data, list):
             continue
         files += 1
-        category = json_path.parent.name
+        category = json_path.parent.name.lower()
         for record in data:
             if not isinstance(record, dict):
                 continue

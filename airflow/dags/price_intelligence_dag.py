@@ -137,8 +137,11 @@ def stage_scraped_json_for_nifi():
     source_root = Path(os.environ.get("SCRAPER_OUTPUT_ROOT", "/app"))
     inbox = Path(os.environ.get("NIFI_INBOX", "/app/nifi_inbox"))
     stores = ["jumia", "sport-direct", "ebay"]
-    ingestion_run_id = os.environ.get("INGESTION_RUN_ID") or f"airflow-{datetime.utcnow().strftime('%Y%m%dT%H%M%S')}"
-    staged_at = datetime.utcnow().isoformat()
+    utc_now = datetime.utcnow().replace(microsecond=0)
+    ingestion_run_id = os.environ.get("INGESTION_RUN_ID") or (
+        f"airflow-{utc_now.strftime('%Y%m%dT%H%M%S')}-{uuid.uuid4().hex[:8]}"
+    )
+    staged_at = f"{utc_now.isoformat()}Z"
 
     if inbox.exists():
         shutil.rmtree(inbox)
@@ -230,9 +233,12 @@ def wait_for_bigtable_stability(**context):
                 return count
         return count
 
+    max_checks = int(os.environ.get("BIGTABLE_STABILITY_CHECKS", "120"))
+    check_interval = int(os.environ.get("BIGTABLE_STABILITY_INTERVAL_SECONDS", "15"))
     stable_count = -1
     stable_checks = 0
-    for attempt in range(40):
+    print(f"Checking Bigtable up to {max_checks} times every {check_interval} seconds")
+    for attempt in range(max_checks):
         current = count_rows_for_run(expected_records)
         if current == stable_count:
             stable_checks += 1
@@ -243,9 +249,12 @@ def wait_for_bigtable_stability(**context):
         else:
             stable_count = current
             stable_checks = 0
-        print(f"Bigtable rows: {current} (stable checks: {stable_checks}/3)")
-        time.sleep(15)
-    raise Exception(f"Bigtable did not stabilize. Last count: {stable_count}")
+        print(f"Bigtable rows: {current}/{expected_records} (stable checks: {stable_checks}/3)")
+        time.sleep(check_interval)
+    raise Exception(
+        f"Bigtable did not stabilize after {max_checks} checks. "
+        f"Last count: {stable_count}/{expected_records}"
+    )
 
 def run_export_to_bigquery(**context):
     script = "/app/bigtable_to_bigquery.py"
@@ -353,9 +362,22 @@ def run_data_analysis_eda():
 
     env = os.environ.copy()
     env.setdefault("GOOGLE_APPLICATION_CREDENTIALS", "/opt/airflow/gcp-credentials.json")
+    notebooks_dir = analysis_dir / "notebooks"
+    eda_notebooks = [
+        notebooks_dir / "01_data_understanding.ipynb",
+        notebooks_dir / "02_data_cleaning.ipynb",
+        notebooks_dir / "03_exploratory_analysis.ipynb",
+    ]
+    missing_notebooks = [path.name for path in eda_notebooks if not path.exists()]
+    scope = "eda" if not missing_notebooks else "export-only"
+    if missing_notebooks:
+        print(
+            f"Missing notebooks under {notebooks_dir}: {', '.join(missing_notebooks)}; "
+            f"running data-analysis in scope={scope}"
+        )
 
     result = subprocess.run(
-        ["python", "-u", str(script), "--scope", "eda", "--kernel", "python3"],
+        ["python", "-u", str(script), "--scope", scope, "--kernel", "python3"],
         cwd=str(analysis_dir),
         env=env,
         capture_output=True,
