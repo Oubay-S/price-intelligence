@@ -166,3 +166,7 @@ infra/terraform/override.tf
 
 CLAUDE.md
 DATA_ENGINEER_WORK_SUMMARY.md
+data-analysis/outputs/app/
+data-analysis/outputs/figures/
+data-analysis/notebooks/
+data-analysis/reports/
