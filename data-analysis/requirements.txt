@@ -13,3 +13,6 @@ plotly>=5.22
 charset-normalizer>=3.3,<4
 chardet>=5.2
 google-cloud-bigquery-storage>=2.25
+nbclient>=0.10
+nbformat>=5.10
+ipykernel>=6.29

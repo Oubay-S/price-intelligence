@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20T18:30:25Z",
+  "generated_at": "2026-05-24T12:14:10Z",
   "data": [
     {
       "priorite": "Haute",
@@ -13,7 +13,7 @@
     },
     {
       "priorite": "Haute",
-      "recommandation": "Prioriser le monitoring de la catégorie volleyball, car elle présente le prix médian le plus élevé.",
+      "recommandation": "Prioriser le monitoring de la catégorie football, car elle présente le prix médian le plus élevé.",
       "justification": "Catégorie avec le plus fort potentiel d'impact tarifaire."
     },
     {

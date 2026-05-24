@@ -41,6 +41,41 @@ Sorties générées dans `outputs/app/` :
 - `top_discounts.json` : produits avec les plus grandes remises.
 - `recommendations.json` : recommandations business finales.
 
+## Execution automatique apres scraping
+
+Pour automatiser la partie Data Analyst apres une nouvelle collecte/scraping, utiliser :
+
+```bash
+python run_eda_pipeline.py --scope eda
+```
+
+Cette commande execute automatiquement :
+
+1. `notebooks/01_data_understanding.ipynb`
+2. `notebooks/02_data_cleaning.ipynb`
+3. `notebooks/03_exploratory_analysis.ipynb`
+4. `export_for_dashboard.py`
+
+Elle regenere donc les outputs EDA, les figures et les fichiers JSON pour le dashboard/full stack.
+
+Pour executer tout le livrable analytique, y compris les tests statistiques et insights finaux :
+
+```bash
+python run_eda_pipeline.py --scope full
+```
+
+Pour regenerer seulement les fichiers JSON du dashboard sans relancer les notebooks :
+
+```bash
+python run_eda_pipeline.py --scope export-only
+```
+
+Un fichier de suivi est genere ici :
+
+```text
+outputs/app/pipeline_status.json
+```
+
 ## Couverture du PDF
 
 - Statistiques descriptives : moyenne, médiane, écart-type, distributions, tendances par catégorie.
