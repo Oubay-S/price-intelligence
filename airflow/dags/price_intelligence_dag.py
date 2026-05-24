@@ -344,6 +344,30 @@ def _log_dbt_model_counts():
         print(f"- {table_id}: {row_count} rows")
 
 
+def run_data_analysis_eda():
+    analysis_dir = Path(os.environ.get("DATA_ANALYSIS_DIR", "/opt/airflow/data-analysis"))
+    script = analysis_dir / "run_eda_pipeline.py"
+
+    if not script.exists():
+        raise Exception(f"Data analysis pipeline not found: {script}")
+
+    env = os.environ.copy()
+    env.setdefault("GOOGLE_APPLICATION_CREDENTIALS", "/opt/airflow/gcp-credentials.json")
+
+    result = subprocess.run(
+        ["python", "-u", str(script), "--scope", "eda", "--kernel", "python3"],
+        cwd=str(analysis_dir),
+        env=env,
+        capture_output=True,
+        text=True,
+    )
+
+    print(result.stdout)
+    if result.returncode != 0:
+        print(result.stderr)
+        raise Exception(f"Data analysis EDA pipeline failed with code {result.returncode}")
+
+
 def run_dbt():
     dbt_bin = shutil.which("dbt")
     if not dbt_bin:
@@ -435,4 +459,10 @@ with DAG(
         python_callable=run_dbt,
     )
 
-    [task_jumia, task_sport_direct, task_ebay] >> task_check_nifi >> task_stage_nifi >> task_wait_bigtable >> task_export_bq >> task_remove_unknown_categories >> task_dbt_run
+    task_data_analysis_eda = PythonOperator(
+        task_id='run_data_analysis_eda',
+        python_callable=run_data_analysis_eda,
+    )
+
+    [task_jumia, task_sport_direct, task_ebay] >> task_check_nifi >> task_stage_nifi >> task_wait_bigtable >> task_export_bq >> task_remove_unknown_categories
+    task_remove_unknown_categories >> [task_dbt_run, task_data_analysis_eda]

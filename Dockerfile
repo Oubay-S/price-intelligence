@@ -21,4 +21,5 @@ USER airflow
 
 # Install Python dependencies
 COPY airflow/requirements.txt /requirements.txt
-RUN pip install --no-cache-dir -r /requirements.txt
+COPY data-analysis/requirements.txt /data-analysis-requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt -r /data-analysis-requirements.txt
