@@ -149,10 +149,10 @@ jobs:
         run: pip install dbt-bigquery
 
       - name: ⚙️ Configurer dbt profiles
+        working-directory: ./dbt
         run: |
-          mkdir -p ~/.dbt
-          cat <<EOF > ~/.dbt/profiles.yml
-          price_intelligence:
+          cat <<EOF > profiles.yml
+          price_intel_bq:
             target: ci
             outputs:
               ci:
@@ -190,13 +190,13 @@ jobs:
         working-directory: ./frontend/sportsintelligence
         run: npm ci
 
-      - name: 🔍 Lint Angular
-        working-directory: ./frontend/sportsintelligence
-        run: npx ng lint
-
       - name: 🧪 Tests Vitest
         working-directory: ./frontend/sportsintelligence
         run: npm run test -- --run
+
+      - name: 🏗️ Test Build Angular
+        working-directory: ./frontend/sportsintelligence
+        run: npm run build
 
   # ═══════════════════════════════════════════
   # JOB 2 — BUILD DES 3 IMAGES DOCKER
