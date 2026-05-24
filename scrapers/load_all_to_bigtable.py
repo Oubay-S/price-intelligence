@@ -62,7 +62,7 @@ def _row_key(store_name, category, item):
     name = str(item.get("name") or "unknown")
     slug = re.sub(r"[^a-zA-Z0-9]+", "-", name).strip("-").lower()[:60] or "unknown"
     stable_part = item.get("product_url") or item.get("image_url") or name
-    digest = hashlib.sha1(str(stable_part).encode("utf-8"), usedforsecurity=False).hexdigest()[:12]
+    digest = hashlib.sha1(str(stable_part).encode("utf-8")).hexdigest()[:12]
     scraped_at = _parse_scraped_at(item.get("scraped_at"))
     scraped_at_key = scraped_at.astimezone(datetime.timezone.utc).isoformat().replace("+00:00", "Z")
     return f"{store_name}#{category}#{slug}#{digest}#{scraped_at_key}".encode("utf-8")

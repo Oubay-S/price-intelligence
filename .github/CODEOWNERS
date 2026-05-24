@@ -1,0 +1,29 @@
+# ═══════════════════════════════════════════
+# CODEOWNERS — Price Intelligence Platform
+# Assigne automatiquement les reviewers sur les PRs
+# ═══════════════════════════════════════════
+
+# Pipeline Data (scraping, ingestion, transformation)
+/airflow/                  @Oubay-S
+/scrapers/                 @Oubay-S
+/dbt/                      @Oubay-S
+
+# Backend API
+/backend/                  @Oubay-S
+
+# Frontend Angular
+/frontend/                 @Oubay-S
+
+# Infrastructure & CI/CD
+/.github/                  @Oubay-S
+/infra/                    @Oubay-S
+/docker-compose.yml        @Oubay-S
+/Dockerfile                @Oubay-S
+/nginx/                    @Oubay-S
+
+# Tests
+/tests/                    @Oubay-S
+
+# Configuration
+/.env.example              @Oubay-S
+/.gitleaks.toml            @Oubay-S
