@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-05-24T12:14:10Z",
+  "purpose": "Dashboard and full-stack consumption of Data Analyst outputs.",
+  "source_dataset": "outputs\\cleaned_data\\02_clean_prices_no_outliers.csv",
+  "record_count": 6306,
+  "files": [
+    "heatmap_store_category.json",
+    "kpis.json",
+    "price_by_category.json",
+    "price_by_store.json",
+    "recommendations.json",
+    "time_series_by_store.json",
+    "top_discounts.json"
+  ],
+  "contract": {
+    "kpis.json": "Single object with global KPIs.",
+    "price_by_store.json": "Array grouped by store/platform.",
+    "price_by_category.json": "Array grouped by product category.",
+    "time_series_by_store.json": "Array grouped by scraped_date and store.",
+    "heatmap_store_category.json": "Array grouped by store and category.",
+    "top_discounts.json": "Top discounted products for UI tables.",
+    "recommendations.json": "Business recommendations from final insights."
+  }
+}
