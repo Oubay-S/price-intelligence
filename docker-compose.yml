@@ -385,9 +385,18 @@ services:
       # --- Frontend URL embedded in verification / password-reset
       # emails.  Browser-side, so it must resolve from outside Docker.
       FRONTEND_URL: ${FRONTEND_URL:-http://localhost:4200}
+
+      # --- Data Analyst dashboard exports --------------------------
+      # Read by /api/analytics/*.  The default in config.py points at
+      # the repo's data-analysis/outputs/app, which doesn't exist on
+      # the container's path (backend is mounted at /app), so point it
+      # at the read-only mount below.  Swap to a BigQuery mart later and
+      # this can be dropped.
+      ANALYTICS_DATA_DIR: /opt/analytics
     volumes:
       - ./backend:/app:z
       - ./gcp-credentials.json:/opt/gcp/gcp-credentials.json:ro,z
+      - ./data-analysis/outputs/app:/opt/analytics:ro,z
     ports:
       - "8000:8000"
     networks:

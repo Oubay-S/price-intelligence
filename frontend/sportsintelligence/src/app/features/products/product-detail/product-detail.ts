@@ -98,6 +98,7 @@ type Range = '7d' | '30d' | '90d' | 'all';
                   <app-price-chart
                     [labels]="chartLabels()"
                     [values]="chartValues()"
+                    [median]="history()?.median_price ?? null"
                     seriesLabel="Lowest price (MAD)"
                   />
                 } @else {

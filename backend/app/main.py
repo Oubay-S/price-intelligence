@@ -36,6 +36,7 @@ from slowapi.errors import RateLimitExceeded
 from app.database import close_pool, init_pool
 from app.middleware.core import limiter
 from app.routers import (
+    analytics,
     auth,
     health,
     internal,
@@ -117,6 +118,7 @@ app.include_router(products.router, prefix=f"{API_PREFIX}/products", tags=["prod
 app.include_router(prices.router, prefix=f"{API_PREFIX}/prices", tags=["prices"])
 app.include_router(watchlist.router, prefix=f"{API_PREFIX}/watchlist", tags=["watchlist"])
 app.include_router(stats.router, prefix=f"{API_PREFIX}/stats", tags=["stats"])
+app.include_router(analytics.router, prefix=f"{API_PREFIX}/analytics", tags=["analytics"])
 
 
 # ---------------------------------------------------------------------------

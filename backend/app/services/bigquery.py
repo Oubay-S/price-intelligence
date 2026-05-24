@@ -16,6 +16,7 @@ from app.models.product import (
     PriceTrend,
     ProductResponse,
     RatingsInfo,
+    SortOption,
     SupplementCategory,
 )
 from app.services.cache import redis_cached
@@ -182,12 +183,58 @@ def _select_columns() -> str:
     """
 
 
-_PRICE_VALID = "SAFE_CAST(current_price AS FLOAT64) IS NOT NULL"
+_PRICE_FLOAT = "SAFE_CAST(current_price AS FLOAT64)"
+_PRICE_VALID = f"{_PRICE_FLOAT} IS NOT NULL"
+
+# The backing table is a time-series of scrapes — one product_url has many
+# rows. Collapse to the most recent scrape per product so catalogue listings
+# show each product once. scraped_at is an ISO-8601 string, so lexical DESC
+# is chronological DESC.
+_DEDUP_LATEST = (
+    "QUALIFY ROW_NUMBER() OVER "
+    "(PARTITION BY product_url ORDER BY scraped_at DESC) = 1"
+)
 
 
 def _site_token(value: str) -> str:
     """Accept 'jumia', 'jumia.ma', 'jumia.co.ma' alike — match on store prefix."""
     return value.lower().split(".")[0].strip()
+
+
+# Server-side ordering. Keys mirror the frontend SortOption enum; each value
+# is a raw ORDER BY expression over the BigQuery raw mart. price_per_serving
+# has no backing column in the raw table, so it degrades to recency.
+_SORT_SQL: dict[SortOption, str] = {
+    SortOption.SCRAPED_AT_DESC:       "scraped_at DESC",
+    SortOption.PRICE_ASC:             f"{_PRICE_FLOAT} ASC",
+    SortOption.PRICE_DESC:            f"{_PRICE_FLOAT} DESC",
+    SortOption.RATING_DESC:           "SAFE_CAST(stars AS FLOAT64) DESC",
+    SortOption.DISCOUNT_DESC: (
+        "SAFE_DIVIDE("
+        f"SAFE_CAST(price_before_discount AS FLOAT64) - {_PRICE_FLOAT}, "
+        "SAFE_CAST(price_before_discount AS FLOAT64)) DESC"
+    ),
+    SortOption.PRICE_PER_SERVING_ASC: "scraped_at DESC",
+}
+
+
+def _order_by(sort: Optional[SortOption]) -> str:
+    return _SORT_SQL.get(sort or SortOption.SCRAPED_AT_DESC, "scraped_at DESC")
+
+
+def _apply_price_bounds(
+    where: list[str],
+    params: list[Any],
+    min_price: Optional[float],
+    max_price: Optional[float],
+) -> None:
+    """Append current-price range predicates + their query params in place."""
+    if min_price is not None:
+        where.append(f"{_PRICE_FLOAT} >= @min_price")
+        params.append(bigquery.ScalarQueryParameter("min_price", "FLOAT64", min_price))
+    if max_price is not None:
+        where.append(f"{_PRICE_FLOAT} <= @max_price")
+        params.append(bigquery.ScalarQueryParameter("max_price", "FLOAT64", max_price))
 
 
 # ---------------------------------------------------------------------------
@@ -200,6 +247,9 @@ def get_all_products(
     limit: int = 48,
     sites: Optional[list[str]] = None,
     category: Optional[SupplementCategory] = None,
+    min_price: Optional[float] = None,
+    max_price: Optional[float] = None,
+    sort: Optional[SortOption] = None,
 ) -> tuple[list[ProductResponse], int]:
     where: list[str] = [_PRICE_VALID]
     offset = (page - 1) * limit
@@ -225,17 +275,20 @@ def get_all_products(
             bigquery.ArrayQueryParameter("categories", "STRING", raw_values)
         )
 
+    _apply_price_bounds(where, params, min_price, max_price)
+
     where_sql = "WHERE " + " AND ".join(where)
 
     data_query = f"""
         {_select_columns()}
         {where_sql}
-        ORDER BY scraped_at DESC
+        {_DEDUP_LATEST}
+        ORDER BY {_order_by(sort)}
         LIMIT @limit
         OFFSET @offset
     """
     count_query = f"""
-        SELECT COUNT(*) AS total_count
+        SELECT COUNT(DISTINCT product_url) AS total_count
         FROM {_table_ref()}
         {where_sql}
     """
@@ -264,6 +317,9 @@ def search_products(
     page: int = 1,
     limit: int = 48,
     sites: Optional[list[str]] = None,
+    min_price: Optional[float] = None,
+    max_price: Optional[float] = None,
+    sort: Optional[SortOption] = None,
 ) -> tuple[list[ProductResponse], int]:
     pattern = f"%{_escape_like(query.strip().lower())}%"
     offset = (page - 1) * limit
@@ -295,17 +351,20 @@ def search_products(
             bigquery.ArrayQueryParameter("categories", "STRING", raw_values)
         )
 
+    _apply_price_bounds(where, params, min_price, max_price)
+
     where_sql = "WHERE " + " AND ".join(where)
 
     data_query = f"""
         {_select_columns()}
         {where_sql}
-        ORDER BY scraped_at DESC
+        {_DEDUP_LATEST}
+        ORDER BY {_order_by(sort)}
         LIMIT @limit
         OFFSET @offset
     """
     count_query = f"""
-        SELECT COUNT(*) AS total_count
+        SELECT COUNT(DISTINCT product_url) AS total_count
         FROM {_table_ref()}
         {where_sql}
     """

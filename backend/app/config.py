@@ -28,6 +28,14 @@ class Settings(BaseSettings):
     BIGQUERY_MART_TRENDING: str       = "mart_trending"
     BIGQUERY_MART_SITE_PRICES: str    = "mart_site_prices"
 
+    # Data Analyst dashboard exports (data-analysis/outputs/app/*.json).
+    # The analytics endpoints read these files today; once the data engineer
+    # lands the analysis as a BigQuery mart, only the analytics repository
+    # swaps its source — the service/router/frontend stay unchanged.
+    ANALYTICS_DATA_DIR: str = str(
+        BACKEND_DIR.parent / "data-analysis" / "outputs" / "app"
+    )
+
     SECRET_KEY: str
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440

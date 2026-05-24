@@ -30,6 +30,14 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'analytics',
+    title: 'Market analytics — PriceIntelligent',
+    loadComponent: () =>
+      import('./features/analytics/analytics-dashboard/analytics-dashboard').then(
+        (m) => m.AnalyticsDashboardComponent,
+      ),
+  },
+  {
     path: 'compare',
     title: 'Compare prices — PriceIntelligent',
     loadComponent: () =>

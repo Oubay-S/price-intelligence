@@ -7,6 +7,7 @@ from app.api_responses import ERR_404, ERR_422, ERR_500
 from app.models.product import (
     PaginatedProducts,
     ProductResponse,
+    SortOption,
     SupplementCategory,
     TrendingResponse,
 )
@@ -37,9 +38,18 @@ def list_products(
     page: int = Query(1, ge=1),
     limit: int = Query(48, ge=1, le=200),
     site: Optional[list[str]] = Query(
-        None, description="Repeatable — e.g. ?site=ebay&site=walmart"
+        None, description="Repeatable — e.g. ?site=ebay&site=sport-direct"
     ),
     category: Optional[SupplementCategory] = Query(None),
+    min_price: Optional[float] = Query(
+        None, ge=0, description="Minimum current price (MAD), inclusive"
+    ),
+    max_price: Optional[float] = Query(
+        None, ge=0, description="Maximum current price (MAD), inclusive"
+    ),
+    sort: Optional[SortOption] = Query(
+        None, description="Server-side ordering; defaults to newest first"
+    ),
 ) -> PaginatedProducts:
     try:
         items, total_count = get_all_products(
@@ -47,6 +57,9 @@ def list_products(
             limit=limit,
             sites=site,
             category=category,
+            min_price=min_price,
+            max_price=max_price,
+            sort=sort,
         )
     except GoogleAPICallError as exc:
         _raise_bigquery_http_500(exc)
@@ -70,9 +83,18 @@ def search(
     page: int = Query(1, ge=1),
     category: Optional[SupplementCategory] = Query(None),
     site: Optional[list[str]] = Query(
-        None, description="Repeatable — e.g. ?site=ebay&site=walmart"
+        None, description="Repeatable — e.g. ?site=ebay&site=sport-direct"
     ),
     limit: int = Query(48, ge=1, le=200),
+    min_price: Optional[float] = Query(
+        None, ge=0, description="Minimum current price (MAD), inclusive"
+    ),
+    max_price: Optional[float] = Query(
+        None, ge=0, description="Maximum current price (MAD), inclusive"
+    ),
+    sort: Optional[SortOption] = Query(
+        None, description="Server-side ordering; defaults to newest first"
+    ),
 ) -> PaginatedProducts:
     try:
         items, total_count = search_products(
@@ -81,6 +103,9 @@ def search(
             page=page,
             limit=limit,
             sites=site,
+            min_price=min_price,
+            max_price=max_price,
+            sort=sort,
         )
     except GoogleAPICallError as exc:
         _raise_bigquery_http_500(exc)

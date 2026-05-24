@@ -21,6 +21,13 @@ import {
   BrandRankingsResponse,
   CompareResponse,
   ErrorEnvelope,
+  HeatmapResponse,
+  KpisResponse,
+  PriceByCategoryResponse,
+  PriceByStoreResponse,
+  RecommendationsResponse,
+  TimeSeriesResponse,
+  TopDiscountsResponse,
   ForgotPasswordRequest,
   MessageResponse,
   PaginatedProducts,
@@ -33,6 +40,7 @@ import {
   RefreshRequest,
   ResendVerificationRequest,
   ResetPasswordRequest,
+  SortOption,
   SupplementCategory,
   TokenPair,
   TrendingResponse,
@@ -95,8 +103,8 @@ export class ApiService {
   // Products — /products/*
   // =========================================================================
 
-  /** Paginated catalogue. Backend filters by site/category/page/limit;
-   *  finer filters (price/brand) are applied client-side. */
+  /** Paginated catalogue. All filtering (site/category/price), sorting and
+   *  pagination are server-side — the backend returns the final slice. */
   getProducts(filters: ProductFilterParams = {}): Observable<PaginatedProducts> {
     return this.get<PaginatedProducts>('/products', this.toParams(filters));
   }
@@ -108,6 +116,9 @@ export class ApiService {
       limit?: number;
       category?: SupplementCategory;
       site?: string[];
+      min_price?: number;
+      max_price?: number;
+      sort?: SortOption;
     } = {},
   ): Observable<PaginatedProducts> {
     return this.get<PaginatedProducts>('/products/search', this.toParams({ q, ...opts }));
@@ -187,6 +198,38 @@ export class ApiService {
 
   removeFromWatchlist(productId: string): Observable<void> {
     return this.delete<void>(`/watchlist/${encodeURIComponent(productId)}`);
+  }
+
+  // =========================================================================
+  // Analytics — /analytics/* (Data Analyst dashboard feed)
+  // =========================================================================
+
+  getAnalyticsKpis(): Observable<KpisResponse> {
+    return this.get<KpisResponse>('/analytics/kpis');
+  }
+
+  getPriceByStore(): Observable<PriceByStoreResponse> {
+    return this.get<PriceByStoreResponse>('/analytics/price-by-store');
+  }
+
+  getPriceByCategory(): Observable<PriceByCategoryResponse> {
+    return this.get<PriceByCategoryResponse>('/analytics/price-by-category');
+  }
+
+  getPriceTimeSeries(): Observable<TimeSeriesResponse> {
+    return this.get<TimeSeriesResponse>('/analytics/time-series');
+  }
+
+  getPriceHeatmap(): Observable<HeatmapResponse> {
+    return this.get<HeatmapResponse>('/analytics/heatmap');
+  }
+
+  getTopDiscounts(): Observable<TopDiscountsResponse> {
+    return this.get<TopDiscountsResponse>('/analytics/top-discounts');
+  }
+
+  getRecommendations(): Observable<RecommendationsResponse> {
+    return this.get<RecommendationsResponse>('/analytics/recommendations');
   }
 
   // =========================================================================

@@ -24,6 +24,7 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   CategoryScale,
   Chart,
+  ChartDataset,
   Filler,
   LineController,
   LineElement,
@@ -59,6 +60,8 @@ export class PriceChartComponent {
   readonly height = input('320px');
   /** Series label shown in the tooltip. */
   readonly seriesLabel = input('Price (MAD)');
+  /** Optional median benchmark — drawn as a flat dashed reference line. */
+  readonly median = input<number | null>(null);
 
   private readonly canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
@@ -76,6 +79,7 @@ export class PriceChartComponent {
       this.labels();
       this.values();
       this.seriesLabel();
+      this.median();
       if (this.ready) this.render();
     });
   }
@@ -94,33 +98,46 @@ export class PriceChartComponent {
     gradient.addColorStop(0, this.hexAlpha(accent, 0.35));
     gradient.addColorStop(1, this.hexAlpha(accent, 0));
 
+    const datasets: ChartDataset<'line'>[] = [
+      {
+        label: this.seriesLabel(),
+        data: this.values(),
+        borderColor: accent,
+        backgroundColor: gradient,
+        borderWidth: 1.8,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        pointHoverBackgroundColor: accent,
+      },
+    ];
+
+    const median = this.median();
+    if (median != null && this.values().length) {
+      datasets.push({
+        label: 'Median',
+        data: this.values().map(() => median),
+        borderColor: textDim,
+        borderWidth: 1,
+        borderDash: [5, 4],
+        fill: false,
+        tension: 0,
+        pointRadius: 0,
+        pointHoverRadius: 0,
+      });
+    }
+
     if (this.chart) {
       this.chart.data.labels = this.labels();
-      this.chart.data.datasets[0].data = this.values();
-      this.chart.data.datasets[0].label = this.seriesLabel();
-      this.chart.update();
+      this.chart.data.datasets = datasets;
+      this.chart.update('none'); // no animation on data refresh
       return;
     }
 
     this.chart = new Chart(ctx, {
       type: 'line',
-      data: {
-        labels: this.labels(),
-        datasets: [
-          {
-            label: this.seriesLabel(),
-            data: this.values(),
-            borderColor: accent,
-            backgroundColor: gradient,
-            borderWidth: 1.8,
-            fill: true,
-            tension: 0.3,
-            pointRadius: 0,
-            pointHoverRadius: 4,
-            pointHoverBackgroundColor: accent,
-          },
-        ],
-      },
+      data: { labels: this.labels(), datasets },
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -129,7 +146,7 @@ export class PriceChartComponent {
           tooltip: {
             displayColors: false,
             callbacks: {
-              label: (item) => `$${Number(item.parsed.y).toFixed(2)}`,
+              label: (item) => `${Number(item.parsed.y).toFixed(2)} MAD`,
             },
           },
         },
@@ -143,7 +160,7 @@ export class PriceChartComponent {
             ticks: {
               color: textDim,
               font: { size: 10 },
-              callback: (v) => `$${v}`,
+              callback: (v) => `${v} MAD`,
             },
           },
         },

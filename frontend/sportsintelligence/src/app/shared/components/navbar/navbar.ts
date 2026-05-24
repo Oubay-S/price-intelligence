@@ -29,6 +29,7 @@ import { IconComponent } from '../icon/icon';
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
         <a routerLink="/products" routerLinkActive="active">Catalogue</a>
         <a routerLink="/compare" routerLinkActive="active">Compare</a>
+        <a routerLink="/analytics" routerLinkActive="active">Analytics</a>
         <a routerLink="/alerts" routerLinkActive="active">Price drops</a>
         @if (auth.isAuthenticated()) {
           <a routerLink="/watchlist" routerLinkActive="active">Watchlist</a>

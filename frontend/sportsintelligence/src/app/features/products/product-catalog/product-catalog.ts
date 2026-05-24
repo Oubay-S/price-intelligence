@@ -2,9 +2,9 @@
  * ProductCatalogComponent — the browse/search page.
  *
  * Loads a page of products from `GET /products` (or `GET /products/search`
- * when a query is typed). Category filtering is server-side; the price
- * slider and sort run client-side over the loaded page — the backend list
- * endpoint only filters by site/category/page.
+ * when a query is typed). Category, site, price range, and sort are all
+ * server-side — every filter change triggers a reload against the backend,
+ * so pagination and ordering span the whole result set, not just one page.
  */
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
@@ -83,16 +83,18 @@ const PAGE_SIZE = 24;
             </div>
           </div>
           <div class="filter-block">
-            <h5>Price range (this page)</h5>
+            <h5>Price range</h5>
             <div class="mono" style="font-size:12px;color:var(--text-dim);
               display:flex;justify-content:space-between;margin-bottom:8px">
               <span>\${{ priceMin() }}</span><span>\${{ priceMax() }}+</span>
             </div>
             <div style="display:flex;gap:8px">
               <input type="number" class="input" [ngModel]="priceMin()"
-                (ngModelChange)="priceMin.set(+$event)" style="padding:7px;font-size:13px" />
+                (ngModelChange)="priceMin.set(+$event); onPriceChange()"
+                style="padding:7px;font-size:13px" />
               <input type="number" class="input" [ngModel]="priceMax()"
-                (ngModelChange)="priceMax.set(+$event)" style="padding:7px;font-size:13px" />
+                (ngModelChange)="priceMax.set(+$event); onPriceChange()"
+                style="padding:7px;font-size:13px" />
             </div>
           </div>
         </aside>
@@ -120,7 +122,7 @@ const PAGE_SIZE = 24;
             <div style="display:flex;align-items:center;gap:6px">
               <app-icon name="sort" [size]="14" />
               <select class="select" style="width:190px" [ngModel]="sort()"
-                (ngModelChange)="sort.set($event)">
+                (ngModelChange)="changeSort($event)">
                 @for (s of sortOptions; track s) {
                   <option [value]="s">{{ sortLabels[s] }}</option>
                 }
@@ -189,7 +191,7 @@ export class ProductCatalogComponent {
   protected readonly sortLabels = SORT_LABELS;
   protected readonly sites = [
     { id: 'ebay', label: 'eBay' },
-    { id: 'walmart', label: 'Walmart' },
+    { id: 'sport-direct', label: 'Sport-Direct' },
     { id: 'jumia', label: 'Jumia' },
   ];
 
@@ -207,15 +209,11 @@ export class ProductCatalogComponent {
   protected readonly priceMax = signal(2000);
 
   private readonly searchInput = new Subject<string>();
+  private readonly priceInput = new Subject<void>();
 
-  /** Products after client-side price filter + sort. */
-  protected readonly visible = computed(() => {
-    const items = this.data()?.items ?? [];
-    const lo = this.priceMin();
-    const hi = this.priceMax();
-    const filtered = items.filter((p) => p.pricing.current >= lo && p.pricing.current <= hi);
-    return [...filtered].sort(this.comparator(this.sort()));
-  });
+  /** Items as returned by the backend — filtering, sorting and pagination
+   *  all happen server-side, so no client-side post-processing is needed. */
+  protected readonly visible = computed(() => this.data()?.items ?? []);
 
   protected readonly heading = computed(() => {
     if (this.query()) return `Results for "${this.query()}"`;
@@ -232,6 +230,11 @@ export class ProductCatalogComponent {
         this.load();
       });
 
+    this.priceInput.pipe(debounceTime(400)).subscribe(() => {
+      this.page.set(1);
+      this.load();
+    });
+
     // React to ?q= from the navbar search (and direct links). Fires once on
     // init too, which performs the first load.
     this.route.queryParamMap.subscribe((params) => {
@@ -245,6 +248,16 @@ export class ProductCatalogComponent {
 
   protected onSearch(value: string): void {
     this.searchInput.next(value);
+  }
+
+  protected onPriceChange(): void {
+    this.priceInput.next();
+  }
+
+  protected changeSort(value: SortOption): void {
+    this.sort.set(value);
+    this.page.set(1);
+    this.load();
   }
 
   protected pickCategory(id: SupplementCategory | null): void {
@@ -273,19 +286,21 @@ export class ProductCatalogComponent {
 
     const q = this.query().trim();
     const sites = this.selectedSites().size ? [...this.selectedSites()] : undefined;
+    const lo = this.priceMin();
+    const hi = this.priceMax();
+    const common = {
+      page: this.page(),
+      limit: PAGE_SIZE,
+      category: this.category() ?? undefined,
+      site: sites,
+      min_price: lo > 0 ? lo : undefined,
+      // priceMax renders as "$N+", i.e. the slider ceiling means "no upper cap".
+      max_price: hi > 0 && hi < 2000 ? hi : undefined,
+      sort: this.sort(),
+    };
     const request = q
-      ? this.api.searchProducts(q, {
-          page: this.page(),
-          limit: PAGE_SIZE,
-          category: this.category() ?? undefined,
-          site: sites,
-        })
-      : this.api.getProducts({
-          page: this.page(),
-          limit: PAGE_SIZE,
-          category: this.category() ?? undefined,
-          site: sites,
-        });
+      ? this.api.searchProducts(q, common)
+      : this.api.getProducts(common);
 
     request.subscribe({
       next: (res) => {
@@ -346,23 +361,5 @@ export class ProductCatalogComponent {
     const next = new Set(this.watchlistIds());
     add ? next.add(id) : next.delete(id);
     this.watchlistIds.set(next);
-  }
-
-  private comparator(sort: SortOption): (a: ProductResponse, b: ProductResponse) => number {
-    switch (sort) {
-      case 'price_asc':
-        return (a, b) => a.pricing.current - b.pricing.current;
-      case 'price_desc':
-        return (a, b) => b.pricing.current - a.pricing.current;
-      case 'rating_desc':
-        return (a, b) => (b.ratings?.score ?? 0) - (a.ratings?.score ?? 0);
-      case 'discount_desc':
-        return (a, b) => (b.pricing.discount_pct ?? 0) - (a.pricing.discount_pct ?? 0);
-      case 'price_per_serving_asc':
-        return (a, b) =>
-          (a.pricing.per_serving ?? Infinity) - (b.pricing.per_serving ?? Infinity);
-      default:
-        return (a, b) => +new Date(b.scraped_at) - +new Date(a.scraped_at);
-    }
   }
 }

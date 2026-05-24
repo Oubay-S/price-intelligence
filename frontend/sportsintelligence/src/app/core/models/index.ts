@@ -9,3 +9,4 @@ export * from './alert.model';
 export * from './stats.model';
 export * from './query.model';
 export * from './ws.model';
+export * from './analytics.model';
