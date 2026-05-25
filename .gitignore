@@ -17,7 +17,7 @@
 gcp-credentials.json
 service-account*.json
 keyfile*.json
-
+gcp-bq-views.json
 # --------------------------
 # PYTHON
 # --------------------------
@@ -165,6 +165,21 @@ infra/terraform/override.tf
 
 
 CLAUDE.md
+.github/
+GEMINI.md
+
+# --------------------------
+# Playwright CLI session artifacts
+# --------------------------
+.playwright-cli/
+#--------------------------
+#Google cloud service account keys
+#----------------------------
+
+ecommerce-price-intelligence-ea55a20ddf78.json
+
+memory/
+
 DATA_ENGINEER_WORK_SUMMARY.md
 data-analysis/outputs/app/
 data-analysis/outputs/figures/
