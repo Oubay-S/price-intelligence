@@ -9,21 +9,29 @@ import sys
 def _configure_writable_runtime_dirs():
     runtime_root = Path(os.environ.get("EBAY_CHROME_RUNTIME_DIR", "/tmp/ebay_chrome"))
     runtime_root.mkdir(parents=True, exist_ok=True)
-    home_dir = runtime_root / "home"
-    home_dir.mkdir(parents=True, exist_ok=True)
-    (runtime_root / "undetected_chromedriver").mkdir(parents=True, exist_ok=True)
-    for env_name, child in (
-        ("XDG_CACHE_HOME", "cache"),
-        ("XDG_CONFIG_HOME", "config"),
-        ("XDG_DATA_HOME", "data"),
-    ):
-        path = runtime_root / child
-        path.mkdir(parents=True, exist_ok=True)
-        os.environ.setdefault(env_name, str(path))
 
-    current_home = Path(os.environ.get("HOME", str(home_dir)))
-    if not os.access(current_home, os.W_OK):
-        os.environ["HOME"] = str(home_dir)
+    runtime_dirs = {
+        "HOME": runtime_root / "home",
+        "XDG_CACHE_HOME": runtime_root / "cache",
+        "XDG_CONFIG_HOME": runtime_root / "config",
+        "XDG_DATA_HOME": runtime_root / "data",
+    }
+    for path in runtime_dirs.values():
+        path.mkdir(parents=True, exist_ok=True)
+    (runtime_root / "undetected_chromedriver").mkdir(parents=True, exist_ok=True)
+
+    # Airflow containers can have a writable HOME but a non-writable ~/.local/share.
+    # Force Chrome/undetected-chromedriver runtime state into /tmp where the task user can write.
+    if os.environ.get("AIRFLOW_HOME") or os.path.exists("/.dockerenv"):
+        for env_name, path in runtime_dirs.items():
+            os.environ[env_name] = str(path)
+    else:
+        for env_name, path in runtime_dirs.items():
+            os.environ.setdefault(env_name, str(path))
+
+    print(f"eBay Chrome runtime directory: {runtime_root}")
+    print(f"eBay Chrome HOME: {os.environ.get('HOME')}")
+    print(f"eBay Chrome XDG_DATA_HOME: {os.environ.get('XDG_DATA_HOME')}")
     return runtime_root
 
 
@@ -104,7 +112,6 @@ def _launch_driver():
             driver = uc.Chrome(
                 options=_build_chrome_options(),
                 version_main=chrome_version,
-                driver_executable_path=str(EBAY_CHROME_RUNTIME_ROOT / "undetected_chromedriver" / "chromedriver"),
                 use_subprocess=True,
                 headless=False,
             )
