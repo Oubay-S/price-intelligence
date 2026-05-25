@@ -94,6 +94,7 @@ const MAX_PRODUCTS = 4;
           <div class="card empty-state">
             <div class="big">Comparison failed.</div>
             <div>{{ error()!.message }}</div>
+            <button class="btn ghost" style="margin-top:14px" (click)="retry()">Retry</button>
           </div>
         } @else if (!selectedIds().length) {
           <div class="card empty-state">
@@ -272,6 +273,10 @@ export class ComparePageComponent {
   protected clearAll(): void {
     this.selectedIds.set([]);
     this.comparisons.set([]);
+  }
+
+  protected retry(): void {
+    this.loadComparison();
   }
 
   protected labelFor(id: string): string {

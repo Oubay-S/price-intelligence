@@ -128,6 +128,12 @@ export class AuthService {
     );
   }
 
+  /** Clear local session without a server round-trip. Called by the error
+   *  interceptor when a 401 is unrecoverable (refresh already failed). */
+  clearSession(): void {
+    this.clearTokens();
+  }
+
   // --- token persistence -----------------------------------------------------
 
   private storeTokens(tokens: TokenPair): void {

@@ -23,6 +23,7 @@ import {
 } from '../../../core/models';
 import { ApiService } from '../../../core/services/api.service';
 import { ChartComponent } from '../../../shared/components/chart/chart';
+import { LoadingSkeletonComponent } from '../../../shared/components/loading-skeleton/loading-skeleton';
 
 const STORE_COLORS: Record<string, string> = {
   ebay: '#3b82f6',
@@ -39,7 +40,7 @@ function colorFor(key: string, i: number): string {
 @Component({
   selector: 'app-analytics-dashboard',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DecimalPipe, ChartComponent],
+  imports: [DecimalPipe, ChartComponent, LoadingSkeletonComponent],
   template: `
     <div class="page fade-up">
       <div class="container">
@@ -56,7 +57,7 @@ function colorFor(key: string, i: number): string {
         </div>
 
         @if (loading()) {
-          <div class="card empty-state"><div class="big">Loading analytics…</div></div>
+          <app-loading-skeleton variant="card-grid" [count]="6" />
         } @else if (error()) {
           <div class="card empty-state">
             <div class="big">Couldn't load analytics.</div>
