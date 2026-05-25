@@ -46,6 +46,7 @@ volumes:
     # --------------------------
 x-airflow-common: &airflow-common
   build: .
+  image: price-intel-airflow:latest
   environment:
 
     # --- Moteur d'exécution ---
@@ -355,7 +356,9 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    image: price-intel-backend:latest
     container_name: backend
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
     environment:
       # --- Base de données applicative ---
       DATABASE_URL: postgresql+psycopg2://${APP_DB_USER:-app_user}:${APP_DB_PASSWORD:-app_secret}@postgres-app:5432/${APP_DB_NAME:-price_intelligence}
@@ -399,6 +402,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    image: price-intel-frontend:latest
     container_name: frontend
     ports:
       - "4200:80"
