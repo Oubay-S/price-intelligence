@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_prices
+    description: "Cleaned product prices from the raw BigQuery products table."
+    columns:
+      - name: product_id
+        description: "Stable product key generated from store, category, and product name."
+        tests:
+          - not_null
+      - name: product_name
+        description: "Clean product name from the scraper output."
+        tests:
+          - not_null
+      - name: store_name
+        description: "Marketplace/source name normalized to uppercase."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['JUMIA', 'EBAY', 'SPORT-DIRECT']
+      - name: category_name
+        description: "Lowercase product category."
+        tests:
+          - not_null
+      - name: price_numeric
+        description: "Current product price parsed as a numeric value."
+        tests:
+          - not_null
+      - name: scraped_at_ts
+        description: "Timestamp when the product was scraped."
+        tests:
+          - not_null

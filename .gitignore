@@ -78,6 +78,9 @@ data/
 *.parquet
 *.json.gz
 *.jsonl
+*.json
+upload_to_bq.json
+scrapers/**/*.json
 scraped_data/
 exports/
 downloads/
@@ -132,9 +135,13 @@ dbt/.user.yml               # Fichier utilisateur local dbt
 postgres_data/
 bigtable_data/
 
-# --------------------------
-# IDEs & Éditeurs
-# --------------------------
+# Scraper internals
+scrapers/nifi_inbox/*
+!scrapers/nifi_inbox/.gitkeep
+scrapers/backup/
+scrapers/*debug*.html
+scrapers/**/*debug*.html
+scrapers/bigtable_dashboard.html
 .vscode/
 !.vscode/extensions.json    # On peut partager les extensions recommandées
 .idea/
@@ -158,3 +165,8 @@ infra/terraform/override.tf
 
 
 CLAUDE.md
+DATA_ENGINEER_WORK_SUMMARY.md
+data-analysis/outputs/app/
+data-analysis/outputs/figures/
+data-analysis/notebooks/
+data-analysis/reports/

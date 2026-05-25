@@ -1,0 +1,7 @@
+# Ce dossier est destiné à recevoir les fichiers SQL d'initialisation
+# de la base de données applicative (postgres-app).
+#
+# Tout fichier .sql placé ici sera exécuté automatiquement
+# au premier démarrage du conteneur postgres-app.
+#
+# Exemple : schema.sql, seed.sql, etc.
