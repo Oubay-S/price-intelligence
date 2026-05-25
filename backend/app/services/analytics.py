@@ -44,8 +44,11 @@ from app.models.product import (
 from app.services.bigquery import (
     _CATEGORY_TO_RAW,
     _PRICE_CURRENCY,
+    _discount_pct,
+    _is_in_stock,
     _map_category,
     _parse_dt,
+    _safe_float,
     _site_token,
     _strip_title,
     _table_ref,
@@ -469,30 +472,23 @@ def get_trending_products(
 
 
 # ---------------------------------------------------------------------------
-# get_product_comparison — cross-site snapshot for 2-4 products
+# get_comparison_for_product — per-store snapshot from the raw products table
 # ---------------------------------------------------------------------------
 #
-# Expected mart: `mart_site_prices` (one row per (product, site) latest snapshot)
-#   canonical_product_id STRING,
-#   product_name STRING,
-#   image_url STRING,
-#   category STRING,
-#   site STRING,
-#   price_usd FLOAT64,
-#   original_price FLOAT64,
-#   discount_pct FLOAT64,
-#   listing_url STRING,
-#   in_stock BOOL,
-#   last_seen TIMESTAMP,
-#   shipping_cost FLOAT64,
-#   landed_cost FLOAT64
+# There is no `mart_site_prices` mart yet, and the raw `products` table keys
+# each listing by product_url (one row per store), so a canonical_product_id
+# (= TO_HEX(SHA256(product_url))) resolves to a single store's latest scrape.
+# We build the ProductComparison straight off the raw table; the compare page
+# shows each selected product with its store. (Cross-store matching of the
+# *same* product needs a canonical link the raw data doesn't carry — that's a
+# future mart job.)
 # ---------------------------------------------------------------------------
 
 @redis_cached(prefix="analytics:get_comparison_for_product", ttl=60, key_dim="product_id")
 def get_comparison_for_product(product_id: str) -> Optional[ProductComparison]:
     """
-    Fetch one product's latest per-site snapshot from `mart_site_prices` and
-    build a ProductComparison. Returns None if the product has no rows.
+    Build a ProductComparison for one product from the raw `products` table.
+    Returns None if the product_id has no rows.
 
     The compare endpoint calls this once per product_id under
     asyncio.to_thread + asyncio.gather so each BigQuery job runs in parallel.
@@ -500,22 +496,21 @@ def get_comparison_for_product(product_id: str) -> Optional[ProductComparison]:
     """
     sql = f"""
         SELECT
-            canonical_product_id,
-            product_name,
+            TO_HEX(SHA256(product_url)) AS canonical_product_id,
+            name,
             image_url,
             category,
-            site,
-            price_usd,
-            original_price,
-            discount_pct,
-            listing_url,
-            in_stock,
-            last_seen,
-            shipping_cost,
-            landed_cost
-        FROM {_mart_ref(settings.BIGQUERY_MART_SITE_PRICES)}
-        WHERE canonical_product_id = @product_id
-        ORDER BY price_usd ASC
+            store,
+            current_price,
+            price_before_discount,
+            product_url,
+            availability,
+            scraped_at
+        FROM {_table_ref()}
+        WHERE TO_HEX(SHA256(product_url)) = @product_id
+          AND SAFE_CAST(current_price AS FLOAT64) IS NOT NULL
+        QUALIFY ROW_NUMBER() OVER
+            (PARTITION BY product_url ORDER BY scraped_at DESC) = 1
     """
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
@@ -526,38 +521,29 @@ def get_comparison_for_product(product_id: str) -> Optional[ProductComparison]:
     if not rows:
         return None
 
-    first = rows[0]
-    sites_prices: list[SitePriceSnapshot] = [
-        SitePriceSnapshot(
-            site=row["site"],
-            price_usd=float(row["price_usd"]),
-            original_price=(
-                float(row["original_price"])
-                if row["original_price"] is not None
-                else None
-            ),
-            discount_pct=(
-                float(row["discount_pct"])
-                if row["discount_pct"] is not None
-                else None
-            ),
-            listing_url=row["listing_url"],
-            in_stock=bool(row["in_stock"]),
-            last_seen=_parse_dt(row["last_seen"]),
-            shipping_cost=(
-                float(row["shipping_cost"])
-                if row["shipping_cost"] is not None
-                else None
-            ),
-            landed_cost=(
-                float(row["landed_cost"])
-                if row["landed_cost"] is not None
-                else None
-            ),
+    sites_prices: list[SitePriceSnapshot] = []
+    for row in rows:
+        current = _safe_float(row.get("current_price"))
+        if current is None:
+            continue
+        original = _safe_float(row.get("price_before_discount"))
+        sites_prices.append(
+            SitePriceSnapshot(
+                site=(row.get("store") or "unknown").lower(),
+                price_usd=current,
+                original_price=original,
+                discount_pct=_discount_pct(current, original),
+                listing_url=row.get("product_url") or "",
+                in_stock=_is_in_stock(row.get("availability")),
+                last_seen=_parse_dt(row.get("scraped_at")),
+                shipping_cost=None,
+                landed_cost=None,
+            )
         )
-        for row in rows
-    ]
+    if not sites_prices:
+        return None
 
+    first = rows[0]
     prices = [s.price_usd for s in sites_prices]
     min_price = min(prices)
     max_price = max(prices)
@@ -571,9 +557,9 @@ def get_comparison_for_product(product_id: str) -> Optional[ProductComparison]:
 
     return ProductComparison(
         canonical_product_id=first["canonical_product_id"],
-        product_name=first["product_name"],
-        image_url=first.get("image_url"),
-        category=SupplementCategory(first["category"]),
+        product_name=_strip_title(first.get("name")) or "(unknown)",
+        image_url=first.get("image_url") or None,
+        category=_map_category(first.get("category")),
         sites_prices=sites_prices,
         best_site=best_site,
         worst_site=worst_site,
