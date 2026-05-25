@@ -46,6 +46,7 @@ volumes:
     # --------------------------
 x-airflow-common: &airflow-common
   build: .
+  image: price-intel-airflow:latest
   environment:
 
     # --- Moteur d'exécution ---
@@ -355,6 +356,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    image: price-intel-backend:latest
     container_name: backend
     # `env_file` loads every non-host-specific setting from backend/.env
     # (SECRET_KEY, ALGORITHM, GCP_PROJECT_ID, BIGQUERY_DATASET/TABLE,
@@ -437,6 +439,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    image: price-intel-frontend:latest
     container_name: frontend
     ports:
       - "4200:80"

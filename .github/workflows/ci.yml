@@ -2,35 +2,12 @@
 # CI/CD Pipeline — Price Intelligence Platform
 # Déclenché sur chaque push et pull request vers develop/main
 # =============================================================
-# Architecture de la pipeline :
-#
-#   ┌─────────────┐   ┌──────────────┐   ┌──────────────────┐
-#   │  🔍 Lint    │   │  🏗️ Build    │   │  🛡️ Security     │
-#   │  Python     │   │  3 images    │   │  SAST + Secrets  │
-#   └──────┬──────┘   └──────┬───────┘   └────────┬─────────┘
-#          │                 │                     │
-#          └─────────┬───────┘                     │
-#                    ▼                             │
-#          ┌─────────────────┐                     │
-#          │  🧪 Tests       │                     │
-#          │  Integration    │                     │
-#          └─────────┬───────┘                     │
-#                    │                             │
-#                    └──────────┬──────────────────┘
-#                               ▼
-#                    ┌─────────────────┐
-#                    │  ✅ Gate        │
-#                    │  Merge Ready    │
-#                    └─────────────────┘
-# =============================================================
 
 name: CI Pipeline — Price Intelligence
 
 on:
-  # Se déclenche sur CHAQUE push, peu importe la branche
   push:
     branches: ['**']
-  # Se déclenche sur les PRs vers develop et main
   pull_request:
     branches: [develop, main]
 
@@ -51,11 +28,49 @@ env:
 
 jobs:
   # ═══════════════════════════════════════════
+  # JOB 0 — DÉTECTION INTELLIGENTE DES MODIFICATIONS
+  # ═══════════════════════════════════════════
+  changes:
+    name: 🔍 Détecter les modifications
+    runs-on: ubuntu-latest
+    outputs:
+      python: ${{ steps.filter.outputs.python }}
+      dbt: ${{ steps.filter.outputs.dbt }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+      docker: ${{ steps.filter.outputs.docker }}
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 🔍 Détection des changements de fichiers
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            python:
+              - '**.py'
+              - '*requirements.txt'
+              - 'airflow/**'
+              - 'backend/**'
+              - 'scrapers/**'
+              - 'tests/**'
+            dbt:
+              - 'dbt/**'
+            frontend:
+              - 'frontend/**'
+            docker:
+              - '**/Dockerfile'
+              - 'docker-compose.yml'
+              - '.github/workflows/ci.yml'
+
+  # ═══════════════════════════════════════════
   # JOB 1 — LINT & QUALITÉ DE CODE
   # ═══════════════════════════════════════════
   lint:
     name: 🔍 Lint & Qualité de Code
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.python == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     steps:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
@@ -64,6 +79,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: |
+            airflow/requirements.txt
+            backend/requirements.txt
+            data-analysis/requirements.txt
 
       - name: 📦 Installer les outils de lint
         run: pip install flake8 pylint
@@ -114,6 +134,8 @@ jobs:
   pipeline-tests:
     name: 🧪 Tests Pipeline Data
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.python == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     steps:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
@@ -122,6 +144,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: |
+            airflow/requirements.txt
+            backend/requirements.txt
+            data-analysis/requirements.txt
 
       - name: 📦 Installer pytest et dépendances
         run: |
@@ -136,6 +163,8 @@ jobs:
   dbt-validate:
     name: 🔧 dbt — Validation SQL
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.dbt == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     steps:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
@@ -144,6 +173,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: |
+            airflow/requirements.txt
+            backend/requirements.txt
+            data-analysis/requirements.txt
 
       - name: 📦 Installer dbt-bigquery
         run: pip install dbt-bigquery
@@ -187,6 +221,8 @@ jobs:
   frontend-quality:
     name: 🎨 Frontend Quality
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.frontend == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     steps:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
@@ -211,11 +247,13 @@ jobs:
         run: npm run build
 
   # ═══════════════════════════════════════════
-  # JOB 2 — BUILD DES 3 IMAGES DOCKER
+  # JOB 2 — BUILD UNIQUE DES IMAGES DOCKER (Avec exportation)
   # ═══════════════════════════════════════════
   build:
     name: 🏗️ Build Docker (Airflow + Backend + Frontend)
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.python == 'true' || needs.changes.outputs.frontend == 'true' || needs.changes.outputs.docker == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     steps:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
@@ -223,48 +261,66 @@ jobs:
       - name: 🐳 Configurer Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # Build & Export Airflow
       - name: 🏗️ Build — Image Airflow custom
         uses: docker/build-push-action@v5
         with:
           context: .
           push: false
-          tags: price-intel-airflow:ci-${{ github.sha }}
+          tags: price-intel-airflow:latest
+          outputs: type=docker,dest=/tmp/price-intel-airflow.tar
           cache-from: type=gha,scope=airflow
           cache-to: type=gha,mode=max,scope=airflow
 
+      # Build & Export Backend
       - name: 🏗️ Build — Image Backend FastAPI
         uses: docker/build-push-action@v5
         with:
           context: ./backend
           push: false
-          tags: price-intel-backend:ci-${{ github.sha }}
+          tags: price-intel-backend:latest
+          outputs: type=docker,dest=/tmp/price-intel-backend.tar
           cache-from: type=gha,scope=backend
           cache-to: type=gha,mode=max,scope=backend
 
+      # Build & Export Frontend
       - name: 🏗️ Build — Image Frontend Angular
         uses: docker/build-push-action@v5
         with:
           context: ./frontend
           push: false
-          tags: price-intel-frontend:ci-${{ github.sha }}
+          tags: price-intel-frontend:latest
+          outputs: type=docker,dest=/tmp/price-intel-frontend.tar
           cache-from: type=gha,scope=frontend
           cache-to: type=gha,mode=max,scope=frontend
 
-      - name: ✅ Toutes les images se build correctement
-        run: echo "✅ 3/3 images Docker buildées avec succès"
+      - name: 📤 Uploader les images Docker comme artefacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-images
+          path: /tmp/price-intel-*.tar
+          retention-days: 1
 
   # ═══════════════════════════════════════════
-  # JOB 3 — TESTS D'INTÉGRATION
-  # Lance l'infra complète et vérifie que
-  # TOUS les services communiquent entre eux
+  # JOB 3 — TESTS D'INTÉGRATION (Sans reconstruction)
   # ═══════════════════════════════════════════
   integration-tests:
     name: 🧪 Tests d'Intégration
     runs-on: ubuntu-latest
-    needs: [lint, build]
+    needs: [changes, lint, build]
+    if: (needs.changes.outputs.python == 'true' || needs.changes.outputs.docker == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') && always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
     steps:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
+
+      - name: 📥 Télécharger les images Docker pre-buildées
+        uses: actions/download-artifact@v4
+        with:
+          name: docker-images
+          path: /tmp
+
+      - name: 🐳 Charger l'image Airflow dans Docker
+        run: docker load -i /tmp/price-intel-airflow.tar
 
       - name: 📝 Créer les fichiers de configuration
         run: |
@@ -274,9 +330,9 @@ jobs:
           chmod -R 777 logs airflow/dags plugins scrapers
 
       # ─── COUCHE DATA ───
-      - name: 🐳 Démarrer la couche DATA
+      - name: 🐳 Démarrer la couche DATA (Sans --build, utilise l'image chargée)
         run: |
-          docker compose up -d --build \
+          docker compose up -d \
             bigtable-emulator \
             postgres \
             airflow-init
@@ -354,7 +410,7 @@ jobs:
       # ─── COUCHE APPLICATIVE ───
       - name: 🐳 Démarrer la couche APPLICATIVE
         run: |
-          docker compose up -d --build \
+          docker compose up -d \
             postgres-app \
             redis
 
@@ -430,6 +486,8 @@ jobs:
   sast:
     name: 🛡️ SAST — Analyse de Sécurité Statique
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.python == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     permissions:
       contents: read
       security-events: write
@@ -441,6 +499,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: |
+            airflow/requirements.txt
+            backend/requirements.txt
+            data-analysis/requirements.txt
 
       - name: 📦 Installer Bandit (SAST Python)
         run: pip install bandit[toml]
@@ -523,6 +586,8 @@ jobs:
   dependency-scan:
     name: 📦 Scan de Dépendances (CVE)
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.python == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     steps:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
@@ -531,6 +596,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: |
+            airflow/requirements.txt
+            backend/requirements.txt
+            data-analysis/requirements.txt
 
       - name: 📦 Installer pip-audit
         run: pip install pip-audit
@@ -556,39 +626,36 @@ jobs:
           retention-days: 30
 
   # ═══════════════════════════════════════════
-  # JOB 7 — SCAN DOCKER (Container Security)
-  # Scanne les 3 images Docker du projet
+  # JOB 7 — SCAN DOCKER ( container Security — Ultra rapide sans build )
   # ═══════════════════════════════════════════
   docker-security:
     name: 🐳 Scan Sécurité Docker
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [changes, build]
+    if: (needs.changes.outputs.python == 'true' || needs.changes.outputs.frontend == 'true' || needs.changes.outputs.docker == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') && always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
     strategy:
       matrix:
         include:
           - name: Airflow
-            context: "."
-            dockerfile: "./Dockerfile"
-            tag: "price-intel-airflow:scan"
+            image_name: price-intel-airflow
           - name: Backend
-            context: "./backend"
-            dockerfile: "./backend/Dockerfile"
-            tag: "price-intel-backend:scan"
+            image_name: price-intel-backend
           - name: Frontend
-            context: "./frontend"
-            dockerfile: "./frontend/Dockerfile"
-            tag: "price-intel-frontend:scan"
+            image_name: price-intel-frontend
     steps:
-      - name: 📥 Checkout du code
-        uses: actions/checkout@v4
+      - name: 📥 Télécharger les images Docker
+        uses: actions/download-artifact@v4
+        with:
+          name: docker-images
+          path: /tmp
 
-      - name: 🏗️ Build ${{ matrix.name }}
-        run: docker build -t ${{ matrix.tag }} -f ${{ matrix.dockerfile }} ${{ matrix.context }}
+      - name: 🐳 Charger l'image dans Docker local
+        run: docker load -i /tmp/${{ matrix.image_name }}.tar
 
       - name: 🐳 Trivy — Scan ${{ matrix.name }}
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ matrix.tag }}
+          image-ref: "${{ matrix.image_name }}:latest"
           format: "table"
           exit-code: "0"
           severity: "CRITICAL,HIGH"
@@ -597,7 +664,7 @@ jobs:
       - name: 📊 Trivy — Rapport JSON ${{ matrix.name }}
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ matrix.tag }}
+          image-ref: "${{ matrix.image_name }}:latest"
           format: "json"
           output: "trivy-${{ matrix.name }}-report.json"
           severity: "CRITICAL,HIGH,MEDIUM"
@@ -617,6 +684,8 @@ jobs:
   iac-scan:
     name: 🏗️ Scan Infrastructure (IaC)
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.docker == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     steps:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
@@ -652,7 +721,7 @@ jobs:
         continue-on-error: true
 
   # ═══════════════════════════════════════════
-  # JOB 9 — GATE FINALE
+  # JOB 9 — GATE FINALE (Supporte les jobs skipped)
   # ═══════════════════════════════════════════
   merge-gate:
     name: ✅ Merge Gate — Prêt pour Review
@@ -693,31 +762,31 @@ jobs:
 
           CRITICAL_FAILED=false
 
-          if [ "${{ needs.lint.result }}" != "success" ]; then
+          if [ "${{ needs.lint.result }}" = "failure" ]; then
             echo "❌ BLOQUANT: Lint a échoué"
             CRITICAL_FAILED=true
           fi
-          if [ "${{ needs.pipeline-tests.result }}" != "success" ]; then
+          if [ "${{ needs.pipeline-tests.result }}" = "failure" ]; then
             echo "❌ BLOQUANT: Tests Pipeline a échoué"
             CRITICAL_FAILED=true
           fi
-          if [ "${{ needs.dbt-validate.result }}" != "success" ]; then
+          if [ "${{ needs.dbt-validate.result }}" = "failure" ]; then
             echo "❌ BLOQUANT: Validation dbt a échoué"
             CRITICAL_FAILED=true
           fi
-          if [ "${{ needs.build.result }}" != "success" ]; then
+          if [ "${{ needs.build.result }}" = "failure" ]; then
             echo "❌ BLOQUANT: Build Docker a échoué"
             CRITICAL_FAILED=true
           fi
-          if [ "${{ needs.integration-tests.result }}" != "success" ]; then
+          if [ "${{ needs.integration-tests.result }}" = "failure" ]; then
             echo "❌ BLOQUANT: Tests d'intégration ont échoué"
             CRITICAL_FAILED=true
           fi
-          if [ "${{ needs.sast.result }}" != "success" ]; then
+          if [ "${{ needs.sast.result }}" = "failure" ]; then
             echo "❌ BLOQUANT: SAST a détecté des vulnérabilités critiques"
             CRITICAL_FAILED=true
           fi
-          if [ "${{ needs.secrets-scan.result }}" != "success" ]; then
+          if [ "${{ needs.secrets-scan.result }}" = "failure" ]; then
             echo "❌ BLOQUANT: Des secrets ont été détectés dans le code !"
             CRITICAL_FAILED=true
           fi
@@ -730,34 +799,28 @@ jobs:
           else
             echo "CRITICAL_FAILED=false" >> $GITHUB_ENV
             echo ""
-            echo "✅ TOUS LES CHECKS CRITIQUES SONT PASSÉS"
+            echo "✅ TOUS LES CHECKS CRITIQUES SONT PASSÉS (OU SKIPPÉS)"
             echo "🚀 Le code est prêt pour la review et le merge !"
           fi
 
       - name: 📧 Préparer les destinataires de l'email
-        if: failure() || env.CRITICAL_FAILED == 'true'
+        if: (failure() || env.CRITICAL_FAILED == 'true') && always()
         run: |
-          # Essayer de récupérer l'email de l'auteur du commit
           ACTOR_EMAIL="${{ github.event.head_commit.author.email }}"
-          
-          # S'il n'est pas disponible (ex: PR), utiliser l'email par défaut de GitHub
           if [ -z "$ACTOR_EMAIL" ] || [ "$ACTOR_EMAIL" = "null" ]; then
             ACTOR_EMAIL="${{ github.actor }}@users.noreply.github.com"
           fi
-          
-          # Ajouter les autres membres de l'équipe (s'il y en a dans les secrets)
           TEAM_EMAILS="${{ secrets.TEAM_EMAILS }}"
           if [ -n "$TEAM_EMAILS" ]; then
             FINAL_TO="$ACTOR_EMAIL, $TEAM_EMAILS"
           else
             FINAL_TO="$ACTOR_EMAIL"
           fi
-          
           echo "Destinataires finaux : $FINAL_TO"
           echo "EMAIL_TO=$FINAL_TO" >> $GITHUB_ENV
 
       - name: 📧 Envoyer Email de Notification (Si Échec)
-        if: failure() || env.CRITICAL_FAILED == 'true'
+        if: (failure() || env.CRITICAL_FAILED == 'true') && always()
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: ${{ secrets.SMTP_SERVER }}
