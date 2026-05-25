@@ -186,7 +186,7 @@ export class AlertsPageComponent implements OnDestroy {
             image_url: null,
             site: e.site,
             listing_url: '',
-            category: 'strength_nutrition',
+            category: 'strength_home_gym',
             price_before: e.price_before,
             price_after: e.price_after,
             currency: e.currency,

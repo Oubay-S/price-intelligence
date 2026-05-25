@@ -5,19 +5,17 @@
  * frontend can both type-check and iterate (e.g. to render filter options).
  */
 
+// Only categories that exist in the scraped BigQuery data. Mirror of
+// backend SupplementCategory enum; the raw↔enum bridge is in
+// backend services/bigquery.py. Dropped nutrition/endurance/wearables/
+// combat-protection — they returned no products.
 export const SUPPLEMENT_CATEGORIES = [
-  'strength_nutrition',
   'strength_home_gym',
-  'strength_wearables',
   'team_football',
   'team_basketball',
   'team_volleyball',
   'team_racket',
-  'endurance_footwear',
-  'endurance_tech',
-  'endurance_fuel',
   'combat_boxing_mma',
-  'combat_protection',
 ] as const;
 export type SupplementCategory = (typeof SUPPLEMENT_CATEGORIES)[number];
 
@@ -51,18 +49,12 @@ export type SortOption = (typeof SORT_OPTIONS)[number];
 
 /** Human-readable labels for the category enum — used in filter UIs. */
 export const CATEGORY_LABELS: Record<SupplementCategory, string> = {
-  strength_nutrition: 'Nutrition',
-  strength_home_gym: 'Home Gym',
-  strength_wearables: 'Wearables',
+  strength_home_gym: 'Gym',
   team_football: 'Football',
   team_basketball: 'Basketball',
   team_volleyball: 'Volleyball',
   team_racket: 'Racket Sports',
-  endurance_footwear: 'Running Footwear',
-  endurance_tech: 'Endurance Tech',
-  endurance_fuel: 'Endurance Fuel',
-  combat_boxing_mma: 'Boxing & MMA',
-  combat_protection: 'Combat Protection',
+  combat_boxing_mma: 'Combat Sports',
 };
 
 export const SORT_LABELS: Record<SortOption, string> = {

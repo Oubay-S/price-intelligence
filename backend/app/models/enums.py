@@ -9,19 +9,20 @@ from enum import Enum
 
 
 class SupplementCategory(str, Enum):
-    """Top-level product categories — maps to BigQuery category column."""
-    STRENGTH_NUTRITION = "strength_nutrition"
-    STRENGTH_HOME_GYM  = "strength_home_gym"
-    STRENGTH_WEARABLES = "strength_wearables"
-    TEAM_FOOTBALL      = "team_football"
-    TEAM_BASKETBALL    = "team_basketball"
-    TEAM_VOLLEYBALL    = "team_volleyball"
-    TEAM_RACKET        = "team_racket"
-    ENDURANCE_FOOTWEAR = "endurance_footwear"
-    ENDURANCE_TECH     = "endurance_tech"
-    ENDURANCE_FUEL     = "endurance_fuel"
-    COMBAT_BOXING_MMA  = "combat_boxing_mma"
-    COMBAT_PROTECTION  = "combat_protection"
+    """Top-level product categories — maps to the BigQuery ``category`` column.
+
+    Only categories that actually exist in the scraped data are listed; the
+    raw↔enum bridge lives in ``services/bigquery.py``. The earlier
+    nutrition / endurance / wearables / combat-protection buckets were dropped
+    because no scraped product maps to them (they returned empty catalogue
+    results).
+    """
+    STRENGTH_HOME_GYM  = "strength_home_gym"   # raw: gym, general
+    TEAM_FOOTBALL      = "team_football"        # raw: football
+    TEAM_BASKETBALL    = "team_basketball"      # raw: basketball
+    TEAM_VOLLEYBALL    = "team_volleyball"      # raw: Volleyball
+    TEAM_RACKET        = "team_racket"          # raw: Racket-Sports
+    COMBAT_BOXING_MMA  = "combat_boxing_mma"    # raw: combat-sports
 
 
 class NutritionSubcategory(str, Enum):

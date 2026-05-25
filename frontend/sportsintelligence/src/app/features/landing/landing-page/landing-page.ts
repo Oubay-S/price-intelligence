@@ -242,9 +242,9 @@ export class LandingPageComponent {
     },
     {
       cls: 'htile-ball',
-      label: 'Team · size 5',
-      price: '24.99',
-      img: 'https://images.unsplash.com/photo-1614632537190-23e4b2e69c88?w=700&q=80',
+      label: 'Gym · Whey Protein',
+      price: '249.00',
+      img: 'https://i.ebayimg.com/images/g/hqQAAeSwT4Rpozi1/s-l500.webp',
     },
   ];
 
