@@ -1,0 +1,8 @@
+beautifulsoup4
+requests
+selenium
+undetected-chromedriver
+webdriver-manager
+google-cloud-bigtable
+google-cloud-bigquery
+scrapy

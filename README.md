@@ -1,8 +1,10 @@
 # 🛒 Price Intelligence Platform
 
+[![CI Pipeline](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml)
+
 **Plateforme hybride Batch + Streaming de veille tarifaire e-commerce** spécialisée dans les produits de nutrition sportive (protéines, créatine, vitamines...).
 
-Le système scrape automatiquement les prix depuis **Jumia**, **Walmart** et **eBay**, les stocke dans Google Cloud Bigtable, puis les transforme via dbt pour alimenter des analyses statistiques et un tableau de bord interactif.
+Le système scrape automatiquement les prix depuis **Jumia**, **Sports Direct** et **eBay**, les stocke dans Google Cloud Bigtable, puis les transforme via dbt pour alimenter des analyses statistiques et un tableau de bord interactif.
 
 > 🎓 Projet académique — Data Engineering & Analytics · Pr. ELAACHAK · 2025-2026
 
@@ -32,7 +34,7 @@ Les prix des produits de nutrition sportive varient fortement d'une plateforme �
 
 ### Notre solution
 Une plateforme **100% automatisée** qui :
-1. 🕷️ **Scrape** les prix sur Jumia, Walmart et eBay chaque jour à 13h
+1. 🕷️ **Scrape** les prix sur Jumia, Sports Direct et eBay chaque jour à 13h
 2. 📡 **Ingère** les données en temps réel via Apache NiFi
 3. 💾 **Stocke** dans Google Cloud Bigtable (émulé en local)
 4. 🔄 **Transforme** les données brutes en modèles analytiques via dbt
@@ -42,7 +44,7 @@ Une plateforme **100% automatisée** qui :
 ### Flux de données simplifié
 ```
 Jumia ──┐
-Walmart ├──► Scrapers Python ──► NiFi (temps réel) ──► Bigtable ──► dbt ──► Analytics
+Sports Direct ├──► Scrapers Python ──► NiFi (temps réel) ──► Bigtable ──► dbt ──► Analytics
 eBay ───┘         │                                                           │
                   └──► Airflow (batch quotidien) ──────────────────────────────┘
                                                                               │
@@ -200,7 +202,7 @@ bigtable-emulator   Up (healthy)
 
 | Couche | Outil | Version | Rôle |
 |--------|-------|---------|------|
-| 🕷️ Scraping | Scrapy + BeautifulSoup | — | Extraction des prix depuis Jumia, Walmart, eBay |
+| 🕷️ Scraping | Scrapy + BeautifulSoup | — | Extraction des prix depuis Jumia, Sports Direct, eBay |
 | 📡 Streaming | Apache NiFi | 1.23.2 | Ingestion en temps réel des données scrapées |
 | ⏱️ Orchestration | Apache Airflow | 2.9.1 | Planification des scrapers (cron quotidien 13h) |
 | 💾 NoSQL | Google Cloud Bigtable | Émulateur | Stockage des données de prix (format wide-column) |
@@ -221,7 +223,7 @@ bigtable-emulator   Up (healthy)
 ### 1. Le scraping (Data Engineer)
 Les scrapers Python dans `scrapers/` utilisent Selenium + BeautifulSoup pour extraire les prix des produits de nutrition sportive depuis 3 marketplaces :
 - `scrapers/jumia/` → Scrape Jumia.ma
-- `scrapers/walmart/` → Scrape Walmart.com
+- `scrapers/sport-direct/` → Scrape SportsDirect.com
 - `scrapers/ebay/` → Scrape eBay.com
 
 Les données sont sauvegardées en fichiers JSON locaux (dans les sous-dossiers).
@@ -229,12 +231,12 @@ Les données sont sauvegardées en fichiers JSON locaux (dans les sous-dossiers)
 ### 2. L'orchestration (Data Engineer)
 Le DAG Airflow `price_intelligence_pipeline` (`airflow/dags/price_intelligence_dag.py`) :
 - Se déclenche **tous les jours à 13h** (`schedule_interval='0 13 * * *'`)
-- Lance les 3 scrapers **en parallèle** (Jumia, Walmart, eBay)
+- Lance les 3 scrapers **en parallèle** (Jumia, Sports Direct, eBay)
 - Puis charge les résultats dans Bigtable via `load_all_to_bigtable.py`
 
 ```
 task_jumia  ──┐
-task_walmart ──┼──► task_load_bigtable
+task_sport_direct ──┼──► task_load_bigtable
 task_ebay   ──┘
 ```
 
@@ -317,7 +319,7 @@ price-intelligence/
 │
 ├── 🕷️ scrapers/
 │   ├── jumia/                 # Scraper Jumia
-│   ├── walmart/               # Scraper Walmart
+│   ├── sport-direct/          # Scraper Sports Direct
 │   ├── ebay/                  # Scraper eBay
 │   ├── load_all_to_bigtable.py    # Charge les JSON dans Bigtable
 │   ├── nifi_to_bigtable.py        # Script NiFi → Bigtable
