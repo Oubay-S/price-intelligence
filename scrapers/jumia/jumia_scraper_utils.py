@@ -72,7 +72,12 @@ def scrape_jumia_category(query, output_file):
         with ThreadPoolExecutor(max_workers=5) as executor:
             # map maintains order, but here we just want the results
             details = list(executor.map(lambda url: scrape_product_details(url, session, headers, base_url), urls))
-            results = [d for d in details if d is not None]
+            scraped_results = [d for d in details if d is not None]
+            results = [d for d in scraped_results if d.get('current_price')]
+
+        skipped_without_price = len(scraped_results) - len(results)
+        if skipped_without_price:
+            print(f"Skipped {skipped_without_price} products without current_price for query: {query}")
                 
         if results:
             os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -81,7 +86,7 @@ def scrape_jumia_category(query, output_file):
             print(f"Success: {len(results)} products saved to {output_file}")
             return len(results)
         else:
-            print(f"No products successfully scraped for query: {query}")
+            print(f"No products successfully scraped with prices for query: {query}")
             return 0
             
     except Exception as e:
