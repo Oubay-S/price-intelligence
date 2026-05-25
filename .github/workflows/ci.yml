@@ -297,11 +297,25 @@ jobs:
           cache-from: type=gha,scope=frontend
           cache-to: type=gha,mode=max,scope=frontend
 
-      - name: 📤 Uploader les images Docker comme artefacts
+      - name: 📤 Uploader l'image Airflow comme artefact
         uses: actions/upload-artifact@v4
         with:
-          name: docker-images
-          path: /tmp/price-intel-*.tar
+          name: price-intel-airflow-artifact
+          path: /tmp/price-intel-airflow.tar
+          retention-days: 1
+
+      - name: 📤 Uploader l'image Backend comme artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: price-intel-backend-artifact
+          path: /tmp/price-intel-backend.tar
+          retention-days: 1
+
+      - name: 📤 Uploader l'image Frontend comme artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: price-intel-frontend-artifact
+          path: /tmp/price-intel-frontend.tar
           retention-days: 1
 
   # ═══════════════════════════════════════════
@@ -316,10 +330,10 @@ jobs:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
 
-      - name: 📥 Télécharger les images Docker pre-buildées
+      - name: 📥 Télécharger l'image Airflow pre-buildée
         uses: actions/download-artifact@v4
         with:
-          name: docker-images
+          name: price-intel-airflow-artifact
           path: /tmp
 
       - name: 🐳 Charger l'image Airflow dans Docker
@@ -641,21 +655,32 @@ jobs:
         include:
           - name: Airflow
             image_name: price-intel-airflow
+            artifact_name: price-intel-airflow-artifact
           - name: Backend
             image_name: price-intel-backend
+            artifact_name: price-intel-backend-artifact
           - name: Frontend
             image_name: price-intel-frontend
+            artifact_name: price-intel-frontend-artifact
     steps:
-      - name: 📥 Télécharger les images Docker
+      - name: 📥 Télécharger l'image Docker spécifique
         uses: actions/download-artifact@v4
         with:
-          name: docker-images
+          name: ${{ matrix.artifact_name }}
           path: /tmp
 
       - name: 🐳 Charger l'image dans Docker local
         run: docker load -i /tmp/${{ matrix.image_name }}.tar
 
-      - name: 🐳 Trivy — Scan ${{ matrix.name }}
+      - name: 💾 Restaurer le Cache de la DB Trivy
+        uses: actions/cache@v4
+        with:
+          path: .trivycache
+          key: trivy-db-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            trivy-db-${{ runner.os }}-
+
+      - name: 🐳 Trivy — Scan de Sécurité ${{ matrix.name }}
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: "${{ matrix.image_name }}:latest"
@@ -663,23 +688,7 @@ jobs:
           exit-code: "0"
           severity: "CRITICAL,HIGH"
           ignore-unfixed: true
-
-      - name: 📊 Trivy — Rapport JSON ${{ matrix.name }}
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: "${{ matrix.image_name }}:latest"
-          format: "json"
-          output: "trivy-${{ matrix.name }}-report.json"
-          severity: "CRITICAL,HIGH,MEDIUM"
-          ignore-unfixed: true
-
-      - name: 📤 Uploader le rapport Trivy ${{ matrix.name }}
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: trivy-${{ matrix.name }}-report
-          path: "trivy-${{ matrix.name }}-report.json"
-          retention-days: 30
+          cache-dir: .trivycache
 
   # ═══════════════════════════════════════════
   # JOB 8 — SCAN IaC (Infrastructure as Code)
