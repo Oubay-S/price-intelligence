@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-05-24T12:14:10Z",
+  "source_file": "outputs\\cleaned_data\\02_clean_prices_no_outliers.csv",
+  "data": {
+    "total_products": 6306,
+    "total_stores": 3,
+    "total_categories": 7,
+    "average_price": 427.51,
+    "median_price": 317.74,
+    "minimum_price": 6.66,
+    "maximum_price": 1593.75,
+    "average_discount": 39.2,
+    "first_scrape": "2026-05-15T16:50:48",
+    "last_scrape": "2026-05-23T13:09:10"
+  }
+}

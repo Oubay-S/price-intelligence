@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-05-24T12:14:10Z",
+  "data": [
+    {
+      "category": "combat-sports",
+      "products": 1117,
+      "average_price": 347.08,
+      "median_price": 229.0,
+      "min_price": 9.0,
+      "max_price": 1591.0,
+      "std_price": 335.15
+    },
+    {
+      "category": "gym",
+      "products": 1020,
+      "average_price": 332.55,
+      "median_price": 288.0,
+      "min_price": 12.3,
+      "max_price": 1591.0,
+      "std_price": 249.27
+    },
+    {
+      "category": "basketball",
+      "products": 945,
+      "average_price": 419.35,
+      "median_price": 305.25,
+      "min_price": 9.16,
+      "max_price": 1580.73,
+      "std_price": 359.38
+    },
+    {
+      "category": "racket-sports",
+      "products": 466,
+      "average_price": 538.1,
+      "median_price": 323.75,
+      "min_price": 6.66,
+      "max_price": 1593.75,
+      "std_price": 463.74
+    },
+    {
+      "category": "volleyball",
+      "products": 436,
+      "average_price": 478.7,
+      "median_price": 369.72,
+      "min_price": 9.16,
+      "max_price": 1572.5,
+      "std_price": 363.1
+    },
+    {
+      "category": "unknown",
+      "products": 1193,
+      "average_price": 465.76,
+      "median_price": 369.81,
+      "min_price": 9.16,
+      "max_price": 1593.75,
+      "std_price": 367.34
+    },
+    {
+      "category": "football",
+      "products": 1129,
+      "average_price": 493.87,
+      "median_price": 381.47,
+      "min_price": 9.16,
+      "max_price": 1572.41,
+      "std_price": 363.66
+    }
+  ]
+}
