@@ -1,10 +1,8 @@
-import requests
 import json
 import datetime
 import re
 import os
 import unicodedata
-from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor
 
 EXCLUDED_PRODUCT_PATTERNS = [
@@ -50,6 +48,8 @@ def scrape_product_details(url, session, headers, base_url):
             if not p_str: return ""
             return p_str.replace('Dhs', '').replace(',', '').strip()
 
+        from bs4 import BeautifulSoup
+
         resp = session.get(url, headers=headers, timeout=10)
         if resp.status_code != 200:
             return None
@@ -80,6 +80,9 @@ def scrape_jumia_category(query, output_file):
     base_url = "https://www.jumia.ma"
     search_url = f"{base_url}/catalog/?q={query.replace(' ', '+')}" 
     
+    import requests
+    from bs4 import BeautifulSoup
+
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
     
     session = requests.Session()
