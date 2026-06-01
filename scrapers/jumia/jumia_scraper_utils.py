@@ -1,10 +1,44 @@
-import requests
 import json
 import datetime
 import re
 import os
-from bs4 import BeautifulSoup
+import unicodedata
 from concurrent.futures import ThreadPoolExecutor
+
+EXCLUDED_PRODUCT_PATTERNS = [
+    re.compile(r"\bvr[\s_-]*box\b"),
+    re.compile(r"\bvrbox\b"),
+    re.compile(r"\bvirtual[\s_-]*reality\b"),
+    re.compile(r"\brealite[\s_-]*virtuelle\b"),
+    re.compile(r"\bcasque[\s_-]+vr\b"),
+    re.compile(r"\blunettes?[\s_-]+vr\b"),
+    re.compile(r"\b3d[\s_-]+vr\b"),
+    re.compile(r"\bdentifrice\b"),
+    re.compile(r"\bmousse[\s_-]+blanchissante?\b"),
+    re.compile(r"\beelhoe\b"),
+    re.compile(r"\bmenthe[\s_-]+poivree\b"),
+    re.compile(r"\bdents?[\s_-]+sensibles?\b"),
+    re.compile(r"\bhaleine\b"),
+]
+EXCLUDED_PRODUCT_FIELDS = ("name", "product_url", "features")
+
+
+def _searchable_text(value):
+    if value is None:
+        return ""
+    if isinstance(value, (list, tuple, set)):
+        value = " ".join(str(item) for item in value)
+    normalized = unicodedata.normalize("NFKD", str(value).lower())
+    return "".join(ch for ch in normalized if not unicodedata.combining(ch))
+
+
+def is_excluded_jumia_product(product):
+    haystack = " ".join(
+        _searchable_text(product.get(field))
+        for field in EXCLUDED_PRODUCT_FIELDS
+    )
+    return any(pattern.search(haystack) for pattern in EXCLUDED_PRODUCT_PATTERNS)
+
 
 def scrape_product_details(url, session, headers, base_url):
     """Helper function to scrape a single product page."""
@@ -13,6 +47,8 @@ def scrape_product_details(url, session, headers, base_url):
         def clean_price(p_str):
             if not p_str: return ""
             return p_str.replace('Dhs', '').replace(',', '').strip()
+
+        from bs4 import BeautifulSoup
 
         resp = session.get(url, headers=headers, timeout=10)
         if resp.status_code != 200:
@@ -44,6 +80,9 @@ def scrape_jumia_category(query, output_file):
     base_url = "https://www.jumia.ma"
     search_url = f"{base_url}/catalog/?q={query.replace(' ', '+')}" 
     
+    import requests
+    from bs4 import BeautifulSoup
+
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
     
     session = requests.Session()
@@ -73,11 +112,15 @@ def scrape_jumia_category(query, output_file):
             # map maintains order, but here we just want the results
             details = list(executor.map(lambda url: scrape_product_details(url, session, headers, base_url), urls))
             scraped_results = [d for d in details if d is not None]
-            results = [d for d in scraped_results if d.get('current_price')]
+            priced_results = [d for d in scraped_results if d.get('current_price')]
+            results = [d for d in priced_results if not is_excluded_jumia_product(d)]
 
-        skipped_without_price = len(scraped_results) - len(results)
+        skipped_without_price = len(scraped_results) - len(priced_results)
         if skipped_without_price:
             print(f"Skipped {skipped_without_price} products without current_price for query: {query}")
+        skipped_excluded = len(priced_results) - len(results)
+        if skipped_excluded:
+            print(f"Skipped {skipped_excluded} excluded non-sports products for query: {query}")
                 
         if results:
             os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -86,7 +129,10 @@ def scrape_jumia_category(query, output_file):
             print(f"Success: {len(results)} products saved to {output_file}")
             return len(results)
         else:
-            print(f"No products successfully scraped with prices for query: {query}")
+            os.makedirs(os.path.dirname(output_file), exist_ok=True)
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump([], f, indent=2, ensure_ascii=False)
+            print(f"No products successfully scraped with prices for query: {query}; cleared {output_file}")
             return 0
             
     except Exception as e:
