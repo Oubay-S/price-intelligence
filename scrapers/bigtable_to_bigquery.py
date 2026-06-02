@@ -6,6 +6,8 @@ from io import BytesIO
 from google.cloud import bigtable
 from google.cloud import bigquery
 
+from product_quality import is_relevant_product
+
 BT_PROJECT = os.environ.get("GOOGLE_CLOUD_PROJECT", "price-intel-local")
 BT_INSTANCE = os.environ.get("BIGTABLE_INSTANCE_ID", "price-intel-instance")
 BT_TABLE = "products"
@@ -137,11 +139,23 @@ def main():
         print(f"Skipped {skipped_products} Bigtable rows missing required product fields: "
               f"{REQUIRED_PRODUCT_FIELDS}")
 
-    new_products = [
+    relevant_products = [
         p for p in valid_products
+        if is_relevant_product(
+            p,
+            store=p.get("store") or p.get("source"),
+            category=p.get("category"),
+        )
+    ]
+    skipped_irrelevant = len(valid_products) - len(relevant_products)
+    if skipped_irrelevant:
+        print(f"Skipped {skipped_irrelevant} irrelevant Bigtable rows before BigQuery export")
+
+    new_products = [
+        p for p in relevant_products
         if p.get("_bigtable_row_key") not in existing_keys
     ]
-    duplicate_products = len(valid_products) - len(new_products)
+    duplicate_products = len(relevant_products) - len(new_products)
     if duplicate_products:
         print(f"Skipped {duplicate_products} Bigtable rows already exported to BigQuery")
 

@@ -201,3 +201,39 @@ class TestStageScrapedJsonForNifi:
         staged_file = next(inbox.rglob("*.json"))
         data = json.loads(staged_file.read_text(encoding="utf-8"))
         assert data[0]["_ingestion_run_id"] == "test-run-12345"
+
+    @pytest.mark.unit
+    def test_filters_irrelevant_combat_mouthguards(self, tmp_path):
+        root = tmp_path
+        output_dir = root / "ebay" / "combat-sports"
+        output_dir.mkdir(parents=True)
+        products = [
+            {
+                "name": "Silicone Dental Mouth Guard Bruxism Sleep Aid Night Teeth Tooth Grinding",
+                "current_price": "79.46",
+                "scraped_at": "2026-06-02T15:22:30Z",
+                "product_url": "https://www.ebay.com/itm/dental-guard",
+            },
+            {
+                "name": "Mouth Guard Boxing MMA Gum Shield Boil & Bite Teeth Protection Adult Kids",
+                "current_price": "37.18",
+                "scraped_at": "2026-06-02T15:22:30Z",
+                "product_url": "https://www.ebay.com/itm/combat-guard",
+            },
+        ]
+        (output_dir / "products.json").write_text(json.dumps(products), encoding="utf-8")
+        inbox = root / "nifi_inbox"
+
+        with patch.dict(os.environ, {
+            "SCRAPER_OUTPUT_ROOT": str(root),
+            "NIFI_INBOX": str(inbox),
+            "INGESTION_RUN_ID": "quality-test-run",
+        }):
+            result = stage_scraped_json_for_nifi()
+
+        staged_file = next(inbox.rglob("*.json"))
+        staged = json.loads(staged_file.read_text(encoding="utf-8"))
+        assert result["expected_records"] == 1
+        assert len(staged) == 1
+        assert "Boxing MMA" in staged[0]["name"]
+
