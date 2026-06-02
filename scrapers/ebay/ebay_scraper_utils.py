@@ -4,14 +4,17 @@ import time
 import random
 import re
 import datetime
-from bs4 import BeautifulSoup
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
+import sys
+from pathlib import Path
+
+SCRAPERS_ROOT = Path(__file__).resolve().parents[1]
+if str(SCRAPERS_ROOT) not in sys.path:
+    sys.path.insert(0, str(SCRAPERS_ROOT))
+
+from product_quality import is_excluded_product, is_relevant_product
 
 # Conversion Rate: 1 USD = 9.25 MAD (Approx) — same as other USD sources
 USD_TO_MAD = 9.25
-
 
 class EbayDriverLostError(RuntimeError):
     """Raised when Selenium's connection to Chrome is no longer usable."""
@@ -28,6 +31,15 @@ def _is_driver_lost_error(exc):
         "chrome not reachable",
     ))
 
+
+def is_excluded_ebay_product(product):
+    return is_excluded_product(product)
+
+
+def is_relevant_ebay_product(query, product):
+    return is_relevant_product(product, store="ebay", query=query)
+
+
 def convert_to_mad(price_str):
     if not price_str or price_str == "N/A":
         return price_str
@@ -43,6 +55,11 @@ def convert_to_mad(price_str):
     return price_str
 
 def scrape_ebay_category(query, output_file, driver):
+    from bs4 import BeautifulSoup
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.support import expected_conditions as EC
+    from selenium.webdriver.support.ui import WebDriverWait
+
     print(f"Scraping eBay for: {query}")
 
     url = f"https://www.ebay.com/sch/i.html?_nkw={query.replace(' ', '+')}&_sacat=0"
@@ -154,7 +171,7 @@ def scrape_ebay_category(query, output_file, driver):
                           item.select_one('.s-card__subtitle')
                 features = cond_el.text.strip() if cond_el else "N/A"
 
-                products.append({
+                product = {
                     "name": name,
                     "current_price": convert_to_mad(curr_p),
                     "price_before_discount": convert_to_mad(old_p),
@@ -166,7 +183,12 @@ def scrape_ebay_category(query, output_file, driver):
                     "stars": stars,
                     "availability": avail,
                     "scraped_at": datetime.datetime.now().isoformat()
-                })
+                }
+
+                if not is_relevant_ebay_product(query, product):
+                    continue
+
+                products.append(product)
 
             except Exception as e:
                 # print(f"Error parsing item: {e}")

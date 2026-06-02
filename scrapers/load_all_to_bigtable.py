@@ -9,6 +9,8 @@ from google.api_core.exceptions import AlreadyExists
 from google.cloud import bigtable
 from google.cloud.bigtable import column_family
 
+from product_quality import is_relevant_product
+
 if not os.environ.get("BIGTABLE_EMULATOR_HOST"):
     os.environ["BIGTABLE_EMULATOR_HOST"] = "localhost:8086"
 
@@ -100,6 +102,11 @@ def load_file_to_bigtable(table, file_path, store_name):
         if missing:
             rows_skipped += 1
             print(f"  Skipping product missing {missing}: {item.get('name', 'unknown')}")
+            continue
+
+        if not is_relevant_product(item, store=store_name, category=category):
+            rows_skipped += 1
+            print(f"  Skipping irrelevant product: {item.get('name', 'unknown')}")
             continue
 
         row_key = _row_key(store_name, category, item)

@@ -154,7 +154,7 @@ def run_all_ebay_scrapes():
         ("boxing gloves",       os.path.join(base_dir, "combat-sports/ebay_combat_gloves_data.json")),
         ("groin guards",        os.path.join(base_dir, "combat-sports/ebay_groin_guards_data.json")),
         ("mma headgear",        os.path.join(base_dir, "combat-sports/ebay_headgear_data.json")),
-        ("mouthguards",         os.path.join(base_dir, "combat-sports/ebay_mouthguards_data.json")),
+        ("boxing mma mouthguard gum shield", os.path.join(base_dir, "combat-sports/ebay_mouthguards_data.json")),
         ("mma shin protectors", os.path.join(base_dir, "combat-sports/ebay_shin_protectors_data.json")),
 
         # Racket Sports
