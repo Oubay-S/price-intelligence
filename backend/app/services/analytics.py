@@ -42,6 +42,8 @@ from app.models.product import (
     TrendingResponse,
 )
 from app.services.bigquery import (
+    _CANON_ID,
+    _CANON_URL,
     _CATEGORY_TO_RAW,
     _PRICE_CURRENCY,
     _discount_pct,
@@ -271,7 +273,7 @@ def get_price_drops(
     sql = f"""
         WITH series AS (
             SELECT
-                TO_HEX(SHA256(product_url)) AS canonical_product_id,
+                {_CANON_ID} AS canonical_product_id,
                 name,
                 image_url,
                 LOWER(store) AS site,
@@ -280,7 +282,7 @@ def get_price_drops(
                 SAFE_CAST(current_price AS FLOAT64) AS price_after,
                 {_TS_PARSE} AS scraped_ts,
                 LAG(SAFE_CAST(current_price AS FLOAT64))
-                    OVER (PARTITION BY product_url ORDER BY scraped_at ASC)
+                    OVER (PARTITION BY {_CANON_URL} ORDER BY scraped_at ASC)
                     AS price_before
             FROM {_table_ref()}
             WHERE SAFE_CAST(current_price AS FLOAT64) IS NOT NULL
@@ -383,7 +385,7 @@ def get_trending_products(
     sql = f"""
         WITH series AS (
             SELECT
-                TO_HEX(SHA256(product_url)) AS canonical_product_id,
+                {_CANON_ID} AS canonical_product_id,
                 name,
                 image_url,
                 LOWER(store) AS site,
@@ -392,7 +394,7 @@ def get_trending_products(
                 SAFE_CAST(current_price AS FLOAT64) AS price_after,
                 {_TS_PARSE} AS scraped_ts,
                 LAG(SAFE_CAST(current_price AS FLOAT64))
-                    OVER (PARTITION BY product_url ORDER BY scraped_at ASC)
+                    OVER (PARTITION BY {_CANON_URL} ORDER BY scraped_at ASC)
                     AS price_before
             FROM {_table_ref()}
             WHERE SAFE_CAST(current_price AS FLOAT64) IS NOT NULL
@@ -496,7 +498,7 @@ def get_comparison_for_product(product_id: str) -> Optional[ProductComparison]:
     """
     sql = f"""
         SELECT
-            TO_HEX(SHA256(product_url)) AS canonical_product_id,
+            {_CANON_ID} AS canonical_product_id,
             name,
             image_url,
             category,
@@ -507,10 +509,10 @@ def get_comparison_for_product(product_id: str) -> Optional[ProductComparison]:
             availability,
             scraped_at
         FROM {_table_ref()}
-        WHERE TO_HEX(SHA256(product_url)) = @product_id
+        WHERE {_CANON_ID} = @product_id
           AND SAFE_CAST(current_price AS FLOAT64) IS NOT NULL
         QUALIFY ROW_NUMBER() OVER
-            (PARTITION BY product_url ORDER BY scraped_at DESC) = 1
+            (PARTITION BY {_CANON_URL} ORDER BY scraped_at DESC) = 1
     """
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
