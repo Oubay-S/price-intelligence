@@ -306,58 +306,17 @@ def run_export_to_bigquery(**context):
 
 
 
-IRRELEVANT_PRODUCT_FILTER_SQL = r"""
-lower(coalesce(category, '')) = 'combat-sports'
-and regexp_contains(lower(coalesce(name, '')), r'\b(mouth\s*guards?|mouthguards?|mouth\s*pieces?|mouthpieces?|gum\s*shields?|gumshields?)\b')
-and (
-    regexp_contains(lower(coalesce(name, '')), r'\bmouthguards?\s+cases?\b')
-    or (
-        regexp_contains(lower(coalesce(name, '')), r'\b(anti[\s-]*snor(?:e|ing)|snor(?:e|ing)|sleep(?:\s+apnea|\s+aid|right)?|apnea|cpap|bruxism|grind(?:ing)?|clench(?:ing)?|tmj|night(?:time)?\s*(?:guard|mouth\s*guard|mouthguard)?|dental|dentek|oral[\s-]*b|splint|whiten(?:ing)?|retainer)\b')
-        and not regexp_contains(lower(coalesce(name, '')), r'\b(boxing|mma|martial\s+arts?|kickboxing|muay\s+thai|ufc|combat|fight(?:ing)?|sparring|gum\s*shields?|gumshields?|rdx|meister|venum|everlast|fairtex|hayabusa|sanabul|title\s+boxing)\b')
-    )
-    or not regexp_contains(lower(coalesce(name, '')), r'\b(boxing|mma|martial\s+arts?|kickboxing|muay\s+thai|ufc|combat|fight(?:ing)?|sparring|gum\s*shields?|gumshields?|rdx|meister|venum|everlast|fairtex|hayabusa|sanabul|title\s+boxing)\b')
-)
-"""
-
-
 def remove_irrelevant_product_rows(**context):
-    from google.cloud import bigquery
-
     project = os.environ.get("BQ_PROJECT", "price-intelligence-495411")
     dataset = os.environ.get("BQ_DATASET", "price_intelligence")
     table = os.environ.get("BQ_TABLE", "products")
     table_id = f"{project}.{dataset}.{table}"
-    temp_table_id = f"{project}.{dataset}._products_without_irrelevant_rows_{uuid.uuid4().hex[:12]}"
     client = _get_bigquery_client()
 
-    count_query = f"""
-        select count(*) as row_count
-        from `{table_id}`
-        where {IRRELEVANT_PRODUCT_FILTER_SQL}
-    """
-    row_count = next(client.query(count_query).result()).row_count
-    print(f"Irrelevant combat mouthguard rows in {table_id}: {row_count}")
-    if row_count == 0:
-        print("No irrelevant product rows to remove")
-        return 0
+    _ensure_product_quality_path(os.environ.get("SCRAPER_OUTPUT_ROOT", "/app"))
+    from bigquery_product_cleanup import cleanup_irrelevant_product_rows
 
-    rewrite_query = f"""
-        select *
-        from `{table_id}`
-        where not ({IRRELEVANT_PRODUCT_FILTER_SQL})
-    """
-    rewrite_config = bigquery.QueryJobConfig(
-        destination=temp_table_id,
-        write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
-    )
-    client.query(rewrite_query, job_config=rewrite_config).result()
-    print(f"Created cleaned replacement table: {temp_table_id}")
-
-    copy_config = bigquery.CopyJobConfig(write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE)
-    client.copy_table(temp_table_id, table_id, job_config=copy_config).result()
-    client.delete_table(temp_table_id, not_found_ok=True)
-    print(f"Removed {row_count} irrelevant combat mouthguard rows from {table_id}")
-    return row_count
+    return cleanup_irrelevant_product_rows(client, table_id)
 
 def remove_unknown_category_rows(**context):
     from google.cloud import bigquery
