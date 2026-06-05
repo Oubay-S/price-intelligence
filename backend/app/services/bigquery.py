@@ -91,6 +91,36 @@ _CANON_ID = f"TO_HEX(SHA256({_CANON_URL}))"
 
 
 # ---------------------------------------------------------------------------
+# Catalogue grouping (listing → product-card collapse)
+# ---------------------------------------------------------------------------
+# _CANON_URL collapses re-scrapes of the *same listing*. eBay goes further: the
+# same product is sold by many sellers, each a distinct listing/item id, so the
+# grid still showed ~6.3k cards. For the catalogue we collapse same-title eBay
+# listings to ONE card, keeping the cheapest current price (the marketplace
+# best-buy). Other stores already have one listing per product, so they group
+# by their canonical id and are left as-is.
+#
+# This is catalogue-only. Per-listing identity (_CANON_ID) is untouched, so
+# product detail, price history and analytics still track a single listing over
+# time — exactly the listing whose price is shown on the card.
+_CLEAN_NAME = (
+    "LOWER(TRIM(REGEXP_REPLACE(name, r'(?i)opens in a new window or tab', '')))"
+)
+_CATALOG_GROUP = f"IF(LOWER(store) = 'ebay', {_CLEAN_NAME}, canonical_product_id)"
+
+# Pick one row per catalogue group: cheapest current price for eBay (tie → most
+# recent scrape); non-eBay groups have a single row so the order is moot.
+_PICK_BEST_PER_GROUP = (
+    "QUALIFY ROW_NUMBER() OVER ("
+    f"PARTITION BY {_CATALOG_GROUP} "
+    "ORDER BY "
+    "CASE WHEN LOWER(store) = 'ebay' "
+    "THEN SAFE_CAST(current_price AS FLOAT64) END ASC, "
+    "scraped_at DESC) = 1"
+)
+
+
+# ---------------------------------------------------------------------------
 # Row-level helpers
 # ---------------------------------------------------------------------------
 
@@ -302,17 +332,25 @@ def get_all_products(
     where_sql = "WHERE " + " AND ".join(where)
 
     data_query = f"""
-        {_select_columns()}
-        {where_sql}
-        {_DEDUP_LATEST}
+        WITH per_listing AS (
+            {_select_columns()}
+            {where_sql}
+            {_DEDUP_LATEST}
+        )
+        SELECT * FROM per_listing
+        {_PICK_BEST_PER_GROUP}
         ORDER BY {_order_by(sort)}
         LIMIT @limit
         OFFSET @offset
     """
     count_query = f"""
-        SELECT COUNT(DISTINCT {_CANON_URL}) AS total_count
-        FROM {_table_ref()}
-        {where_sql}
+        WITH per_listing AS (
+            {_select_columns()}
+            {where_sql}
+            {_DEDUP_LATEST}
+        )
+        SELECT COUNT(DISTINCT {_CATALOG_GROUP}) AS total_count
+        FROM per_listing
     """
 
     job_config = bigquery.QueryJobConfig(query_parameters=params)
@@ -378,17 +416,25 @@ def search_products(
     where_sql = "WHERE " + " AND ".join(where)
 
     data_query = f"""
-        {_select_columns()}
-        {where_sql}
-        {_DEDUP_LATEST}
+        WITH per_listing AS (
+            {_select_columns()}
+            {where_sql}
+            {_DEDUP_LATEST}
+        )
+        SELECT * FROM per_listing
+        {_PICK_BEST_PER_GROUP}
         ORDER BY {_order_by(sort)}
         LIMIT @limit
         OFFSET @offset
     """
     count_query = f"""
-        SELECT COUNT(DISTINCT {_CANON_URL}) AS total_count
-        FROM {_table_ref()}
-        {where_sql}
+        WITH per_listing AS (
+            {_select_columns()}
+            {where_sql}
+            {_DEDUP_LATEST}
+        )
+        SELECT COUNT(DISTINCT {_CATALOG_GROUP}) AS total_count
+        FROM per_listing
     """
 
     job_config = bigquery.QueryJobConfig(query_parameters=params)
