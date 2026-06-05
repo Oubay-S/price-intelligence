@@ -2,10 +2,18 @@ import datetime
 import json
 import os
 import re
+import sys
+from pathlib import Path
 from urllib.parse import quote_plus, urljoin
 
 import requests
 from bs4 import BeautifulSoup
+
+SCRAPERS_ROOT = Path(__file__).resolve().parents[1]
+if str(SCRAPERS_ROOT) not in sys.path:
+    sys.path.insert(0, str(SCRAPERS_ROOT))
+
+from product_quality import is_relevant_product
 
 GBP_TO_MAD = 12.50
 BASE_URL = "https://www.sportsdirect.com"
@@ -116,6 +124,10 @@ def _extract_sizes(card):
 
 
 def _is_relevant_product(query, name):
+    product = {"name": name}
+    if not is_relevant_product(product, store="sport-direct", query=query):
+        return False
+
     patterns = REQUIRED_NAME_PATTERNS.get(query.lower().strip())
     if not patterns:
         return True
