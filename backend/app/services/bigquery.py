@@ -70,6 +70,27 @@ def _table_ref() -> str:
 
 
 # ---------------------------------------------------------------------------
+# Canonical product key
+# ---------------------------------------------------------------------------
+# eBay listing URLs carry a per-scrape `itmmeta`/`itmprp` token in the query
+# string, so the *full* product_url changes on every crawl and the same item
+# never collapses — 6.3k real eBay items were showing up as ~25k "products".
+# The stable identity is the `/itm/<id>` path, so for eBay we strip the query
+# string. Jumia and sport-direct have stable URLs (stripping their query string
+# would over-merge distinct sport-direct listings), so they keep the full URL.
+#
+# Use _CANON_URL anywhere a product is identified (dedup, COUNT DISTINCT) and
+# _CANON_ID for the public canonical_product_id hash so it stays constant
+# across scrapes. Non-eBay hashes are unchanged (key == product_url).
+_CANON_URL = (
+    "IF(LOWER(store) = 'ebay', "
+    "REGEXP_REPLACE(product_url, r'[?#].*$', ''), "
+    "product_url)"
+)
+_CANON_ID = f"TO_HEX(SHA256({_CANON_URL}))"
+
+
+# ---------------------------------------------------------------------------
 # Row-level helpers
 # ---------------------------------------------------------------------------
 
@@ -168,7 +189,7 @@ def _row_to_product(row: bigquery.Row) -> ProductResponse:
 def _select_columns() -> str:
     return f"""
         SELECT
-            TO_HEX(SHA256(product_url)) AS canonical_product_id,
+            {_CANON_ID} AS canonical_product_id,
             name,
             current_price,
             price_before_discount,
@@ -186,13 +207,14 @@ def _select_columns() -> str:
 _PRICE_FLOAT = "SAFE_CAST(current_price AS FLOAT64)"
 _PRICE_VALID = f"{_PRICE_FLOAT} IS NOT NULL"
 
-# The backing table is a time-series of scrapes — one product_url has many
-# rows. Collapse to the most recent scrape per product so catalogue listings
-# show each product once. scraped_at is an ISO-8601 string, so lexical DESC
-# is chronological DESC.
+# The backing table is a time-series of scrapes — one product has many rows.
+# Collapse to the most recent scrape per product so catalogue listings show
+# each product once. Partition on _CANON_URL (not raw product_url) so eBay's
+# query-string-varying URLs collapse to one row per item. scraped_at is an
+# ISO-8601 string, so lexical DESC is chronological DESC.
 _DEDUP_LATEST = (
     "QUALIFY ROW_NUMBER() OVER "
-    "(PARTITION BY product_url ORDER BY scraped_at DESC) = 1"
+    f"(PARTITION BY {_CANON_URL} ORDER BY scraped_at DESC) = 1"
 )
 
 
@@ -288,7 +310,7 @@ def get_all_products(
         OFFSET @offset
     """
     count_query = f"""
-        SELECT COUNT(DISTINCT product_url) AS total_count
+        SELECT COUNT(DISTINCT {_CANON_URL}) AS total_count
         FROM {_table_ref()}
         {where_sql}
     """
@@ -364,7 +386,7 @@ def search_products(
         OFFSET @offset
     """
     count_query = f"""
-        SELECT COUNT(DISTINCT product_url) AS total_count
+        SELECT COUNT(DISTINCT {_CANON_URL}) AS total_count
         FROM {_table_ref()}
         {where_sql}
     """
@@ -378,14 +400,14 @@ def search_products(
 
 
 # ---------------------------------------------------------------------------
-# get_product_by_id  (id = TO_HEX(SHA256(product_url)))
+# get_product_by_id  (id = _CANON_ID, i.e. TO_HEX(SHA256(canonical url)))
 # ---------------------------------------------------------------------------
 
 @redis_cached(prefix="bq:get_product_by_id", ttl=60, key_dim="product_id")
 def get_product_by_id(product_id: str) -> Optional[ProductResponse]:
     sql = f"""
         {_select_columns()}
-        WHERE TO_HEX(SHA256(product_url)) = @product_id
+        WHERE {_CANON_ID} = @product_id
           AND {_PRICE_VALID}
         ORDER BY scraped_at DESC
         LIMIT 1
@@ -420,13 +442,15 @@ def get_price_history(
     site: Optional[str] = None,
 ) -> Optional[PriceHistory]:
     """
-    Time-series for one canonical_product_id (= TO_HEX(SHA256(product_url))).
+    Time-series for one canonical_product_id (= _CANON_ID). For eBay this now
+    aggregates every scrape of the same `/itm/<id>` item; other stores key on
+    the full product_url as before.
     Note: `price_usd` on each point is the raw scraped value — Jumia rows are
     actually MAD until dbt currency-normalises the mart. Document this in the
     router response if exposing externally.
     """
     where: list[str] = [
-        "TO_HEX(SHA256(product_url)) = @product_id",
+        f"{_CANON_ID} = @product_id",
         _PRICE_VALID,
     ]
     params: list[Any] = [
