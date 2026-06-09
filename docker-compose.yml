@@ -75,13 +75,13 @@ x-airflow-common: &airflow-common
     _PIP_ADDITIONAL_REQUIREMENTS: "webdriver-manager undetected-chromedriver selenium beautifulsoup4 requests"
 
   volumes:
-    - ./logs:/opt/airflow/logs:z
-    - ./airflow/dags:/opt/airflow/dags:z
-    - ./plugins:/opt/airflow/plugins:z
+    - ./logs:/opt/airflow/logs:Z
+    - ./airflow/dags:/opt/airflow/dags:Z
+    - ./plugins:/opt/airflow/plugins:Z
     - ./scrapers:/app:z
-    - ./data-analysis:/opt/airflow/data-analysis:z
+    - ./data-analysis:/opt/airflow/data-analysis:Z
     - ./gcp-credentials.json:/opt/airflow/gcp-credentials.json:ro,z
-    - ./dbt:/usr/app/dbt:z
+    - ./dbt:/usr/app/dbt:Z
 
   user: "${AIRFLOW_UID:-50000}:0"
 
