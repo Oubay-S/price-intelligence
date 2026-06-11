@@ -10,6 +10,7 @@ from pathlib import Path
 import shutil
 import socket
 import subprocess
+import sys
 import time
 import uuid
 
@@ -76,6 +77,27 @@ def ensure_nifi_available():
 
 
 REQUIRED_PRODUCT_FIELDS = ("name", "current_price", "scraped_at")
+
+
+def _ensure_product_quality_path(source_root):
+    candidates = [
+        Path(source_root),
+        Path(__file__).resolve().parents[2] / "scrapers",
+    ]
+    for candidate in candidates:
+        if (candidate / "product_quality.py").exists():
+            candidate_text = str(candidate)
+            if candidate_text not in sys.path:
+                sys.path.insert(0, candidate_text)
+            return
+    raise RuntimeError(f"product_quality.py not found in: {candidates}")
+
+
+def _is_relevant_scraper_record(record, store, category, source_root):
+    _ensure_product_quality_path(source_root)
+    from product_quality import is_relevant_product
+
+    return is_relevant_product(record, store=store, category=category)
 
 
 def _parse_price(value):
@@ -172,10 +194,21 @@ def stage_scraped_json_for_nifi():
                 print(f"Skipping empty scraper data file: {json_path}")
                 continue
 
+            category = json_path.parent.name
+            relevant_data = [
+                record for record in data
+                if _is_relevant_scraper_record(record, store, category, source_root)
+            ]
+            skipped_irrelevant = len(data) - len(relevant_data)
+            if skipped_irrelevant:
+                print(f"Skipping {skipped_irrelevant} irrelevant products from {json_path}")
+            if not relevant_data:
+                print(f"Skipping scraper data file with no relevant products: {json_path}")
+                continue
+
             relative_path = json_path.relative_to(source_root)
             target_path = inbox / relative_path
             target_path.parent.mkdir(parents=True, exist_ok=True)
-            category = json_path.parent.name
             enriched_data = [
                 {
                     **record,
@@ -185,14 +218,14 @@ def stage_scraped_json_for_nifi():
                     "_ingestion_run_id": ingestion_run_id,
                     "_staged_at": staged_at,
                 }
-                for record in data
+                for record in relevant_data
             ]
             target_path.write_text(json.dumps(enriched_data, ensure_ascii=False), encoding="utf-8")
             files_staged += 1
-            records_expected += len(data)
+            records_expected += len(relevant_data)
             store_counts.setdefault(store, {"files": 0, "records": 0})
             store_counts[store]["files"] += 1
-            store_counts[store]["records"] += len(data)
+            store_counts[store]["records"] += len(relevant_data)
 
     if files_staged == 0:
         raise Exception(f"No scraper JSON files were staged for NiFi from {source_root}")
@@ -271,6 +304,19 @@ def run_export_to_bigquery(**context):
         print(result.stderr)
         raise Exception(f"Bigquery export failed with code {result.returncode}")
 
+
+
+def remove_irrelevant_product_rows(**context):
+    project = os.environ.get("BQ_PROJECT", "price-intelligence-495411")
+    dataset = os.environ.get("BQ_DATASET", "price_intelligence")
+    table = os.environ.get("BQ_TABLE", "products")
+    table_id = f"{project}.{dataset}.{table}"
+    client = _get_bigquery_client()
+
+    _ensure_product_quality_path(os.environ.get("SCRAPER_OUTPUT_ROOT", "/app"))
+    from bigquery_product_cleanup import cleanup_irrelevant_product_rows
+
+    return cleanup_irrelevant_product_rows(client, table_id)
 
 def remove_unknown_category_rows(**context):
     from google.cloud import bigquery
@@ -511,6 +557,11 @@ with DAG(
         python_callable=run_export_to_bigquery,
     )
 
+    task_remove_irrelevant_products = PythonOperator(
+        task_id='remove_irrelevant_product_rows',
+        python_callable=remove_irrelevant_product_rows,
+    )
+
     task_remove_unknown_categories = PythonOperator(
         task_id='remove_unknown_category_rows',
         python_callable=remove_unknown_category_rows,
@@ -531,6 +582,6 @@ with DAG(
         python_callable=upload_analysis_to_bigquery,
     )
 
-    [task_jumia, task_sport_direct, task_ebay] >> task_check_nifi >> task_stage_nifi >> task_wait_bigtable >> task_export_bq >> task_remove_unknown_categories
+    [task_jumia, task_sport_direct, task_ebay] >> task_check_nifi >> task_stage_nifi >> task_wait_bigtable >> task_export_bq >> task_remove_irrelevant_products >> task_remove_unknown_categories
     task_remove_unknown_categories >> [task_dbt_run, task_data_analysis_eda]
     task_data_analysis_eda >> task_upload_analysis_bq

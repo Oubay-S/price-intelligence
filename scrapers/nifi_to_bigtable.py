@@ -20,15 +20,6 @@ def _get_table():
     instance = client.instance(INSTANCE_ID)
     table = instance.table(TABLE_ID)
 
-    try:
-        table.create()
-    except AlreadyExists:
-        pass
-
-    try:
-        table.column_family(COLUMN_FAMILY, column_family.MaxVersionsGCRule(100)).create()
-    except AlreadyExists:
-        pass
 
     return table
 
