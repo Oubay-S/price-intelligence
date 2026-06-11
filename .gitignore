@@ -3,6 +3,11 @@
 # Adapté à un projet Data Engineering Python + Docker
 # =============================================================
 
+# Large local video recordings — too big for GitHub (>100MB).
+# The demo video is uploaded to GitHub directly via the web editor instead.
+images/*.mp4
+images/*.mov
+
 # --------------------------
 # SECRETS & CONFIGURATIONS SENSIBLES
 # (Ne jamais committer des clés / mots de passe)
