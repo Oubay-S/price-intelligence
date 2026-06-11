@@ -9,7 +9,7 @@ Academic group project, Data Engineering and Analytics, Pr. ELAACHAK, 2025–202
 A short screen recording of the running application (catalog, product price
 history, watchlist, and alerts):
 
-<video src="images/Screen Recording 2026-06-11 213224" controls width="100%"></video>
+<video src="https://github.com/Oubay-S/price-intelligence/blob/feature/fullstack/images/Screen%20Recording%202026-06-11%20213224.mp4" controls width="100%"></video>
 
 [Watch the demo video](images/demo.mp4) if the player above does not load in your viewer.
 
