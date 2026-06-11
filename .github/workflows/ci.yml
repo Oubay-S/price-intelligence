@@ -7,9 +7,10 @@ name: CI Pipeline — Price Intelligence
 
 on:
   push:
-    branches: ['**']
+    branches: [develop, main]
   pull_request:
     branches: [develop, main]
+
 
 # Annule les exécutions précédentes si un nouveau push arrive sur la même branche
 concurrency:
