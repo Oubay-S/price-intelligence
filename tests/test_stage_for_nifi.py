@@ -201,3 +201,129 @@ class TestStageScrapedJsonForNifi:
         staged_file = next(inbox.rglob("*.json"))
         data = json.loads(staged_file.read_text(encoding="utf-8"))
         assert data[0]["_ingestion_run_id"] == "test-run-12345"
+
+    @pytest.mark.unit
+    def test_filters_irrelevant_combat_mouthguards(self, tmp_path):
+        root = tmp_path
+        output_dir = root / "ebay" / "combat-sports"
+        output_dir.mkdir(parents=True)
+        products = [
+            {
+                "name": "Silicone Dental Mouth Guard Bruxism Sleep Aid Night Teeth Tooth Grinding",
+                "current_price": "79.46",
+                "scraped_at": "2026-06-02T15:22:30Z",
+                "product_url": "https://www.ebay.com/itm/dental-guard",
+            },
+            {
+                "name": "Mouth Guard Boxing MMA Gum Shield Boil & Bite Teeth Protection Adult Kids",
+                "current_price": "37.18",
+                "scraped_at": "2026-06-02T15:22:30Z",
+                "product_url": "https://www.ebay.com/itm/combat-guard",
+            },
+        ]
+        (output_dir / "products.json").write_text(json.dumps(products), encoding="utf-8")
+        inbox = root / "nifi_inbox"
+
+        with patch.dict(os.environ, {
+            "SCRAPER_OUTPUT_ROOT": str(root),
+            "NIFI_INBOX": str(inbox),
+            "INGESTION_RUN_ID": "quality-test-run",
+        }):
+            result = stage_scraped_json_for_nifi()
+
+        staged_file = next(inbox.rglob("*.json"))
+        staged = json.loads(staged_file.read_text(encoding="utf-8"))
+        assert result["expected_records"] == 1
+        assert len(staged) == 1
+        assert "Boxing MMA" in staged[0]["name"]
+
+
+
+    @pytest.mark.unit
+    def test_filters_jumia_false_positive_products(self, tmp_path):
+        root = tmp_path
+        output_dir = root / "jumia" / "football"
+        output_dir.mkdir(parents=True)
+        products = [
+            {
+                "name": "OPI Top Coat Gel Color Stay Shiny Vernis de Protection GC003 15ml",
+                "current_price": "89",
+                "scraped_at": "2026-06-05T10:00:00Z",
+                "product_url": "https://www.jumia.ma/opi-top-coat.html",
+            },
+            {
+                "name": "Poisson decoratif aquarium",
+                "current_price": "49",
+                "scraped_at": "2026-06-05T10:00:00Z",
+                "product_url": "https://www.jumia.ma/poisson.html",
+            },
+            {
+                "name": "Bracelet fantaisie femme",
+                "current_price": "59",
+                "scraped_at": "2026-06-05T10:00:00Z",
+                "product_url": "https://www.jumia.ma/bracelet.html",
+            },
+            {
+                "name": "Ballon de football taille 5",
+                "current_price": "129",
+                "scraped_at": "2026-06-05T10:00:00Z",
+                "product_url": "https://www.jumia.ma/ballon-football.html",
+            },
+        ]
+        (output_dir / "products.json").write_text(json.dumps(products), encoding="utf-8")
+        inbox = root / "nifi_inbox"
+
+        with patch.dict(os.environ, {
+            "SCRAPER_OUTPUT_ROOT": str(root),
+            "NIFI_INBOX": str(inbox),
+            "INGESTION_RUN_ID": "jumia-quality-test-run",
+        }):
+            result = stage_scraped_json_for_nifi()
+
+        staged_file = next(inbox.rglob("*.json"))
+        staged = json.loads(staged_file.read_text(encoding="utf-8"))
+        assert result["expected_records"] == 1
+        assert len(staged) == 1
+        assert staged[0]["name"] == "Ballon de football taille 5"
+
+
+    @pytest.mark.unit
+    def test_filters_sport_direct_false_positive_products(self, tmp_path):
+        root = tmp_path
+        output_dir = root / "sport-direct" / "football"
+        output_dir.mkdir(parents=True)
+        products = [
+            {
+                "name": "Laptop Sleeve 15 Inch Protective Case",
+                "current_price": "99",
+                "scraped_at": "2026-06-05T10:00:00Z",
+                "product_url": "https://www.sportsdirect.com/laptop-sleeve.html",
+            },
+            {
+                "name": "Women Football Boots",
+                "current_price": "199",
+                "scraped_at": "2026-06-05T10:00:00Z",
+                "product_url": "https://www.sportsdirect.com/women-boots.html",
+            },
+            {
+                "name": "Football Boots Firm Ground",
+                "current_price": "399",
+                "scraped_at": "2026-06-05T10:00:00Z",
+                "product_url": "https://www.sportsdirect.com/football-boots.html",
+            },
+        ]
+        (output_dir / "products.json").write_text(json.dumps(products), encoding="utf-8")
+        inbox = root / "nifi_inbox"
+
+        with patch.dict(os.environ, {
+            "SCRAPER_OUTPUT_ROOT": str(root),
+            "NIFI_INBOX": str(inbox),
+            "INGESTION_RUN_ID": "sport-direct-quality-test-run",
+        }):
+            result = stage_scraped_json_for_nifi()
+
+        staged_file = next(inbox.rglob("*.json"))
+        staged = json.loads(staged_file.read_text(encoding="utf-8"))
+        assert result["expected_records"] == 1
+        assert len(staged) == 1
+        assert staged[0]["name"] == "Football Boots Firm Ground"

@@ -23,9 +23,8 @@ concurrency:
 env:
   PYTHON_VERSION: "3.10"
   NODE_VERSION: "20"
-  BIGTABLE_EMULATOR_HOST: "localhost:8086"
-  GOOGLE_CLOUD_PROJECT: "price-intel-local"
-  BIGTABLE_INSTANCE_ID: "price-intel-instance"
+  GOOGLE_CLOUD_PROJECT: "price-intelligence-495411"
+  BIGTABLE_INSTANCE_ID: "price-intelligence"
 
 jobs:
   # ═══════════════════════════════════════════
@@ -274,7 +273,6 @@ jobs:
       - name: 🐳 Démarrer la couche DATA (avec --build)
         run: |
           docker compose up --build -d \
-            bigtable-emulator \
             postgres \
             airflow-init
 
@@ -283,16 +281,6 @@ jobs:
           for i in $(seq 1 30); do
             if docker inspect --format='{{.State.Health.Status}}' airflow-postgres 2>/dev/null | grep -q healthy; then
               echo "✅ PostgreSQL Airflow prêt"
-              break
-            fi
-            sleep 5
-          done
-
-      - name: ⏳ Attendre Bigtable Emulator
-        run: |
-          for i in $(seq 1 30); do
-            if docker inspect --format='{{.State.Health.Status}}' bigtable-emulator 2>/dev/null | grep -q healthy; then
-              echo "✅ Bigtable Emulator prêt"
               break
             fi
             sleep 5
@@ -338,15 +326,6 @@ jobs:
         run: |
           docker exec airflow-webserver airflow dags list 2>/dev/null | tee /tmp/dags.txt
           grep -q "price_intelligence_pipeline" /tmp/dags.txt && echo "✅ DAG détecté" || (echo "❌ DAG non trouvé" && exit 1)
-
-      - name: 🧪 Test — Bigtable Emulator accessible
-        run: |
-          docker exec bigtable-emulator bash -c "echo '' > /dev/tcp/localhost/8086" && echo "✅ Bigtable OK"
-
-      - name: 🧪 Test — Chargement initial Bigtable
-        run: |
-          docker compose up bigtable-init 2>&1 | tee /tmp/bt_init.log
-          grep -q "Successfully loaded" /tmp/bt_init.log && echo "✅ Bigtable data OK" || (echo "❌ Bigtable init échoué" && exit 1)
 
       # ─── COUCHE APPLICATIVE ───
       - name: 🐳 Démarrer la couche APPLICATIVE
@@ -406,8 +385,6 @@ jobs:
           docker logs airflow-webserver 2>&1 | tail -30 || true
           echo "=== Airflow Scheduler ==="
           docker logs airflow-scheduler 2>&1 | tail -30 || true
-          echo "=== Bigtable ==="
-          docker logs bigtable-emulator 2>&1 | tail -20 || true
           echo "=== Backend ==="
           docker logs backend 2>&1 | tail -30 || true
           echo "=== Frontend ==="
