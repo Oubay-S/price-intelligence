@@ -1,10 +1,32 @@
 import os
+import sys
 import json
 import datetime
 import uuid
 from io import BytesIO
 from google.cloud import bigtable
 from google.cloud import bigquery
+
+# Make the data-quality GE gate importable. Candidate locations:
+#   - host/dev:     <repo>/data-quality   (sibling of scrapers/)
+#   - airflow ctr:  /opt/airflow/data-quality  (compose mount)
+#   - env override: DQ_DIR
+_DQ_CANDIDATES = [
+    os.environ.get("DQ_DIR"),
+    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data-quality"),
+    "/opt/airflow/data-quality",
+]
+for _cand in _DQ_CANDIDATES:
+    if _cand and os.path.isdir(_cand) and _cand not in sys.path:
+        sys.path.insert(0, _cand)
+try:
+    from validate_products import validate_products
+except Exception as _exc:  # pragma: no cover - gate import is best-effort
+    validate_products = None
+    print(f"WARNING: GE gate unavailable ({_exc}); proceeding without validation")
+
+# Set GE_GATE_BLOCK=0 to downgrade a failed gate from blocking to warn-only.
+_GATE_BLOCKS = os.environ.get("GE_GATE_BLOCK", "1") != "0"
 
 BT_PROJECT = os.environ.get("GOOGLE_CLOUD_PROJECT", "price-intel-local")
 BT_INSTANCE = os.environ.get("BIGTABLE_INSTANCE_ID", "price-intel-instance")
@@ -159,6 +181,18 @@ def main():
         else:
             print("No valid products to export after required-field filtering")
         return
+
+    # --- Great Expectations gate: validate raw rows before the BigQuery load ---
+    if validate_products is not None:
+        gate = validate_products(products)
+        print(gate.summary())
+        if not gate.ok:
+            if _GATE_BLOCKS:
+                raise SystemExit(
+                    f"GE gate FAILED ({len(gate.failures)} critical expectations); "
+                    f"BigQuery load blocked. Set GE_GATE_BLOCK=0 to override."
+                )
+            print("GE gate failed but GE_GATE_BLOCK=0 -> loading anyway (warn-only)")
 
     job_config = bigquery.LoadJobConfig(
         write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
