@@ -11,8 +11,6 @@ from google.cloud.bigtable import column_family
 
 from product_quality import is_relevant_product
 
-if not os.environ.get("BIGTABLE_EMULATOR_HOST"):
-    os.environ["BIGTABLE_EMULATOR_HOST"] = "localhost:8086"
 
 REQUIRED_FIELDS = {"name", "current_price", "scraped_at"}
 
@@ -27,19 +25,6 @@ def get_bigtable_table(
         client = bigtable.Client(project=project_id, admin=True)
         instance = client.instance(instance_id)
         table = instance.table(table_id)
-
-        try:
-            table.create()
-            print(f"  Table '{table_id}' created.")
-        except AlreadyExists:
-            pass
-
-        cf_id = "info"
-        try:
-            table.column_family(cf_id, column_family.MaxVersionsGCRule(100)).create()
-            print(f"  Column family '{cf_id}' created.")
-        except AlreadyExists:
-            pass
 
         return table
     except Exception as exc:
@@ -135,7 +120,7 @@ def load_file_to_bigtable(table, file_path, store_name):
 
 
 def load_all():
-    print(f"Connecting to Bigtable Emulator ({os.environ['BIGTABLE_EMULATOR_HOST']})...")
+    print(f"Connecting to Bigtable...")
     table = get_bigtable_table()
     if not table:
         raise RuntimeError("Could not connect to Bigtable")
