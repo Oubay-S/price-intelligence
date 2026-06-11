@@ -4,6 +4,17 @@
 
 Academic group project, Data Engineering and Analytics, Pr. ELAACHAK, 2025–2026.
 
+## Application demo
+
+A short screen recording of the running application (catalog, product price
+history, watchlist, and alerts):
+
+<video src="https://github.com/Oubay-S/price-intelligence/blob/feature/fullstack/images/Screen%20Recording%202026-06-11%20213224.mp4?raw=true" controls width="100%"></video>
+
+[Watch the demo video](images/demo.mp4) if the player above does not load in your viewer.
+
+---
+
 The platform scrapes sports and nutrition products from three online
 marketplaces, stores their full price history, runs the data through a cleaning
 and modelling pipeline, and serves it to users through a web application with a
@@ -366,13 +377,13 @@ docker-compose down               # stop, keep the data
 
 Once it is up:
 
-| URL | What | Credentials |
-| --- | --- | --- |
-| `http://localhost/` | The app through the Nginx reverse proxy | — |
-| `http://localhost:4200/` | Angular app, direct | — |
-| `http://localhost:8000/docs` | Backend API docs (Swagger) | — |
-| `http://localhost:8080/` | Airflow | admin / admin123 |
-| `https://localhost:8443/nifi` | NiFi | admin / adminpassword123 |
+| URL | What |
+| --- | --- |
+| `http://localhost/` | The app through the Nginx reverse proxy |
+| `http://localhost:4200/` | Angular app, direct |
+| `http://localhost:8000/docs` | Backend API docs (Swagger) |
+| `http://localhost:8080/` | Airflow |
+| `https://localhost:8443/nifi` | NiFi |
 
 To run the daily pipeline by hand:
 

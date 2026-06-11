@@ -192,19 +192,34 @@ interface HeroTile {
       <section class="container" style="padding-bottom:100px;padding-top:72px">
         <div class="card elev" style="padding:48px;display:grid;
           grid-template-columns:1fr auto;align-items:center;gap:24px">
-          <div>
-            <h2 class="serif" style="font-size:44px;margin:0;letter-spacing:-.02em;line-height:1">
-              Start tracking in
-              <span style="color:var(--accent);font-style:italic">under a minute.</span>
-            </h2>
-            <p style="color:var(--text-dim);margin:12px 0 0;max-width:520px">
-              Free forever — no credit card, no store accounts. Search a product and we'll do
-              the rest.
-            </p>
-          </div>
-          <a class="btn primary lg" routerLink="/register">
-            Create free account <app-icon name="arrow-r" [size]="16" />
-          </a>
+          @if (!isAuthenticated()) {
+            <div>
+              <h2 class="serif" style="font-size:44px;margin:0;letter-spacing:-.02em;line-height:1">
+                Start tracking in
+                <span style="color:var(--accent);font-style:italic">under a minute.</span>
+              </h2>
+              <p style="color:var(--text-dim);margin:12px 0 0;max-width:520px">
+                Free forever — no credit card, no store accounts. Search a product and we'll do
+                the rest.
+              </p>
+            </div>
+            <a class="btn primary lg" routerLink="/register">
+              Create free account <app-icon name="arrow-r" [size]="16" />
+            </a>
+          } @else {
+            <div>
+              <h2 class="serif" style="font-size:44px;margin:0;letter-spacing:-.02em;line-height:1">
+                Pick up where you
+                <span style="color:var(--accent);font-style:italic">left off.</span>
+              </h2>
+              <p style="color:var(--text-dim);margin:12px 0 0;max-width:520px">
+                Your watchlist tracks every price drop. Jump back in and see what changed.
+              </p>
+            </div>
+            <a class="btn primary lg" routerLink="/watchlist">
+              Go to your watchlist <app-icon name="arrow-r" [size]="16" />
+            </a>
+          }
         </div>
       </section>
     </div>
@@ -216,6 +231,8 @@ export class LandingPageComponent {
   private readonly auth = inject(AuthService);
   private readonly toast = inject(ToastService);
   private readonly router = inject(Router);
+
+  protected readonly isAuthenticated = this.auth.isAuthenticated;
 
   protected readonly query = signal('');
 
