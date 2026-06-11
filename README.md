@@ -6,10 +6,12 @@ Academic group project, Data Engineering and Analytics, Pr. ELAACHAK, 2025–202
 
 ## Application demo
 
-<!-- DEMO VIDEO: paste the GitHub upload link on the line below this comment.
-     On github.com, edit this README, drag the .mp4 into the editor, wait for
-     upload, then GitHub inserts a https://github.com/user-attachments/assets/...
-     URL — leave it on its own blank line and it renders as an inline player. -->
+A short screen recording of the running application (catalog, product price
+history, watchlist, and alerts):
+
+<video src="images/demo.mp4" controls width="100%"></video>
+
+[Watch the demo video](images/demo.mp4) if the player above does not load in your viewer.
 
 ---
 
