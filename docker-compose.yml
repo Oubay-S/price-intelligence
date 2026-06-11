@@ -80,6 +80,7 @@ x-airflow-common: &airflow-common
     - ./plugins:/opt/airflow/plugins:Z
     - ./scrapers:/app:z
     - ./data-analysis:/opt/airflow/data-analysis:Z
+    - ./data-quality:/opt/airflow/data-quality:z
     - ./gcp-credentials.json:/opt/airflow/gcp-credentials.json:ro,z
     - ./dbt:/usr/app/dbt:Z
 
