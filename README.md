@@ -2,7 +2,7 @@
 
 [![CI Pipeline](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml)
 
-Academic group project, Data Engineering and Analytics, Pr. ELAACHAK, 2025–2026.
+Academic group project, Data Engineering and Analytics, Pr . ELAACHAK, 2025–2026.
 
 ## Application demo
 
