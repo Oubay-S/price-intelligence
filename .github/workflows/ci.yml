@@ -250,95 +250,18 @@ jobs:
         working-directory: ./frontend/sportsintelligence
         run: npm run build
 
-  # ═══════════════════════════════════════════
-  # JOB 2 — BUILD UNIQUE DES IMAGES DOCKER (Avec exportation)
-  # ═══════════════════════════════════════════
-  build:
-    name: 🏗️ Build Docker (Airflow + Backend + Frontend)
-    runs-on: ubuntu-latest
-    needs: changes
-    if: needs.changes.outputs.python == 'true' || needs.changes.outputs.frontend == 'true' || needs.changes.outputs.docker == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
-    steps:
-      - name: 📥 Checkout du code
-        uses: actions/checkout@v4
-
-      - name: 🐳 Configurer Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      # Build & Export Airflow
-      - name: 🏗️ Build — Image Airflow custom
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: false
-          tags: price-intel-airflow:latest
-          outputs: type=docker,dest=/tmp/price-intel-airflow.tar
-          cache-from: type=gha,scope=airflow
-          cache-to: type=gha,mode=max,scope=airflow
-
-      # Build & Export Backend
-      - name: 🏗️ Build — Image Backend FastAPI
-        uses: docker/build-push-action@v5
-        with:
-          context: ./backend
-          push: false
-          tags: price-intel-backend:latest
-          outputs: type=docker,dest=/tmp/price-intel-backend.tar
-          cache-from: type=gha,scope=backend
-          cache-to: type=gha,mode=max,scope=backend
-
-      # Build & Export Frontend
-      - name: 🏗️ Build — Image Frontend Angular
-        uses: docker/build-push-action@v5
-        with:
-          context: ./frontend
-          push: false
-          tags: price-intel-frontend:latest
-          outputs: type=docker,dest=/tmp/price-intel-frontend.tar
-          cache-from: type=gha,scope=frontend
-          cache-to: type=gha,mode=max,scope=frontend
-
-      - name: 📤 Uploader l'image Airflow comme artefact
-        uses: actions/upload-artifact@v4
-        with:
-          name: price-intel-airflow-artifact
-          path: /tmp/price-intel-airflow.tar
-          retention-days: 1
-
-      - name: 📤 Uploader l'image Backend comme artefact
-        uses: actions/upload-artifact@v4
-        with:
-          name: price-intel-backend-artifact
-          path: /tmp/price-intel-backend.tar
-          retention-days: 1
-
-      - name: 📤 Uploader l'image Frontend comme artefact
-        uses: actions/upload-artifact@v4
-        with:
-          name: price-intel-frontend-artifact
-          path: /tmp/price-intel-frontend.tar
-          retention-days: 1
 
   # ═══════════════════════════════════════════
-  # JOB 3 — TESTS D'INTÉGRATION (Sans reconstruction)
+  # JOB 3 — TESTS D'INTÉGRATION (Reconstruction locale rapide)
   # ═══════════════════════════════════════════
   integration-tests:
     name: 🧪 Tests d'Intégration
     runs-on: ubuntu-latest
-    needs: [changes, lint, build]
+    needs: [changes, lint]
     if: (needs.changes.outputs.python == 'true' || needs.changes.outputs.docker == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') && always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
     steps:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
-
-      - name: 📥 Télécharger l'image Airflow pre-buildée
-        uses: actions/download-artifact@v4
-        with:
-          name: price-intel-airflow-artifact
-          path: /tmp
-
-      - name: 🐳 Charger l'image Airflow dans Docker
-        run: docker load -i /tmp/price-intel-airflow.tar
 
       - name: 📝 Créer les fichiers de configuration
         run: |
@@ -348,9 +271,9 @@ jobs:
           chmod -R 777 logs airflow/dags plugins scrapers
 
       # ─── COUCHE DATA ───
-      - name: 🐳 Démarrer la couche DATA (Sans --build, utilise l'image chargée)
+      - name: 🐳 Démarrer la couche DATA (avec --build)
         run: |
-          docker compose up -d \
+          docker compose up --build -d \
             bigtable-emulator \
             postgres \
             airflow-init
@@ -644,34 +567,40 @@ jobs:
           retention-days: 30
 
   # ═══════════════════════════════════════════
-  # JOB 7 — SCAN DOCKER ( container Security — Ultra rapide sans build )
+  # JOB 7 — SCAN DOCKER ( container Security )
   # ═══════════════════════════════════════════
   docker-security:
     name: 🐳 Scan Sécurité Docker
     runs-on: ubuntu-latest
-    needs: [changes, build]
+    needs: [changes]
     if: (needs.changes.outputs.python == 'true' || needs.changes.outputs.frontend == 'true' || needs.changes.outputs.docker == 'true' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') && always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
     strategy:
       matrix:
         include:
-          - name: Airflow
+          - name: airflow
             image_name: price-intel-airflow
-            artifact_name: price-intel-airflow-artifact
-          - name: Backend
+            context: .
+          - name: backend
             image_name: price-intel-backend
-            artifact_name: price-intel-backend-artifact
-          - name: Frontend
+            context: ./backend
+          - name: frontend
             image_name: price-intel-frontend
-            artifact_name: price-intel-frontend-artifact
+            context: ./frontend
     steps:
-      - name: 📥 Télécharger l'image Docker spécifique
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ matrix.artifact_name }}
-          path: /tmp
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
 
-      - name: 🐳 Charger l'image dans Docker local
-        run: docker load -i /tmp/${{ matrix.image_name }}.tar
+      - name: 🐳 Configurer Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🏗️ Build Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ matrix.context }}
+          load: true
+          tags: ${{ matrix.image_name }}:latest
+          cache-from: type=gha,scope=${{ matrix.name }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.name }}
 
       - name: 💾 Restaurer le Cache de la DB Trivy
         uses: actions/cache@v4
@@ -703,11 +632,26 @@ jobs:
       - name: 📥 Checkout du code
         uses: actions/checkout@v4
 
-      - name: 🔍 Checkov — Scan Dockerfile + docker-compose
+      - name: ⚙️ Configurer Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: 🏗️ Terraform Format Check
+        run: terraform fmt -check -recursive
+        working-directory: infra/terraform
+
+      - name: 🏗️ Terraform Init
+        run: terraform init -backend=false
+        working-directory: infra/terraform
+
+      - name: 🏗️ Terraform Validate
+        run: terraform validate
+        working-directory: infra/terraform
+
+      - name: 🔍 Checkov — Scan Dockerfile + YAML + Terraform
         uses: bridgecrewio/checkov-action@v12
         with:
           directory: .
-          framework: dockerfile,yaml
+          framework: dockerfile,yaml,terraform
           output_format: cli
           soft_fail: true
           skip_check: CKV_DOCKER_2,CKV_DOCKER_3
@@ -744,7 +688,6 @@ jobs:
       - pipeline-tests
       - dbt-validate
       - frontend-quality
-      - build
       - integration-tests
       - sast
       - secrets-scan
@@ -763,7 +706,6 @@ jobs:
           echo "  🧪 Tests Pipeline:    ${{ needs.pipeline-tests.result }}"
           echo "  🔧 dbt Validate:      ${{ needs.dbt-validate.result }}"
           echo "  🎨 Frontend Quality:  ${{ needs.frontend-quality.result }}"
-          echo "  🏗️ Build (3 images):  ${{ needs.build.result }}"
           echo "  🧪 Tests Intégration: ${{ needs.integration-tests.result }}"
           echo "  🛡️ SAST (Bandit):     ${{ needs.sast.result }}"
           echo "  🔐 Secrets Scan:      ${{ needs.secrets-scan.result }}"
@@ -785,10 +727,6 @@ jobs:
           fi
           if [ "${{ needs.dbt-validate.result }}" = "failure" ]; then
             echo "❌ BLOQUANT: Validation dbt a échoué"
-            CRITICAL_FAILED=true
-          fi
-          if [ "${{ needs.build.result }}" = "failure" ]; then
-            echo "❌ BLOQUANT: Build Docker a échoué"
             CRITICAL_FAILED=true
           fi
           if [ "${{ needs.integration-tests.result }}" = "failure" ]; then
