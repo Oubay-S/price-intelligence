@@ -21,7 +21,6 @@ To ensure a seamless Developer Experience (DX) and an exact mirror of our future
 
 This orchestrates **10+ distinct services** across **2 isolated Docker networks**, securely bridging local compute with cloud storage.
 
-*[INSÉRER CAPTURE D'ÉCRAN ICI : Terminal montrant le résultat de `docker ps` avec tous les conteneurs (Airflow, FastAPI, Angular, Nginx) tournant en vert]*
 
 ### 🕸️ Network Architecture
 
@@ -62,25 +61,25 @@ To ensure zero-defect deployments, I built a highly parallelized 9-stage **GitHu
 flowchart LR
     Commit[git push] --> Trigger{GitHub Actions}
     
-    Trigger --> Lint[🔍 Code Quality\nRuff, MyPy]
-    Trigger --> DBT[🔧 dbt Tests]
-    Trigger --> SAST[🛡️ Python SAST\nBandit]
-    Trigger --> SEC[🔐 Secrets Scan\nGitleaks]
-    Trigger --> DEP[📦 SCA Audit\npip-audit]
+    Trigger --> Lint["🔍 Code Quality<br>Ruff, MyPy"]
+    Trigger --> DBT["🔧 dbt Tests"]
+    Trigger --> SAST["🛡️ Python SAST<br>Bandit"]
+    Trigger --> SEC["🔐 Secrets Scan<br>Gitleaks"]
+    Trigger --> DEP["📦 SCA Audit<br>pip-audit"]
     
-    Trigger --> Docker[🐳 Docker Security\nTrivy]
-    Trigger --> IaC[🏗️ Terraform Scan\nCheckov]
+    Trigger --> Docker["🐳 Docker Security<br>Trivy"]
+    Trigger --> IaC["🏗️ Terraform Scan<br>Checkov"]
     
-    Lint --> IT[🧪 Integration Tests]
+    Lint --> IT["🧪 Integration Tests"]
     DBT --> IT
     
     subgraph "Ephemeral Integration Env"
-        IT --> B[Build Images via Buildx]
-        B --> U[docker compose up -d]
-        U --> V[Verify Services & Network]
+        IT --> B["Build Images via Buildx"]
+        B --> U["docker compose up -d"]
+        U --> V["Verify Services & Network"]
     end
     
-    IT --> Gate{✅ Merge Gate}
+    IT --> Gate{"✅ Merge Gate"}
     SAST --> Gate
     SEC --> Gate
     DEP --> Gate
@@ -89,8 +88,6 @@ flowchart LR
 
     style Gate fill:#34a853,stroke:#fff,color:#fff
 ```
-
-![alt text](image.png)
 
 ### 🔍 Step-by-Step Job Breakdown & Justification
 
@@ -159,5 +156,3 @@ The code (`infra/terraform/`) is split into 9 logical modules (networking, iam, 
 > [!IMPORTANT]
 > **Final Impact**
 > As DataOps, I successfully abstracted the complexity of infrastructure away from the Data Engineers and Web Developers. They now commit code locally, push to GitHub, and the entire platform is automatically verified for security, quality, and integration before being eligible for cloud deployment. The project is now enterprise-ready.
-
-![alt text](Screenshot_20260611_195959.png)
