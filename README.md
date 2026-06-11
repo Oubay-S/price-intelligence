@@ -9,9 +9,13 @@ Academic group project, Data Engineering and Analytics, Pr. ELAACHAK, 2025–202
 A short screen recording of the running application (catalog, product price
 history, watchlist, and alerts):
 
-<video src="images/demo.mp4" controls width="100%"></video>
+<!-- DEMO VIDEO — paste the GitHub upload URL on the blank line below.
+     Steps: edit this README on github.com, drag images/demo.mp4 (9.2 MB) into
+     the editor, wait for upload, GitHub inserts a
+     https://github.com/user-attachments/assets/... URL. Leave it on its own
+     line and it renders as an inline player. -->
 
-[Watch the demo video](images/demo.mp4) if the player above does not load in your viewer.
+
 
 ---
 
@@ -190,6 +194,11 @@ category. As a final guard, we added a Great Expectations gate that validates th
 raw rows before they reach BigQuery, so the warehouse stays clean at the door
 rather than being scrubbed afterwards.
 
+> **More detail:** the full data-engineering write-up — scraper internals, the
+> Airflow DAG task by task, Bigtable row-key design, the export and dedup logic,
+> and the data-quality rules — is in
+> [`scrapers/DATA_ENGINEER_README.md`](scrapers/DATA_ENGINEER_README.md).
+
 ---
 
 ## Data analysis
@@ -258,6 +267,11 @@ category, time series, heatmap, top discounts, recommendations) that the fronten
 reads directly, so the analyst's conclusions show up in the product without a
 manual hand-off.
 
+> **More detail:** notebook-by-notebook execution order, the statistical tests
+> (ANOVA, Kruskal-Wallis, regression, confidence intervals), and the dashboard
+> export contract are documented in
+> [`data-analysis/README.md`](data-analysis/README.md).
+
 ---
 
 ## DataOps and cloud engineering
@@ -310,6 +324,11 @@ read Bigtable and connect to Cloud SQL and nothing more. Separate dev and prod
 variable files keep the dev environment cheap and the prod environment highly
 available.
 
+> **More detail:** the full DataOps mission report — the service-by-service
+> Docker breakdown, the nine-stage CI/CD pipeline, and the Terraform module
+> layout with the cloud mapping — is in
+> [`INFRA/rapport_dataops.MD`](INFRA/rapport_dataops.MD).
+
 ---
 
 ## Fullstack: backend and frontend
@@ -361,6 +380,11 @@ behaves predictably no matter what the backend returns.
 In production the frontend is built to a static bundle and served by Nginx, which
 also proxies the API and WebSocket traffic, so a single container is a working
 entry point on its own.
+
+> **More detail:** the backend API contract, auth flow, migrations, and the
+> two-database split are in [`backend/README.md`](backend/README.md); the Angular
+> architecture, routes, interceptors, and build setup are in
+> [`frontend/README.md`](frontend/README.md).
 
 ---
 

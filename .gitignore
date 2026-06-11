@@ -6,7 +6,6 @@
 # Large local screen recordings — too big for GitHub (>100MB).
 # Keep them out of git; only the compressed demo.mp4 is committed.
 images/*.mov
-images/Screen Recording*.mp4
 
 # --------------------------
 # SECRETS & CONFIGURATIONS SENSIBLES
