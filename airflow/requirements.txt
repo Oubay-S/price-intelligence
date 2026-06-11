@@ -7,3 +7,4 @@ google-cloud-bigquery
 psycopg2-binary
 webdriver-manager
 dbt-bigquery
+great-expectations>=1.3,<2
