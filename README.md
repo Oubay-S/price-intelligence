@@ -1,500 +1,401 @@
-# 🛒 Price Intelligence Platform
+# Price Intelligence — A Sports-Nutrition Price Monitoring Platform
 
 [![CI Pipeline](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml)
 
-**Plateforme hybride Batch + Streaming de veille tarifaire e-commerce** spécialisée dans les produits de nutrition sportive (protéines, créatine, vitamines...).
+Academic group project, Data Engineering and Analytics, Pr. ELAACHAK, 2025–2026.
 
-Le système scrape automatiquement les prix depuis **Jumia**, **Sports Direct** et **eBay**, les stocke dans Google Cloud Bigtable, puis les transforme via dbt pour alimenter des analyses statistiques et un tableau de bord interactif.
+The platform scrapes sports and nutrition products from three online
+marketplaces, stores their full price history, runs the data through a cleaning
+and modelling pipeline, and serves it to users through a web application with a
+personal watchlist and price-drop alerts.
 
-> 🎓 Projet académique — Data Engineering & Analytics · Pr. ELAACHAK · 2025-2026
+This README is the global report. It pulls together the work of the four team
+members, each of whom owned one layer of the system and kept a detailed
+write-up in their own folder. The per-layer documents are still there if you
+want the deep version:
 
----
-
-## 📖 Table des matières
-
-- [Vue d'ensemble](#-vue-densemble)
-- [Architecture technique](#-architecture-technique)
-- [Équipe & responsabilités](#-équipe--responsabilités)
-- [Démarrage rapide](#-démarrage-rapide)
-- [Stack technique](#-stack-technique)
-- [Comment ça marche ?](#-comment-ça-marche-)
-- [Structure du projet](#-structure-du-projet)
-- [Pipeline CI/CD](#-pipeline-cicd-github-actions)
-- [Guide Git pour l'équipe](#-guide-git-pour-léquipe)
-- [Dépannage](#-dépannage)
-- [Sécurité](#-sécurité)
-- [Roadmap](#-roadmap)
+- `scrapers/DATA_ENGINEER_README.md` — ingestion and the data pipeline
+- `data-analysis/README.md` — exploratory analysis and statistics
+- `INFRA/rapport_dataops.MD` — orchestration, CI/CD, and cloud infrastructure
+- `backend/README.md` — the FastAPI service
+- `frontend/README.md` — the Angular application
 
 ---
 
-## 🎯 Vue d'ensemble
+## Team and responsibilities
 
-### Le problème
-Les prix des produits de nutrition sportive varient fortement d'une plateforme à l'autre et d'un jour à l'autre. Impossible de suivre manuellement les tendances sur 3 marketplaces en même temps.
+| Role | Member | Owned layer | Working branch |
+| --- | --- | --- | --- |
+| Data Engineer | Aouichi Omar | Scrapers, Airflow, NiFi, Bigtable, BigQuery, dbt, Great Expectations | `data/engineer` |
+| Data Analyst | EL Ghrib Assil | Notebooks, EDA, statistical tests, dashboard exports | `data-analysis` |
+| DataOps / Cloud Engineer | EL Arabi Serghini Oubay | Docker, CI/CD, Terraform, security scanning | `infra-dataops` |
+| Fullstack Developer | EL Arroud Mohamed Reda | FastAPI backend, Angular frontend, Nginx | `feature/fullstack` |
 
-### Notre solution
-Une plateforme **100% automatisée** qui :
-1. 🕷️ **Scrape** les prix sur Jumia, Sports Direct et eBay chaque jour à 13h
-2. 📡 **Ingère** les données en temps réel via Apache NiFi
-3. 💾 **Stocke** dans Google Cloud Bigtable (émulé en local)
-4. 🔄 **Transforme** les données brutes en modèles analytiques via dbt
-5. 📊 **Analyse** les tendances avec Python (SciPy, statsmodels)
-6. 🖥️ **Affiche** les résultats dans un frontend Angular avec une API FastAPI
-
-### Flux de données simplifié
-```
-Jumia ──┐
-Sports Direct ├──► Scrapers Python ──► NiFi (temps réel) ──► Bigtable ──► dbt ──► Analytics
-eBay ───┘         │                                                           │
-                  └──► Airflow (batch quotidien) ──────────────────────────────┘
-                                                                              │
-                                                                              ▼
-                                                           FastAPI ──► Angular Dashboard
-```
+Each of us worked sports-nutrition pricing from a different angle, but the four
+layers only mean something together. The sections below follow the data as it
+moves through them, from a scraped product page to a chart in the browser.
 
 ---
 
-## 🏗️ Architecture technique
+## How we worked together
 
-Le projet est organisé en **2 couches isolées** par des réseaux Docker séparés :
+We split the repository by role and each person worked on their own branch.
+The rule we agreed on early was simple: nobody pushes straight to the shared
+branches. The flow looked like this.
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
-│                    COUCHE APPLICATIVE                            │
-│                    Réseau : app-network                          │
-│                                                                  │
-│  ┌─────────┐    ┌──────────────────┐    ┌───────────────────┐   │
-│  │ nginx   │───►│ Frontend Angular │    │ PostgreSQL App    │   │
-│  │ :80     │    │ :4200            │    │ :5432             │   │
-│  │         │    └──────────────────┘    │ users, watchlist  │   │
-│  │         │───►┌──────────────────┐   │ alerts, sessions  │   │
-│  │ /api/*  │    │ Backend FastAPI  │◄──┘───────────────────┘   │
-│  │ /ws/*   │───►│ :8000            │                            │
-│  └─────────┘    │                  │◄──┌───────────────────┐   │
-│                 └──────────────────┘   │ Redis :6379       │   │
-│                                        │ cache, pub/sub    │   │
-│                                        │ sessions          │   │
-│                                        └───────────────────┘   │
-├──────────────────────────────────────────────────────────────────┤
-│                      COUCHE DATA                                │
-│                      Réseau : price-intel-network                │
-│                                                                  │
-│  ┌──────────────────┐    ┌──────────────────┐                   │
-│  │ Airflow          │    │ Bigtable         │                   │
-│  │ Webserver :8080  │    │ Emulator :8086   │                   │
-│  │ Scheduler        │    │ (gRPC)           │                   │
-│  └────────┬─────────┘    └────────▲─────────┘                   │
-│           │                       │                              │
-│           ▼                       │                              │
-│  ┌──────────────────┐    ┌───────┴──────────┐                   │
-│  │ PostgreSQL       │    │ Apache NiFi      │                   │
-│  │ Airflow :5433    │    │ :8443 (HTTPS)    │                   │
-│  │ metadata, logs   │    │ streaming        │                   │
-│  └──────────────────┘    └──────────────────┘                   │
-│                                                                  │
-│  ┌──────────────────┐    ┌──────────────────┐                   │
-│  │ bigtable-init    │    │ dbt              │                   │
-│  │ charge les JSON  │    │ transformations  │                   │
-│  │ au démarrage     │    │ SQL → BigQuery   │                   │
-│  └──────────────────┘    └──────────────────┘                   │
-└──────────────────────────────────────────────────────────────────┘
-
-⟵── Le Backend FastAPI est connecté aux DEUX réseaux ──⟶
-     (accès à Bigtable + accès à Redis/PostgreSQL App)
+data/engineer    ─┐
+data-analysis    ─┤
+infra-dataops    ─┼──►  develop  ──►  master
+feature/fullstack ─┘   (integration)   (stable)
 ```
 
+1. Everyone branched off `develop` into their role branch
+   (`data/engineer`, `data-analysis`, `infra-dataops`, `feature/fullstack`).
+2. We built and tested our part in isolation, so a broken scraper never blocked
+   the frontend and an experimental notebook never touched the API.
+3. When a piece was working, we opened a pull request into `develop`. The CI
+   pipeline (described in the DataOps section) had to pass before the merge was
+   allowed. That gate caught build breaks, leaked secrets, and failing tests
+   before they reached anyone else.
+4. Once `develop` held a coherent, working version of the whole stack, we merged
+   it into `master`. `master` is the branch we treat as stable and demo-ready.
+
+The branch-per-role setup mattered more than we expected. Most of us were
+touching Python, but the work pulled in opposite directions. Keeping it
+separated until CI signed off saved us from the usual end-of-project merge panic.
+
 ---
 
-## 👥 Équipe & responsabilités
+## System architecture
 
-| Rôle | Qui | Responsabilité | Dossiers |
-|------|-----|---------------|----------|
-| 🔧 DataOps | — | Infra Docker, CI/CD, sécurité, déploiement | `docker-compose.yml`, `.github/`, `nginx/` |
-| 🕷️ Data Engineer | — | Scrapers, DAGs Airflow, ingestion Bigtable | `scrapers/`, `airflow/` |
-| 📊 Data Analyst | — | Modèles dbt, analyses statistiques Python | `dbt/`, `analytics/` |
-| 💻 Dev Fullstack | — | API FastAPI, Frontend Angular, WebSocket | `backend/`, `frontend/` |
+The platform runs as two layers on two isolated Docker networks. The data layer
+handles scraping, orchestration, and storage. The application layer serves
+users. The backend container sits on both networks because it is the one
+component that needs to read product prices and serve API traffic at the same
+time.
+
+```
+DATA SOURCES
+  Jumia (MA)        Sport Direct (UK)        eBay (Global)
+       |  Selenium         |  Selenium             |  Selenium + xvfb
+       v                   v                       v
+SCRAPERS (Python + Selenium)  ->  raw JSON per store/category
+       |  Airflow stages JSON -> nifi_inbox/
+       v
+APACHE NIFI  ->  streams each record into Bigtable
+       v
+GOOGLE CLOUD BIGTABLE  (hot store, up to 100 price versions per product)
+       |  bigtable_to_bigquery.py (via Airflow)
+       v
+GOOGLE BIGQUERY  (raw products)  ->  dbt:  stg -> int -> mart
+       v
+FastAPI  ->  Angular SPA   (behind an Nginx reverse proxy)
+```
+
+The whole thing comes up with one `docker-compose up`. Here is the full stack
+running locally, every container green:
+
+![All platform containers running under Docker Compose](images/Screenshot%202026-06-11%20203545.png)
 
 ---
 
-## 🚀 Démarrage rapide
+## Data engineering
 
-### Prérequis
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installé et **lancé**
-- [Git](https://git-scm.com/downloads) installé
-- 8 Go de RAM minimum (les conteneurs Airflow + NiFi sont gourmands)
+**Owner: Aouichi Omar — branch `data/engineer`**
 
-### Étape 1 — Cloner le projet
+The job of this layer is to turn three messy retail websites into one clean,
+queryable table of prices that grows every day.
+
+### Scraping
+
+Each marketplace has its own scraper built on Python and Selenium, driving a
+headless Chrome through `webdriver-manager`. eBay needs an extra `xvfb` virtual
+display to behave. The scrapers cover six sports categories (football, gym,
+basketball, volleyball, combat-sports, and racket-sports) and write raw JSON per
+category. Every record carries the same fields: name, current price, price before
+discount, discount, rating, availability, product and image URLs, a free-text
+features blob, sizes, the scrape timestamp, the store, and the category.
+
+### Storage choice: Bigtable then BigQuery
+
+We use two Google stores on purpose. Bigtable is the hot store. Its row key is
+`{store}#{category}#{name-slug}#{uuid}` and the `info` column family keeps up to
+100 versions per cell, so a single product row holds its whole price history. A
+product whose price moves every day still lives under one key. That versioning is
+the reason we chose Bigtable over a plain table; the price history is the product.
+
+BigQuery is the analytical store. The export script reads every Bigtable row,
+deduplicates against what is already in BigQuery using `_bigtable_row_key`, drops
+irrelevant products, checks that the required fields are present, and appends the
+new rows with load metadata. Because the load is append-only and deduplicated, we
+can re-run it without creating duplicates. The screenshot below shows the row
+count landing in BigQuery per scrape day, a few thousand new products on most
+days.
+
+![BigQuery raw product counts per scrape date](images/Screenshot_20260611_204726.png)
+
+The Bigtable row keys, the part that makes deduplication work, look like this:
+
+![Bigtable row keys exported into BigQuery](images/Screenshot_20260611_204841.png)
+
+### Orchestration with Airflow
+
+One DAG, `price_intelligence_pipeline`, runs the whole thing daily. The three
+scrapers run in parallel, then the pipeline stages the JSON for NiFi, waits for
+Bigtable to settle, exports to BigQuery, cleans out junk and unknown categories,
+and finally fans out into dbt and the analyst's notebooks. Here is a real run
+with every task green:
+
+![Airflow DAG run, all tasks successful](images/Screenshot_20260611_195959.png)
+
+### Real-time ingestion with NiFi
+
+NiFi watches the `nifi_inbox/` folder and streams each staged file into Bigtable
+through `nifi_to_bigtable.py`, tagging every record with an ingestion run id and
+a staging timestamp. This is the streaming path that runs alongside the daily
+batch. The NiFi flow canvas:
+
+![Apache NiFi ingestion flow](images/Screenshot_20260611_200423.png)
+
+### Transformations with dbt
+
+dbt turns the raw BigQuery table into models the rest of the team can trust:
+
+- `stg_prices` cleans and types the raw data. Prices arrive as strings, so this
+  is where they become numbers, timestamps get parsed, store names get
+  standardised, and bad rows get filtered out.
+- `int_price_daily` aggregates to one row per product per day.
+- `mart_price_trends` is the final table the backend reads for its charts.
+
+### Data quality
+
+Cleaning happens in layers, not in one place. Airflow validates the JSON schema
+before ingestion, and a pure-Python rule library (`product_quality.py`) filters
+out products that were scraped by mistake, such as VR headsets and toothpaste
+that slipped into a sports search. After export, a set of BigQuery cleanup
+scripts catch whatever got through and re-classify products with a missing
+category. As a final guard, we added a Great Expectations gate that validates the
+raw rows before they reach BigQuery, so the warehouse stays clean at the door
+rather than being scrubbed afterwards.
+
+---
+
+## Data analysis
+
+**Owner: EL Ghrib Assil — branch `data-analysis`**
+
+The analysis starts where storage ends. The official source is the BigQuery
+table `price-intelligence-495411.price_intelligence.products`. Five notebooks run
+in order: data understanding, cleaning, exploratory analysis, statistical tests,
+and final insights. A pipeline script can replay them after each scrape and
+regenerate the dashboard exports in one command.
+
+### What the prices look like
+
+eBay and Sport Direct sit at a higher median price than Jumia across almost every
+category. Jumia is the budget platform in this dataset.
+
+![Median price per platform, bar and box plot](images/Screenshot_20260611_180042.png)
+
+Breaking it down by both platform and category at once shows where the money is.
+Volleyball gear on Sport Direct has the highest median in the whole matrix;
+combat-sports and gym products tend to be the cheapest.
+
+![Median price heatmap by category and platform](images/Capture%20d'écran%202026-06-11%20173808.png)
+
+The full distributions, after cleaning, show how long the tails are. Most
+products are cheap, but every platform carries a thin spread of expensive
+outliers, and Jumia's outliers are the most extreme relative to its low median.
+
+![Price distribution by platform and category](images/Capture%20d'écran%202026-06-11%20175009.png)
+
+### Prices over time
+
+We have roughly a month of daily scrapes. The median price per platform bounces
+around but holds the same ranking, eBay and Sport Direct above Jumia, with a
+spike in mid-May that the cleaning step later flattened.
+
+![Median price evolution per platform over time](images/Capture%20d'écran%202026-06-11%20173925.png)
+
+### Statistical work
+
+The exploratory plots raised obvious questions, so the later notebooks tested
+them properly. The relationship between a product's rating and its price is weak
+and noisy. Expensive products are not reliably better rated, and a large share of
+products carry a zero rating because they simply have no reviews yet.
+
+![Client rating against price, coloured by store](images/Capture%20d'écran%202026-06-11%20180238.png)
+
+The Spearman correlations confirm it numerically. Price and discount have a
+moderate negative correlation (−0.31): the cheaper products tend to be the ones
+on sale. Rating barely correlates with anything.
+
+![Spearman correlations between price, discount, and rating](images/Capture%20d'écran%202026-06-11%20174728.png)
+
+We also fit an OLS regression to model price from store, category, rating, and
+discount. The residual diagnostics below are the honest part of the story. The
+residuals are roughly centred but heavy-tailed, and they fan out at higher fitted
+values, which is the heteroscedasticity you would expect from price data with a
+long right tail. In plain terms, the model explains the cheap bulk of the catalog
+better than the expensive outliers.
+
+![OLS regression residual diagnostics](images/Capture%20d'écran%202026-06-11%20175452.png)
+
+The notebooks export their results as JSON files (KPIs, price by store, price by
+category, time series, heatmap, top discounts, recommendations) that the frontend
+reads directly, so the analyst's conclusions show up in the product without a
+manual hand-off.
+
+---
+
+## DataOps and cloud engineering
+
+**Owner: EL Arabi Serghini Oubay — branch `infra-dataops`**
+
+This layer's job was to make the other three reproducible, secure, and ready for
+the cloud. The goal was that everyone else could commit code, push, and trust
+that the platform still worked, without ever setting up infrastructure by hand.
+
+### The Docker environment
+
+The local environment is a `docker-compose.yml` that brings up more than ten
+services across two networks. One decision shaped the rest: instead of running a
+local Bigtable emulator, the local containers connect to a real Cloud Bigtable
+instance. That makes the development environment a true hybrid, local compute and
+cloud storage, and means the code we test locally is the code that runs against
+the real database.
+
+The two networks keep concerns apart. `price-intel-network` carries the heavy ETL
+and orchestration traffic. `app-network` serves end users. The backend bridges
+both. Nginx is the single entry point on port 80, routing `/api/*` to the backend
+and everything else to the frontend.
+
+### CI/CD: the merge gate
+
+Every push and pull request runs through a GitHub Actions pipeline before it can
+reach `develop`. It runs in parallel and covers a lot of ground: linting and type
+checks, dbt model compilation, the frontend build, Python security scanning with
+Bandit, secret detection with Gitleaks, dependency CVE auditing, Docker image
+scanning with Trivy, and Terraform misconfiguration checks. The last stage builds
+the images and runs the full stack inside the runner to confirm the services
+actually talk to each other. Only if all of that passes does the merge gate go
+green.
+
+![GitHub Actions CI pipeline, all stages passing](images/WhatsApp%20Image%202026-06-11%20at%208.07.51%20PM.jpeg)
+
+The secret-scanning stage earned its place quickly. Because we use a real GCP key
+file locally, a single careless commit could have leaked production credentials.
+The pipeline fails hard if it ever sees one.
+
+### Infrastructure as Code
+
+To move from Docker to a production Google Cloud setup, the infrastructure is
+written as modular Terraform. The mapping aims for a managed, low-operations
+model: Bigtable stays as is, `postgres-app` becomes Cloud SQL, Airflow becomes
+Cloud Composer, the backend becomes Cloud Run, and the frontend goes behind Cloud
+Storage with a CDN and a load balancer. The Cloud Run service account is scoped to
+read Bigtable and connect to Cloud SQL and nothing more. Separate dev and prod
+variable files keep the dev environment cheap and the prod environment highly
+available.
+
+---
+
+## Fullstack: backend and frontend
+
+**Owner: EL Arroud Mohamed Reda — branch `feature/fullstack`**
+
+This is the layer users actually see. It reads the cleaned data the pipeline
+produced and turns it into a product.
+
+### Backend (FastAPI)
+
+The backend is a FastAPI service that deliberately straddles two databases.
+Postgres holds user-facing state: accounts, sessions, refresh tokens, the
+watchlist, and price alerts. BigQuery holds the product catalog and price
+history. The split is a rule, not an accident. Per-user data goes to Postgres,
+product data comes from BigQuery, and the two only join in the service layer. The
+link between a watchlist row and a product is intentionally not a foreign key,
+because the product lives in a different database entirely.
+
+The service exposes the expected surface: authentication with email verification
+and password reset, product listing and search, price history and comparison, a
+per-user watchlist, and brand and product statistics. One internal endpoint,
+`/internal/price-event`, is the seam where the data and application layers meet.
+NiFi posts a price event, and the backend invalidates its caches, broadcasts the
+change over WebSocket to anyone watching live, checks every watchlist threshold,
+and emails users who are offline. It is gated by an internal key and never
+exposed publicly.
+
+Connections use a psycopg2 pool directly, with no ORM. Schema changes after the
+baseline go through Alembic, so the four of us could evolve the database without
+wiping each other's local data.
+
+### Frontend (Angular)
+
+The frontend is an Angular single-page app built with standalone components and
+signals, with `OnPush` change detection throughout. Every route is lazy-loaded.
+Users can browse the catalog, open a product to see its price chart, compare
+products side by side, manage a watchlist with target prices, and view the
+analyst's market dashboard, which is exactly the JSON the analysis notebooks
+exported.
+
+Auth state lives in signals and survives a hard refresh through an app
+initializer, so a logged-in user stays logged in. Two HTTP interceptors handle
+the boring but critical parts: one attaches the bearer token and silently
+refreshes it on a 401, the other catches errors and shows a toast. Every data
+page renders the same four states (loading, error, empty, and data) so the UI
+behaves predictably no matter what the backend returns.
+
+In production the frontend is built to a static bundle and served by Nginx, which
+also proxies the API and WebSocket traffic, so a single container is a working
+entry point on its own.
+
+---
+
+## Running the stack
+
+Everything runs through Docker Compose from the repository root.
+
 ```bash
-git clone https://github.com/Oubay-S/price-intelligence.git
-cd price-intelligence
+docker-compose up -d --build      # bring up the whole platform
+docker-compose ps                 # check every service is healthy
+docker-compose logs -f <service>  # follow one service
+docker-compose down               # stop, keep the data
 ```
 
-### Étape 2 — Préparer l'environnement (🔒 Sécurité)
+Once it is up:
+
+| URL | What | Credentials |
+| --- | --- | --- |
+| `http://localhost/` | The app through the Nginx reverse proxy | — |
+| `http://localhost:4200/` | Angular app, direct | — |
+| `http://localhost:8000/docs` | Backend API docs (Swagger) | — |
+| `http://localhost:8080/` | Airflow | admin / admin123 |
+| `https://localhost:8443/nifi` | NiFi | admin / adminpassword123 |
+
+To run the daily pipeline by hand:
+
 ```bash
-# Créer le fichier d'environnement local
-cp .env.example .env
-
-# Créer le fichier des clés GCP (requis pour BigQuery/dbt en semaine 4)
-cp gcp-credentials.json.example gcp-credentials.json
+docker-compose exec airflow-scheduler \
+  airflow dags trigger price_intelligence_pipeline
 ```
 
-> ⚠️ **RÈGLES DE SÉCURITÉ — À respecter par TOUS**
-> - **`.env`** et **`gcp-credentials.json`** sont **ignorés par Git** → ils ne seront jamais poussés
-> - **Ne modifiez jamais** les fichiers `.example` avec de vraies clés
-> - Pour que BigQuery fonctionne : remplacez le contenu de `gcp-credentials.json` par votre vraie clé GCP (Service Account JSON)
+And to run the dbt models on their own:
 
-### Étape 3 — Lancer l'infrastructure
 ```bash
-# Lancer TOUS les services (12 conteneurs)
-docker-compose up -d --build
-```
-
-> ⏳ **Premier lancement :** Comptez ~10 minutes pour le build des images (Airflow, Backend, Frontend).
-> Les lancements suivants sont quasi-instantanés grâce au cache Docker.
-
-#### Lancement partiel (si besoin)
-```bash
-# Couche DATA uniquement (Data Engineer / Data Analyst)
-docker-compose up -d --build bigtable-emulator postgres airflow-init airflow-webserver airflow-scheduler nifi bigtable-init
-
-# Couche APPLICATIVE uniquement (Dev Fullstack)
-docker-compose up -d --build postgres-app redis backend frontend nginx
-```
-
-### Étape 4 — Vérifier que tout tourne
-```bash
-docker ps --format "table {{.Names}}\t{{.Status}}"
-```
-
-Résultat attendu : **10 conteneurs**, tous en `healthy` ou `Up` :
-```
-NAMES               STATUS
-nginx               Up (healthy)
-backend             Up (healthy)
-frontend            Up (healthy)
-airflow-webserver   Up (healthy)
-airflow-scheduler   Up (healthy)
-nifi                Up (healthy)
-postgres-app        Up (healthy)
-airflow-postgres    Up (healthy)
-redis               Up (healthy)
-bigtable-emulator   Up (healthy)
-```
-
-### Étape 5 — Accéder aux services
-
-| Service | URL | Identifiants | Qui l'utilise ? |
-|---------|-----|-------------|-----------------|
-| 🌐 **Application** | http://localhost | — | Tout le monde |
-| 🖥️ Frontend Angular | http://localhost:4200 | — | Dev Fullstack |
-| ⚡ Backend FastAPI (Swagger) | http://localhost:8000/docs | — | Dev Fullstack |
-| 🔧 Airflow | http://localhost:8080 | `admin` / `admin123` | Data Engineer |
-| 📡 NiFi | https://localhost:8443/nifi | `admin` / `adminpassword123` | Data Engineer |
-| 🗄️ PostgreSQL App | `localhost:5432` | `app_user` / `app_secret` | Dev Fullstack |
-| 🗄️ PostgreSQL Airflow | `localhost:5433` | `airflow` / `airflow_secret` | DataOps |
-| 📦 Redis | `localhost:6379` | — | Dev Fullstack |
-
-> 💡 **Astuce NiFi :** Le navigateur affichera un avertissement SSL (certificat auto-signé). Cliquez "Avancé" → "Continuer" — c'est normal en local !
-
----
-
-## 🛠️ Stack technique
-
-| Couche | Outil | Version | Rôle |
-|--------|-------|---------|------|
-| 🕷️ Scraping | Scrapy + BeautifulSoup | — | Extraction des prix depuis Jumia, Sports Direct, eBay |
-| 📡 Streaming | Apache NiFi | 1.23.2 | Ingestion en temps réel des données scrapées |
-| ⏱️ Orchestration | Apache Airflow | 2.9.1 | Planification des scrapers (cron quotidien 13h) |
-| 💾 NoSQL | Google Cloud Bigtable | Émulateur | Stockage des données de prix (format wide-column) |
-| 🗄️ SQL | PostgreSQL | 15 Alpine | 2 instances : metadata Airflow + données application |
-| 🚀 Cache / Pub-Sub | Redis | 7 Alpine | Cache API, sessions JWT, WebSocket pub/sub |
-| 🔄 Transformation | dbt-core | 1.8.2 | Modèles SQL : staging → intermediate → mart |
-| 📊 Analyse | Python (SciPy, statsmodels) | — | Analyse statistique des tendances de prix |
-| ⚡ Backend API | FastAPI + Uvicorn | — | API REST + WebSocket pour le frontend |
-| 🖥️ Frontend | Angular 21 + Tailwind CSS | 21.2 | SPA avec dashboard et alertes de prix |
-| 🔀 Reverse Proxy | Nginx | 1.25 | Point d'entrée unique : routage API + WebSocket + SPA |
-| 🐳 Infra | Docker Compose | — | 12 services, 2 réseaux, orchestration locale |
-| 🔄 CI/CD | GitHub Actions | — | 9 jobs : lint, build, test, SAST, secrets, CVE, Docker |
-
----
-
-## ⚙️ Comment ça marche ?
-
-### 1. Le scraping (Data Engineer)
-Les scrapers Python dans `scrapers/` utilisent Selenium + BeautifulSoup pour extraire les prix des produits de nutrition sportive depuis 3 marketplaces :
-- `scrapers/jumia/` → Scrape Jumia.ma
-- `scrapers/sport-direct/` → Scrape SportsDirect.com
-- `scrapers/ebay/` → Scrape eBay.com
-
-Les données sont sauvegardées en fichiers JSON locaux (dans les sous-dossiers).
-
-### 2. L'orchestration (Data Engineer)
-Le DAG Airflow `price_intelligence_pipeline` (`airflow/dags/price_intelligence_dag.py`) :
-- Se déclenche **tous les jours à 13h** (`schedule_interval='0 13 * * *'`)
-- Lance les 3 scrapers **en parallèle** (Jumia, Sports Direct, eBay)
-- Puis charge les résultats dans Bigtable via `load_all_to_bigtable.py`
-
-```
-task_jumia  ──┐
-task_sport_direct ──┼──► task_load_bigtable
-task_ebay   ──┘
-```
-
-### 3. L'ingestion en temps réel (Data Engineer)
-Apache NiFi surveille les fichiers JSON produits par les scrapers et les ingère dans Bigtable en temps réel, en complément du batch Airflow.
-
-### 4. Le stockage (DataOps)
-- **Bigtable Emulator** : Stocke les données de prix (clé = `{source}#{product_id}#{timestamp}`, famille = `info`)
-- **PostgreSQL App** : Stocke les utilisateurs, watchlists, alertes, sessions
-- **PostgreSQL Airflow** : Stocke les métadonnées d'Airflow (état des DAGs, logs)
-- **Redis** : Cache les réponses API, gère les sessions JWT, et sert de broker WebSocket
-
-### 5. La transformation (Data Analyst)
-dbt transforme les données brutes en modèles analytiques :
-```
-sources.yml ──► stg_prices.sql (staging) ──► int_price_daily.sql (intermediate) ──► mart_price_trends.sql (mart)
-```
-- **staging** → Nettoyage, typage, dédoublonnage
-- **intermediate** → Agrégation par jour, calcul des moyennes
-- **mart** → Modèles finaux pour le dashboard (tendances, comparaisons)
-
-### 6. L'API et le frontend (Dev Fullstack)
-- **FastAPI** (`backend/main.py`) expose les endpoints REST (`/api/v1/...`) et les WebSocket (`/ws/...`)
-- **Angular** (`frontend/sportsintelligence/`) consomme l'API et affiche le dashboard
-- **Nginx** route tout : `/api/*` → backend, `/ws/*` → backend (WebSocket), `/*` → frontend
-
----
-
-## 📁 Structure du projet
-
-```
-price-intelligence/
-│
-├── 📋 .github/workflows/
-│   └── ci.yml                 # Pipeline CI/CD (9 jobs)
-│
-├── ⏱️ airflow/
-│   ├── dags/
-│   │   └── price_intelligence_dag.py   # DAG principal (3 scrapers → Bigtable)
-│   └── requirements.txt               # Dépendances Python Airflow
-│
-├── 📊 analytics/
-│   └── requirements.txt       # Dépendances pour l'analyse statistique
-│
-├── ⚡ backend/
-│   ├── Dockerfile             # Image FastAPI (Python 3.10)
-│   ├── main.py                # Point d'entrée FastAPI (healthcheck + status)
-│   ├── sql/                   # Schéma SQL app (auto-exécuté au 1er boot de postgres-app)
-│   └── requirements.txt       # Dépendances Python backend
-│
-├── 🔄 dbt/
-│   ├── dbt_project.yml        # Config du projet dbt
-│   ├── profiles.yml           # Connexion BigQuery
-│   ├── models/
-│   │   ├── staging/           # stg_prices.sql
-│   │   ├── intermediate/      # Agrégations
-│   │   └── mart/              # Modèles finaux
-│   ├── tests/
-│   │   └── assert_price_positive.sql   # Test dbt
-│   └── sources.yml            # Définition des sources
-│
-├── 📖 docs/
-│   ├── 00_GUIDE_COMPLET.md    # Guide GitHub pas à pas
-│   ├── DEMARRAGE.md           # Guide de démarrage pour les nouveaux
-│   └── SEMAINE_1_PLANNING.md  # Planning semaine 1
-│
-├── 🖥️ frontend/
-│   ├── Dockerfile             # Multi-stage : Node 20 → nginx:alpine
-│   ├── nginx.conf             # Config SPA (try_files → index.html)
-│   └── sportsintelligence/    # Code source Angular 21
-│       ├── src/               # Composants, services, routes
-│       ├── package.json       # Dépendances Angular + Tailwind
-│       └── angular.json       # Config Angular CLI
-│
-├── 📡 nifi/
-│   └── templates/             # Flows NiFi versionnés (.xml)
-│
-├── 🔀 nginx/
-│   └── nginx.conf             # Reverse proxy (/api, /ws, /)
-│
-├── 🕷️ scrapers/
-│   ├── jumia/                 # Scraper Jumia
-│   ├── sport-direct/          # Scraper Sports Direct
-│   ├── ebay/                  # Scraper eBay
-│   ├── load_all_to_bigtable.py    # Charge les JSON dans Bigtable
-│   ├── nifi_to_bigtable.py        # Script NiFi → Bigtable
-│   └── spiders/                   # Spiders Scrapy legacy
-│
-├── 🐳 docker-compose.yml     # 12 services, 2 réseaux
-├── 🐳 Dockerfile             # Image Airflow custom (Chrome + dépendances)
-├── ⚙️ .env.example            # Template des variables d'environnement
-├── 🔑 gcp-credentials.json.example  # Template clé GCP (dummy)
-└── 📖 README.md               # ← Vous êtes ici !
+docker-compose run --rm dbt dbt run
+docker-compose run --rm dbt dbt test
 ```
 
 ---
 
-## 🔄 Pipeline CI/CD (GitHub Actions)
+## Closing notes
 
-Chaque push (sur **n'importe quelle branche**) et chaque pull request déclenchent automatiquement une pipeline de **9 jobs** :
-
-```
-  🔍 Lint           🏗️ Build (3 images Docker)
-       \                  |
-        \                 |          🛡️ SAST (Bandit)
-         \                |          🔐 Secrets Scan
-          └──► 🧪 Tests   |          📦 Dependency Scan
-               Integration|          🐳 Docker Security (Trivy)
-                    |      |          🏗️ IaC Scan (Checkov + Hadolint)
-                    └──────┼──────────────┘
-                           ▼
-                  ✅ Merge Gate
-```
-
-| Job | Outil | Ce qu'il fait | Bloquant ? |
-|-----|-------|---------------|:----------:|
-| 🔍 Lint | Flake8 | Vérifie la syntaxe Python + validité des DAGs | ✅ |
-| 🏗️ Build | Docker Buildx | Build les 3 images (Airflow, Backend, Frontend) | ✅ |
-| 🧪 Tests | Docker Compose | Lance les 12 services, vérifie la connectivité entre eux | ✅ |
-| 🛡️ SAST | Bandit | Détecte injections SQL, exec/eval dangereux, failles crypto | ✅ |
-| 🔐 Secrets | TruffleHog + Gitleaks | Vérifie qu'aucun secret n'est dans l'historique Git | ✅ |
-| 📦 Dépendances | pip-audit | Détecte les CVE connues dans les packages Python | ⚠️ Info |
-| 🐳 Docker | Trivy | Scan des vulnérabilités dans les images Docker | ⚠️ Info |
-| 🏗️ IaC | Checkov + Hadolint | Lint des 3 Dockerfiles et du docker-compose | ⚠️ Info |
-| ✅ Gate | — | Bloque le merge si un check critique (✅) échoue | 🚫 |
-
-> 📂 Les rapports de sécurité (Bandit, Trivy, pip-audit) sont archivés dans les **Artifacts** de chaque run GitHub Actions (conservés 30 jours).
-
----
-
-## 🌿 Guide Git pour l'équipe
-
-### Conventions de branches
-```bash
-# Format : feature/<rôle>/<description>
-feature/dataops/ci-cd-pipeline
-feature/engineer/scraper-jumia
-feature/analyst/dbt-staging-models
-feature/fullstack/auth-module
-```
-
-### Workflow quotidien
-```bash
-# 1. Se mettre à jour
-git checkout develop
-git pull origin develop
-
-# 2. Créer sa branche de travail
-git checkout -b feature/MON-ROLE/ma-tache
-
-# 3. Travailler, commit régulièrement
-git add .
-git commit -m "feat: description claire de ce qui a été fait"
-
-# 4. Pousser sa branche
-git push origin feature/MON-ROLE/ma-tache
-
-# 5. Créer une Pull Request sur GitHub → develop
-#    Attendre que la CI passe ✅
-#    Un autre membre review et approuve
-#    Squash & Merge
-```
-
-### Convention de commits
-```bash
-feat: nouvelle fonctionnalité
-fix: correction de bug
-docs: documentation
-refactor: refactoring sans changement de comportement
-ci: modifications CI/CD
-chore: maintenance, nettoyage
-```
-
----
-
-## 🔧 Dépannage
-
-### Docker ne démarre pas ?
-```bash
-# Vérifier que Docker Desktop est lancé
-docker ps
-
-# Si rien ne s'affiche → ouvrir Docker Desktop puis réessayer
-docker-compose up -d --build
-```
-
-### Airflow-init crash ?
-```bash
-# Repartir de zéro (supprime les volumes)
-docker-compose down -v
-docker-compose up -d --build
-```
-
-### NiFi ne répond pas ?
-```bash
-# NiFi met ~60 secondes à démarrer (Java = lent)
-docker logs nifi --tail 20
-
-# Chercher "NiFi has started" dans les logs
-```
-
-### Backend "unhealthy" ?
-```bash
-# Vérifier les logs du backend
-docker logs backend --tail 20
-
-# Si "Could not import module main" → le fichier main.py manque dans backend/
-```
-
-### Port déjà utilisé ?
-```bash
-# Identifier quel processus utilise le port (ex: 5432)
-netstat -ano | findstr :5432
-
-# Arrêter le processus ou changer le port dans docker-compose.yml
-```
-
----
-
-## 🔒 Sécurité
-
-### Fichiers protégés par `.gitignore`
-| Fichier | Contenu | Risque si poussé |
-|---------|---------|-----------------|
-| `.env` | Mots de passe PostgreSQL, JWT secret, credentials NiFi | 🔴 Critique |
-| `gcp-credentials.json` | Clé privée Google Cloud (Service Account) | 🔴 Critique |
-| `logs/` | Logs d'exécution Airflow | 🟡 Moyen |
-| `scrapers/*/data/` | Données scrapées (JSON) | 🟢 Faible |
-
-### Bonnes pratiques
-1. **Ne jamais** mettre de vrais secrets dans les fichiers `.example`
-2. **Toujours** utiliser `cp .env.example .env` et modifier le `.env` local
-3. Les **scans de secrets** (TruffleHog + Gitleaks) dans la CI/CD bloquent automatiquement le merge si un secret est détecté
-4. Les mots de passe par défaut (`admin123`, `airflow_secret`, `app_secret`) sont **uniquement pour le dev local** — ils doivent être changés en production
-
----
-
-## 📅 Roadmap
-
-- [x] **Semaine 1** — Environnement local Docker (12 services), structure Git
-- [x] **Semaine 1.5** — Pipeline CI/CD complète (9 jobs : lint, build, test, SAST, secrets, Docker scan)
-- [ ] **Semaine 2** — Pipeline data complet : scrape → NiFi → Bigtable → dbt → BigQuery
-- [ ] **Semaine 3** — Backend FastAPI (auth, CRUD, WebSocket) + Frontend Angular (dashboard, alertes)
-- [ ] **Semaine 4** — Déploiement GCP + analyses statistiques + démo vidéo
-
----
-
-## 📚 Documentation complémentaire
-
-| Document | Contenu |
-|----------|---------|
-| [DEMARRAGE.md](./docs/DEMARRAGE.md) | Guide de démarrage détaillé |
-| [00_GUIDE_COMPLET.md](./docs/00_GUIDE_COMPLET.md) | Guide Git pas à pas (5 phases) |
-| [SEMAINE_1_PLANNING.md](./docs/SEMAINE_1_PLANNING.md) | Planning détaillé semaine 1 |
-
----
-
-<p align="center">
-  <b>🚀 Price Intelligence Platform</b><br>
-  Fait avec ❤️ par l'équipe Data Engineering — LSI_1 2025-2026
-</p>
+The four layers were built separately and merged through `develop` into
+`master`, but the point of the project was always the seam between them. A price
+scraped from Jumia at night becomes a versioned Bigtable row, then a cleaned
+BigQuery record, then a number in a statistical test, then a chart in someone's
+browser the next morning. Keeping those handoffs honest, with clean data, a CI
+gate, and a shared database contract, is most of what made the separate pieces
+add up to one platform.

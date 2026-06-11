@@ -1,128 +1,127 @@
-﻿# Price Intelligence - Data Analysis
+﻿Here is the translated English version of your documentation:
 
-Espace professionnel pour la partie **Data Analyst** du projet Price Intelligence.
+Price Intelligence - Data Analysis
+Professional workspace for the Data Analyst part of the Price Intelligence project.
 
-## Rôle
+Role
+The Data Analyst's work begins after data collection and storage. It covers: data understanding, analytical cleaning, descriptive statistics, inferential statistics, visualizations, business recommendations, and the final report.
 
-Le travail Data Analyst commence après la collecte et le stockage des données. Il couvre : compréhension des données, nettoyage analytique, statistiques descriptives, statistiques inférentielles, visualisations, recommandations business et rapport final.
+Execution Order
+notebooks/01_data_understanding.ipynb
 
-## Ordre d'exécution
+notebooks/02_data_cleaning.ipynb
 
-1. `notebooks/01_data_understanding.ipynb`
-2. `notebooks/02_data_cleaning.ipynb`
-3. `notebooks/03_exploratory_analysis.ipynb`
-4. `notebooks/04_statistical_tests.ipynb`
-5. `notebooks/05_final_insights.ipynb`
+notebooks/03_exploratory_analysis.ipynb
 
-## Installation
+notebooks/04_statistical_tests.ipynb
 
-```bash
+notebooks/05_final_insights.ipynb
+
+Installation
+Bash
 conda activate price-analytics
 cd C:\Users\Admin\Desktop\price-intelligence\data-analysis
 pip install -r requirements.txt
-```
-
-## Export pour dashboard / full stack
-
-```bash
+Export for Dashboard / Full Stack
+Bash
 python export_for_dashboard.py
-```
+The export_for_dashboard.py script transforms the cleaned dataset and final conclusions into JSON files ready to be consumed by Streamlit, Plotly, a backend API, or a frontend interface.
 
-Le script `export_for_dashboard.py` transforme le dataset nettoyé et les conclusions finales en fichiers JSON prêts à être consommés par Streamlit, Plotly, une API backend ou une interface frontend.
+Outputs generated in outputs/app/:
 
-Sorties générées dans `outputs/app/` :
+manifest.json: contract of the generated files.
 
-- `manifest.json` : contrat des fichiers produits.
-- `kpis.json` : indicateurs globaux.
-- `price_by_store.json` : prix par plateforme.
-- `price_by_category.json` : prix par catégorie.
-- `time_series_by_store.json` : évolution temporelle des prix par plateforme.
-- `heatmap_store_category.json` : données pour heatmap plateforme/catégorie.
-- `top_discounts.json` : produits avec les plus grandes remises.
-- `recommendations.json` : recommandations business finales.
+kpis.json: global indicators.
 
-## Execution automatique apres scraping
+price_by_store.json: prices by platform.
 
-Pour automatiser la partie Data Analyst apres une nouvelle collecte/scraping, utiliser :
+price_by_category.json: prices by category.
 
-```bash
+time_series_by_store.json: temporal price evolution by platform.
+
+heatmap_store_category.json: data for platform/category heatmap.
+
+top_discounts.json: products with the highest discounts.
+
+recommendations.json: final business recommendations.
+
+Automatic Execution After Scraping
+To automate the Data Analyst workflow after a new data collection/scraping, use:
+
+Bash
 python run_eda_pipeline.py --scope eda
-```
+This command automatically executes:
 
-Cette commande execute automatiquement :
+notebooks/01_data_understanding.ipynb
 
-1. `notebooks/01_data_understanding.ipynb`
-2. `notebooks/02_data_cleaning.ipynb`
-3. `notebooks/03_exploratory_analysis.ipynb`
-4. `export_for_dashboard.py`
+notebooks/02_data_cleaning.ipynb
 
-Elle regenere donc les outputs EDA, les figures et les fichiers JSON pour le dashboard/full stack.
+notebooks/03_exploratory_analysis.ipynb
 
-Pour executer tout le livrable analytique, y compris les tests statistiques et insights finaux :
+export_for_dashboard.py
 
-```bash
+It therefore regenerates the EDA outputs, figures, and JSON files for the dashboard/full stack.
+
+To execute the entire analytical deliverable, including statistical tests and final insights:
+
+Bash
 python run_eda_pipeline.py --scope full
-```
+To regenerate only the dashboard JSON files without rerunning the notebooks:
 
-Pour regenerer seulement les fichiers JSON du dashboard sans relancer les notebooks :
-
-```bash
+Bash
 python run_eda_pipeline.py --scope export-only
-```
+A tracking file is generated here:
 
-Un fichier de suivi est genere ici :
-
-```text
+Plaintext
 outputs/app/pipeline_status.json
-```
+PDF Coverage
+Descriptive statistics: mean, median, standard deviation, distributions, trends by category.
 
-## Couverture du PDF
+Time-series plots: notebook 03.
 
-- Statistiques descriptives : moyenne, médiane, écart-type, distributions, tendances par catégorie.
-- Time-series plots : notebook 03.
-- Tests inférentiels : ANOVA, Kruskal-Wallis, Mann-Whitney, corrélations.
-- Régression : notebook 04 avec variables store, category, stars, discount et time si plusieurs dates existent.
-- Intervalles de confiance : notebook 04.
-- Power analysis : notebook 04.
-- Effect size : notebook 04.
-- Dashboard Streamlit : `dashboard/app.py`.
+Inferential tests: ANOVA, Kruskal-Wallis, Mann-Whitney, correlations.
 
+Regression: notebook 04 with store, category, stars, discount, and time variables if multiple dates exist.
 
-## Source officielle BigQuery
+Confidence intervals: notebook 04.
 
-Après le dernier merge, la table officielle est :
+Power analysis: notebook 04.
 
-```text
+Effect size: notebook 04.
+
+Streamlit Dashboard: dashboard/app.py.
+
+Official BigQuery Source
+After the last merge, the official table is:
+
+Plaintext
 price-intelligence-495411.price_intelligence.products
-```
+Observed profile in BigQuery:
 
-Profil observé dans BigQuery :
-
-```text
+Plaintext
 total_rows       = 20908
 null_name        = 192
 null_price       = 192
 store values     = ebay, jumia, sport-direct, unknown
-```
+Notebooks 01 and 02 now load BigQuery by priority. If BigQuery access is not available in Anaconda, place a CSV export of the table here:
 
-Les notebooks 01 et 02 chargent maintenant BigQuery en priorité. Si l'accès BigQuery n'est pas disponible dans Anaconda, placer un export CSV de la table ici :
-
-```text
+Plaintext
 outputs/raw_data/bigquery_products_export.csv
-```
+Mandatory Regeneration After BigQuery Update
+The notebooks use live BigQuery as the official source: price-intelligence-495411.price_intelligence.products.
+The old generated files have been archived in _backup_professional_bigquery_fix_20260520_154303/old_outputs_archived to avoid mixing old and new data.
 
+Professional execution order:
 
-## Regeneration obligatoire apres mise a jour BigQuery
+notebooks/01_data_understanding.ipynb
 
-Les notebooks utilisent BigQuery live comme source officielle: `price-intelligence-495411.price_intelligence.products`.
-Les anciens fichiers generes ont ete archives dans `_backup_professional_bigquery_fix_20260520_154303/old_outputs_archived` pour eviter de melanger anciennes et nouvelles donnees.
+notebooks/02_data_cleaning.ipynb
 
-Ordre professionnel d'execution:
-1. `notebooks/01_data_understanding.ipynb`
-2. `notebooks/02_data_cleaning.ipynb`
-3. `notebooks/03_exploratory_analysis.ipynb`
-4. `notebooks/04_statistical_tests.ipynb`
-5. `notebooks/05_final_insights.ipynb`
+notebooks/03_exploratory_analysis.ipynb
 
-Controle attendu dans le notebook 01: environ 20 908 lignes brutes, `sport-direct` dans les plateformes, et environ 192 prix nulls dans la table brute.
-Si le notebook affiche `local_json_fallback`, `bigquery_export`, ou environ 2 251 lignes, il faut fermer/reouvrir le notebook et relancer le kernel.
+notebooks/04_statistical_tests.ipynb
+
+notebooks/05_final_insights.ipynb
+
+Expected control in notebook 01: approximately 20,908 raw rows, sport-direct in the platforms, and about 192 null prices in the raw table.
+If the notebook displays local_json_fallback, bigquery_export, or approximately 2,251 rows, you must close/reopen the notebook and restart the kernel.
