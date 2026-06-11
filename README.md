@@ -6,8 +6,6 @@
 
 Le système scrape automatiquement les prix depuis **Jumia**, **Sports Direct** et **eBay**, les stocke dans Google Cloud Bigtable, puis les transforme via dbt pour alimenter des analyses statistiques et un tableau de bord interactif.
 
-> 🎓 Projet académique — Data Engineering & Analytics · Pr. ELAACHAK · 2025-2026
-
 ---
 
 ## 📖 Table des matières
