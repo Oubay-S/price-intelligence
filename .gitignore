@@ -158,10 +158,13 @@ Thumbs.db                   # Windows
 # TERRAFORM (pour plus tard, semaine 4)
 # --------------------------
 infra/terraform/.terraform/
+infra/terraform/.terraform.lock.hcl
 infra/terraform/*.tfstate
 infra/terraform/*.tfstate.backup
 infra/terraform/*.tfplan
+infra/terraform/*.auto.tfvars
 infra/terraform/override.tf
+infra/terraform/crash.log
 
 
 CLAUDE.md
