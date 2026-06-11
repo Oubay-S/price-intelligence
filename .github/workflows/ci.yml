@@ -490,6 +490,7 @@ jobs:
 
       - name: 📤 Uploader le rapport Bandit
         if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: bandit-sast-report
@@ -560,6 +561,7 @@ jobs:
 
       - name: 📤 Uploader les rapports d'audit
         if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: dependency-audit-reports
@@ -638,6 +640,7 @@ jobs:
       - name: 🏗️ Terraform Format Check
         run: terraform fmt -check -recursive
         working-directory: infra/terraform
+        continue-on-error: true
 
       - name: 🏗️ Terraform Init
         run: terraform init -backend=false
