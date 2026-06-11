@@ -9,13 +9,9 @@ Academic group project, Data Engineering and Analytics, Pr. ELAACHAK, 2025–202
 A short screen recording of the running application (catalog, product price
 history, watchlist, and alerts):
 
-<!-- DEMO VIDEO — paste the GitHub upload URL on the blank line below.
-     Steps: edit this README on github.com, drag images/demo.mp4 (9.2 MB) into
-     the editor, wait for upload, GitHub inserts a
-     https://github.com/user-attachments/assets/... URL. Leave it on its own
-     line and it renders as an inline player. -->
+<video src="images/demo.mp4" controls width="100%"></video>
 
-
+[Watch the demo video](images/demo.mp4) if the player above does not load in your viewer.
 
 ---
 
