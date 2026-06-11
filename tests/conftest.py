@@ -218,7 +218,6 @@ def invalid_json_file(tmp_path):
 def bigtable_env():
     """Configure les variables d'environnement pour le Bigtable Emulator."""
     env = {
-        "BIGTABLE_EMULATOR_HOST": "localhost:8086",
         "GOOGLE_CLOUD_PROJECT": "price-intel-local",
         "BIGTABLE_INSTANCE_ID": "price-intel-instance",
     }

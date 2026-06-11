@@ -4,7 +4,6 @@ import datetime
 from google.cloud import bigtable
 
 # Set emulator environment variable
-os.environ["BIGTABLE_EMULATOR_HOST"] = "localhost:8087"
 
 def main():
     print("🚀 Connecting to Bigtable Emulator...")
