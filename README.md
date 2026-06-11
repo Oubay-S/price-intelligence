@@ -9,7 +9,7 @@ Academic group project, Data Engineering and Analytics, Pr. ELAACHAK, 2025–202
 A short screen recording of the running application (catalog, product price
 history, watchlist, and alerts):
 
-<video src="images/demo.mp4" controls width="100%"></video>
+<video src="images/Screen Recording 2026-06-11 213224" controls width="100%"></video>
 
 [Watch the demo video](images/demo.mp4) if the player above does not load in your viewer.
 
