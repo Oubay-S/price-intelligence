@@ -74,13 +74,13 @@ x-airflow-common: &airflow-common
     _PIP_ADDITIONAL_REQUIREMENTS: "webdriver-manager undetected-chromedriver selenium beautifulsoup4 requests"
 
   volumes:
-    - ./logs:/opt/airflow/logs:Z
-    - ./airflow/dags:/opt/airflow/dags:Z
-    - ./plugins:/opt/airflow/plugins:Z
+    - ./logs:/opt/airflow/logs:z
+    - ./airflow/dags:/opt/airflow/dags:z
+    - ./plugins:/opt/airflow/plugins:z
     - ./scrapers:/app:z
-    - ./data-analysis:/opt/airflow/data-analysis:Z
+    - ./data-analysis:/opt/airflow/data-analysis:z
     - ./gcp-credentials.json:/opt/airflow/gcp-credentials.json:ro,z
-    - ./dbt:/usr/app/dbt:Z
+    - ./dbt:/usr/app/dbt:z
 
   user: "${AIRFLOW_UID:-50000}:0"
 
@@ -361,7 +361,7 @@ services:
     # behaviour is identical whether the image is run by compose or by
     # `docker run` directly.
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request,sys; r=urllib.request.urlopen('http://localhost:8000/health/live', timeout=5); sys.exit(0 if r.status==200 else 1)"]
+      test: [ "CMD", "python", "-c", "import urllib.request,sys; r=urllib.request.urlopen('http://localhost:8000/health/live', timeout=5); sys.exit(0 if r.status==200 else 1)" ]
       interval: 30s
       timeout: 10s
       retries: 3
