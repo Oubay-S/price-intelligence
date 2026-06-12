@@ -1,7 +1,5 @@
 # Price Intelligence — A Sports-Nutrition Price Monitoring Platform
 
-[![CI Pipeline](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml)
-
 Academic group project, Data Engineering and Analytics, Pr Lotfi ELAACHAK, 2025–2026.
 
 ## Application demo
@@ -27,7 +25,7 @@ want the deep version:
 
 - `scrapers/DATA_ENGINEER_README.md` — ingestion and the data pipeline
 - `data-analysis/README.md` — exploratory analysis and statistics
-- `INFRA/rapport_dataops.MD` — orchestration, CI/CD, and cloud infrastructure
+- `infra/RAPPORT_DATAOPS.md` — orchestration, CI/CD, and cloud infrastructure
 - `backend/README.md` — the FastAPI service
 - `frontend/README.md` — the Angular application
 
@@ -339,7 +337,7 @@ For underlying infrastructure health, **cAdvisor** provides direct insight into 
 > **More detail:** the full DataOps mission report — the service-by-service
 > Docker breakdown, the nine-stage CI/CD pipeline, and the Terraform module
 > layout with the cloud mapping — is in
-> [`INFRA/rapport_dataops.MD`](INFRA/rapport_dataops.MD).
+> [`INFRA/rapport_dataops.MD`](infra/RAPPORT_DATAOPS.md).
 
 ---
 
