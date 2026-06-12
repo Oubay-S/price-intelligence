@@ -2,7 +2,18 @@
 
 [![CI Pipeline](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/Oubay-S/price-intelligence/actions/workflows/ci.yml)
 
-Academic group project, Data Engineering and Analytics, Pr. ELAACHAK, 2025–2026.
+Academic group project, Data Engineering and Analytics, Pr Lotfi ELAACHAK, 2025–2026.
+
+## Application demo
+
+A short screen recording of the running application (catalog, product price
+history, watchlist, and alerts):
+
+<video src="images/demo.mp4" controls width="100%"></video>
+
+[Watch the demo video](images/demo.mp4) if the player above does not load in your viewer.
+
+---
 
 The platform scrapes sports and nutrition products from three online
 marketplaces, stores their full price history, runs the data through a cleaning
@@ -179,6 +190,11 @@ category. As a final guard, we added a Great Expectations gate that validates th
 raw rows before they reach BigQuery, so the warehouse stays clean at the door
 rather than being scrubbed afterwards.
 
+> **More detail:** the full data-engineering write-up — scraper internals, the
+> Airflow DAG task by task, Bigtable row-key design, the export and dedup logic,
+> and the data-quality rules — is in
+> [`scrapers/DATA_ENGINEER_README.md`](scrapers/DATA_ENGINEER_README.md).
+
 ---
 
 ## Data analysis
@@ -246,6 +262,11 @@ The notebooks export their results as JSON files (KPIs, price by store, price by
 category, time series, heatmap, top discounts, recommendations) that the frontend
 reads directly, so the analyst's conclusions show up in the product without a
 manual hand-off.
+
+> **More detail:** notebook-by-notebook execution order, the statistical tests
+> (ANOVA, Kruskal-Wallis, regression, confidence intervals), and the dashboard
+> export contract are documented in
+> [`data-analysis/README.md`](data-analysis/README.md).
 
 ---
 
@@ -315,6 +336,10 @@ For underlying infrastructure health, **cAdvisor** provides direct insight into 
 ![cAdvisor Overview](images/cadvisor-overview.png)
 ![cAdvisor CPU Usage](images/cadvisor-cpu.png)
 ![cAdvisor Memory Usage](images/cadvisor-memory.png)
+> **More detail:** the full DataOps mission report — the service-by-service
+> Docker breakdown, the nine-stage CI/CD pipeline, and the Terraform module
+> layout with the cloud mapping — is in
+> [`INFRA/rapport_dataops.MD`](INFRA/rapport_dataops.MD).
 
 ---
 
@@ -368,6 +393,11 @@ In production the frontend is built to a static bundle and served by Nginx, whic
 also proxies the API and WebSocket traffic, so a single container is a working
 entry point on its own.
 
+> **More detail:** the backend API contract, auth flow, migrations, and the
+> two-database split are in [`backend/README.md`](backend/README.md); the Angular
+> architecture, routes, interceptors, and build setup are in
+> [`frontend/README.md`](frontend/README.md).
+
 ---
 
 ## Running the stack
@@ -383,16 +413,16 @@ docker-compose down               # stop, keep the data
 
 Once it is up:
 
-| URL | What | Credentials |
-| --- | --- | --- |
-| `http://localhost/` | The app through the Nginx reverse proxy | — |
-| `http://localhost:4200/` | Angular app, direct | — |
-| `http://localhost:8000/docs` | Backend API docs (Swagger) | — |
-| `http://localhost:8080/` | Airflow | admin / admin123 |
-| `https://localhost:8443/nifi` | NiFi | admin / adminpassword123 |
-| `http://localhost:3000/` | Grafana (Monitoring Dashboards) | admin / admin |
-| `http://localhost:9090/` | Prometheus (Metrics DB) | — |
-| `http://localhost:8082/` | cAdvisor (Container stats) | — |
+| URL | What |
+| --- | --- |
+| `http://localhost/` | The app through the Nginx reverse proxy |
+| `http://localhost:4200/` | Angular app, direct |
+| `http://localhost:8000/docs` | Backend API docs (Swagger) |
+| `http://localhost:8080/` | Airflow |
+| `https://localhost:8443/nifi` | NiFi |
+| `http://localhost:3000/` | Grafana (Monitoring Dashboards) |
+| `http://localhost:9090/` | Prometheus (Metrics DB) |
+| `http://localhost:8082/` | cAdvisor (Container stats) |
 
 To run the daily pipeline by hand:
 
