@@ -48,6 +48,7 @@ from app.routers import (
 )
 from app.services import cache
 from app.services.email import shutdown_email_executor
+from prometheus_fastapi_instrumentator import Instrumentator
 
 logger = logging.getLogger("priceradar.api")
 
@@ -82,6 +83,9 @@ app = FastAPI(
 # slowapi: attach limiter to app state and register the 429 handler.
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+# Prometheus metrics: exposes /metrics endpoint
+Instrumentator().instrument(app).expose(app)
 
 app.add_middleware(
     CORSMiddleware,
