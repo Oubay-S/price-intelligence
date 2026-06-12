@@ -107,7 +107,7 @@ FastAPI  ->  Angular SPA   (behind an Nginx reverse proxy)
 The whole thing comes up with one `docker-compose up`. Here is the full stack
 running locally, every container green:
 
-![All platform containers running under Docker Compose](images/Screenshot%202026-06-11%20203545.png)
+![All platform containers running under Docker Compose](images/Screenshot%202026-06-12%20033533.png)
 
 ---
 
@@ -320,6 +320,22 @@ read Bigtable and connect to Cloud SQL and nothing more. Separate dev and prod
 variable files keep the dev environment cheap and the prod environment highly
 available.
 
+### Observability & Monitoring
+
+To keep a close eye on the platform's health, we integrated a full monitoring stack into the local Docker environment. The stack is composed of:
+- **cAdvisor** for raw container metrics (CPU, RAM, Network I/O).
+- **Prometheus** as the central time-series database that scrapes metrics from cAdvisor and the backend every 15 seconds.
+- **Grafana** for interactive data visualization and dashboards.
+
+We used the `prometheus-fastapi-instrumentator` library to expose internal backend metrics (like request counts, average duration per endpoint, and 4xx/5xx error rates). The screenshot below shows the FastAPI Observability dashboard in action, confirming that all endpoints are actively monitored.
+
+![FastAPI Observability Dashboard in Grafana](images/grafana-fastapi-dashboard.png)
+
+For underlying infrastructure health, **cAdvisor** provides direct insight into container resource allocation (CPU, Memory, Network I/O). The cAdvisor native web interface allows us to inspect the performance of the entire Docker Compose stack in real-time.
+
+![cAdvisor Overview](images/cadvisor-overview.png)
+![cAdvisor CPU Usage](images/cadvisor-cpu.png)
+![cAdvisor Memory Usage](images/cadvisor-memory.png)
 > **More detail:** the full DataOps mission report — the service-by-service
 > Docker breakdown, the nine-stage CI/CD pipeline, and the Terraform module
 > layout with the cloud mapping — is in
@@ -404,6 +420,9 @@ Once it is up:
 | `http://localhost:8000/docs` | Backend API docs (Swagger) |
 | `http://localhost:8080/` | Airflow |
 | `https://localhost:8443/nifi` | NiFi |
+| `http://localhost:3000/` | Grafana (Monitoring Dashboards) |
+| `http://localhost:9090/` | Prometheus (Metrics DB) |
+| `http://localhost:8082/` | cAdvisor (Container stats) |
 
 To run the daily pipeline by hand:
 

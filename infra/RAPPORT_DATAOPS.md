@@ -6,6 +6,9 @@
 [![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF.svg?style=for-the-badge&logo=githubactions)](https://github.com/features/actions)
 [![Docker](https://img.shields.io/badge/Orchestration-Docker-2496ED.svg?style=for-the-badge&logo=docker)](https://www.docker.com/)
 [![DevSecOps](https://img.shields.io/badge/Security-DevSecOps-FF0000.svg?style=for-the-badge)](https://github.com/)
+[![Prometheus](https://img.shields.io/badge/Prometheus-E6522C.svg?style=for-the-badge&logo=prometheus)](https://prometheus.io/)
+[![Grafana](https://img.shields.io/badge/Grafana-F46800.svg?style=for-the-badge&logo=grafana)](https://grafana.com/)
+[![cAdvisor](https://img.shields.io/badge/cAdvisor-Google-4285F4.svg?style=for-the-badge&logo=google)](https://github.com/google/cadvisor)
 
 ---
 
@@ -50,6 +53,13 @@ The environment strictly separates concerns using two Docker bridge networks:
 | **`backend`** | FastAPI (Python)| `8000` | `8000` | The core API. **Crucially, it is attached to BOTH networks**. It connects to `postgres-app` and `redis` (app-network) for user management, and securely queries **GCP Cloud Bigtable** to fetch the actual product prices. |
 | **`frontend`** | Angular 17 | `80` | `4200` | The Single Page Application (SPA). Built and served by a lightweight server internally. |
 | **`nginx`** | NGINX 1.25 | `80` | `80` | The **Reverse Proxy** and single entry point. It receives all traffic on `http://localhost:80`. It routes `/api/*` to `backend:8000`, and everything else (`/*`) to `frontend:80`. |
+
+#### The Monitoring Layer (`app-network` & `price-intel-network`)
+| Service | Image/Tech | Internal Port | Host Port | Description & Connectivity |
+|---------|------------|---------------|-----------|----------------------------|
+| **`prometheus`** | Prometheus v2.53.1 | `9090` | `9090` | Acts as the central time-series database. Scrapes metrics from `backend` (FastAPI) and `cadvisor` every 15 seconds. |
+| **`grafana`** | Grafana 11.1.0 | `3000` | `3000` | Provides interactive dashboards. Connects to `prometheus` to visualize performance metrics. |
+| **`cadvisor`** | cAdvisor v0.49.1 | `8080` | `8082` | Deployed to collect real-time container resource metrics (CPU, RAM, Network I/O) from the Docker daemon. |
 
 ---
 
@@ -143,6 +153,7 @@ Unlike standard setups, our local environment relies on the actual Cloud Bigtabl
 - **`airflow-*`** ➔ **Cloud Composer 2** (Fully managed Apache Airflow cluster).
 - **`backend`** ➔ **Cloud Run** (Serverless execution, scaling from zero to thousands of containers).
 - **`frontend` / `nginx`** ➔ **Cloud Storage (GCS) + Cloud CDN + Global Load Balancer** (Serverless edge delivery).
+- **`prometheus` / `grafana` / `cadvisor`** ➔ **Google Cloud Monitoring / Cloud Logging / Managed Service for Prometheus** (Serverless cloud observability and dashboarding).
 
 ### Terraform Modularity & Security
 The code (`infra/terraform/`) is split into 9 logical modules (networking, iam, bigtable, sql, run, etc.).
@@ -150,9 +161,20 @@ The code (`infra/terraform/`) is split into 9 logical modules (networking, iam, 
 - **Least Privilege IAM:** The Cloud Run backend gets a Service Account that *only* has `roles/bigtable.reader` and `roles/cloudsql.client`. It cannot delete tables or alter infrastructure.
 - **Environment Parity:** Created `dev.tfvars` (using cheap `db-f1-micro` instances and HDD storage) and `prod.tfvars` (using SSDs, Multi-AZ High Availability, and auto-scaling) to drastically optimize cloud costs.
 
+---
+
+## 📊 4. Observability & Monitoring
+
+To guarantee system reliability and provide actionable insights into application performance, I engineered a complete local monitoring stack:
+
+- **Prometheus**: Acts as the central time-series database, scraping metrics from our services every 15 seconds.
+- **Grafana**: Provides interactive dashboards. I provisioned the `prometheus-fastapi-instrumentator` dashboard to track FastAPI's HTTP requests, error rates (4xx/5xx), and endpoint latencies.
+- **cAdvisor**: Deployed to collect real-time container resource metrics (CPU, RAM, Network I/O). The native web interface allows for deep hardware-level inspection of the entire Docker stack.
+
+This observability layer ensures that we don't just know *if* the platform is running, but exactly *how well* it is performing.
 
 ---
 
 > [!IMPORTANT]
 > **Final Impact**
-> As DataOps, I successfully abstracted the complexity of infrastructure away from the Data Engineers and Web Developers. They now commit code locally, push to GitHub, and the entire platform is automatically verified for security, quality, and integration before being eligible for cloud deployment. The project is now enterprise-ready.
+> As DataOps, I successfully abstracted the complexity of infrastructure away from the Data Engineers and Web Developers. They now commit code locally, push to GitHub, and the entire platform is automatically verified for security, quality, and integration before being eligible for cloud deployment. With the addition of full-stack observability, the project is now truly enterprise-ready.

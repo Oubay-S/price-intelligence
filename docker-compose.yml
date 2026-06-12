@@ -1,6 +1,6 @@
 # =============================================================
 # docker-compose.yml — Price Intelligence Platform
-# Environnement de développement LOCAL (0€, sans GCP réel)
+# Environnement de développement HYBRIDE (Compute local + GCP Cloud Bigtable)
 # =============================================================
 # ┌──────────────────────────────────────────────────────────┐
 # │  COUCHE APPLICATIVE (app-network)                        │
@@ -10,9 +10,14 @@
 # ├──────────────────────────────────────────────────────────┤
 # │  COUCHE DATA (price-intel-network)                       │
 # │  airflow-webserver:8080  → postgres (Airflow):5433       │
-# │  airflow-scheduler       → bigtable-emulator:8086        │
-# │  nifi:8443               → bigtable-emulator:8086        │
+# │  airflow-scheduler       → GCP Cloud Bigtable            │
+# │  nifi:8443               → GCP Cloud Bigtable            │
 # │  backend ←──── aussi connecté ici pour Bigtable ────→    │
+# ├──────────────────────────────────────────────────────────┤
+# │  COUCHE MONITORING (app-network & price-intel-network)   │
+# │  prometheus:9090 ← scrape backend & cadvisor             │
+# │  grafana:3000    ← lit depuis prometheus                 │
+# │  cadvisor:8082   ← métriques des conteneurs Docker       │
 # └──────────────────────────────────────────────────────────┘
 # =============================================================
 
@@ -20,7 +25,7 @@
 # RÉSEAUX
 # --------------------------
 networks:
-  # Réseau pour la couche data (Airflow, NiFi, Bigtable, Postgres Airflow)
+  # Réseau pour la couche data (Airflow, NiFi, Postgres Airflow)
   price-intel-network:
     driver: bridge
   # Réseau pour la couche applicative (Backend, Frontend, Nginx, Redis, Postgres App)
@@ -326,7 +331,7 @@ services:
       # --- Redis (override host .env which points at 127.0.0.1) ------
       REDIS_URL: redis://redis:6379/0
 
-      # --- Bigtable / GCP (container hostnames, container cred path) -
+      # --- Bigtable / GCP Cloud -
       GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-price-intel-local}
       BIGTABLE_INSTANCE_ID: ${BIGTABLE_INSTANCE_ID:-price-intel-instance}
       GOOGLE_APPLICATION_CREDENTIALS: /opt/gcp/gcp-credentials.json
@@ -422,3 +427,69 @@ services:
     depends_on:
       - backend
       - frontend
+
+  # ═══════════════════════════════════════════════════════════
+  #                 COUCHE MONITORING
+  # ═══════════════════════════════════════════════════════════
+
+  # -----------------------------------------------------------
+  # 13. PROMETHEUS — Collecte des métriques
+  # Accès direct : http://localhost:9090
+  # -----------------------------------------------------------
+  prometheus:
+    image: prom/prometheus:v2.53.1
+    container_name: prometheus
+    volumes:
+      - ./infra/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    networks:
+      - app-network
+      - price-intel-network
+    restart: unless-stopped
+
+  # -----------------------------------------------------------
+  # 14. GRAFANA — Visualisation (Dashboards)
+  # Accès direct : http://localhost:3000 (admin / admin)
+  # -----------------------------------------------------------
+  grafana:
+    image: grafana/grafana:11.1.0
+    container_name: grafana
+    volumes:
+      - ./infra/monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+      - price-intel-network
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+
+  # -----------------------------------------------------------
+  # 15. CADVISOR — Métriques des conteneurs Docker
+  # Accès direct : http://localhost:8082
+  # -----------------------------------------------------------
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.49.1
+    container_name: cadvisor
+    # Exige des privilèges pour lire les informations Docker sur l'hôte
+    privileged: true
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    ports:
+      - "8082:8080"
+    networks:
+      - app-network
+      - price-intel-network
+    restart: unless-stopped
