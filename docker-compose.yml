@@ -77,6 +77,7 @@ x-airflow-common: &airflow-common
     # GCP credentials for BigQuery (export + dbt)
     GOOGLE_APPLICATION_CREDENTIALS: "/opt/airflow/gcp-credentials.json"
     _PIP_ADDITIONAL_REQUIREMENTS: "webdriver-manager undetected-chromedriver selenium beautifulsoup4 requests"
+    GE_GATE_BLOCK: "0"
 
   volumes:
     - ./logs:/opt/airflow/logs:z
