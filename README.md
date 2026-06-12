@@ -37,7 +37,7 @@ want the deep version:
 | --- | --- | --- | --- |
 | Data Engineer | Aouichi Omar | Scrapers, Airflow, NiFi, Bigtable, BigQuery, dbt, Great Expectations | `data/engineer` |
 | Data Analyst | EL Ghrib Assil | Notebooks, EDA, statistical tests, dashboard exports | `data-analysis` |
-| DataOps / Cloud Engineer | EL Arabi Serghini Oubay | Docker, CI/CD, Terraform, security scanning | `infra-dataops` |
+| DataOps / Cloud Engineer | EL Arabi Serghini Oubay | Docker, CI/CD, Terraform, security scanning, Observability & Monitoring | `infra-dataops` |
 | Fullstack Developer | EL Arroud Mohamed Reda | FastAPI backend, Angular frontend, Nginx | `feature/fullstack` |
 
 Each of us worked sports-nutrition pricing from a different angle, but the four
